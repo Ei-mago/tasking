@@ -99,7 +99,7 @@ class OrderInfo(models.Model):
 class OrderOperate(models.Model):
 
     """
-    订单操作表
+    工单操作表
     
     order_id :  订单id，对应工单信息表
     operate_id : 操作人，对应客服表
@@ -112,8 +112,8 @@ class OrderOperate(models.Model):
     id = models.AutoField(primary_key=True)
     order_id = models.IntegerField(null=False)
     operate_id = models.IntegerField(null=False)
-    from_opreate_id = models.IntegerField(null=False)
-    to_opreate_id = models.IntegerField(null=False)
+    # from_opreate_id = models.IntegerField(null=False)
+    # to_opreate_id = models.IntegerField(null=False)
     from_priority = models.CharField(null=False)
     to_priority = models.CharField(null=False)
     from_status = models.IntegerField(null=False)
