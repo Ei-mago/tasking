@@ -38,7 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_jinja',
-    'usermanage'
+    'usermanage',
+    'orders',
+    'manager'
 
 ]
 
@@ -80,11 +82,11 @@ WSGI_APPLICATION = 'tasking.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'tasking',
-        'HOST': '10.0.108.96',
+        'NAME': 'wy_tasking_proj',  # 数据库名
+        'HOST': '47.100.252.185',  # 数据库服务器地址
+        'USER': 'eimago',
+        'PASSWORD': '123456',
         'PORT': 3306,
-        'USER': 'root',
-        'PASSWORD': '123456'
     }
 }
 
@@ -132,3 +134,10 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
+
+
+#分页配置
+
+PERPAGE = 5        # 每页固定展示5条数据
+PAGERANGE = 10        # 页码范围：10页
+BISECT = PAGERANGE/2     # 页码范围对分数

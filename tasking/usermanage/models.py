@@ -11,7 +11,7 @@ class Support(models.Model):
         ('1','售后维护'),
         ('2','it组1')
     )
-    support_group = models.CharField(choices=support_group_choice)
+    support_group = models.CharField(max_length=30,choices=support_group_choice)
     pid = models.IntegerField(null=False)
     create_time = models.DateTimeField(default=datetime.now)
 
@@ -29,12 +29,12 @@ class User(models.Model):
         ('1','客服经理'),
         ('2','客服')
     )
-    role = models.CharField(default=2,choices=role_type)
+    role = models.ImageField(default=2,choices=role_type)
     pid = models.IntegerField(null=False)
     email = models.CharField(max_length=30,null=False)
     is_delete = models.IntegerField(null=False,default=0)
     create_time = models.DateTimeField(default=datetime.now)
-    modify_time = models.DateTimeField(default=datetime.now)
+    modify_time = models.DateTimeField(null=True)
 
     class Meta:
         db_table =  'user'
@@ -52,7 +52,7 @@ class Customer(models.Model):
         ('2','xxx'),
         ('3','xxx')
     )
-    customer_group = models.CharField(choices=customer_group_choice)
+    customer_group = models.CharField(max_length=30,choices=customer_group_choice)
     is_delete = models.IntegerField(null=False,default=0)
     create_time = models.DateTimeField(default=datetime.now)
     modify_time = models.DateTimeField(default=datetime.now)
