@@ -77,14 +77,27 @@ WSGI_APPLICATION = 'tasking.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
+# 组长的
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'tasking',
+#         'HOST': '10.0.108.96',
+#         'PORT': 3306,
+#         'USER': 'root',
+#         'PASSWORD': '123456'
+#     }
+# }
+
+# 晋涛的
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'tasking',
-        'HOST': '10.0.108.96',
-        'PORT': 3306,
-        'USER': 'root',
-        'PASSWORD': '123456'
+         'ENGINE': 'django.db.backends.mysql',
+        'NAME':'tasking',
+        'HOST':'47.100.252.185',
+        'USER':'naihe',
+        'PASSWORD':'123456',
+        'PORT':3306
     }
 }
 

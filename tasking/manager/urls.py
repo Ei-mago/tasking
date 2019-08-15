@@ -1,3 +1,2 @@
 
 
-from manager import views

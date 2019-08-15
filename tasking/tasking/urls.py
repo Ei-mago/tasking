@@ -20,6 +20,6 @@ urlpatterns = [
     # url(r'^admin/', admin.site.urls),
     url(r'^', include('usermanage.urls', namespace='usermanage')),
     url(r'^', include('orders.urls', namespace='orders')),
-    url(r'^', include('manager.urls', namespace='manager'))
+    # url(r'^', include('manager.urls', namespace='manager'))
 
 ]

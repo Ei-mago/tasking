@@ -1,66 +1,83 @@
-from datetime import datetime
+# This is an auto-generated Django model module.
+# You'll have to do the following manually to clean this up:
+#   * Rearrange models' order
+#   * Make sure each model has one field with primary_key=True
+#   * Make sure each ForeignKey has `on_delete` set to the desired behavior.
+#   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
+# Feel free to rename the models, but don't rename db_table values or field names.
+from __future__ import unicode_literals
 
 from django.db import models
 
-class Support(models.Model):
-    id = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=30,null=False)
-    phone = models.CharField(max_length=30,null=False)
-    email = models.CharField(max_length=30,null=False)
-    support_group_choice  = (
-        ('1','售后维护'),
-        ('2','it组1')
-    )
-    support_group = models.CharField(choices=support_group_choice)
-    pid = models.IntegerField(null=False)
-    create_time = models.DateTimeField(default=datetime.now)
+
+class ClientGroupTable(models.Model):
+    cgid = models.AutoField(primary_key=True)
+    cgname = models.CharField(max_length=32, blank=True, null=True)
+    cgnotes = models.CharField(max_length=255, blank=True, null=True)
+    createdat = models.DateTimeField(db_column='createdAt', blank=True, null=True)  # Field name made lowercase.
+    updatedat = models.DateTimeField(db_column='updatedAt', blank=True, null=True)  # Field name made lowercase.
+    ugid = models.IntegerField(blank=True, null=True)
 
     class Meta:
-        db_table = 'support'
+        managed = False
+        db_table = 'client_group_table'
 
 
-class User(models.Model):
-    uid = models.AutoField(primary_key=True)
-    username = models.CharField(max_length=256, null=False)
-    password = models.CharField(max_length=30, default='123456')
-    company_name = models.CharField(max_length=30,default='克亚科技公司')
-    role_type = (
-        ('0','admin'),
-        ('1','客服经理'),
-        ('2','客服')
-    )
-    role = models.CharField(default=2,choices=role_type)
-    pid = models.IntegerField(null=False)
-    email = models.CharField(max_length=30,null=False)
-    is_delete = models.IntegerField(null=False,default=0)
-    create_time = models.DateTimeField(default=datetime.now)
-    modify_time = models.DateTimeField(default=datetime.now)
-
-    class Meta:
-        db_table =  'user'
-
-
-
-class Customer(models.Model):
+class ClientTable(models.Model):
     cid = models.AutoField(primary_key=True)
-    customer_name = models.CharField(max_length=30,null=False)
-    company_name = models.CharField(max_length=30,null=False)
-    phone = models.CharField(max_length=30,null=False)
-    email = models.CharField(max_length=30,null=False)
-    customer_group_choice = (
-        ('1','xxx'),
-        ('2','xxx'),
-        ('3','xxx')
-    )
-    customer_group = models.CharField(choices=customer_group_choice)
-    is_delete = models.IntegerField(null=False,default=0)
-    create_time = models.DateTimeField(default=datetime.now)
-    modify_time = models.DateTimeField(default=datetime.now)
+    cname = models.CharField(max_length=32, blank=True, null=True)
+    cnickname = models.CharField(max_length=32, blank=True, null=True)
+    ccontactemail = models.CharField(db_column='ccontactEmail', max_length=128, blank=True, null=True)  # Field name made lowercase.
+    cvalid = models.IntegerField(blank=True, null=True)
+    cmobilephone = models.IntegerField(db_column='cmobilePhone', blank=True, null=True)  # Field name made lowercase.
+    cnotes = models.CharField(max_length=255, blank=True, null=True)
+    ccreatedat = models.DateTimeField(db_column='ccreatedAt', blank=True, null=True)  # Field name made lowercase.
+    cupdatedat = models.DateTimeField(db_column='cupdatedAt', blank=True, null=True)  # Field name made lowercase.
+    cgid = models.IntegerField(blank=True, null=True)
+    uid = models.IntegerField(blank=True, null=True)
+    customercustomfields = models.CharField(db_column='customerCustomFields', max_length=255, blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
-        db_table =  'customer'
+        managed = False
+        db_table = 'client_table'
 
 
+class TypesTable(models.Model):
+    name = models.CharField(max_length=64, blank=True, null=True)
+    description = models.CharField(max_length=255, blank=True, null=True)
+    createdat = models.DateTimeField(db_column='createdAt', blank=True, null=True)  # Field name made lowercase.
+    updatedat = models.DateTimeField(db_column='updatedAt', blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'types_table'
 
 
+class UserGroupTable(models.Model):
+    ugid = models.AutoField(primary_key=True)
+    ugname = models.CharField(max_length=32, blank=True, null=True)
+    ugdescription = models.CharField(max_length=255, blank=True, null=True)
+    pid = models.IntegerField(blank=True, null=True)
+    createdat = models.DateTimeField(db_column='createdAt', blank=True, null=True)  # Field name made lowercase.
+    updatedat = models.DateTimeField(db_column='updatedAt', blank=True, null=True)  # Field name made lowercase.
 
+    class Meta:
+        managed = False
+        db_table = 'user_group_table'
+
+
+class UserTable(models.Model):
+    uid = models.AutoField(primary_key=True)
+    uname = models.CharField(max_length=32, blank=True, null=True)
+    uemail = models.CharField(max_length=32, blank=True, null=True)
+    umobilephone = models.IntegerField(db_column='umobilePhone', blank=True, null=True)  # Field name made lowercase.
+    upassword = models.CharField(max_length=128, blank=True, null=True)
+    ucreatedat = models.DateTimeField(db_column='ucreatedAt', blank=True, null=True)  # Field name made lowercase.
+    ulastloginat = models.DateTimeField(db_column='ulastLoginAt', blank=True, null=True)  # Field name made lowercase.
+    urole = models.IntegerField(blank=True, null=True)
+    pid = models.IntegerField(blank=True, null=True)
+    ugid = models.CharField(max_length=11, blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'user_table'

@@ -6,3 +6,8 @@ from django.shortcuts import render
 
 def test(request):
     return render(request,'test1.html')
+
+
+def login(request):
+
+    return render(request, 'usermanage/login.html')
