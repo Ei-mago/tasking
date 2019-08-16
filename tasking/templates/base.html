@@ -1,37 +1,1088 @@
-{% load static %}
+{% block top %}
+    <html lang="zh-cmn">
+    {% block header %}
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style type="text/css">[uib-typeahead-popup].dropdown-menu {
+        display: block;
+    }</style>
+    <style type="text/css">.uib-time input {
+        width: 50px;
+    }</style>
+    <style type="text/css">[uib-tooltip-popup].tooltip.top-left > .tooltip-arrow, [uib-tooltip-popup].tooltip.top-right > .tooltip-arrow, [uib-tooltip-popup].tooltip.bottom-left > .tooltip-arrow, [uib-tooltip-popup].tooltip.bottom-right > .tooltip-arrow, [uib-tooltip-popup].tooltip.left-top > .tooltip-arrow, [uib-tooltip-popup].tooltip.left-bottom > .tooltip-arrow, [uib-tooltip-popup].tooltip.right-top > .tooltip-arrow, [uib-tooltip-popup].tooltip.right-bottom > .tooltip-arrow, [uib-tooltip-html-popup].tooltip.top-left > .tooltip-arrow, [uib-tooltip-html-popup].tooltip.top-right > .tooltip-arrow, [uib-tooltip-html-popup].tooltip.bottom-left > .tooltip-arrow, [uib-tooltip-html-popup].tooltip.bottom-right > .tooltip-arrow, [uib-tooltip-html-popup].tooltip.left-top > .tooltip-arrow, [uib-tooltip-html-popup].tooltip.left-bottom > .tooltip-arrow, [uib-tooltip-html-popup].tooltip.right-top > .tooltip-arrow, [uib-tooltip-html-popup].tooltip.right-bottom > .tooltip-arrow, [uib-tooltip-template-popup].tooltip.top-left > .tooltip-arrow, [uib-tooltip-template-popup].tooltip.top-right > .tooltip-arrow, [uib-tooltip-template-popup].tooltip.bottom-left > .tooltip-arrow, [uib-tooltip-template-popup].tooltip.bottom-right > .tooltip-arrow, [uib-tooltip-template-popup].tooltip.left-top > .tooltip-arrow, [uib-tooltip-template-popup].tooltip.left-bottom > .tooltip-arrow, [uib-tooltip-template-popup].tooltip.right-top > .tooltip-arrow, [uib-tooltip-template-popup].tooltip.right-bottom > .tooltip-arrow, [uib-popover-popup].popover.top-left > .arrow, [uib-popover-popup].popover.top-right > .arrow, [uib-popover-popup].popover.bottom-left > .arrow, [uib-popover-popup].popover.bottom-right > .arrow, [uib-popover-popup].popover.left-top > .arrow, [uib-popover-popup].popover.left-bottom > .arrow, [uib-popover-popup].popover.right-top > .arrow, [uib-popover-popup].popover.right-bottom > .arrow, [uib-popover-html-popup].popover.top-left > .arrow, [uib-popover-html-popup].popover.top-right > .arrow, [uib-popover-html-popup].popover.bottom-left > .arrow, [uib-popover-html-popup].popover.bottom-right > .arrow, [uib-popover-html-popup].popover.left-top > .arrow, [uib-popover-html-popup].popover.left-bottom > .arrow, [uib-popover-html-popup].popover.right-top > .arrow, [uib-popover-html-popup].popover.right-bottom > .arrow, [uib-popover-template-popup].popover.top-left > .arrow, [uib-popover-template-popup].popover.top-right > .arrow, [uib-popover-template-popup].popover.bottom-left > .arrow, [uib-popover-template-popup].popover.bottom-right > .arrow, [uib-popover-template-popup].popover.left-top > .arrow, [uib-popover-template-popup].popover.left-bottom > .arrow, [uib-popover-template-popup].popover.right-top > .arrow, [uib-popover-template-popup].popover.right-bottom > .arrow {
+        top: auto;
+        bottom: auto;
+        left: auto;
+        right: auto;
+        margin: 0;
+    }
+
+    [uib-popover-popup].popover, [uib-popover-html-popup].popover, [uib-popover-template-popup].popover {
+        display: block !important;
+    }</style>
+    <style type="text/css">.uib-datepicker-popup.dropdown-menu {
+        display: block;
+        float: none;
+        margin: 0;
+    }
+
+    .uib-button-bar {
+        padding: 10px 9px 2px;
+    }</style>
+    <style type="text/css">.uib-position-measure {
+        display: block !important;
+        visibility: hidden !important;
+        position: absolute !important;
+        top: -9999px !important;
+        left: -9999px !important;
+    }
+
+    .uib-position-scrollbar-measure {
+        position: absolute !important;
+        top: -9999px !important;
+        width: 50px !important;
+        height: 50px !important;
+        overflow: scroll !important;
+    }
+
+    .uib-position-body-scrollbar-measure {
+        overflow: scroll !important;
+    }</style>
+    <style type="text/css">.uib-datepicker .uib-title {
+        width: 100%;
+    }
+
+    .uib-day button, .uib-month button, .uib-year button {
+        min-width: 100%;
+    }
+
+    .uib-left, .uib-right {
+        width: 100%
+    }</style>
+    <style type="text/css">.ng-animate.item:not(.left):not(.right) {
+        -webkit-transition: 0s ease-in-out left;
+        transition: 0s ease-in-out left
+    }</style>
+    <style type="text/css">@charset "UTF-8";
+    [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak, .ng-hide:not(.ng-hide-animate) {
+        display: none !important;
+    }
+
+    ng\:form {
+        display: block;
+    }
+
+    .ng-animate-shim {
+        visibility: hidden;
+    }
+
+    .ng-anchor {
+        position: absolute;
+    }</style>
+    <meta charset="utf-8">
+    <meta http-equiv="cache-control" content="max-age=0">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta name="renderer" content="webkit">
+    <title>客服-北京亚客科技有限公司</title>
+    <link rel="shortcut icon" ng-href="">
+    <link rel="stylesheet" href="//cdn.ewei.com/7.3.0/console/css/vendor-572e5acf76.css">
+    <link rel="stylesheet" href="//cdn.ewei.com/7.3.0/console/css/layout-809af0fe81.css">
+    <!-- ngIf: provider.headBackgroundColor -->
+    <style ng-if="provider.headBackgroundColor" class="ng-scope">#tabs .tab {
+
+    background-color: {
+
+    {
+        provider . dropDownColor
+    }
+    }
+    ;
+    color: {
+
+    {
+        provider . titleTypefaceColor
+    }
+    }
+    ;
+    border-top-color: {
+
+    {
+    getRGB
+    (
+    provider
+    .
+    dropDownColor
+    ,
+    1.2
+    )
+    }
+    }
+    }
+    #tabs .tab:not (.active):hover {
+
+    background-color: {
+
+    {
+    getRGB
+    (
+    provider
+    .
+    dropDownColor
+    ,
+    1.2
+    )
+    }
+    }
+    }
+    #tabs .tab .close {
+
+    color: {
+
+    {
+    getRGB
+    (
+    provider
+    .
+    dropDownColor
+    ,
+    1.3
+    )
+    }
+    }
+    }
+    #tabs .dropdown-menu {
+        margin: 0;
+        border-radius: 0 0 4px 4px;
+        top: 34px
+    }
+
+    #tabs .dropdown-menu-second {
+        float: left;
+        list-style: none;
+        padding: 5px 0;
+        font-size: 14px;
+        background-color: #fff;
+        margin: 0;
+        border-radius: 0 0 4px 4px;
+        -webkit-background-clip: padding-box;
+        background-clip: padding-box;
+        border: 1px solid #ccc;
+        border: 1px solid rgba(0, 0, 0, .15);
+        -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+        border-left: none;
+        position: absolute;
+        left: 100%;
+        top: -1px
+    }
+
+    #tabs .dropdown-menu-second li a {
+        display: block;
+        padding: 3px 20px;
+        clear: both;
+        font-weight: 400;
+        color: #333;
+        line-height: 25px;
+        white-space: nowrap
+    }
+
+    #tabs .dropdown-menu-second li a:hover {
+        color: #262626;
+        text-decoration: none;
+        background-color: #f5f5f5
+    }
+
+    .dropdown-toggle .dropdown-num {
+        position: absolute;
+        right: 160px
+    }
+
+    .dropdown-num .active {
+        background-color: #ccc
+    }
+
+    .dropdown-num .fa {
+        width: 20px
+    }
+
+    .ng-cloak {
+        display: none
+    }
+
+    #customerNoticeImgVisible {
+        float: left;
+        margin-left: -30px;
+        margin-top: 20px;
+        opacity: 1;
+        visibility: hidden
+    }
+
+    #ticketNoticeImgVisible {
+        margin-left: -30px;
+        float: left;
+        margin-top: 20px;
+        opacity: 1;
+        visibility: hidden
+    }</style><!-- end ngIf: provider.headBackgroundColor -->
+    <style type="text/css">.pre-loading {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: block;
+        z-index: 1040;
+        text-align: center;
+        padding-top: 12%;
+        background: #fefefe
+    }
+
+    .sk-cube-grid {
+        width: 80px;
+        height: 80px;
+        margin: 100px auto
+    }
+
+    .sk-cube-grid .sk-cube {
+        width: 33%;
+        height: 33%;
+        background-color: #74b4f0;
+        float: left;
+        -webkit-animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;
+        animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out
+    }
+
+    .sk-cube-grid .sk-cube1 {
+        -webkit-animation-delay: .2s;
+        animation-delay: .2s
+    }
+
+    .sk-cube-grid .sk-cube2 {
+        -webkit-animation-delay: .3s;
+        animation-delay: .3s
+    }
+
+    .sk-cube-grid .sk-cube3 {
+        -webkit-animation-delay: .4s;
+        animation-delay: .4s
+    }
+
+    .sk-cube-grid .sk-cube4 {
+        -webkit-animation-delay: .1s;
+        animation-delay: .1s
+    }
+
+    .sk-cube-grid .sk-cube5 {
+        -webkit-animation-delay: .2s;
+        animation-delay: .2s
+    }
+
+    .sk-cube-grid .sk-cube6 {
+        -webkit-animation-delay: .3s;
+        animation-delay: .3s
+    }
+
+    .sk-cube-grid .sk-cube7 {
+        -webkit-animation-delay: 0s;
+        animation-delay: 0s
+    }
+
+    .sk-cube-grid .sk-cube8 {
+        -webkit-animation-delay: .1s;
+        animation-delay: .1s
+    }
+
+    .sk-cube-grid .sk-cube9 {
+        -webkit-animation-delay: .2s;
+        animation-delay: .2s
+    }
+
+    .header-icon-tools .notice {
+        position: absolute;
+        top: -1px;
+        right: 340px;
+        z-index: 99999;
+        cursor: pointer
+    }
+
+    @-webkit-keyframes sk-cubeGridScaleDelay {
+        0%, 100%, 70% {
+            -webkit-transform: scale3D(1, 1, 1);
+            transform: scale3D(1, 1, 1)
+        }
+        35% {
+            -webkit-transform: scale3D(0, 0, 1);
+            transform: scale3D(0, 0, 1)
+        }
+    }
+
+    @keyframes sk-cubeGridScaleDelay {
+        0%, 100%, 70% {
+            -webkit-transform: scale3D(1, 1, 1);
+            transform: scale3D(1, 1, 1)
+        }
+        35% {
+            -webkit-transform: scale3D(0, 0, 1);
+            transform: scale3D(0, 0, 1)
+        }
+    }</style><!-- ************************新版首页样式暂时放在这里******************** -->
+    <style>.header-icon-tools {
+        text-align: right;
+        padding-right: 30px;
+        -ms-user-select: none;
+        -moz-user-select: none;
+        -webkit-user-select: none
+    }
+
+    .header-icon-tools a {
+        color: #fff;
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        text-align: center;
+        line-height: 40px;
+        vertical-align: bottom
+    }
+
+    .header-icon-tools .header-tool-bar {
+        margin-top: 10px;
+        border-radius: 50%;
+        background-color: -#f9c;
+        text-decoration: none;
+        color: #fff
+    }
+
+    .header-icon-tools .header-tool-bar:hover {
+        background-color: rgba(0, 0, 0, .15);
+        text-decoration: none
+    }
+
+    .header-icon-tools i {
+        font-size: 23px
+    }</style>
+    <style type="text/css" custom-style="" class="ng-binding ng-isolate-scope">.custom-fontsize {
+        font-size: 14px !important
+    }
+
+    .custom-background-color {
+        background-color: #3bb6ee !important
+    }
+
+    .custom-tabcolor {
+        background-color: !important
+    }
+
+    .custom-title-font {
+        font-family: "" !important
+    }
+
+    .custom-title-font-color {
+        color: !important
+    }
+
+    .custom-button-font {
+        font-family: "" !important
+    }
+
+    .custom-main-font-color {
+        color: #3bb6ee !important
+    }
+
+    .custom-main-bgcolor {
+        background-color: #3bb6ee !important
+    }
+
+    .custom-checkbox label:after {
+        border-color: #3bb6ee !important
+    }
+
+    .custom-border-color {
+        border-color: #3bb6ee !important
+    }
+
+    .btn.btn-confirm {
+        background-color: #3bb6ee !important
+    }
+
+    .btn.btn-primary {
+        background-color: #3bb6ee;
+        border-color: #3bb6ee
+    }
+
+    .btn-primary.active, .btn-primary:active, .btn-primary:focus, .btn-primary:hover, .open > .dropdown-toggle.btn-primary {
+        background-color: #6ac7f2
+    }
+
+    .dropdown-menu > li a.custom-link-color, .statistics-chart-wrap .switch-to-new a, .statistics > header > .switch-to-old a, .table-box tr td:first-child a.channel-name, a.custom-link-color {
+        color: #3bb6ee
+    }
+
+    .dropdown-menu > li a.custom-link-color:hover, .table-box tr td:first-child a.channel-name, a.custom-link-color:hover {
+        color: #52bff0
+    }
+
+    .btn.btn-confirm[disabled], .btn.btn-primary[disabled] {
+        background-color: #bdbdbd !important;
+        border-color: #bdbdbd !important
+    }
+
+    .btn.btn-default.btn-user-template {
+        color: #3bb6ee !important
+    }
+
+    .btn.btn-default.btn-user-template.active, .btn.btn-default.btn-user-template.focus, .btn.btn-default.btn-user-template:active, .btn.btn-default.btn-user-template:focus, .btn.btn-default.btn-user-template:hover, .open > .dropdown-toggle.btn-default.btn-user-template {
+        background-color: rgba(59, 182, 238, 0.15) !important;
+        border-color: #3bb6ee
+    }
+
+    .btn-default.btn-user-template.active.focus, .btn-default.btn-user-template.active:focus, .btn-default.btn-user-template.active:hover, .btn-default.btn-user-template:active.focus, .btn-default.btn-user-template:active:focus, .btn-default.btn-user-template:active:hover, .open > .dropdown-toggle.btn-default.btn-user-template.focus, .open > .dropdown-toggle.btn-default.btn-user-template:focus, .open > .dropdown-toggle.btn-default.btn-user-template:hover {
+        border-color: #3bb6ee
+    }
+
+    .btn.active.focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn:active:focus, .btn:focus {
+        outline-color: rgba(59, 182, 238, 0.5)
+    }
+
+    .ng-table-pager .pagination > .active > a, .ng-table-pager .pagination > .active > a:focus, .ng-table-pager .pagination > .active > a:hover, .ng-table-pager .pagination > .active > span, .ng-table-pager .pagination > .active > span:focus, .ng-table-pager .pagination > .active > span:hover {
+        background-color: #3bb6ee !important;
+        border-color: #3bb6ee !important
+    }
+
+    .quick-entry .board-box-active {
+        border-bottom: 4px solid #3bb6ee !important
+    }
+
+    .quick-entry .board-box-active h5.number, .quick-entry .board-box-active h5.text {
+        color: #3bb6ee !important
+    }
+
+    .quick-entry .board-box:hover {
+        background-color: rgba(59, 182, 238, 0.1) !important
+    }
+
+    .dropdown-menu .chart-item:hover {
+        background-color: #3bb6ee !important
+    }
+
+    .dash-nav li.active a {
+        border-bottom-color: #3bb6ee !important
+    }
+
+    .dash-nav li a:focus, .dash-nav li a:hover, .dash-nav li.active a, .dash-nav li.active a:focus, .dash-nav li.active a:hover {
+        color: #3bb6ee !important
+    }
+
+    .avatar-panel .favorite {
+        border-color: #3bb6ee !important;
+        color: #3bb6ee !important
+    }
+
+    .quick-entry-management .list-common li .right-top-point {
+        color: #3bb6ee !important
+    }
+
+    .box02, .box02-active {
+        background-color: #3bb6ee !important;
+        color: #fff !important
+    }
+
+    .box02 > .badge {
+        background-color: #3bb6ee
+    }
+
+    .hobox02:hover {
+        background-color: #3bb6ee !important;
+        color: #fff !important
+    }
+
+    .box02 .show_num_right, .box02 .title_left_class {
+        color: #fff !important
+    }
+
+    .quick-entry-management .sortable-chosen {
+        background-color: #3bb6ee;
+        color: !important
+    }
+
+    .uniqueDomains:hover {
+        color: #3bb6ee
+    }
+
+    .chat-tip ul li .chat-module:hover {
+        border: 1px dashed #3bb6ee
+    }
+
+    .s-type-item .detail:hover, .s-type-item .selected {
+        color: #fff !important;
+        background-color: #3bb6ee !important
+    }
+
+    .pss-title .title-one, .pss-type-list .active, .s-btn-wrapper .button-senior:hover, .s-type-item .detail {
+        color: #3bb6ee !important
+    }
+
+    .s-type-item .detail.selected {
+        color: #fff !important
+    }
+
+    tags-input .tags .tag-item {
+        background-color: #3bb6ee !important
+    }
+
+    .dashboard-newstate-list .item .detail:hover {
+        color: #3bb6ee !important
+    }
+
+    tags-input.ng-invalid .tags {
+        box-shadow: none;
+        border-color: red
+    }
+
+    tags-input .tags .input.invalid-tag, tags-input .tags .tag-item .remove-button:active {
+        color: #333
+    }
+
+    .community_div input.tabs:checked + label {
+        border-bottom: 4px solid #3bb6ee !important;
+        color: #3bb6ee !important
+    }
+
+    .community_div_title {
+        border-left: 5px solid #3bb6ee !important
+    }
+
+    .project_classify_borderColor:before {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 2px;
+        right: auto;
+        top: auto;
+        height: 74%;
+        width: 4px;
+        display: block;
+        z-index: 2;
+        backface-visibility: hidden;
+        background-color: #3bb6ee !important
+    }
+
+    .project_btn_back {
+        background-color: #3bb6ee !important
+    }
+
+    .project_classify_lsitColor .project_icon {
+        color: #3bb6ee !important;
+        border-color: #3bb6ee !important
+    }
+
+    .project_classify_lsitColor:hover .project_icon {
+        color: #fff !important;
+        border-color: #3bb6ee !important;
+        background-color: #3bb6ee !important
+    }
+
+    .project_node_fontcolor {
+        color: #3bb6ee !important
+    }
+
+    .project_node_backcolor {
+        border-color: #3bb6ee !important;
+        background-color: #3bb6ee !important
+    }
+
+    .project_btn_backcolor {
+        color: #fff !important;
+        border-color: #3bb6ee !important;
+        background-color: #3bb6ee !important
+    }
+
+    .project_upload_color, .project_upload_color i {
+        color: #3bb6ee !important
+    }
+
+    .project_btn_backcolor {
+        color: #fff !important;
+        border-color: #3bb6ee !important;
+        background-color: #3bb6ee !important
+    }
+
+    .universalnav .carousel .ul .activefavorites {
+        border-bottom: 4px solid #3bb6ee !important
+    }
+
+    .universalnav .carousel .ul .activefavorites:before {
+        border-bottom: 7px solid #3bb6ee !important
+    }
+
+    .universalnav .ul .activefavorites .iconfontarea {
+        background: #3bb6ee !important;
+        border: 1px solid #3bb6ee !important;
+        color: #fff !important
+    }
+
+    .iconfontarea-color-self {
+        color: #3bb6ee;
+        border: 1px solid #3bb6ee !important
+    }
+
+    .iconfontarea-color-self:hover {
+        color: #fff !important;
+        background: #3bb6ee !important
+    }
+
+    .li-color-self:hover {
+        border-bottom: 4px solid #3bb6ee !important
+    }
+
+    .li-color-self:before {
+        border-bottom: 7px solid #3bb6ee !important
+    }
+
+    .project-category .phase-container .phase-card .phase-body .project-list > li .content > span:hover {
+        color: #3bb6ee !important
+    }
+
+    .ticket-view-list .sortable-chosen {
+        background-color: #3bb6ee;
+        color: !important
+    }
+
+    .setting-head-common .nav-list li {
+        color: #3bb6ee !important
+    }
+
+    .setting-head-common .nav-list li.active {
+        color: #747C7E !important
+    }
+
+    .my-activity .list-group .community_item_title {
+        color: #3bb6ee !important
+    }
+
+    .avatar-panel .nav-menu a:active, .avatar-panel .nav-menu a:hover, .avatar-panel .nav-menu > li:first-child:active, .avatar-panel .nav-menu > li:first-child:hover, .list.box99 .menu-collapsed:hover, .list.box99 .menu-expended:hover, .pane .list a:hover {
+        background-color: rgba(59, 182, 238, 0.1) !important
+    }
+
+    .pane .list a.box02:hover {
+        background-color: #3bb6ee !important
+    }
+
+    .pane .list a.box02-active:hover {
+        background-color: #3bb6ee !important
+    }
+
+    .message-panel .messages-list > li:hover, user-select .active > .user-select-wrap, user-select .user-select-wrap:hover {
+        background-color: rgba(59, 182, 238, 0.1)
+    }
+
+    .service-report-detail .report-content .introduction .add-tips .btn-default {
+        border-color: #3bb6ee;
+        color: #3bb6ee
+    }
+
+    .service-report-detail .report-content .brief i.iconfont.button {
+        color: #3bb6ee
+    }
+
+    .ticket-detail-panel .ticket-href i.iconfont {
+        color: #3bb6ee
+    }
+
+    .ticket-detail-panel .ticket-href:hover i.iconfont {
+        color: #3bb6ee
+    }
+
+    .cd-horizontal-timeline .events a.selected {
+        background-color: #3bb6ee !important;
+        border-color: #3bb6ee !important
+    }
+
+    .cd-horizontal-timeline .timeline-workflow .popover-content {
+        color: #3bb6ee !important
+    }
+
+    .ewei-calendar .nav .today {
+        color: #3bb6ee !important
+    }
+
+    .ewei-calendar .day-wrap .day.today {
+        border-color: #3bb6ee !important
+    }
+
+    #main_navigation {
+        background-color: #3bb6ee
+    }
+
+    #main_navigation a:hover {
+        background-color: rgb(88, 193, 241)
+    }
+
+    .header-background {
+        background: linear-gradient(to left, #3bb6ee, #14a2e2)
+    }
+
+    .chat-table-header-setting, .ewei-table .ng-table th.sortable.sort-asc, .ewei-table .ng-table th.sortable.sort-desc, .ewei-table table.table thead tr, .ewei-table table.table thead tr > th, .ewei-table table.table.table-custom-width thead tr {
+        background-color: #fbfdfe
+    }
+
+    .statistics > .stat-view .nav.nav-tabs > li > a, .ticket-detail-panel > .body .btn-apps > i.icon {
+        color: #3bb6ee
+    }
+
+    .statistics > header > .nav > li.active > a, .statistics > header > .nav > li > a:focus {
+        color: #3bb6ee;
+        border-bottom: 4px solid #3bb6ee
+    }
+
+    #projectDetail .timeline-attachment-area .nav-pills > li.active > a, #projectDetail .timeline-attachment-area .nav-pills > li.active > a:focus, #projectDetail .timeline-attachment-area .nav-pills > li.active > a:hover {
+        background-color: #3bb6ee
+    }
+
+    .statistics > header > .nav > li > a:hover {
+        border-bottom: 4px solid rgb(196, 233, 250)
+    }
+
+    a:focus, a:hover {
+        color: #3bb6ee
+    }
+
+    .ranges li {
+        color: #3bb6ee
+    }
+
+    .ranges li.active, .ranges li:hover {
+        border-color: #3bb6ee;
+        background-color: #3bb6ee
+    }
+
+    .daterangepicker td.in-range {
+        background-color: rgb(235, 248, 253)
+    }
+
+    .daterangepicker td.active, .daterangepicker td.active:hover {
+        background-color: #3bb6ee
+    }
+
+    .daterangepicker .input-mini.active {
+        border-color: rgb(137, 211, 245)
+    }
+
+    .data-area .ewei-table table tbody tr:nth-child(even), .data-area .ewei-table table tbody tr:nth-child(even) td, .ewei-table table.table.table-custom-width tbody tr:nth-child(even), .ewei-table table.table.table-custom-width tbody tr:nth-child(even) > td {
+        background-color: rgb(250, 251, 252)
+    }
+
+    .data-area .ewei-table table tbody tr:nth-child(odd), .data-area .ewei-table table tbody tr:nth-child(odd) td, .ewei-table table.table.table-custom-width tbody tr:nth-child(odd), .ewei-table table.table.table-custom-width tbody tr:nth-child(odd) > td {
+        background-color: #fff
+    }
+
+    .data-area .ewei-table table tbody tr:hover:nth-child(even), .data-area .ewei-table table tbody tr:hover:nth-child(even) td, .data-area .ewei-table table tbody tr:hover:nth-child(odd), .data-area .ewei-table table tbody tr:hover:nth-child(odd) td, .ewei-table table.table.table-custom-width tbody tr:hover:nth-child(even), .ewei-table table.table.table-custom-width tbody tr:hover:nth-child(even) > td, .ewei-table table.table.table-custom-width tbody tr:hover:nth-child(odd), .ewei-table table.table.table-custom-width tbody tr:hover:nth-child(odd) > td {
+        background-color: rgb(243, 251, 254)
+    }
+
+    .chart_request_distribute_time_input:checked + label {
+        background-color: #3bb6ee;
+        border-color: #3bb6ee
+    }
+
+    .switch.checked {
+        background-color: #3bb6ee !important;
+        border-color: #3bb6ee !important
+    }
+
+    .batch-customer-panel .customer-select .total-tip-wrapper {
+        background-color: #3bb6ee
+    }
+
+    .batch-customer-panel .handle-select .total-tip-wrapper {
+        background-color: #3bb6ee
+    }
+
+    .batch-indicator .complete .actions .btn.btn-cancel {
+        color: #3bb6ee
+    }
+
+    .chat-list-wrap .chat-list-panel .chat-list .webchat-list > li.active, .chat-list-wrap .chat-list-panel .chat-list .webchat-list > li.active:hover, .detail-wrap .webchat-list-history .webchat-search-tools li.active, .detail-wrap .webchat-list-history .webchat-search-tools > li.active:hover {
+        background-color: #3bb6ee
+    }
+
+    .panel-transfer-select .sub-title > .search i:hover {
+        color: #3bb6ee !important
+    }
+
+    .panel-transfer-select .row-list > .row-item.active, .panel-transfer-select .row-list > .row-item:hover {
+        background-color: rgb(226, 244, 252) !important
+    }
+
+    .panel-transfer-select .tag-list > .tag-item {
+        background-color: #3bb6ee !important
+    }
+
+    .panel-transfer-select .tag-list > .tag-item:hover {
+        background-color: #6ac7f2 !important
+    }
+
+    .customer-and-customer-group-select .select-dropdown .tab .tab-item.active {
+        border-color: #3bb6ee !important;
+        color: #3bb6ee !important
+    }
+
+    .license-control a {
+        color: #3bb6ee !important
+    }
+
+    .no-license-modal .service-phone {
+        color: #3bb6ee !important
+    }
+
+    .engineer-or-workflow-select .online {
+        color: #3bb6ee !important
+    }</style>
+    <style type="text/css"></style>
+    <link type="text/css" rel="stylesheet" href="/source/lib/laydate/need/laydate.css">
+    <link type="text/css" rel="stylesheet" href="/source/lib/laydate/skins/default/laydate.css" id="LayDateSkin">
+</head>
+        {% endblock %}
+<body>
+<div ng-controller="headerController" class="custom-main-bgcolor ng-scope"
+     ng-style="{'background-color': provider.headBackgroundColor}"
+     style="width: 100%; height: 60px; position: absolute; background-color: rgb(30, 140, 206);">
+    <div class="header-background"></div>
+    <div id="playAudioContainer"></div>
+    <div style="height:50px;width:100%;position:relative;z-index:100" class="flex-box">
+        <div style="width:250px;line-height:60px;padding-left:13px" class="flex-none"><img class=""
+                                                                                           ng-click="editable=='true'?toEdit():''"
+                                                                                           ng-src="source/images/logo_helpdesk.png"
+                                                                                           title="" imageurl=""
+                                                                                           islogo="true"
+                                                                                           defaultimageurl="source/images/logo_helpdesk.png"
+                                                                                           style="height:32px;width:32px;border-radius:5px"
+                                                                                           src="source/images/logo_helpdesk.png"><span
+                style="padding-left:6px;font-size:16px;color:#fff;vertical-align:middle;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;display:inline-block;width:190px;line-height:50px"
+                ng-bind="provider.name" class="ng-binding">易维帮助台</span></div><!-- 会话或工单tab -->
+        <div ng-controller="mainTabsCtrl" class="flex1 ng-scope">
+            <div id="tabs" ng-transclude="" class="ng-isolate-scope">
+                <div class="tab-flex-box ng-scope"><!-- ngRepeat: tab in tabs track by $index -->
+                    <div class="btn-group">
+                        <div ng-click="cancelNotice();" style="max-width:60px;height:34px;padding:5px 8px;border:none"
+                             class="tab add" data-toggle="dropdown"><i class="iconfont"
+                                                                       style="font-size:10px;margin-right:5px"></i>
+                            <span ng-bind="'ADD'|translate" class="ng-binding">添加</span> <!-- ngIf: !guideAdd --></div>
+                        <ul class="dropdown-menu"><!-- ngRepeat: item in dropdown -->
+                            <li ng-class="{divider: item.divider}" ng-repeat="item in dropdown" class="ng-scope"
+                                style=""><!-- ngIf: !item.divider && item.click && !item.enter --><a
+                                    ng-class="{'custom-link-color': item.isTicket}"
+                                    ng-style="{'cursor': (item.defaultCursor?'default':'pointer')}" tabindex="-1"
+                                    href="javascript:void(0)"
+                                    ng-if="!item.divider &amp;&amp; item.click &amp;&amp; !item.enter"
+                                    ng-click="$eval(item.click)" class="ng-scope" style="cursor: pointer;"><span
+                                    ng-bind-html="item.text | trusted" class="ng-binding"><i class="iconfont"
+                                                                                             style="color:#999"></i>&nbsp;工单</span>
+                            </a><!-- end ngIf: !item.divider && item.click && !item.enter -->
+                                <!-- ngIf: item.enter && item.leave && hasBatchTicketCreateModule -->
+                                <!-- ngIf: item.enter && item.leave && hasBatchTicketCreateModule --></li>
+                            <!-- end ngRepeat: item in dropdown -->
+                            <li ng-class="{divider: item.divider}" ng-repeat="item in dropdown" class="ng-scope">
+                                <!-- ngIf: !item.divider && item.click && !item.enter -->
+                                <!-- ngIf: item.enter && item.leave && hasBatchTicketCreateModule --><a tabindex="-1"
+                                                                                                        style="position:relative"
+                                                                                                        href="javascript:void(0)"
+                                                                                                        ng-if="item.enter &amp;&amp; item.leave &amp;&amp; hasBatchTicketCreateModule"
+                                                                                                        ng-mouseenter="$eval(item.enter)"
+                                                                                                        ng-mouseleave="$eval(item.leave)"
+                                                                                                        ng-click="$eval(item.click)"
+                                                                                                        class="ng-scope"><span
+                                    ng-bind-html="item.text | trusted" class="ng-binding"><i class="iconfont"
+                                                                                             style="color:#999"></i>&nbsp;高级建单<i
+                                    class="iconfont" style="position:absolute;right:20px;top:4px;color:#999"></i>&nbsp;</span></a>
+                                <!-- end ngIf: item.enter && item.leave && hasBatchTicketCreateModule -->
+                                <!-- ngIf: item.enter && item.leave && hasBatchTicketCreateModule -->
+                                <ul ng-if="item.enter &amp;&amp; item.leave &amp;&amp; hasBatchTicketCreateModule"
+                                    ng-mouseenter="showBatchTicket();" ng-mouseleave="hideBatchTicket();"
+                                    ng-show="isShowBatchTicket" class="dropdown-menu-second ng-scope ng-hide">
+                                    <li><a ui-sref="tickets_new.batch({id: 9996})"
+                                           href="#/tickets/new/9996/batch">批量建单</a></li>
+                                    <li><a ui-sref="tickets_new.plan_list({id: 9997})" ui-sref-opts="{reload: true}"
+                                           href="#/tickets/new/9997/plan_list">计划工单</a></li>
+                                    <li><a ui-sref="tickets_new.normal({id: 9998,type:'batch-customer'})"
+                                           href="#/tickets/new/9998/ticket/batch-customer">多客户批量派单</a></li>
+                                    <li><a ui-sref="tickets_new.normal({id: 9999,type:'batch-engineer'})"
+                                           href="#/tickets/new/9999/ticket/batch-engineer">多客服批量派单</a></li>
+                                </ul><!-- end ngIf: item.enter && item.leave && hasBatchTicketCreateModule --></li>
+                            <!-- end ngRepeat: item in dropdown -->
+                            <li ng-class="{divider: item.divider}" ng-repeat="item in dropdown" class="ng-scope">
+                                <!-- ngIf: !item.divider && item.click && !item.enter --><a
+                                    ng-class="{'custom-link-color': item.isTicket}"
+                                    ng-style="{'cursor': (item.defaultCursor?'default':'pointer')}" tabindex="-1"
+                                    href="javascript:void(0)"
+                                    ng-if="!item.divider &amp;&amp; item.click &amp;&amp; !item.enter"
+                                    ng-click="$eval(item.click)" class="ng-scope" style="cursor: pointer;"><span
+                                    ng-bind-html="item.text | trusted" class="ng-binding"><i class="iconfont"
+                                                                                             style="font-size:19px;color:#999"></i>&nbsp;客户</span>
+                            </a><!-- end ngIf: !item.divider && item.click && !item.enter -->
+                                <!-- ngIf: item.enter && item.leave && hasBatchTicketCreateModule -->
+                                <!-- ngIf: item.enter && item.leave && hasBatchTicketCreateModule --></li>
+                            <!-- end ngRepeat: item in dropdown -->
+                            <li ng-class="{divider: item.divider}" ng-repeat="item in dropdown" class="ng-scope">
+                                <!-- ngIf: !item.divider && item.click && !item.enter --><a
+                                    ng-class="{'custom-link-color': item.isTicket}"
+                                    ng-style="{'cursor': (item.defaultCursor?'default':'pointer')}" tabindex="-1"
+                                    href="javascript:void(0)"
+                                    ng-if="!item.divider &amp;&amp; item.click &amp;&amp; !item.enter"
+                                    ng-click="$eval(item.click)" class="ng-scope" style="cursor: pointer;"><span
+                                    ng-bind-html="item.text | trusted" class="ng-binding"><i class="iconfont"
+                                                                                             style="color:#999"></i>&nbsp;客户分组</span>
+                            </a><!-- end ngIf: !item.divider && item.click && !item.enter -->
+                                <!-- ngIf: item.enter && item.leave && hasBatchTicketCreateModule -->
+                                <!-- ngIf: item.enter && item.leave && hasBatchTicketCreateModule --></li>
+                            <!-- end ngRepeat: item in dropdown -->
+                            <li ng-class="{divider: item.divider}" ng-repeat="item in dropdown" class="ng-scope divider"
+                                style=""><!-- ngIf: !item.divider && item.click && !item.enter -->
+                                <!-- ngIf: item.enter && item.leave && hasBatchTicketCreateModule -->
+                                <!-- ngIf: item.enter && item.leave && hasBatchTicketCreateModule --></li>
+                            <!-- end ngRepeat: item in dropdown -->
+                            <li ng-class="{divider: item.divider}" ng-repeat="item in dropdown" class="ng-scope">
+                                <!-- ngIf: !item.divider && item.click && !item.enter --><a
+                                    ng-class="{'custom-link-color': item.isTicket}"
+                                    ng-style="{'cursor': (item.defaultCursor?'default':'pointer')}" tabindex="-1"
+                                    href="javascript:void(0)"
+                                    ng-if="!item.divider &amp;&amp; item.click &amp;&amp; !item.enter"
+                                    ng-click="$eval(item.click)" class="ng-scope" style="cursor: default;"><span
+                                    ng-bind-html="item.text | trusted" class="ng-binding">最近查看</span> </a>
+                                <!-- end ngIf: !item.divider && item.click && !item.enter -->
+                                <!-- ngIf: item.enter && item.leave && hasBatchTicketCreateModule -->
+                                <!-- ngIf: item.enter && item.leave && hasBatchTicketCreateModule --></li>
+                            <!-- end ngRepeat: item in dropdown --></ul>
+                    </div>
+                </div>
+            </div>
+        </div><!-- 图标菜单 -->
+        <div style="width:250px;height:60px" class="flex-none header-icon-tools"><a href="#/polymerize_search"
+                                                                                    class="header-tool-bar"
+                                                                                    title="聚合搜索"><i
+                class="iconfont"></i></a><a class="notify message-icon ng-isolate-scope" title="通知消息"
+                                             ng-click="vm.togglePanel()"><span class="bell"><i class="iconfont"></i>
+            <!-- ngIf: vm.messageCount>0 --></span></a><a class="notify message-icon ng-isolate-scope" title="远程协助"
+                                                          ng-click="vm.togglePanel()" has-module="remote_help"><span
+                class="bell"><i id="remote-control-icon" class="iconfont"></i></span></a><a href="javascript:void(0);"
+                                                                                             class="header-tool-bar dial-icon ng-isolate-scope"
+                                                                                             title="拨号盘"
+                                                                                             ng-click="vm.popTelDial()"><span
+                class="dial"><i class="iconfont"></i></span>
+            <div class="point ng-hide" ng-show="vm.hasMissCall"></div>
+            <style>.header-tool-bar {
+                position: relative
+            }
+
+            .header-tool-bar > .point {
+                display: block;
+                overflow: hidden;
+                position: absolute;
+                top: 5px;
+                right: 7px;
+                background: #e82020;
+                border: 1px solid #fff;
+                border-radius: 10px;
+                height: 10px;
+                width: 10px;
+                text-align: center;
+                line-height: 13px
+            }</style>
+        </a><a class="avatar avatar-icon ng-isolate-scope" ng-class="{'active':panelActived}"
+               ng-click="togglePanel();clearSpot()"><img class="img-circle" ng-click="editable=='true'?toEdit():''"
+                                                         ng-src="source/images/face/header_40.png" title="" imageurl=""
+                                                         defaultimageurl="source/images/face/header_40.png"
+                                                         imagestyle="head.40.40" imageclass="img-circle"
+                                                         editable="false" src="source/images/face/header_40.png">
+            <!-- ngIf: showSpot --><i class="iconfont"></i><!-- ngIf: $root.concurrentChatNumber===0 --></a></div>
+    </div>
+</div>
+<style>.outer-container {
+    width: 56px;
+    position: relative;
+    overflow: hidden;
+    flex: 1;
+    display: flex
+}
+
+.inner-container {
+    overflow-y: scroll;
+    margin-right: -17px;
+    flex: 1
+}
+
+.inner-container .menu-wrapper {
+    width: 55px
+}</style>
+{%  endblock %}
+
+{% block navbar %}
+<nav style="z-index:1031;display:flex;flex-direction:column" id="main_navigation" ng-controller="mainNavigation"
+     class="ng-scope">
+    <div class="outer-container">
+        <div class="inner-container">
+            <div class="menu-wrapper"><a
+                    ng-class="{'active':(locationPath=='/dashboard'|| locationPath.indexOf('/quickentry')!=-1)&amp;&amp;leftIcon}"
+                    ui-sref="quickentry" ui-sref-opts="{reload: true}" ng-click="select('console')" bs-tooltip=""
+                    data-container="body" data-title="客服界面首页" placement="right" class="ng-scope active"
+                    href="#/quickentry"><i class="iconfont"></i>
+                <!-- <span class="label label-danger absolute" ng-if="noticeCount>0" ng-bind="noticeCount"></span> -->
+            </a><a ng-class="{'active':locationPath.indexOf('/ticket/views/')==0&amp;&amp;leftIcon}"
+                   ui-sref="ticket_views" ui-sref-opts="{reload: true}" ng-click="select('ticket')" bs-tooltip=""
+                   data-container="body" data-title="工单管理" placement="right" class="ng-scope" href="#/ticket/views"><i
+                    class="iconfont"></i> </a><a class="nav-icon-chat ng-scope"
+                                                  ng-class="{'active':locationPath.indexOf('/webchats')==0&amp;&amp;leftIcon}"
+                                                  ui-sref-opts="{reload: true}" ng-click="select('chat')" bs-tooltip=""
+                                                  data-container="body" data-title="当前会话" placement="right"
+                                                  style="text-decoration:none;position:relative"><i class="iconfont"
+                                                                                                    ng-class="{'animated flash infinite': chatRedPoint &amp;&amp; $location.path().indexOf('/webchats') === -1}"></i>
+                <span ng-class="{'animated flash infinite': chatRedPoint &amp;&amp; $location.path().indexOf('/webchats') === -1}"
+                      ng-show="chatRedPoint &amp;&amp; $location.path().indexOf('/webchats') === -1"
+                      style="background:red;width:10px;height:10px;border-radius:50%;position:absolute;top:12px;right:18px"
+                      class="ng-hide"></span> </a>
+                <!--<a class="nav-icon-chat-history" ng-class="{'active':locationPath.indexOf('/webchat_history')==0&&leftIcon}" ui-sref="webchat-history" ui-sref-opts="{reload: true}" ng-click="select('webchat-history')" bs-tooltip data-container="body" data-title="历史会话" placement="right" style="text-decoration:none;position:relative;">-->
+                <!--<i class="iconfont">&#xe616;</i>--><!--</a>--> <a
+                        ng-class="{'active':locationPath.indexOf('/customer_views/')==0&amp;&amp;leftIcon}"
+                        ui-sref="customer_views" ui-sref-opts="{reload: true}" ng-click="select('user')" bs-tooltip=""
+                        data-container="body" data-title="用户管理" placement="right" class="ng-scope"
+                        href="#/customer_views"><i class="iconfont"></i> </a><!-- <a has-module="helpcenter" ng-class="{'active':locationPath.indexOf('/community/')==0&&leftIcon}" ui-sref="community" ui-sref-opts="{reload: true}" ng-click="select('community')" bs-tooltip data-title="社区管理" placement="right">
+              <i class="iconfont">&#xe651;</i>
+          </a> --> <a has-module="super_board"
+                      ng-class="{'active':(locationPath.indexOf('/universal_list/')==0||locationPath.indexOf('/project_detail')==0)&amp;&amp;leftIcon}"
+                      ui-sref="universal_list.favorites_list" ui-sref-opts="{reload: true}"
+                      ng-click="select('favorites_list')" bs-tooltip="" data-container="body" data-title="超级看板"
+                      placement="right" add-to-favorite-target="" style="position:relative" class="ng-scope"
+                      href="#/universal_list/favorites_list"><i class="iconfont"></i> <!-- ngIf: newFavoriteCount>0 -->
+                    <span class="plusone">+1</span> </a>
+                <!-- ngRepeat: providerApp in providerWebSiteApps track by $index --><a
+                        ng-repeat="providerApp in providerWebSiteApps track by $index"
+                        ng-class="{'active':isShowPage[providerApp.app.id]&amp;&amp;!leftIcon}"
+                        ng-click="openWebSiteApp({appId:providerApp.app.id});select('assets');" bs-tooltip=""
+                        data-container="body" data-title="" placement="right" has-module="it_assets,remote_maintain"
+                        class="ng-scope" style=""><!-- ngIf: providerApp.app.name=='易维IT资产管理' --><i
+                        ng-if="providerApp.app.name=='易维IT资产管理'" class="iconfont ng-scope"></i>
+                    <!-- end ngIf: providerApp.app.name=='易维IT资产管理' --><!-- ngIf: providerApp.app.name!='易维IT资产管理' -->
+                </a><!-- end ngRepeat: providerApp in providerWebSiteApps track by $index -->
+                <!-- ngRepeat: providerApp in providerFunModuleApps track by $index --></div>
+        </div>
+    </div>
+    <div class="icons"><a has-module="statistics"
+                          ng-class="{'active':(locationPath.indexOf('/statistics/')==0&amp;&amp;leftIcon) || (locationPath.indexOf('/chart/')==0&amp;&amp;leftIcon)}"
+                          ui-sref="statistics" ui-sref-opts="{reload: true}" ng-click="select('statistics')"
+                          bs-tooltip="" data-title="报表统计" placement="right" ng-show="showStatisticsBtn" class="ng-scope"
+                          href="#/statistics"><i class="iconfont"></i> </a>
+{#        <!--<a has-module="statistics" ng-class="{'active':locationPath.indexOf('/chart/')==0&&leftIcon}" ui-sref="chart" ui-sref-opts="{reload: true}" ng-click="select('charts')" bs-tooltip data-title="{{'CHARTS'|translate}}" placement="right" ng-show="showStatisticsBtn">-->#}
+        <!--<i class="iconfont">&#xe652;</i>--><!--</a> --> <a style="position:relative"
+                                                               ng-class="{'active':locationPath.indexOf('/system_setting/')==0&amp;&amp;leftIcon}"
+                                                               ng-click="select('system_set');goSettings()"
+                                                               bs-tooltip="" data-title="系统设置" placement="right"
+                                                               class="ng-scope"><i class="iconfont"></i>
+            <!-- ngIf: !guideSetting --></a></div>
+</nav>
+{% endblock navbar %}
 
 
-{% block doc -%}
-<!DOCTYPE html>
-<html{% block html_attribs %}{% endblock html_attribs %}>
-{%- block html %}
-  <head>
-    {%- block head %}
-    <title>{% block title %}{{title|default}}{% endblock title %}</title>
+{% block content %}
+{% endblock content %}
 
-    {%- block metas %}
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {%- endblock metas %}
-
-    {%- block styles %}
-    <!-- Bootstrap -->
-    <link href="{{bootstrap_find_resource('css/bootstrap.css', cdn='bootstrap')}}" rel="stylesheet">
-    {%- endblock styles %}
-    {%- endblock head %}
-  </head>
-  <body{% block body_attribs %}{% endblock body_attribs %}>
-    {% block body -%}
-    {% block navbar %}
-    {%- endblock navbar %}
-    {% block content -%}
-    {%- endblock content %}
-
-    {% block scripts %}
-    <script src="{{bootstrap_find_resource('jquery.js', cdn='jquery')}}"></script>
-    <script src="{{bootstrap_find_resource('js/bootstrap.js', cdn='bootstrap')}}"></script>
-    {%- endblock scripts %}
-    {%- endblock body %}
-  </body>
-{%- endblock html %}
-</html>
-{% endblock doc -%}
