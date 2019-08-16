@@ -1,2 +1,0 @@
-# tasking
-django project
