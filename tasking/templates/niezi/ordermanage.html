@@ -81,7 +81,7 @@
     <meta http-equiv="cache-control" content="max-age=0">
     <meta http-equiv="cache-control" content="no-cache">
     <meta http-equiv="expires" content="0">
-    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="" content="no-cache">
     <meta name="renderer" content="webkit">
     <title>客服-北京亚客科技有限公司</title>
     <link rel="shortcut icon" ng-href="">
@@ -1025,12 +1025,7 @@
             </a><a ng-class="{'active':locationPath.indexOf('/ticket/views/')==0&amp;&amp;leftIcon}"
                    ui-sref="ticket_views" ui-sref-opts="{reload: true}" ng-click="select('ticket')" bs-tooltip=""
                    data-container="body" data-title="工单管理" placement="right" class="ng-scope" href="#/ticket/views"><i
-                    class="iconfont"></i> </a><a class="nav-icon-chat ng-scope"
-                                                  ng-class="{'active':locationPath.indexOf('/webchats')==0&amp;&amp;leftIcon}"
-                                                  ui-sref-opts="{reload: true}" ng-click="select('chat')" bs-tooltip=""
-                                                  data-container="body" data-title="当前会话" placement="right"
-                                                  style="text-decoration:none;position:relative"><i class="iconfont"
-                                                                                                    ng-class="{'animated flash infinite': chatRedPoint &amp;&amp; $location.path().indexOf('/webchats') === -1}"></i>
+                    class="iconfont"></i> </a><a class="nav-icon-chat ng-scope" ng-class="{'active':locationPath.indexOf('/webchats')==0&amp;&amp;leftIcon}" ui-sref-opts="{reload: true}" ng-click="select('chat')" bs-tooltip="" data-container="body" data-title="当前会话" placement="right" style="text-decoration:none;position:relative"><i class="iconfont" ng-class="{'animated flash infinite': chatRedPoint &amp;&amp; $location.path().indexOf('/webchats') === -1}"></i>
                 <span ng-class="{'animated flash infinite': chatRedPoint &amp;&amp; $location.path().indexOf('/webchats') === -1}"
                       ng-show="chatRedPoint &amp;&amp; $location.path().indexOf('/webchats') === -1"
                       style="background:red;width:10px;height:10px;border-radius:50%;position:absolute;top:12px;right:18px"
