@@ -27,6 +27,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
+#使用系统用户认证
+AUTH_USER_MODEL = 'users.User'
+
+
 
 # Application definition
 
@@ -37,8 +41,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_jinja.contrib._humanize',
     'django_jinja',
-    'usermanage',
+    'users',
     'orders',
     'manager'
 
@@ -82,7 +87,7 @@ WSGI_APPLICATION = 'tasking.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'task',
+        'NAME': 'orders',
         'HOST': '10.0.108.96',
         'PORT': 3306,
         'USER': 'root',

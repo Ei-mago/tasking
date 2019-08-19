@@ -842,6 +842,7 @@
     <link type="text/css" rel="stylesheet" href="/source/lib/laydate/skins/default/laydate.css" id="LayDateSkin">
 </head>
 <body>
+
 <div ng-controller="headerController" class="custom-main-bgcolor ng-scope"
      ng-style="{'background-color': provider.headBackgroundColor}"
      style="width: 100%; height: 60px; position: absolute; background-color: rgb(30, 140, 206);">
@@ -1319,7 +1320,7 @@
                                 style="width: 180px; min-width: 180px; max-width: 180px;"><!-- ngSwitchWhen: subject -->
                                 <!-- ngSwitchWhen: subscription --><!-- ngSwitchDefault: --><span ng-switch-default=""
                                                                                                   class="ng-scope"><ewei-ticket-field-show
-                                        field="column.field" ticket="item" class="ng-isolate-scope"><span title="4天前">4天前</span></ewei-ticket-field-show></span>
+                                        field="column.field" ticket="item" class="ng-isolate-scope"><span title="4天前">{{ naturaltime(item.modify_time) }}</span></ewei-ticket-field-show></span>
                                 <!-- end ngSwitchWhen: --></td><!-- end ngIf: column.visible -->
                             <!-- end ngRepeat: column in vm.columns track by $index --><!-- ngIf: column.visible -->
                             <td ng-repeat="column in vm.columns track by $index" ng-if="column.visible"
@@ -1363,7 +1364,7 @@
                                 <!-- ngSwitchWhen: subscription --><!-- ngSwitchDefault: --><span ng-switch-default=""
                                                                                                   class="ng-scope"><ewei-ticket-field-show
                                         field="column.field" ticket="item"
-                                        class="ng-isolate-scope"></ewei-ticket-field-show></span>
+                                        class="ng-isolate-scope"></ewei-ticket-field-show>客户组</span>
                                 <!-- end ngSwitchWhen: --></td><!-- end ngIf: column.visible -->
                             <!-- end ngRepeat: column in vm.columns track by $index --><!-- ngIf: column.visible -->
                             <td ng-repeat="column in vm.columns track by $index" ng-if="column.visible"
@@ -1372,7 +1373,7 @@
                                 field-column-width-info="vm.fieldsLength" class="ng-scope ng-isolate-scope"
                                 style="width: 180px; min-width: 180px; max-width: 180px;"><!-- ngSwitchWhen: subject -->
                                 <!-- ngSwitchWhen: subscription --><!-- ngSwitchDefault: --><span ng-switch-default=""
-                                                                                                  class="ng-scope"><ewei-ticket-field-show
+                                                                                                  class="ng-scope">{{ item.sign }}<ewei-ticket-field-show
                                         field="column.field" ticket="item"
                                         class="ng-isolate-scope"></ewei-ticket-field-show></span>
                                 <!-- end ngSwitchWhen: --></td><!-- end ngIf: column.visible -->

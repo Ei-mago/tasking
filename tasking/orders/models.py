@@ -8,7 +8,6 @@ from django.db import models
 #**   三个表暂时没建外键，数据量小，建议使用者使用外键。
 #**
 #=================
-from usermanage.models import User
 
 
 class ServiceList(models.Model):
@@ -55,7 +54,8 @@ class OrderInfo(models.Model):
 
     id = models.AutoField(primary_key=True)
     customer = models.CharField(max_length=50,null=False)
-    opreate_id = models.CharField(max_length=50,default='platform')
+    opreate_id = models.IntegerField(null=False)
+    opreate_name = models.CharField(max_length=50)
     copyfor =  models.CharField(max_length=50,null=True)
     question_type = (
         ('1','问询'),
@@ -69,11 +69,9 @@ class OrderInfo(models.Model):
     order_status_enum = (
         ('0','未受理'),
         ('1','处理中'),
-        ('2','已解决'),
-        ('3','已关闭'),
         ('4','延期'),
         ('5','超时'),
-        ('9','已关闭')
+        ('9','处理完毕')
     )
     order_status = models.IntegerField(
         default=0,
@@ -90,6 +88,8 @@ class OrderInfo(models.Model):
         ('P3','低')
     )
     priority = models.CharField(max_length=10,choices=priority_enum)
+    delete = models.IntegerField(default=0)
+    complete_time = models.DateTimeField(default=datetime.now)
     create_time = models.DateTimeField(default=datetime.now)
     modify_time = models.DateTimeField(null=True)
 
@@ -112,9 +112,8 @@ class OrderOperate(models.Model):
 
     id = models.AutoField(primary_key=True)
     order_id = models.IntegerField(null=False)
-    operate_id = models.IntegerField(null=False)
-    # from_opreate_id = models.IntegerField(null=False)
-    # to_opreate_id = models.IntegerField(null=False)
+    from_opreate_id = models.IntegerField(default=1,null=False)
+    to_opreate_id = models.IntegerField(default=1,null=False)
     from_priority = models.CharField(max_length=30,null=False)
     to_priority = models.CharField(max_length=30,null=False)
     from_status = models.IntegerField(null=False)
