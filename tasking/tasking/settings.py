@@ -90,15 +90,10 @@ WSGI_APPLICATION = 'tasking.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-<<<<<<< HEAD
         'NAME': 'wy_tasking_proj',  # 数据库名
         'HOST': '47.100.252.185',  # 数据库服务器地址
         'USER': 'eimago',
         'PASSWORD': '123456',
-=======
-        'NAME': 'orders',
-        'HOST': '10.0.108.96',
->>>>>>> 95a6ce88532470cac2b9be43afcaab4a4b89ea55
         'PORT': 3306,
     }
 }

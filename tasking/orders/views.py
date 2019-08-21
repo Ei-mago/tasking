@@ -1,12 +1,9 @@
-<<<<<<< HEAD
+
 from datetime import datetime
 
 from django.http import HttpResponse
-from django.shortcuts import render
-=======
 from django.shortcuts import render, redirect
 from django.urls import reverse
->>>>>>> 95a6ce88532470cac2b9be43afcaab4a4b89ea55
 
 from orders.controle import *
 from tasking.do_pagination import do_pagination
@@ -25,10 +22,7 @@ def ticket(request,page=1):
     return  render(request,'niezi/ordermanage.html',locals())
 
 
-def detail(request,id):
-<<<<<<< HEAD
-    order = orderdetail(id)
-    return render(request, 'niezi/orderdetail.html',locals())
+
 
 
 
@@ -87,7 +81,9 @@ def new_ticket(request):
         return HttpResponse("<h1>菜</h1>")
     return render(request, 'eimago/new_ticket.html', context={'now_user':now_user, 'customer_list':customer_list})
 
-=======
+
+
+def detail(request,id):
     data = get_order(id)
     order = data[0]
     opreate = data[1]
@@ -171,4 +167,3 @@ def change_info(request,id):
      order_log.save()
 
      return redirect(reverse('orders:detail',kwargs={'id':id}))
->>>>>>> 95a6ce88532470cac2b9be43afcaab4a4b89ea55

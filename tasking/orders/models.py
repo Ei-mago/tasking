@@ -6,12 +6,8 @@ from django.db import models
 
 #**   工单所涉及的表单
 #**   三个表暂时没建外键，数据量小，建议使用者使用外键。
-<<<<<<< HEAD
+
 from usermanage.models import User
-=======
-#**
-#=================
->>>>>>> 95a6ce88532470cac2b9be43afcaab4a4b89ea55
 
 
 class ServiceList(models.Model):
@@ -62,12 +58,7 @@ class OrderInfo(models.Model):
     id = models.AutoField(primary_key=True)
     customer = models.CharField(max_length=50,null=False)
     opreate_id = models.IntegerField(null=False)
-<<<<<<< HEAD
     copyfor =  models.CharField(max_length=50, null=True)
-=======
-    opreate_name = models.CharField(max_length=50)
-    copyfor =  models.CharField(max_length=50,null=True)
->>>>>>> 95a6ce88532470cac2b9be43afcaab4a4b89ea55
     question_type = (
         ('1','问询'),
         ('2', '任务'),
@@ -98,19 +89,11 @@ class OrderInfo(models.Model):
         ('P2','中'),
         ('P3','低')
     )
-<<<<<<< HEAD
     priority = models.CharField(max_length=10,choices=priority_enum, null=True)
     create_time = models.DateTimeField(default=datetime.now())
     modify_time = models.DateTimeField(default=datetime.now())
     finish_time = models.DateTimeField(default=datetime.now())
-
-=======
-    priority = models.CharField(max_length=10,choices=priority_enum)
-    delete = models.IntegerField(default=0)
-    complete_time = models.DateTimeField(default=datetime.now)
-    create_time = models.DateTimeField(default=datetime.now)
-    modify_time = models.DateTimeField(null=True)
->>>>>>> 95a6ce88532470cac2b9be43afcaab4a4b89ea55
+    isdelete = models.IntegerField(default=0)
 
     class Meta:
         db_table = 'order_info'

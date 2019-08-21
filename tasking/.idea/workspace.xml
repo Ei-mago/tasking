@@ -29,11 +29,15 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Ei-mago
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tasking/settings.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="254">
               <caret line="144" column="8" selection-start-line="144" selection-start-column="8" selection-end-line="144" selection-end-column="8" />
+<<<<<<< HEAD
 =======
       <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/users/models.py">
@@ -42,16 +46,22 @@
               <caret line="39" column="16" lean-forward="false" selection-start-line="39" selection-start-column="6" selection-end-line="39" selection-end-column="16" />
               <folding />
 >>>>>>> 95a6ce88532470cac2b9be43afcaab4a4b89ea55
+=======
+>>>>>>> Ei-mago
             </state>
           </provider>
         </entry>
       </file>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Ei-mago
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/orders/urls.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="133">
               <caret line="9" column="20" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="20" />
+<<<<<<< HEAD
 =======
       <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/orders/urls.py">
@@ -60,16 +70,22 @@
               <caret line="12" column="72" lean-forward="false" selection-start-line="12" selection-start-column="61" selection-end-line="12" selection-end-column="72" />
               <folding />
 >>>>>>> 95a6ce88532470cac2b9be43afcaab4a4b89ea55
+=======
+>>>>>>> Ei-mago
             </state>
           </provider>
         </entry>
       </file>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Ei-mago
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/orders/views.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="273">
               <caret line="81" column="112" selection-start-line="81" selection-start-column="112" selection-end-line="81" selection-end-column="112" />
+<<<<<<< HEAD
 =======
       <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/orders/models.py">
@@ -77,6 +93,8 @@
             <state relative-caret-position="212">
               <caret line="122" column="10" lean-forward="false" selection-start-line="122" selection-start-column="4" selection-end-line="122" selection-end-column="10" />
 >>>>>>> 95a6ce88532470cac2b9be43afcaab4a4b89ea55
+=======
+>>>>>>> Ei-mago
               <folding>
                 <element signature="e#0#29#0" expanded="true" />
               </folding>
@@ -85,6 +103,9 @@
         </entry>
       </file>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Ei-mago
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/eimago/new_ticket.html">
           <provider selected="true" editor-type-id="text-editor">
@@ -98,6 +119,7 @@
                 <element signature="n#style#0;n#span#0;n#label#0;n#div#4;n#div#0;n#fieldset#0;n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#input#0;n#div#4;n#div#0;n#fieldset#0;n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#div#1;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" />
+<<<<<<< HEAD
 =======
       <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/orders/views.py">
@@ -107,11 +129,14 @@
               <folding>
                 <element signature="e#0#45#0" expanded="true" />
 >>>>>>> 95a6ce88532470cac2b9be43afcaab4a4b89ea55
+=======
+>>>>>>> Ei-mago
               </folding>
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
 <<<<<<< HEAD
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/orders/models.py">
@@ -170,11 +195,21 @@
                 <element signature="n#style#0;n#i#0;n#span#1;n#ticket-comment-detail#0;n#div#1;n#div#1;n#div#0;n#div#0;n#li#0;n#ul#0;n#div#1;n#div#0;n#ticket-log#0;n#div#1;n#section#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#1;n#section#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
 >>>>>>> 95a6ce88532470cac2b9be43afcaab4a4b89ea55
+=======
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/orders/models.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="190">
+              <caret line="40" column="12" selection-start-line="40" selection-start-column="4" selection-end-line="40" selection-end-column="12" />
+              <folding>
+                <element signature="e#0#29#0" expanded="true" />
+>>>>>>> Ei-mago
               </folding>
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
 <<<<<<< HEAD
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/usermanage/models.py">
@@ -214,6 +249,27 @@
               <folding>
                 <element signature="e#2#51#0" expanded="true" />
 >>>>>>> 95a6ce88532470cac2b9be43afcaab4a4b89ea55
+=======
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/usermanage/models.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="285">
+              <caret line="18" column="17" selection-start-line="18" selection-start-column="6" selection-end-line="18" selection-end-column="17" />
+              <folding>
+                <element signature="e#2#53#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/orders/NewTicketForm.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="114">
+              <caret line="6" column="60" selection-start-line="6" selection-start-column="60" selection-end-line="6" selection-end-column="60" />
+              <folding>
+                <element signature="e#0#24#0" expanded="true" />
+>>>>>>> Ei-mago
               </folding>
             </state>
           </provider>
@@ -232,6 +288,9 @@
   <component name="FindInProjectRecents">
     <findStrings>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Ei-mago
       <find>ng-repeat=&quot;column in vm.columns track by $index&quot;</find>
       <find>测试</find>
       <find>Robot</find>
@@ -262,6 +321,7 @@
       <find>css</find>
       <find>input</find>
       <find>抄送</find>
+<<<<<<< HEAD
 =======
       <find>处理完毕</find>
       <find>ticket-form ng-isolate-scope</find>
@@ -294,6 +354,8 @@
       <find>order</find>
       <find>detail</find>
 >>>>>>> 95a6ce88532470cac2b9be43afcaab4a4b89ea55
+=======
+>>>>>>> Ei-mago
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -309,14 +371,18 @@
         <option value="$PROJECT_DIR$/templates/jintao/index.html" />
         <option value="$PROJECT_DIR$/static/js/part1-a62d40a53c.js" />
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
         <option value="$PROJECT_DIR$/usermanage/models.py" />
 >>>>>>> 95a6ce88532470cac2b9be43afcaab4a4b89ea55
+=======
+>>>>>>> Ei-mago
         <option value="$PROJECT_DIR$/tasking/do_pagination.py" />
         <option value="$PROJECT_DIR$/templates/niezi/base.html" />
         <option value="$PROJECT_DIR$/usermanage/views.py" />
         <option value="$PROJECT_DIR$/usermanage/urls.py" />
         <option value="$PROJECT_DIR$/templates/niezi/orderdetail.py" />
+<<<<<<< HEAD
 <<<<<<< HEAD
         <option value="$PROJECT_DIR$/templates/niezi/ordermanage.html" />
         <option value="$PROJECT_DIR$/templates/test.html" />
@@ -353,13 +419,39 @@
         <option value="$PROJECT_DIR$/orders/controle.py" />
         <option value="$PROJECT_DIR$/orders/views.py" />
 >>>>>>> 95a6ce88532470cac2b9be43afcaab4a4b89ea55
+=======
+        <option value="$PROJECT_DIR$/templates/niezi/ordermanage.html" />
+        <option value="$PROJECT_DIR$/templates/test.html" />
+        <option value="$PROJECT_DIR$/templates/niezi/orderdetail.html" />
+        <option value="$PROJECT_DIR$/templates/base.html" />
+        <option value="$PROJECT_DIR$/static/css/app.f71e50b88b627c3785110b0ea5751fd0.css" />
+        <option value="$PROJECT_DIR$/static/css/layout-809af0fe81.css" />
+        <option value="$PROJECT_DIR$/templates/eimago/test_new.html" />
+        <option value="$PROJECT_DIR$/templates/eimago/test_newticket.html" />
+        <option value="$PROJECT_DIR$/orders/models.py" />
+        <option value="$PROJECT_DIR$/orders/controle.py" />
+        <option value="$PROJECT_DIR$/usermanage/models.py" />
+        <option value="$PROJECT_DIR$/tasking/settings.py" />
+        <option value="$PROJECT_DIR$/templates/eimago/old_ticket.html" />
+        <option value="$PROJECT_DIR$/orders/urls.py" />
+        <option value="$PROJECT_DIR$/orders/NewTicketForm.py" />
+        <option value="$PROJECT_DIR$/orders/views.py" />
+        <option value="$PROJECT_DIR$/templates/eimago/new_ticket.html" />
+>>>>>>> Ei-mago
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="7">
+<<<<<<< HEAD
     <option name="x" value="65" />
     <option name="width" value="1087" />
     <option name="height" value="1019" />
+=======
+    <option name="x" value="-69" />
+    <option name="y" value="7" />
+    <option name="width" value="1125" />
+    <option name="height" value="1010" />
+>>>>>>> Ei-mago
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -369,6 +461,7 @@
     <panes>
 <<<<<<< HEAD
       <pane id="Scope" />
+<<<<<<< HEAD
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -509,6 +602,59 @@
             </PATH_ELEMENT>
           </PATH>
 >>>>>>> 95a6ce88532470cac2b9be43afcaab4a4b89ea55
+=======
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="tasking" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tasking" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="tasking" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tasking" type="462c0819:PsiDirectoryNode" />
+              <item name="manager" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="tasking" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tasking" type="462c0819:PsiDirectoryNode" />
+              <item name="orders" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="tasking" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tasking" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="tasking" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tasking" type="462c0819:PsiDirectoryNode" />
+              <item name="tasking" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="tasking" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tasking" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="tasking" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tasking" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="eimago" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="tasking" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tasking" type="462c0819:PsiDirectoryNode" />
+              <item name="usermanage" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="tasking" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tasking" type="462c0819:PsiDirectoryNode" />
+              <item name="usermanage" type="462c0819:PsiDirectoryNode" />
+              <item name="migrations" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+>>>>>>> Ei-mago
         </subPane>
       </pane>
       <pane id="Scope" />
@@ -519,6 +665,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="SearchEverywhereHistoryKey" value="ticketDetailBuried&#9;null&#9;null" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+<<<<<<< HEAD
     <property name="last_opened_file_path" value="C:/Study/Python/QFpython/Ajax" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="" />
@@ -530,6 +677,13 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="SearchEverywhereHistoryKey" value="btn-confirm gray-btn dropdown-toggle&#9;null&#9;null&#10;ticketDetailBuried&#9;null&#9;null" />
 >>>>>>> 95a6ce88532470cac2b9be43afcaab4a4b89ea55
+=======
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="" />
+    <property name="nodejs_interpreter_path" value="node" />
+    <property name="settings.editor.selected.configurable" value="preferences.editor" />
+>>>>>>> Ei-mago
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -612,6 +766,9 @@
     <editor active="true" />
     <layout>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Ei-mago
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.10924933" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -634,6 +791,7 @@
       <window_info anchor="right" id="Data View" order="3" />
       <window_info anchor="right" id="Database" order="4" />
       <window_info anchor="right" id="SciView" order="5" />
+<<<<<<< HEAD
     </layout>
     <layout-to-restore>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.10177706" />
@@ -826,9 +984,85 @@
           <folding />
         </state>
       </provider>
+=======
+    </layout>
+    <layout-to-restore>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.10177706" />
+      <window_info id="Structure" order="1" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Python Console" order="9" />
+      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.269863" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Database" order="3" />
+      <window_info anchor="right" id="Data View" order="4" />
+    </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/manager/urls.py" />
+    <entry file="file://$PROJECT_DIR$/manager/views.py" />
+    <entry file="file://$PROJECT_DIR$/templates/source/ordermanage.html" />
+    <entry file="file://$PROJECT_DIR$/static/js/vds.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="9870">
+          <caret line="658" column="79" selection-start-line="658" selection-start-column="54" selection-end-line="658" selection-end-column="79" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/jintao/index.html" />
+    <entry file="file://$PROJECT_DIR$/static/js/part1-a62d40a53c.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="15703" column="41" lean-forward="true" selection-start-line="15703" selection-start-column="41" selection-end-line="15703" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/part2-a0f598a85b.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/portal.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/orders/apps.py" />
+    <entry file="file://$USER_HOME$/django2/lib/python3.6/site-packages/django/core/paginator.py" />
+    <entry file="file://$PROJECT_DIR$/orders/tests.py" />
+    <entry file="file://$PROJECT_DIR$/usermanage/urls.py" />
+    <entry file="file://$PROJECT_DIR$/usermanage/views.py" />
+    <entry file="file://$PROJECT_DIR$/templates/niezi/orderdetail.py" />
+    <entry file="file://$PROJECT_DIR$/static/js/part3-7137ac87d7.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="534">
+          <caret column="607828" lean-forward="true" selection-start-column="598358" selection-end-column="607828" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tasking/do_pagination.py" />
+    <entry file="file://$PROJECT_DIR$/templates/test.html" />
+    <entry file="file://$PROJECT_DIR$/templates/niezi/orderdetail.html" />
+    <entry file="file://$PROJECT_DIR$/../../models.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://C:/Study/QianF_Education/courses/Python_Third_Stage/django_tasking/tasking/orders/views.py">
+      <provider selected="true" editor-type-id="text-editor" />
+>>>>>>> Ei-mago
     </entry>
     <entry file="file://$PROJECT_DIR$/tasking/settings.py">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="375">
           <caret line="25" column="13" lean-forward="false" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
         </state>
@@ -881,6 +1115,37 @@
           <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
           <folding>
             <element signature="e#2#37#0" expanded="true" />
+=======
+        <state>
+          <caret column="11" selection-end-line="1477" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1983">
+          <caret line="91" column="47" lean-forward="true" selection-start-line="91" selection-start-column="47" selection-end-line="91" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/eimago/test_new.html" />
+    <entry file="file://$PROJECT_DIR$/static/css/laydate.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-31" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/css/laydate(1).css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-31" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/css/layout-809af0fe81.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="172972" lean-forward="true" selection-start-line="6" selection-start-column="172972" selection-end-line="6" selection-end-column="172972" />
+          <folding>
+            <element signature="e#81259#82170#2" expanded="true" />
+>>>>>>> Ei-mago
           </folding>
 =======
     <entry file="file://$USER_HOME$/django2/lib/python3.6/site-packages/django/core/paginator.py">
@@ -890,6 +1155,7 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/usermanage/urls.py" />
     <entry file="file://$PROJECT_DIR$/usermanage/views.py" />
     <entry file="file://$PROJECT_DIR$/templates/niezi/orderdetail.py" />
@@ -1001,11 +1267,46 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+=======
+    <entry file="file://$PROJECT_DIR$/static/css/vendor-572e5acf76.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-31" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/css/app.f71e50b88b627c3785110b0ea5751fd0.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="121">
+          <caret line="8" column="27" lean-forward="true" selection-start-line="8" selection-start-column="27" selection-end-line="8" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/jquery-3.4.0.min.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tasking/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="21" column="54" selection-start-line="21" selection-start-column="48" selection-end-line="21" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/manager/models.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/orders/controle.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+          <folding>
+            <element signature="e#2#37#0" expanded="true" />
+          </folding>
+>>>>>>> Ei-mago
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tasking/urls.py">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="218">
           <caret line="18" column="15" lean-forward="true" selection-start-line="18" selection-start-column="15" selection-end-line="18" selection-end-column="15" />
           <folding />
@@ -1028,6 +1329,19 @@
           <folding>
             <element signature="e#1#33#0" expanded="false" />
 >>>>>>> 95a6ce88532470cac2b9be43afcaab4a4b89ea55
+=======
+        <state relative-caret-position="254">
+          <caret line="144" column="8" selection-start-line="144" selection-start-column="8" selection-end-line="144" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/orders/NewTicketForm.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="6" column="60" selection-start-line="6" selection-start-column="60" selection-end-line="6" selection-end-column="60" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+>>>>>>> Ei-mago
           </folding>
         </state>
       </provider>
@@ -1035,6 +1349,7 @@
 <<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/templates/eimago/old_ticket.html">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="171">
           <caret line="9" column="7" lean-forward="true" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
         </state>
@@ -1105,19 +1420,42 @@
         <state relative-caret-position="64">
           <caret line="39" column="16" lean-forward="false" selection-start-line="39" selection-start-column="6" selection-end-line="39" selection-end-column="16" />
           <folding />
+=======
+        <state relative-caret-position="190">
+          <caret line="40" column="12" selection-start-line="40" selection-start-column="4" selection-end-line="40" selection-end-column="12" />
+          <folding>
+            <element signature="e#0#29#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/usermanage/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="18" column="17" selection-start-line="18" selection-start-column="6" selection-end-line="18" selection-end-column="17" />
+          <folding>
+            <element signature="e#2#53#0" expanded="true" />
+          </folding>
+>>>>>>> Ei-mago
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/eimago/old_ticket.html">
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="150">
+          <caret line="12" column="72" lean-forward="false" selection-start-line="12" selection-start-column="61" selection-end-line="12" selection-end-column="72" />
+          <folding />
+=======
+        <state relative-caret-position="171">
+          <caret line="9" column="7" lean-forward="true" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
+>>>>>>> Ei-mago
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/orders/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="12" column="72" lean-forward="false" selection-start-line="12" selection-start-column="61" selection-end-line="12" selection-end-column="72" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tasking/do_pagination.py">
-      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="0">
           <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="40" selection-end-column="20" />
           <folding />
@@ -1172,10 +1510,24 @@
             <element signature="n#style#0;n#i#0;n#span#1;n#ticket-comment-detail#0;n#div#1;n#div#1;n#div#0;n#div#0;n#li#0;n#ul#0;n#div#1;n#div#0;n#ticket-log#0;n#div#1;n#section#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#1;n#section#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
 >>>>>>> 95a6ce88532470cac2b9be43afcaab4a4b89ea55
+=======
+        <state relative-caret-position="133">
+          <caret line="9" column="20" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/orders/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="81" column="112" selection-start-line="81" selection-start-column="112" selection-end-line="81" selection-end-column="112" />
+          <folding>
+            <element signature="e#0#29#0" expanded="true" />
+>>>>>>> Ei-mago
           </folding>
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
     <entry file="file://$PROJECT_DIR$/orders/models.py">
@@ -1204,10 +1556,27 @@
           <caret line="23" column="34" lean-forward="false" selection-start-line="22" selection-start-column="6" selection-end-line="23" selection-end-column="34" />
           <folding>
             <element signature="e#0#45#0" expanded="true" />
+=======
+    <entry file="file://$PROJECT_DIR$/templates/eimago/new_ticket.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="515">
+          <caret line="1118" lean-forward="true" selection-start-line="1118" selection-end-line="1118" />
+          <folding>
+            <element signature="n#style#0;n#input#0;n#div#0;n#span#0;n#span#0;n#user-select#0;n#fieldset#0;n#div#0;n#div#0;n#fieldset#0;n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#label#0;n#div#3;n#div#0;n#fieldset#0;n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" />
+            <element signature="n#input#0;n#div#3;n#div#0;n#fieldset#0;n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" />
+            <element signature="n#datalist#0;n#div#3;n#div#0;n#fieldset#0;n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" />
+            <element signature="n#style#0;n#span#0;n#label#0;n#div#4;n#div#0;n#fieldset#0;n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#4;n#div#0;n#fieldset#0;n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#div#1;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" />
+>>>>>>> Ei-mago
           </folding>
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
 >>>>>>> 95a6ce88532470cac2b9be43afcaab4a4b89ea55
+=======
+>>>>>>> Ei-mago
   </component>
 </project>
