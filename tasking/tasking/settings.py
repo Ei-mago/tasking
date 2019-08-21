@@ -48,9 +48,12 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    # 'django.contrib.auth.middleware.AuthenticationMiddleware',    暂先注释crsf验证
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
 ]
 
 ROOT_URLCONF = 'tasking.urls'
@@ -82,14 +85,13 @@ WSGI_APPLICATION = 'tasking.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'task',
-        'HOST': '10.0.108.96',
+        'NAME': 'wy_tasking_proj',  # 数据库名
+        'HOST': '47.100.252.185',  # 数据库服务器地址
+        'USER': 'eimago',
+        'PASSWORD': '123456',
         'PORT': 3306,
-        'USER': 'root',
-        'PASSWORD': '123456'
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
@@ -141,3 +143,6 @@ STATICFILES_DIRS = [
 PERPAGE = 5        # 每页固定展示5条数据
 PAGERANGE = 10        # 页码范围：10页
 BISECT = PAGERANGE/2     # 页码范围对分数
+
+
+AUTH_USER_MODEL = "usermanage.User"

@@ -1,66 +1,69 @@
-from datetime import datetime
 
+
+from django.contrib.auth.models import AbstractUser
 from django.db import models
 
-class Support(models.Model):
-    id = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=30,null=False)
-    phone = models.CharField(max_length=30,null=False)
-    email = models.CharField(max_length=30,null=False)
-    support_group_choice  = (
-        ('1','售后维护'),
-        ('2','it组1')
-    )
-    support_group = models.CharField(max_length=30,choices=support_group_choice)
-    pid = models.IntegerField(null=False)
-    create_time = models.DateTimeField(default=datetime.now)
+
+class ClientGroupTable(models.Model):
+    cgid = models.AutoField(primary_key=True)
+    cgname = models.CharField(max_length=32, blank=True, null=True)
+    cgnotes = models.CharField(max_length=255, blank=True, null=True)
+    createdat = models.DateTimeField(db_column='createdAt', blank=True, null=True)  # Field name made lowercase.
+    updatedat = models.DateTimeField(db_column='updatedAt', blank=True, null=True)  # Field name made lowercase.
+    ugid = models.IntegerField(blank=True, null=True)
 
     class Meta:
-        db_table = 'support'
+        db_table = 'client_group_table'
 
 
-class User(models.Model):
-    uid = models.AutoField(primary_key=True)
-    username = models.CharField(max_length=256, null=False)
-    password = models.CharField(max_length=30, default='123456')
-    company_name = models.CharField(max_length=30,default='克亚科技公司')
-    role_type = (
-        ('0','admin'),
-        ('1','客服经理'),
-        ('2','客服')
-    )
-    role = models.ImageField(default=2,choices=role_type)
-    pid = models.IntegerField(null=False)
-    email = models.CharField(max_length=30,null=False)
-    is_delete = models.IntegerField(null=False,default=0)
-    create_time = models.DateTimeField(default=datetime.now)
-    modify_time = models.DateTimeField(null=True)
-
-    class Meta:
-        db_table =  'user'
-
-
-
-class Customer(models.Model):
+class ClientTable(models.Model):
     cid = models.AutoField(primary_key=True)
-    customer_name = models.CharField(max_length=30,null=False)
-    company_name = models.CharField(max_length=30,null=False)
-    phone = models.CharField(max_length=30,null=False)
-    email = models.CharField(max_length=30,null=False)
-    customer_group_choice = (
-        ('1','xxx'),
-        ('2','xxx'),
-        ('3','xxx')
-    )
-    customer_group = models.CharField(max_length=30,choices=customer_group_choice)
-    is_delete = models.IntegerField(null=False,default=0)
-    create_time = models.DateTimeField(default=datetime.now)
-    modify_time = models.DateTimeField(default=datetime.now)
+    cname = models.CharField(max_length=32, blank=True, null=True)
+    cnickname = models.CharField(max_length=32, blank=True, null=True)
+    ccontactemail = models.CharField(db_column='ccontactEmail', max_length=128, blank=True, null=True)  # Field name made lowercase.
+    cvalid = models.IntegerField(blank=True, null=True)
+    cmobilephone = models.IntegerField(db_column='cmobilePhone', blank=True, null=True)  # Field name made lowercase.
+    cnotes = models.CharField(max_length=255, blank=True, null=True)
+    ccreatedat = models.DateTimeField(db_column='ccreatedAt', blank=True, null=True)  # Field name made lowercase.
+    cupdatedat = models.DateTimeField(db_column='cupdatedAt', blank=True, null=True)  # Field name made lowercase.
+    cgid = models.IntegerField(blank=True, null=True)
+    uid = models.IntegerField(blank=True, null=True)
+    customercustomfields = models.CharField(db_column='customerCustomFields', max_length=255, blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
-        db_table =  'customer'
+        db_table = 'client_table'
+
+
+class TypesTable(models.Model):
+    name = models.CharField(max_length=64, blank=True, null=True)
+    description = models.CharField(max_length=255, blank=True, null=True)
+    createdat = models.DateTimeField(db_column='createdAt', blank=True, null=True)  # Field name made lowercase.
+    updatedat = models.DateTimeField(db_column='updatedAt', blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        db_table = 'types_table'
+
+
+class UserGroupTable(models.Model):
+    ugid = models.AutoField(primary_key=True)
+    ugname = models.CharField(max_length=32, blank=True, null=True)
+    ugdescription = models.CharField(max_length=255, blank=True, null=True)
+    pid = models.IntegerField(blank=True, null=True)
+    createdat = models.DateTimeField(db_column='createdAt', blank=True, null=True)  # Field name made lowercase.
+    updatedat = models.DateTimeField(db_column='updatedAt', blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        db_table = 'user_group_table'
 
 
 
+class User(AbstractUser):
+    phone = models.CharField(max_length=11, blank=True, null=True) #手机号
+    urole = models.IntegerField(blank=True, null=True)  # 角色
+    pid = models.IntegerField(blank=True, null=True)    # pid
+    ugid = models.CharField(max_length=11, blank=True, null=True)   # ugid
+    email = models.EmailField(blank=True, unique=True)
 
-
+    class Meta(AbstractUser.Meta):
+        managed = True
+        db_table = 'user'
