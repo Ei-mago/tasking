@@ -444,9 +444,7 @@
                                                                      class="ng-scope"><a
                             ng-click="doAction(button.action)" class="ng-binding" href="{{ url('orders:opreate',args=(id,5,))}}">超时</a></li>
                     <!-- end ngRepeat: button in validButtons -->
-                    <li ng-repeat="button in validButtons" class="ng-scope"><a
-                            ng-click="doAction(button.action)" class="ng-binding">合并到另一张工单</a>
-                    </li>
+
                     <!-- end ngRepeat: button in validButtons --><li ng-repeat="button in validButtons"
                                                                      class="ng-scope"><a
                             ng-click="doAction(button.action)" class="ng-binding">导出工单</a></li>
@@ -481,6 +479,10 @@
             <div class="panel-form">
                 <div class="ticket-form ng-isolate-scope" ticket="ticket" custom-form-fields="customFormFields"
                      all-received-msg="allReceivedMsg" ticket-logs="ticketLogs">
+                <form action="{{ url('orders:change_info',args=(id,)) }}" method="post" >
+                <div style="display: none">
+                    <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+                </div>
                     <fieldset
                             ng-disabled="ticket.status=='closed'||ticket.deleted||ticket.status=='deleted'||ticket.status=='suspended'||!editableTicket">
                         <div ng-class="ticket_bottom" class="ticket_bottom_0"><!-- ngIf: !hideRequester -->
@@ -580,241 +582,296 @@
                                 </fieldset>
                             </div><!-- end ngIf: !hideRequester --><!-- ngIf: !hideHandle -->
 
-
-                            <div class="ticket-handler engineer-or-workflow-select ng-isolate-scope"
-                                 showinticketdetail="true" selectedservicedesk="ticket.serviceDesk"
-                                 selectedengineer="ticket.engineer" selectedworkflow="ticket.workflowTemplate"
-                                 ticketid="ticket.id" assignable="true"
-                                 activiti-workflow-node-uid="ticket.activitiWorkflowNodeUid" show-more-info-bar="true">
-                                <!-- ngIf: showinticketdetail -->
-                                <label ng-if="showinticketdetail" class="ng-scope">处理人
-                                <span class="required">*</span></label><!-- end ngIf: showinticketdetail -->
-                                <!-- ngIf: selectedworkflow!=null -->
-                                <div class="btn-group relative dropdown" uib-dropdown="" is-open="isopen"
-                                     style="width:100%">
-                                    <button type="button" class="dropdown-toggle form-control relative text-left"
-                                            uib-dropdown-toggle="" ng-disabled="disabled"
-                                            style="height:auto;min-height:32px" ng-click="click()" aria-haspopup="true"
-                                            aria-expanded="false">
-                                        <!-- ngIf: selectedservicedesk==null&&selectedengineer==null&&selectedworkflow==null -->
-                                        <!-- ngIf: selectedworkflow!=null -->
-                                        <!-- ngIf: selectedworkflow==null&&selectedservicedesk!=null --><span
-                                            ng-if="selectedworkflow==null&amp;&amp;selectedservicedesk!=null"
-                                            style="width:95%;display:inline-block;white-space:normal"
-                                            class="ng-binding ng-scope"><!-- ngIf: selectedengineer==null -->
-                                        <!-- ngIf: selectedengineer!=null --><span class="person ng-scope"
-                                                                                   ng-if="selectedengineer!=null"></span>
-                                        <!-- end ngIf: selectedengineer!=null -->
-                                        <!-- ngIf: selectedengineer!=null --><span ng-if="selectedengineer!=null"
-                                                                                   style="white-space:normal"
-                                                                                   class="ng-binding ng-scope">田甜/</span>
-                                        <!-- end ngIf: selectedengineer!=null --> 默认服务台 </span>
-                                        <!-- end ngIf: selectedworkflow==null&&selectedservicedesk!=null --><span
-                                            class="caret" style="position:absolute;right:8px;top:14px"></span></button>
-                                    <!-- ngIf: isopen --></div><!-- ngIf: workflows.length>0&&showWorkflowList --></div>
-
-                            <!-- end ngIf: !hideHandle -->
-                            <div class="form-group ticket-detail-form"><label>抄送给</label>
-                                <ticket-cc-input class="copy-to ng-isolate-scope" iscopytome="isCopyToMe"
-                                                 isticketdetail="true" ccs="ticket.ccs"
-                                                 usergroup="ticket.requester.userGroup" user="ticket.requester"
-                                                 who="ticket" whoid="5968984" assignable="true">
-                                    <!-- ngIf: assignable=='true'&&(hidetomy==null||!hidetomy) --><a
-                                        class="custom-link-color pull-right ng-scope"
-                                        ng-if="assignable=='true'&amp;&amp;(hidetomy==null||!hidetomy)"
-                                        ng-click="ccMe(isContainMe)"><span ng-show="!isContainMe"
-                                                                           class="ng-hide">抄送给我</span><span
-                                        ng-show="isContainMe" class="">移除我</span></a>
-                                    <!-- end ngIf: assignable=='true'&&(hidetomy==null||!hidetomy) -->
-                                    <tags-input ng-disabled="assignable!=='true'"
-                                                ng-class="{'w300':width == 'w300','w230':width == 'w230','height34':isHidden}"
-                                                ng-focus="focus()" ng-blur="blur()" ng-keyup="keyup()" text="inputText"
-                                                ng-model="ccs" display-property="name"
-                                                on-tag-adding="validateTag($tag);" on-tag-added="tagAdded($tag)"
-                                                on-tag-removed="tagRemoved($tag)" replace-spaces-with-dashes="false"
-                                                min-length="1" max-length="128" max-tags="20" placeholder="输入Email或名字"
-                                                key-property="id" id="tagsInput"
-                                                class="ng-pristine ng-untouched ng-valid ng-isolate-scope ng-valid-max-tags ng-valid-min-tags ng-valid-leftover-text ng-not-empty">
-                                        <div class="host" tabindex="-1" ng-click="eventHandlers.host.click()"
-                                             ti-transclude-append="">
-                                            <div class="tags" ng-class="{focused: hasFocus}">
-                                                <ul class="tag-list">
-                                                    <!-- ngRepeat: tag in tagList.items track by track(tag) -->
-                                                    <li class="tag-item ng-scope"
-                                                        ng-repeat="tag in tagList.items track by track(tag)"
-                                                        ng-class="getTagClass(tag, $index)"
-                                                        ng-click="eventHandlers.tag.click(tag)">
-                                                        <ti-tag-item scope="templateScope" data="::tag"
-                                                                     class="ng-isolate-scope"><!-- ngInclude: -->
-                                                            <ng-include src="$$template" class="ng-scope"><span
-                                                                    ng-bind="$getDisplayText()"
-                                                                    class="ng-binding ng-scope">田甜(530829659@qq.com)</span>
-                                                                <a class="remove-button ng-binding ng-scope"
-                                                                   ng-click="$removeTag()"
-                                                                   ng-bind="::$$removeTagSymbol">×</a></ng-include>
-                                                        </ti-tag-item>
-                                                    </li><!-- end ngRepeat: tag in tagList.items track by track(tag) -->
-                                                </ul>
-                                                <input class="input ng-pristine ng-untouched ng-valid ng-empty"
-                                                       autocomplete="off" ng-model="newTag.text"
-                                                       ng-model-options="{getterSetter: true}"
-                                                       ng-keydown="eventHandlers.input.keydown($event)"
-                                                       ng-focus="eventHandlers.input.focus($event)"
-                                                       ng-blur="eventHandlers.input.blur($event)"
-                                                       ng-paste="eventHandlers.input.paste($event)" ng-trim="false"
-                                                       ng-class="{'invalid-tag': newTag.invalid}" ng-disabled="disabled"
-                                                       ti-bind-attrs="{type: options.type, placeholder: options.placeholder, tabindex: options.tabindex, spellcheck: options.spellcheck}"
-                                                       ti-autosize="" type="text" placeholder="输入Email或名字"
-                                                       spellcheck="true" style="width: 112px;"><span class="input"
-                                                                                                     style="visibility: hidden; width: auto; white-space: pre; display: none;">输入Email或名字</span>
-                                            </div>
-                                            <auto-complete source="loadUsers($query)" min-length="1"
-                                                           debounce-delay="300" ng-focus="focus()"
-                                                           class="ng-scope ng-isolate-scope">
-                                                <!-- ngIf: suggestionList.visible --></auto-complete>
-                                            <div class="dropdown ng-scope ng-hide" ng-show="dropdown.isShowDropdown">
-                                                <ul class="list-group dropdown-menu padding0 of_y1"
-                                                    style="display:block;max-height:300px;width:100%">
-                                                    <li class="list-group-item ng-hide" ng-show="dropdown.isShowBack">
-                                                        <button class="btn btn-default btn-xs"
-                                                                ng-click="changeCurrentDropdown('back')"><span
-                                                                class="glyphicon glyphicon-chevron-left"></span> 返回
-                                                        </button>
-                                                    </li>
-                                                    <li class="list-group-item ng-hide"
-                                                        ng-show="dropdown.type == 'foreign'"><input type="text"
-                                                                                                    class="form-control foreign-input ng-pristine ng-untouched ng-valid ng-empty"
-                                                                                                    id="tagsInput2"
-                                                                                                    placeholder="输入外援的邮箱"
-                                                                                                    ng-keyup="inputForeign()"
-                                                                                                    ng-model="dropdown.foreignEmail">
-                                                        <input type="button"
-                                                               class="btn btn-default foreign-btn custom-main-bgcolor"
-                                                               value="确定" ng-click="addForeign()"></li>
-                                                    <!-- ngRepeat: item in dropdownList track by $index -->
-                                                    <li class="list-group-item cursorhand ng-scope"
-                                                        ng-show="dropdown.type != 'foreign' &amp;&amp; (item.show || dropdown.currentDropdown != 1)"
-                                                        ng-repeat="item in dropdownList track by $index"
-                                                        ng-click="selectItem(item,$event)"><span class="persons ng-hide"
-                                                                                                 ng-show="dropdown.isShowGroupIcon"></span>
-                                                        <!-- ngIf: dropdown.type != 'engineer' || dropdown.currentDropdown != 3 || item.type === 'serviceDesk' --><span
-                                                                ng-if="dropdown.type != 'engineer' || dropdown.currentDropdown != 3 || item.type === 'serviceDesk'"
-                                                                class="ng-scope"><span
-                                                                ng-bind="item.name? item.name : item.nickname | translate"
-                                                                class="ng-binding">客户</span> <span ng-show="item.email"
-                                                                                                   class="ng-hide">(<span
-                                                                ng-bind="item.email" class="ng-binding"></span>) </span></span>
-                                                        <!-- end ngIf: dropdown.type != 'engineer' || dropdown.currentDropdown != 3 || item.type === 'serviceDesk' -->
-                                                        <!-- ngIf: dropdown.type == 'engineer' && dropdown.currentDropdown == 3 && item.type !== 'serviceDesk' --><span
-                                                                ng-show="dropdown.isShowNextIcon"
-                                                                class="pull-right glyphicon glyphicon-chevron-right ng-scope"></span>
-                                                    </li><!-- end ngRepeat: item in dropdownList track by $index -->
-                                                    <li class="list-group-item cursorhand ng-scope"
-                                                        ng-show="dropdown.type != 'foreign' &amp;&amp; (item.show || dropdown.currentDropdown != 1)"
-                                                        ng-repeat="item in dropdownList track by $index"
-                                                        ng-click="selectItem(item,$event)"><span class="persons ng-hide"
-                                                                                                 ng-show="dropdown.isShowGroupIcon"></span>
-                                                        <!-- ngIf: dropdown.type != 'engineer' || dropdown.currentDropdown != 3 || item.type === 'serviceDesk' --><span
-                                                                ng-if="dropdown.type != 'engineer' || dropdown.currentDropdown != 3 || item.type === 'serviceDesk'"
-                                                                class="ng-scope"><span
-                                                                ng-bind="item.name? item.name : item.nickname | translate"
-                                                                class="ng-binding">客服</span> <span ng-show="item.email"
-                                                                                                   class="ng-hide">(<span
-                                                                ng-bind="item.email" class="ng-binding"></span>) </span></span>
-                                                        <!-- end ngIf: dropdown.type != 'engineer' || dropdown.currentDropdown != 3 || item.type === 'serviceDesk' -->
-                                                        <!-- ngIf: dropdown.type == 'engineer' && dropdown.currentDropdown == 3 && item.type !== 'serviceDesk' --><span
-                                                                ng-show="dropdown.isShowNextIcon"
-                                                                class="pull-right glyphicon glyphicon-chevron-right ng-scope"></span>
-                                                    </li><!-- end ngRepeat: item in dropdownList track by $index -->
-                                                    <li class="list-group-item cursorhand ng-scope"
-                                                        ng-show="dropdown.type != 'foreign' &amp;&amp; (item.show || dropdown.currentDropdown != 1)"
-                                                        ng-repeat="item in dropdownList track by $index"
-                                                        ng-click="selectItem(item,$event)"><span class="persons ng-hide"
-                                                                                                 ng-show="dropdown.isShowGroupIcon"></span>
-                                                        <!-- ngIf: dropdown.type != 'engineer' || dropdown.currentDropdown != 3 || item.type === 'serviceDesk' --><span
-                                                                ng-if="dropdown.type != 'engineer' || dropdown.currentDropdown != 3 || item.type === 'serviceDesk'"
-                                                                class="ng-scope"><span
-                                                                ng-bind="item.name? item.name : item.nickname | translate"
-                                                                class="ng-binding">关联客户</span> <span
-                                                                ng-show="item.email" class="ng-hide">(<span
-                                                                ng-bind="item.email" class="ng-binding"></span>) </span></span>
-                                                        <!-- end ngIf: dropdown.type != 'engineer' || dropdown.currentDropdown != 3 || item.type === 'serviceDesk' -->
-                                                        <!-- ngIf: dropdown.type == 'engineer' && dropdown.currentDropdown == 3 && item.type !== 'serviceDesk' --><span
-                                                                ng-show="dropdown.isShowNextIcon"
-                                                                class="pull-right glyphicon glyphicon-chevron-right ng-scope"></span>
-                                                    </li><!-- end ngRepeat: item in dropdownList track by $index -->
-                                                    <li class="list-group-item cursorhand ng-scope"
-                                                        ng-show="dropdown.type != 'foreign' &amp;&amp; (item.show || dropdown.currentDropdown != 1)"
-                                                        ng-repeat="item in dropdownList track by $index"
-                                                        ng-click="selectItem(item,$event)"><span class="persons ng-hide"
-                                                                                                 ng-show="dropdown.isShowGroupIcon"></span>
-                                                        <!-- ngIf: dropdown.type != 'engineer' || dropdown.currentDropdown != 3 || item.type === 'serviceDesk' --><span
-                                                                ng-if="dropdown.type != 'engineer' || dropdown.currentDropdown != 3 || item.type === 'serviceDesk'"
-                                                                class="ng-scope"><span
-                                                                ng-bind="item.name? item.name : item.nickname | translate"
-                                                                class="ng-binding">外援</span> <span ng-show="item.email"
-                                                                                                   class="ng-hide">(<span
-                                                                ng-bind="item.email" class="ng-binding"></span>) </span></span>
-                                                        <!-- end ngIf: dropdown.type != 'engineer' || dropdown.currentDropdown != 3 || item.type === 'serviceDesk' -->
-                                                        <!-- ngIf: dropdown.type == 'engineer' && dropdown.currentDropdown == 3 && item.type !== 'serviceDesk' --><span
-                                                                ng-show="dropdown.isShowNextIcon"
-                                                                class="pull-right glyphicon glyphicon-chevron-right ng-scope"></span>
-                                                    </li><!-- end ngRepeat: item in dropdownList track by $index -->
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </tags-input>
-                                </ticket-cc-input>
-                            </div>
-                            <div class="form-group"><label class="ng-binding">类型
-                                <!-- ngIf: typeFiled.required --></label><select
-                                    class="form-control ng-pristine ng-untouched ng-valid ng-isolate-scope ng-empty"
-                                    ng-disabled="disabled==0" ng-model="tickettype"
-                                    ng-options="ticketType.name for ticketType in ticketTypes"
-                                    ng-change="change(tickettype);" selectedtickettype="ticket.ticketType"
-                                    ticketprojecttype="ticketprojecttype">
-                                <option value="" class="" selected="selected">-</option>
-                                <option label="问询" value="object:670">问询</option>
-                                <option label="任务" value="object:671">任务</option>
-                                <option label="问题" value="object:672">问题</option>
-                                <option label="事件" value="object:673">事件</option>
-                            </select></div>
-                            <div class="form-group"><label class="ng-binding">服务目录 <!-- ngIf: catalogFiled.required -->
-                                <span style="max-width:200px;display:inline-block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:400;position:relative;top:4px;color:#999"
-                                      class="ng-binding">(工单服务目录)</span></label>
-                                <fieldset>
-                                    <div class="btn-group relative ng-isolate-scope dropdown" uib-dropdown=""
-                                         is-open="isopen" style="width:100%" disabled="disabled"
-                                         selectedservicecatalog="ticket.serviceCatalog">
-                                        <button type="button" class="dropdown-toggle form-control relative"
-                                                uib-dropdown-toggle="" ng-disabled="disabled==0"
-                                                style="text-align:left;height:auto;min-height:32px;word-break:break-all"
-                                                ng-click="click()" aria-haspopup="true" aria-expanded="false"><span
-                                                style="float:left;word-break:break-all"
-                                                ng-class="{'one-line-select-span':singleLine}" ng-title="产品/产品1/使用问题"
-                                                ng-bind="selectedServiceCatalogNameChain"
-                                                class="ng-binding">产品/产品1/使用问题</span> <!-- ngIf: !catSelected -->
-                                        </button> <!-- ngIf: catSelected -->
-                                        <button type="button" class="close ng-scope" ng-if="catSelected"
-                                                ng-click="clear()" ng-disabled="disabled==0"
-                                                style="position:absolute;right:8px;top:5px"><span
-                                                aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-                                        <!-- end ngIf: catSelected --><!-- ngIf: isopen --></div>
-                                </fieldset>
-                            </div>
-                            <div class="form-group"><label class="ng-binding">优先级
+ <div class="form-group"><label class="ng-binding">处理人
                                 <!-- ngIf: priorityFiled.required --></label>
-                                <fieldset><select
+                                <fieldset>
+                                    <select
                                         class="form-control ng-pristine ng-untouched ng-valid ng-isolate-scope ng-not-empty"
                                         ng-disabled="disabled==0" ng-model="selectedpriority"
                                         ng-options="priority.value as priority.name for priority in priorities"
-                                        ng-change="change();" selectedpriority="ticket.priority">
-                                    <option value="" class="">-</option>
-                                    <option label="P1" value="string:P1">P1</option>
-                                    <option label="P2" value="string:P2" selected="selected">P2</option>
-                                    <option label="P3" value="string:P3">P3</option>
-                                    <option label="P4" value="string:P4">P4</option>
-                                    <option label="P5" value="string:P5">P5</option>
+                                        ng-change="change();"  name="replay_user">
+
+                                        {% for item in opreates %}
+                                    <option label="{{ item.username }}({{ item.email }})" value="{{ item.username }}({{ item.email }})" {% if item.username == opreate.username %}selected="selected"{% endif %}>{{ item.username }}{{ item.email }}</option>
+                                        {%  endfor %}
+
+                                </select></fieldset>
+                            </div>
+
+
+
+
+
+
+
+
+
+
+                            <!-- end ngIf: !hideHandle -->
+{#                            <div class="form-group ticket-detail-form"><label>抄送给</label>#}
+{#                                <ticket-cc-input class="copy-to ng-isolate-scope" iscopytome="isCopyToMe"#}
+{#                                                 isticketdetail="true" ccs="ticket.ccs"#}
+{#                                                 usergroup="ticket.requester.userGroup" user="ticket.requester"#}
+{#                                                 who="ticket" whoid="5968984" assignable="true">#}
+{#                                    <!-- ngIf: assignable=='true'&&(hidetomy==null||!hidetomy) --><a#}
+{#                                        class="custom-link-color pull-right ng-scope"#}
+{#                                        ng-if="assignable=='true'&amp;&amp;(hidetomy==null||!hidetomy)"#}
+{#                                        ng-click="ccMe(isContainMe)"><span ng-show="!isContainMe"#}
+{#                                                                           class="ng-hide">抄送给我</span></a>#}
+{#                                    <!-- end ngIf: assignable=='true'&&(hidetomy==null||!hidetomy) -->#}
+{#                                    <tags-input ng-disabled="assignable!=='true'"#}
+{#                                                ng-class="{'w300':width == 'w300','w230':width == 'w230','height34':isHidden}"#}
+{#                                                ng-focus="focus()" ng-blur="blur()" ng-keyup="keyup()" text="inputText"#}
+{#                                                ng-model="ccs" display-property="name"#}
+{#                                                on-tag-adding="validateTag($tag);" on-tag-added="tagAdded($tag)"#}
+{#                                                on-tag-removed="tagRemoved($tag)" replace-spaces-with-dashes="false"#}
+{#                                                min-length="1" max-length="128" max-tags="20" placeholder="输入Email或名字"#}
+{#                                                key-property="id" id="tagsInput"#}
+{#                                                class="ng-pristine ng-untouched ng-valid ng-isolate-scope ng-valid-max-tags ng-valid-min-tags ng-valid-leftover-text ng-not-empty">#}
+{#                                        <div class="host" tabindex="-1" ng-click="eventHandlers.host.click()"#}
+{#                                             ti-transclude-append="">#}
+{#                                            <div class="tags" ng-class="{focused: hasFocus}">#}
+{#                                                <ul class="tag-list">#}
+{#                                                    <!-- ngRepeat: tag in tagList.items track by track(tag) -->#}
+{#                                                    <li class="tag-item ng-scope"#}
+{#                                                        ng-repeat="tag in tagList.items track by track(tag)"#}
+{#                                                        ng-class="getTagClass(tag, $index)"#}
+{#                                                        ng-click="eventHandlers.tag.click(tag)">#}
+{#                                                        <ti-tag-item scope="templateScope" data="::tag"#}
+{#                                                                     class="ng-isolate-scope"><!-- ngInclude: -->#}
+{#                                                            <ng-include src="$$template" class="ng-scope"><span#}
+{#                                                                    ng-bind="$getDisplayText()"#}
+{#                                                                    class="ng-binding ng-scope"></span>#}
+{#                                                                <a class="remove-button ng-binding ng-scope"#}
+{#                                                                   ng-click="$removeTag()"#}
+{#                                                                   ng-bind="::$$removeTagSymbol">×</a></ng-include>#}
+{#                                                        </ti-tag-item>#}
+{#                                                    </li><!-- end ngRepeat: tag in tagList.items track by track(tag) -->#}
+{#                                                </ul>#}
+{#                                                <input class="input ng-pristine ng-untouched ng-valid ng-empty"#}
+{#                                                       autocomplete="off" ng-model="newTag.text"#}
+{#                                                       ng-model-options="{getterSetter: true}"#}
+{#                                                       ng-keydown="eventHandlers.input.keydown($event)"#}
+{#                                                       ng-focus="eventHandlers.input.focus($event)"#}
+{#                                                       ng-blur="eventHandlers.input.blur($event)"#}
+{#                                                       ng-paste="eventHandlers.input.paste($event)" ng-trim="false"#}
+{#                                                       ng-class="{'invalid-tag': newTag.invalid}" ng-disabled="disabled"#}
+{#                                                       ti-bind-attrs="{type: options.type, placeholder: options.placeholder, tabindex: options.tabindex, spellcheck: options.spellcheck}"#}
+{#                                                       ti-autosize="" type="text" placeholder="输入Email或名字"#}
+{#                                                       spellcheck="true" style="width: 112px;"><span class="input"#}
+{#                                                                                                     style="visibility: hidden; width: auto; white-space: pre; display: none;">输入Email或名字</span>#}
+{#                                            </div>#}
+{#                                            <auto-complete source="loadUsers($query)" min-length="1"#}
+{#                                                           debounce-delay="300" ng-focus="focus()"#}
+{#                                                           class="ng-scope ng-isolate-scope">#}
+{#                                                <!-- ngIf: suggestionList.visible --></auto-complete>#}
+{#                                            <div class="dropdown ng-scope ng-hide" ng-show="dropdown.isShowDropdown">#}
+{#                                                <ul class="list-group dropdown-menu padding0 of_y1"#}
+{#                                                    style="display:block;max-height:300px;width:100%">#}
+{#                                                    <li class="list-group-item ng-hide" ng-show="dropdown.isShowBack">#}
+{#                                                        <button class="btn btn-default btn-xs"#}
+{#                                                                ng-click="changeCurrentDropdown('back')"><span#}
+{#                                                                class="glyphicon glyphicon-chevron-left"></span> 返回#}
+{#                                                        </button>#}
+{#                                                    </li>#}
+{#                                                    <li class="list-group-item ng-hide"#}
+{#                                                        ng-show="dropdown.type == 'foreign'"><input type="text"#}
+{#                                                                                                    class="form-control foreign-input ng-pristine ng-untouched ng-valid ng-empty"#}
+{#                                                                                                    id="tagsInput2"#}
+{#                                                                                                    placeholder="输入外援的邮箱"#}
+{#                                                                                                    ng-keyup="inputForeign()"#}
+{#                                                                                                    ng-model="dropdown.foreignEmail">#}
+{#                                                        <input type="button"#}
+{#                                                               class="btn btn-default foreign-btn custom-main-bgcolor"#}
+{#                                                               value="确定" ng-click="addForeign()"></li>#}
+{#                                                    <!-- ngRepeat: item in dropdownList track by $index -->#}
+{#                                                    <li class="list-group-item cursorhand ng-scope"#}
+{#                                                        ng-show="dropdown.type != 'foreign' &amp;&amp; (item.show || dropdown.currentDropdown != 1)"#}
+{#                                                        ng-repeat="item in dropdownList track by $index"#}
+{#                                                        ng-click="selectItem(item,$event)"><span class="persons ng-hide"#}
+{#                                                                                                 ng-show="dropdown.isShowGroupIcon"></span>#}
+{#                                                        <!-- ngIf: dropdown.type != 'engineer' || dropdown.currentDropdown != 3 || item.type === 'serviceDesk' --><span#}
+{#                                                                ng-if="dropdown.type != 'engineer' || dropdown.currentDropdown != 3 || item.type === 'serviceDesk'"#}
+{#                                                                class="ng-scope"><span#}
+{#                                                                ng-bind="item.name? item.name : item.nickname | translate"#}
+{#                                                                class="ng-binding">客户</span> <span ng-show="item.email"#}
+{#                                                                                                   class="ng-hide">(<span#}
+{#                                                                ng-bind="item.email" class="ng-binding"></span>) </span></span>#}
+{#                                                        <!-- end ngIf: dropdown.type != 'engineer' || dropdown.currentDropdown != 3 || item.type === 'serviceDesk' -->#}
+{#                                                        <!-- ngIf: dropdown.type == 'engineer' && dropdown.currentDropdown == 3 && item.type !== 'serviceDesk' --><span#}
+{#                                                                ng-show="dropdown.isShowNextIcon"#}
+{#                                                                class="pull-right glyphicon glyphicon-chevron-right ng-scope"></span>#}
+{#                                                    </li><!-- end ngRepeat: item in dropdownList track by $index -->#}
+{#                                                    <li class="list-group-item cursorhand ng-scope"#}
+{#                                                        ng-show="dropdown.type != 'foreign' &amp;&amp; (item.show || dropdown.currentDropdown != 1)"#}
+{#                                                        ng-repeat="item in dropdownList track by $index"#}
+{#                                                        ng-click="selectItem(item,$event)"><span class="persons ng-hide"#}
+{#                                                                                                 ng-show="dropdown.isShowGroupIcon"></span>#}
+{#                                                        <!-- ngIf: dropdown.type != 'engineer' || dropdown.currentDropdown != 3 || item.type === 'serviceDesk' --><span#}
+{#                                                                ng-if="dropdown.type != 'engineer' || dropdown.currentDropdown != 3 || item.type === 'serviceDesk'"#}
+{#                                                                class="ng-scope"><span#}
+{#                                                                ng-bind="item.name? item.name : item.nickname | translate"#}
+{#                                                                class="ng-binding">客服</span> <span ng-show="item.email"#}
+{#                                                                                                   class="ng-hide">(<span#}
+{#                                                                ng-bind="item.email" class="ng-binding"></span>) </span></span>#}
+{#                                                        <!-- end ngIf: dropdown.type != 'engineer' || dropdown.currentDropdown != 3 || item.type === 'serviceDesk' -->#}
+{#                                                        <!-- ngIf: dropdown.type == 'engineer' && dropdown.currentDropdown == 3 && item.type !== 'serviceDesk' --><span#}
+{#                                                                ng-show="dropdown.isShowNextIcon"#}
+{#                                                                class="pull-right glyphicon glyphicon-chevron-right ng-scope"></span>#}
+{#                                                    </li><!-- end ngRepeat: item in dropdownList track by $index -->#}
+{#                                                    <li class="list-group-item cursorhand ng-scope"#}
+{#                                                        ng-show="dropdown.type != 'foreign' &amp;&amp; (item.show || dropdown.currentDropdown != 1)"#}
+{#                                                        ng-repeat="item in dropdownList track by $index"#}
+{#                                                        ng-click="selectItem(item,$event)"><span class="persons ng-hide"#}
+{#                                                                                                 ng-show="dropdown.isShowGroupIcon"></span>#}
+{#                                                        <!-- ngIf: dropdown.type != 'engineer' || dropdown.currentDropdown != 3 || item.type === 'serviceDesk' --><span#}
+{#                                                                ng-if="dropdown.type != 'engineer' || dropdown.currentDropdown != 3 || item.type === 'serviceDesk'"#}
+{#                                                                class="ng-scope"><span#}
+{#                                                                ng-bind="item.name? item.name : item.nickname | translate"#}
+{#                                                                class="ng-binding">关联客户</span> <span#}
+{#                                                                ng-show="item.email" class="ng-hide">(<span#}
+{#                                                                ng-bind="item.email" class="ng-binding"></span>) </span></span>#}
+{#                                                        <!-- end ngIf: dropdown.type != 'engineer' || dropdown.currentDropdown != 3 || item.type === 'serviceDesk' -->#}
+{#                                                        <!-- ngIf: dropdown.type == 'engineer' && dropdown.currentDropdown == 3 && item.type !== 'serviceDesk' --><span#}
+{#                                                                ng-show="dropdown.isShowNextIcon"#}
+{#                                                                class="pull-right glyphicon glyphicon-chevron-right ng-scope"></span>#}
+{#                                                    </li><!-- end ngRepeat: item in dropdownList track by $index -->#}
+{#                                                    <li class="list-group-item cursorhand ng-scope"#}
+{#                                                        ng-show="dropdown.type != 'foreign' &amp;&amp; (item.show || dropdown.currentDropdown != 1)"#}
+{#                                                        ng-repeat="item in dropdownList track by $index"#}
+{#                                                        ng-click="selectItem(item,$event)"><span class="persons ng-hide"#}
+{#                                                                                                 ng-show="dropdown.isShowGroupIcon"></span>#}
+{#                                                        <!-- ngIf: dropdown.type != 'engineer' || dropdown.currentDropdown != 3 || item.type === 'serviceDesk' --><span#}
+{#                                                                ng-if="dropdown.type != 'engineer' || dropdown.currentDropdown != 3 || item.type === 'serviceDesk'"#}
+{#                                                                class="ng-scope"><span#}
+{#                                                                ng-bind="item.name? item.name : item.nickname | translate"#}
+{#                                                                class="ng-binding">外援</span> <span ng-show="item.email"#}
+{#                                                                                                   class="ng-hide">(<span#}
+{#                                                                ng-bind="item.email" class="ng-binding"></span>) </span></span>#}
+{#                                                        <!-- end ngIf: dropdown.type != 'engineer' || dropdown.currentDropdown != 3 || item.type === 'serviceDesk' -->#}
+{#                                                        <!-- ngIf: dropdown.type == 'engineer' && dropdown.currentDropdown == 3 && item.type !== 'serviceDesk' --><span#}
+{#                                                                ng-show="dropdown.isShowNextIcon"#}
+{#                                                                class="pull-right glyphicon glyphicon-chevron-right ng-scope"></span>#}
+{#                                                    </li><!-- end ngRepeat: item in dropdownList track by $index -->#}
+{#                                                </ul>#}
+{#                                            </div>#}
+{#                                        </div>#}
+{#                                    </tags-input>#}
+{#                                </ticket-cc-input>#}
+{#                            </div>#}
+
+
+                               <div class="form-group"><label class="ng-binding">问题类型
+                                <!-- ngIf: priorityFiled.required --></label>
+                                <fieldset>
+                                    <select
+                                        class="form-control ng-pristine ng-untouched ng-valid ng-isolate-scope ng-not-empty"
+                                        ng-disabled="disabled==0" ng-model="selectedpriority"
+                                        ng-options="priority.value as priority.name for priority in priorities"
+                                        ng-change="change();"  name="question">
+
+                                    {% for item in questions %}
+                                    <option  value="{{ item.name }}" {% if item.name ==order.question %} selected ="selected"{% endif %}>{{ item.name }}</option>
+                                    {% endfor %}
+                                </select></fieldset>
+                            </div>
+
+
+
+{#                            <div class="form-group"><label class="ng-binding">服务目录 <!-- ngIf: catalogFiled.required -->#}
+{#                                <span style="max-width:200px;display:inline-block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:400;position:relative;top:4px;color:#999"#}
+{#                                      class="ng-binding">(工单服务目录)</span></label>#}
+{#                                <fieldset>#}
+{#                                    <div class="btn-group relative ng-isolate-scope dropdown open" uib-dropdown=""#}
+{#                                         is-open="isopen" style="width: 100%;" disabled="disabled"#}
+{#                                         selectedservicecatalog="ticket.serviceCatalog">#}
+{#                                        <select  class="dropdown-toggle form-control relative"#}
+{#                                                uib-dropdown-toggle="" ng-disabled="disabled==0"#}
+{#                                                style="text-align:left;height:auto;min-height:32px;word-break:break-all"#}
+{#                                                ng-click="click()" aria-haspopup="true" aria-expanded="true"><span#}
+{#                                                style="float:left;word-break:break-all"#}
+{#                                                ng-class="{'one-line-select-span':singleLine}" ng-title="-"#}
+{#                                                ng-bind="selectedServiceCatalogNameChain" class="ng-binding">-</span>#}
+{#                                            <!-- ngIf: !catSelected --><span class="caret ng-scope"#}
+{#                                                                             style="position:absolute;right:8px;top:14px"#}
+{#                                                                             ng-if="!catSelected"></span>#}
+{#                                            <!-- end ngIf: !catSelected --> <!-- ngIf: catSelected -->#}
+{#                                        <!-- ngIf: isopen -->#}
+{#                                        <ul ng-if="isopen"#}
+{#                                            style="padding: 0px; height: auto; max-height: 330px; overflow: auto; width: 100%;"#}
+{#                                            class="list-group dropdown-menu ng-scope" role="menu" uib-dropdown-menu="">#}
+{#                                            <li ng-click="stopPropagation($event)" class="list-group-item"><input#}
+{#                                                    style="float:inherit" type="text"#}
+{#                                                    class="form-control ng-pristine ng-untouched ng-valid ng-empty"#}
+{#                                                    ng-model="searchKey" ng-change="searchCatalog(searchKey)"#}
+{#                                                    placeholder="输入关键字搜索服务目录"></li><!-- ngIf: !searchKey -->#}
+{#                                            <div ng-if="!searchKey" class="ng-scope">#}
+{#                                                <!-- ngIf: parentServiceCatalog!=null -->#}
+{#                                                <!-- ngIf: parentServiceCatalog!=null -->#}
+{#                                                <!-- ngRepeat: serviceCatalog in showServiceCatalogs  track by serviceCatalog.id -->#}
+{#                                                <li class="list-group-item cursorhand ng-scope" bindonce=""#}
+{#                                                    ng-repeat="serviceCatalog in showServiceCatalogs  track by serviceCatalog.id"#}
+{#                                                    ng-click="selectServiceCatalog($index,$event)">#}
+{#                                                    <!-- boIf: serviceCatalog.children_count>0 --><span#}
+{#                                                        bo-if="serviceCatalog.children_count>0"#}
+{#                                                        class="pull-right glyphicon glyphicon-chevron-right ng-scope"></span>#}
+{#                                                    <!-- ngIf: parentServiceCatalog==null&&serviceCatalog.children_count>0 --><span#}
+{#                                                        ng-if="parentServiceCatalog==null&amp;&amp;serviceCatalog.children_count>0"#}
+{#                                                        class="folder1 ng-scope"></span>#}
+{#                                                    <!-- end ngIf: parentServiceCatalog==null&&serviceCatalog.children_count>0 -->#}
+{#                                                    <!-- ngIf: parentServiceCatalog!=null&&serviceCatalog.children_count>0 -->#}
+{#                                                    <!-- ngIf: serviceCatalog.children_count==null||serviceCatalog.children_count==0 -->#}
+{#                                                    <span bo-bind="serviceCatalog.name" class="ellipsis" title="产品"#}
+{#                                                          style="width:80%;vertical-align:top">产品</span></li>#}
+{#                                                <!-- end ngRepeat: serviceCatalog in showServiceCatalogs  track by serviceCatalog.id -->#}
+{#                                                <li class="list-group-item cursorhand ng-scope" bindonce=""#}
+{#                                                    ng-repeat="serviceCatalog in showServiceCatalogs  track by serviceCatalog.id"#}
+{#                                                    ng-click="selectServiceCatalog($index,$event)">#}
+{#                                                    <!-- boIf: serviceCatalog.children_count>0 --><span#}
+{#                                                        bo-if="serviceCatalog.children_count>0"#}
+{#                                                        class="pull-right glyphicon glyphicon-chevron-right ng-scope"></span>#}
+{#                                                    <!-- ngIf: parentServiceCatalog==null&&serviceCatalog.children_count>0 --><span#}
+{#                                                        ng-if="parentServiceCatalog==null&amp;&amp;serviceCatalog.children_count>0"#}
+{#                                                        class="folder1 ng-scope"></span>#}
+{#                                                    <!-- end ngIf: parentServiceCatalog==null&&serviceCatalog.children_count>0 -->#}
+{#                                                    <!-- ngIf: parentServiceCatalog!=null&&serviceCatalog.children_count>0 -->#}
+{#                                                    <!-- ngIf: serviceCatalog.children_count==null||serviceCatalog.children_count==0 -->#}
+{#                                                    <span bo-bind="serviceCatalog.name" class="ellipsis" title="运营"#}
+{#                                                          style="width:80%;vertical-align:top">运营</span></li>#}
+{#                                                <!-- end ngRepeat: serviceCatalog in showServiceCatalogs  track by serviceCatalog.id -->#}
+{#                                                <li class="list-group-item cursorhand ng-scope" bindonce=""#}
+{#                                                    ng-repeat="serviceCatalog in showServiceCatalogs  track by serviceCatalog.id"#}
+{#                                                    ng-click="selectServiceCatalog($index,$event)">#}
+{#                                                    <!-- boIf: serviceCatalog.children_count>0 --><span#}
+{#                                                        bo-if="serviceCatalog.children_count>0"#}
+{#                                                        class="pull-right glyphicon glyphicon-chevron-right ng-scope"></span>#}
+{#                                                    <!-- ngIf: parentServiceCatalog==null&&serviceCatalog.children_count>0 --><span#}
+{#                                                        ng-if="parentServiceCatalog==null&amp;&amp;serviceCatalog.children_count>0"#}
+{#                                                        class="folder1 ng-scope"></span>#}
+{#                                                    <!-- end ngIf: parentServiceCatalog==null&&serviceCatalog.children_count>0 -->#}
+{#                                                    <!-- ngIf: parentServiceCatalog!=null&&serviceCatalog.children_count>0 -->#}
+{#                                                    <!-- ngIf: serviceCatalog.children_count==null||serviceCatalog.children_count==0 -->#}
+{#                                                    <span bo-bind="serviceCatalog.name" class="ellipsis" title="IT"#}
+{#                                                          style="width:80%;vertical-align:top">IT</span></li>#}
+{#                                                <!-- end ngRepeat: serviceCatalog in showServiceCatalogs  track by serviceCatalog.id -->#}
+{#                                            </div><!-- end ngIf: !searchKey --><!-- ngIf: searchKey --></ul>#}
+{#                                        <!-- end ngIf: isopen --></div>#}
+{#                                </fieldset>#}
+{#                            </div>#}
+
+                            <div class="form-group"><label class="ng-binding">优先级
+                                <!-- ngIf: priorityFiled.required --></label>
+                                <fieldset>
+                                    <select
+                                        class="form-control ng-pristine ng-untouched ng-valid ng-isolate-scope ng-not-empty"
+                                        ng-disabled="disabled==0" ng-model="selectedpriority"
+                                        ng-options="priority.value as priority.name for priority in priorities"
+                                        ng-change="change();" selectedpriority="ticket.priority" name="select_priority">
+                                        {% for item in ['P1','P2','P3','P4'] %}
+                                            <option  value="{{ item }}"  {% if item==order.priority %} selected="selected" {% endif %} >{{ item }}</option>
+{#                                    <option  value="{{ item }}"  {% if item==order.priority %} selected="selected" {% endif %}></option>#}
+                                        {% endfor %}
+
                                 </select></fieldset>
                             </div>
                             <div class="form-group"><label class="ng-binding">要求完成时间
@@ -830,56 +887,52 @@
                                                datepicker-append-to-body="true" is-open="isOpen" ng-model="selectedDate"
                                                ng-click="open($event)"
                                                class="form-control ng-pristine ng-untouched ng-isolate-scope ng-not-empty ng-invalid ng-invalid-datetime"
-                                               ng-disabled="disabled" when-closed="updateValue();"><label
-                                            class="input-group-btn">
-                                        <button class="btn btn-default dateBtn" ng-click="open($event)" type="button"
-                                                ng-disabled="disabled"><i class="glyphicon glyphicon-calendar"></i>
-                                        </button>
-                                    </label></div>
+                                               ng-disabled="disabled" when-closed="updateValue();" value="{{ order.complete_time }}" width="150px">
+                                        </div>
                                 </fieldset>
                             </div>
-                            <div class="form-group"><label class="ng-binding">标签
-                                <!-- ngIf: tagsField.required --></label>
-                                <ewei-tags-input
-                                        edit-able="tagsField.edit_able &amp;&amp; !(ticket.status=='closed'||ticket.deleted||ticket.status=='deleted'||ticket.status=='suspended'||!editableTicket)"
-                                        tags="ticket.tags" who="ticket" whoid="5968984" notes="输入关键字搜索标签，按空格创建新标签"
-                                        class="ng-isolate-scope">
-                                    <style>.input-group tags-input {
-                                        display: block
-                                    }</style>
-                                    <tags-input ng-model="tags" display-property="name" on-tag-added="tagAdded($tag)"
-                                                on-tag-removed="tagRemoved($tag)" add-on-space="true"
-                                                replace-spaces-with-dashes="false" min-length="1" add-on-blur="false"
-                                                max-length="16" ng-disabled="editAble == 0"
-                                                placeholder="输入关键字搜索标签，按空格创建新标签"
-                                                class="ng-pristine ng-untouched ng-valid ng-isolate-scope ng-empty ng-valid-max-tags ng-valid-min-tags ng-valid-leftover-text">
-                                        <div class="host" tabindex="-1" ng-click="eventHandlers.host.click()"
-                                             ti-transclude-append="">
-                                            <div class="tags" ng-class="{focused: hasFocus}">
-                                                <ul class="tag-list">
-                                                    <!-- ngRepeat: tag in tagList.items track by track(tag) --></ul>
-                                                <input class="input ng-pristine ng-untouched ng-valid ng-empty"
-                                                       autocomplete="off" ng-model="newTag.text"
-                                                       ng-model-options="{getterSetter: true}"
-                                                       ng-keydown="eventHandlers.input.keydown($event)"
-                                                       ng-focus="eventHandlers.input.focus($event)"
-                                                       ng-blur="eventHandlers.input.blur($event)"
-                                                       ng-paste="eventHandlers.input.paste($event)" ng-trim="false"
-                                                       ng-class="{'invalid-tag': newTag.invalid}" ng-disabled="disabled"
-                                                       ti-bind-attrs="{type: options.type, placeholder: options.placeholder, tabindex: options.tabindex, spellcheck: options.spellcheck}"
-                                                       ti-autosize="" type="text" placeholder="输入关键字搜索标签，按空格创建新标签"
-                                                       spellcheck="true" style="width: 260px;"><span class="input"
-                                                                                                     style="visibility: hidden; width: auto; white-space: pre; display: none;">输入关键字搜索标签，按空格创建新标签</span>
-                                            </div>
-                                            <auto-complete source="loadTags($query)" min-length="1" debounce-delay="300"
-                                                           load-on-focus="true" load-on-empty="true"
-                                                           class="ng-scope ng-isolate-scope">
-                                                <!-- ngIf: suggestionList.visible --></auto-complete>
-                                            <span class="help-block ng-scope" ng-hide="hideHelp==='true'">输入文字匹配已有标签，或按空格或回车生成新标签。如输入边框变红，表示已超过可添加标签的最大数，请尝试删除标签，直到红色边框消失，否则不能保存。</span>
-                                        </div>
-                                    </tags-input>
-                                </ewei-tags-input>
-                            </div>
+{#                            <div class="form-group"><label class="ng-binding">标签#}
+{#                                <!-- ngIf: tagsField.required --></label>#}
+{#                                <ewei-tags-input#}
+{#                                        edit-able="tagsField.edit_able &amp;&amp; !(ticket.status=='closed'||ticket.deleted||ticket.status=='deleted'||ticket.status=='suspended'||!editableTicket)"#}
+{#                                        tags="ticket.tags" who="ticket" whoid="5968984" notes="输入关键字搜索标签，按空格创建新标签"#}
+{#                                        class="ng-isolate-scope">#}
+{#                                    <style>.input-group tags-input {#}
+{#                                        display: block#}
+{#                                    }</style>#}
+{#                                    <tags-input ng-model="tags" display-property="name" on-tag-added="tagAdded($tag)"#}
+{#                                                on-tag-removed="tagRemoved($tag)" add-on-space="true"#}
+{#                                                replace-spaces-with-dashes="false" min-length="1" add-on-blur="false"#}
+{#                                                max-length="16" ng-disabled="editAble == 0"#}
+{#                                                placeholder="输入关键字搜索标签，按空格创建新标签"#}
+{#                                                class="ng-pristine ng-untouched ng-valid ng-isolate-scope ng-empty ng-valid-max-tags ng-valid-min-tags ng-valid-leftover-text">#}
+{#                                        <div class="host" tabindex="-1" ng-click="eventHandlers.host.click()"#}
+{#                                             ti-transclude-append="">#}
+{#                                            <div class="tags" ng-class="{focused: hasFocus}">#}
+{#                                                <ul class="tag-list">#}
+{#                                                    <!-- ngRepeat: tag in tagList.items track by track(tag) --></ul>#}
+{#                                                <input class="input ng-pristine ng-untouched ng-valid ng-empty"#}
+{#                                                       autocomplete="off" ng-model="newTag.text"#}
+{#                                                       ng-model-options="{getterSetter: true}"#}
+{#                                                       ng-keydown="eventHandlers.input.keydown($event)"#}
+{#                                                       ng-focus="eventHandlers.input.focus($event)"#}
+{#                                                       ng-blur="eventHandlers.input.blur($event)"#}
+{#                                                       ng-paste="eventHandlers.input.paste($event)" ng-trim="false"#}
+{#                                                       ng-class="{'invalid-tag': newTag.invalid}" ng-disabled="disabled"#}
+{#                                                       ti-bind-attrs="{type: options.type, placeholder: options.placeholder, tabindex: options.tabindex, spellcheck: options.spellcheck}"#}
+{#                                                       ti-autosize="" type="text" placeholder="输入关键字搜索标签，按空格创建新标签"#}
+{#                                                       spellcheck="true" style="width: 260px;"><span class="input"#}
+{#                                                                                                     style="visibility: hidden; width: auto; white-space: pre; display: none;">输入关键字搜索标签，按空格创建新标签</span>#}
+{#                                            </div>#}
+{#                                            <auto-complete source="loadTags($query)" min-length="1" debounce-delay="300"#}
+{#                                                           load-on-focus="true" load-on-empty="true"#}
+{#                                                           class="ng-scope ng-isolate-scope">#}
+{#                                                <!-- ngIf: suggestionList.visible --></auto-complete>#}
+{#                                            <span class="help-block ng-scope" ng-hide="hideHelp==='true'">输入文字匹配已有标签，或按空格或回车生成新标签。如输入边框变红，表示已超过可添加标签的最大数，请尝试删除标签，直到红色边框消失，否则不能保存。</span>#}
+{#                                        </div>#}
+{#                                    </tags-input>#}
+{#                                </ewei-tags-input>#}
+{#                            </div>#}
                             <div>
                                 <ticket-custome-field ticket="ticket" new-ticket-form="newTicketForm"
                                                       external-url-authorize="externalUrlAuthorize"
@@ -888,6 +941,10 @@
                             </div>
                         </div>
                     </fieldset>
+                    <button type="submit">提交</button>
+
+                </form>
+
                 </div>
             </div><!-- ngIf: !!showCustomForm && customFormFields && customFormFields.length > 0 -->
             <!-- ngIf: customFormFields && customFormFields.length > 0 -->
@@ -905,19 +962,12 @@
                                              class="ng-isolate-scope"></ewei-start-show>
                         </i></div>
                         <div class="box_flex_1">
-                            <div class="padding10px" bindonce="ticket"><strong><input type="text"
-                                                                                      ng-model="ticket.subject"
-                                                                                      required="" maxlength="128"
-                                                                                      class="form-control ng-pristine ng-untouched ng-valid ng-not-empty ng-valid-required ng-valid-maxlength hide_input"
-                                                                                      ng-class="{true: 'show_input',false: 'hide_input'}[displaySubjectView]"
-                                                                                      style="color: rgb(79, 92, 105); font-size: 13px;"
-                                                                                      ng-mouseover="mouseoverName()"
-                                                                                      ng-mouseout="mouseoutName()"
-                                                                                      ng-blur="updateSubject();">
+                            <div class="padding10px" bindonce="ticket"><strong>
+                                <span style="color: black " >这是由{{ opreate.username }}创建的工单</span>
                             </strong><span class="text_overflow_hide"
                                            style="white-space:initial;max-height:20px;color:#9ea7b7"><span
                                     ng-bind="ticket.createdAt" class="ng-binding">{{ order.create_time }}</span> | <span
-                                    ng-bind="ticket.requester.name" class="ng-binding">Robot</span> <span
+                                    ng-bind="ticket.requester.name" class="ng-binding">{{ opreate.username }}</span> <span
                                     ng-hide="!ticket.requester.mobilePhone &amp;&amp; !ticket.requester.contactMobilePhone &amp;&amp; !ticket.requester.email &amp;&amp; !ticket.requester.contactEmail"
                                     class="">&lt; </span>
                                 <!-- ngIf: ticket.requester.mobilePhone || ticket.requester.contactMobilePhone -->
@@ -926,17 +976,15 @@
                                         ng-class="{'custom-main-font-color': ticket.requester.email}"
                                         class="ng-scope custom-main-font-color"><i class="iconfont"></i>&nbsp;<span
                                         ng-bind="ticket.requester.email?ticket.requester.email:ticket.requester.contactEmail"
-                                        class="ng-binding">robot@ewei.com</span> </span>
+                                        class="ng-binding">{{ opreate.email }}</span> </span>
                                 <!-- end ngIf: ticket.requester.email || ticket.requester.contactEmail --><span
                                         ng-hide="!ticket.requester.mobilePhone &amp;&amp; !ticket.requester.contactMobilePhone &amp;&amp; !ticket.requester.email &amp;&amp; !ticket.requester.contactEmail"
                                         class="">&gt; </span>
                                 <!-- ngIf: ticket.status!='closed'&&!ticket.deleted&&ticket.status!='deleted'&&ticket.status!='suspended' --><span
                                         ng-if="ticket.status!='closed'&amp;&amp;!ticket.deleted&amp;&amp;ticket.status!='deleted'&amp;&amp;ticket.status!='suspended'"
                                         class="ng-scope"></span>
-                                <!-- end ngIf: ticket.status!='closed'&&!ticket.deleted&&ticket.status!='deleted'&&ticket.status!='suspended' --> | &lt;<span
-                                        ng-bind="ticket.via.channelName" class="ng-binding">客服界面</span> &gt; &lt;<a
-                                        class="custom-main-font-color ng-binding" ng-href="" target="_blank">田甜</a>&gt;</span>
-                            </div>
+                                <!-- end ngIf: ticket.status!='closed'&&!ticket.deleted&&ticket.status!='deleted'&&ticket.status!='suspended' -->
+                            z</div>
                         </div>
                     </div><!-- ngIf: ticket.status=='pending' && !ticket.deleted && latestTicketSla -->
                     <!-- ngIf: ticket.status=='solved' && !ticket.deleted -->
@@ -966,7 +1014,7 @@
                                              uploading="uploading" attachments="newComment.attachments"
                                              is-saving="isSavingComment"><!-- ngIf: isLoding -->
                                             <!-- ngIf: buttonStatus.showReply && !isLoding -->
-                                            <button ng-if="buttonStatus.showReply &amp;&amp; !isLoding" type="button"
+                                            <button type="submit" ng-if="buttonStatus.showReply &amp;&amp; !isLoding" type="button"
                                                     class="btn btn-confirm gray-btn ng-scope"
                                                     ng-disabled="checkShouldDisabled()" ng-click="submit('',true)"
                                                     style="min-width:125px;border-bottom-right-radius:0;border-top-right-radius:0">
@@ -1021,17 +1069,19 @@
                     <div infinite-scroll="ticketLog.loadMoreTicketContext();"
                          class="ticket-log-wrapper ng-isolate-scope">
                         <div class="text-center absolute nav-ticket-log" style="z-index:1;left:45%;margin-top:-3px">
-                            <div class="btn-group btn-group-xs"><a class="btn btn-default"
+                            <div class="btn-group btn-group-xs">
+                                <a class="btn btn-default"
                                                                    ng-class="{'active':ticketLog.filterType==='all'}"
-                                                                   ng-click="ticketLog.loadTicketContext('all');">全部</a>
-                                <a class="btn btn-default active"
-                                   ng-class="{'active':ticketLog.filterType==='comments'}"
-                                   ng-click="ticketLog.loadTicketContext('comments');">仅回复</a> <a
-                                        class="btn btn-default"
-                                        ng-class="{'active':ticketLog.filterType==='attachments'}"
-                                        ng-click="ticketLog.loadTicketTimeline('attachments');">附件</a> <a
-                                        class="btn btn-default" ng-class="{'active':ticketLog.filterType==='timeline'}"
-                                        ng-click="ticketLog.loadTicketTimeline('timeline');">时间轴</a></div>
+                                                                   ng-click="ticketLog.loadTicketContext('all');">全部回复</a>
+{#                                <a class="btn btn-default active"#}
+{#                                   ng-class="{'active':ticketLog.filterType==='comments'}"#}
+{#                                   ng-click="ticketLog.loadTicketContext('comments');">仅回复</a> <a#}
+{#                                        class="btn btn-default"#}
+{#                                        ng-class="{'active':ticketLog.filterType==='attachments'}"#}
+{#                                        ng-click="ticketLog.loadTicketTimeline('attachments');">附件</a> <a#}
+{#                                        class="btn btn-default" ng-class="{'active':ticketLog.filterType==='timeline'}"#}
+{#                                        ng-click="ticketLog.loadTicketTimeline('timeline');">时间轴</a>#}
+                            </div>
                         </div>
 
 
