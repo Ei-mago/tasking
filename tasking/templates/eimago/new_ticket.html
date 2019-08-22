@@ -115,7 +115,6 @@
                                                                                                tabindex="-1"
                                                                                                style="position: absolute; top: 0px; left: 0px; border-color: transparent; box-shadow: none; opacity: 1; background: none 0% 0% / auto repeat scroll padding-box border-box rgb(255, 255, 255); color: rgb(153, 153, 153);">
 
-
                                                 <input type="text"
                                                        ng-disabled="chatisclose || chatbtngroupstatus == &#39;chat_transfer&#39;"
                                                        ng-focus="onFocus();" ng-blur="onBlur();"
@@ -147,11 +146,15 @@
                                                                 debounce="debounceUpdate"
                                                                 template-url="/source/scripts/directives/user-select/match-template.html"
                                                                 style="">
+                                                 {% for error in form.customer.errors %}
+                                                     <p style= "text-align:center">{{ error }}</p>
+                                                 {% endfor %}
                                                 <datalist id="customer_list_y">
                                                    {% for customer in customer_list %}
                                                     <option value="{{ customer.cname }}"></option>
                                                    {% endfor %}
                                                 </datalist>
+
                                                             <!-- ngRepeat: match in matches track by $index -->
 </ul></div> <!-- ngIf: canClear && selecteduser --></span></span></user-select>
                                             </fieldset>
@@ -169,13 +172,13 @@
                                                     class="required">*</span></label>
                                             </div>   <!-- end ngIf: showinticketdetail -->
                                             <!-- ngIf: selectedworkflow!=null -->
-                                            <input type="hidden", name="opreate_id", value="{{ request.GET.id }}">
+{#                                            <input type="hidden", name="opreate_id", value="{{ request.GET.id }}">#}
                                             <input type="text"
                                                    ng-disabled="chatisclose || chatbtngroupstatus == &#39;chat_transfer&#39;"
                                                    ng-focus="onFocus();" ng-blur="onBlur();"
                                                    class="form-control ng-pristine ng-untouched ng-valid ng-empty"
                                                    name="opreate"
-                                                   value="{{ now_user.username }}"
+                                                   value="{{ request.session['username'] }}"
                                                    list="opreate_list_y"
                                                    ng-model="username" placeholder="默认服务台"
                                                    uib-typeahead="user.name for user in loadUsers($viewValue)"
@@ -189,7 +192,8 @@
                                                    aria-expanded="false" aria-owns="typeahead-11152-7375"
                                                    style="position: relative; vertical-align: top; background-color: transparent;">
                                             <datalist id="opreate_list_y">
-                                                <option value="{{ now_user.username }} "></option>
+                                                <option value="{{ request.session['username'] }}"></option>
+                                                consl
                                                 <option value="后台系统"></option>
                                             </datalist>
                                         </div><!-- end ngIf: !hideHandle -->
@@ -378,11 +382,9 @@
                                                    aria-expanded="false" aria-owns="typeahead-11152-7375"
                                                    style="position: relative; vertical-align: top; background-color: transparent;">
                                             <datalist id="question_list_y">
-                                                <option value="问询"></option>
-                                                <option value="任务"></option>
-                                                <option value="问题"></option>
-                                                <option value="事件"></option>
-                                                <option value="其他"></option>
+                                                {% for tyle in tyle_list %}
+                                                    <option value="{{ tyle.name }}"></option>
+                                                {% endfor %}
                                             </datalist>
 
                                         </div>
@@ -408,7 +410,6 @@
                                                    typeahead-show-hint="true" aria-autocomplete="list"
                                                    aria-expanded="false" aria-owns="typeahead-11152-7375"
                                                    style="position: relative; vertical-align: top; background-color: transparent;">
-
                                                 <div id="service_list_div_y" style="padding:8px; width: 250px; border-style: solid; border-width: 1px;border-radius:10px; border-color: rgba(200,200,200,0.55); display: none">
                                                         {% for big in big_service %}
                                                             <table  style="width: 220px; height: 25px; font-size: 15px; color: black;">
@@ -425,7 +426,6 @@
                                                             </table>
                                                         {% endfor %}
                                                 </div>
-
                                         </div>
                                         <div class="form-group"><label class="ng-binding">优先级
                                             <!-- ngIf: priorityFiled.required --></label>

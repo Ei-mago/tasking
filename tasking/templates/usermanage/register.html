@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<!-- saved from url=(0057)http://www.dmaku.com/demo/moban/2018050898509948/reg.html -->
+<html lang="zh-CN" data-blockbyte-bs-uid="21508"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>用户注册</title>
+    
+    <meta name="Keywords" content="网站关键词">
+    <meta name="Description" content="网站介绍">
+    <link rel="stylesheet" href="/static/css/base.css">
+    <link rel="stylesheet" href="/static/css/iconfont.css">
+    <link rel="stylesheet" href="/static/css/reg.css">
+</head>
+
+<body>
+    <div id="ajax-hook"></div>
+    <div class="wrap">
+        <div class="wpn">w
+            <div class="form-data pos" style="">
+                <a href="" class="head-logo"></a>
+                <!--<p class="tel-warn hide"><i class="icon-warn"></i></p>-->
+                <form action="" method="post">
+                <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+{#                    <p class="p-input pos" id="sendcode">#}
+{#                        <label for="veri-code">用户名</label>#}
+{#                        <input type="text" name="username" required id="username"><br>#}
+{#                        {% for error in form.username.errors %}#}
+{#                           <span style= "text-align:center">{{  error }}</span>#}
+{#                        {% endfor %}#}
+{##}
+{#                    </p>#}
+                    <p class="p-input pos">
+                        <label for="num">用户名</label>
+                        <input type="text" id="username" name="username" required>
+                        {% for error in form.username.errors %}
+                           <span style= "text-align:center">{{  error }}</span>
+                        {% endfor %}
+                    </p>
+{#                    <p class="p-input pos" id="sendcode">#}
+{#                        <label for="veri-code">手机号</label>#}
+{#                        <input type="text"  name="phone" required id="phone"><br>#}
+                    <p class="p-input pos">
+                        <label for="num">手机号</label>
+                        <input type="text" id="phone" name="phone" required>
+                        {% for error in form.phone.errors %}
+                            <span >{{ error }}</span>
+                        {% endfor %}
+{#                        <a href="javascript:;" class="send">发送验证码</a>#}
+                        <span class="time hide"><em>120</em>s</span>
+                        <span class="error hide"><em></em><i class="icon-warn" style="margin-left: 5px"></i></span>
+                    </p>
+{#                    <p class="p-input pos" id="sendcode">#}
+{#                        <label for="veri-code">邮箱</label>#}
+{#                        <input type="text"  name="email" required id="email"><br>#}
+                    <p class="p-input pos">
+                        <label for="num">邮箱</label>
+                        <input type="text" id="email" name="email" required>
+                        {% for error in form.email.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+{#                        <a href="javascript:;" class="send">发送验证码</a>#}
+                        <span class="time hide"><em>120</em>s</span>
+                        <span class="error hide"><em></em><i class="icon-warn" style="margin-left: 5px"></i></span>
+                    </p>
+                    <p class="p-input pos" id="sendcode">
+                        <label for="veri-code">密码</label>
+                        <input type="password" name="password" required id="password" value="a123456" readonly="readonly"><br>
+
+{#                        <a href="javascript:;" class="send">发送验证码</a>#}
+                        <span class="time hide"><em>120</em>s</span>
+                        <span class="error hide"><em></em><i class="icon-warn" style="margin-left: 5px"></i></span>
+                    </p>
+
+                    <button class="lang-btn">注册<input type="submit"></button>
+                </form>
+                <div class="reg_checkboxline pos">
+                    <span class="z"><i class="icon-ok-sign boxcol" nullmsg="请同意!"></i></span>
+                    <input type="hidden" name="agree" value="1">
+                    <div class="Validform_checktip"></div>
+                    <p>我已阅读并接受 <a href="" target="_brack">《XXXX协议说明》</a></p>
+                </div>
+{#                <button class="lang-btn">注册</button>#}
+                <div class="bottom-info">已有账号，<a href="/login/">马上登录</a></div>
+
+                <p class="right">python1905</p>
+            </div>
+        </div>
+    </div>
+    <script src="/static/js/jquery.js.下载"></script>
+    <script src="/static/js/agree.js.下载"></script>
+    <script src="/static/js/reg.js.下载"></script>
+
+</body>
+</html>

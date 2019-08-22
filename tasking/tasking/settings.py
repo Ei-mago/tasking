@@ -145,4 +145,12 @@ PAGERANGE = 10        # 页码范围：10页
 BISECT = PAGERANGE/2     # 页码范围对分数
 
 
+# 用户认证
 AUTH_USER_MODEL = "usermanage.User"
+
+# 阿里云短信验证码配置
+SMSCONFIG = {
+    'ACCESS_KEY_ID':"LTAIt8d8ADS9YKMS",
+    'ACCESS_KEY_SECRET':"PSeLb8BmtzPXrgcBtVn8MmpDyGiEzq",
+    'SignName':"tasking",
+    'TemplateCode':"SMS_172351039"}
