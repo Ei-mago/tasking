@@ -390,7 +390,7 @@
                                             <!-- ngIf: catalogFiled.required --> <span
                                                     style="max-width:200px;display:inline-block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:400;position:relative;top:4px;color:#999"
                                                     class="ng-binding">(工单服务目录)</span></label>
-                                            <input type="text"
+                                            <input type="text" id="service_list_info_y"
                                                    ng-disabled="chatisclose || chatbtngroupstatus == &#39;chat_transfer&#39;"
                                                    ng-focus="onFocus();" ng-blur="onBlur();"
                                                    class="form-control ng-pristine ng-untouched ng-valid ng-empty"
@@ -408,18 +408,24 @@
                                                    typeahead-show-hint="true" aria-autocomplete="list"
                                                    aria-expanded="false" aria-owns="typeahead-11152-7375"
                                                    style="position: relative; vertical-align: top; background-color: transparent;">
-                                            <datalist id="service_list_y">
-                                                <option value="产品" id="service_list_product_y"></option>
-{#                                                <option value="产品体验" style="display: none" class="sl_py1"></option>#}
-{#                                                <option value="产品BUG" style="display: none" class="sl_py1"></option>#}
-{#                                                <option value="产品需求" style="display: none" class="sl_py1"></option>#}
-                                                <option value="运营" id="service_list_operator_y"></option>
-{#                                                <option value="用户拉新活动" style="display: none" class="sl_oy1"></option>#}
-{#                                                <option value="回馈老用户" style="display: none" class="sl_oy1"></option>#}
-                                                <option value="IT" id="service_list_hw_y"></option>
-{#                                                <option value="硬件产品1" style="display: none" class="sl_hwy1"></option>#}
-{#                                                <option value="硬件产品2" style="display: none" class="sl_hwy1"></option>#}
-                                            </datalist>
+
+                                                <div id="service_list_div_y" style="padding:8px; width: 250px; border-style: solid; border-width: 1px;border-radius:10px; border-color: rgba(200,200,200,0.55); display: none">
+                                                        {% for big in big_service %}
+                                                            <table  style="width: 220px; height: 25px; font-size: 15px; color: black;">
+                                                                <tr style=" border-bottom: dashed 1px;">
+                                                                    <td >{{ big.service_name }}</td>
+                                                                </tr>
+                                                                {% for small in small_service %}
+                                                                    {% if big.id == small.pid %}
+                                                                        <tr  style="border-bottom: dashed 1px; background-color: rgba(200,200,200,0.30);display: none">
+                                                                        <td >{{ small.service_name }}</td>
+                                                                        </tr>
+                                                                    {% endif %}
+                                                                {% endfor %}
+                                                            </table>
+                                                        {% endfor %}
+                                                </div>
+
                                         </div>
                                         <div class="form-group"><label class="ng-binding">优先级
                                             <!-- ngIf: priorityFiled.required --></label>
@@ -618,7 +624,7 @@
                                         <div class="ticket_reply_box_textarea"
                                              ng-class="{&#39;private_reply&#39;:!private_reply isopenreply}">
                                             <textarea name="content" value="" rows="5" cols="20" placeholder="工单描述"
-                                                      style="width: 1133px; border: 0px; font-size: 14px"></textarea>
+                                                      style="width: 1133px; padding:12px; border: 0px; font-size: 14px"></textarea>
                                         </div>
                                     </div>
                                     <div class="pull-right"><!-- ngIf: cacheFiles.length > 0 --></div>
@@ -634,9 +640,6 @@
                                             <!-- ngRepeat: item in vm.matchItems track by $index --></ul>
                                     </section><!-- end ngSwitchWhen: --><!-- ngSwitchWhen: knowledge --></div>
                             </quick-knowledge-tip>
-                            {#                                <input type="hidden" name="create_time" value="">#}
-                            {#                                <input type="hidden" name="modify_time" value="">#}
-                            {#                                <input type="hidden" name="order_status" value="1">#}
                             <div style="margin-top:14px">
                                 <div class="btn-group dropup ng-isolate-scope dropdown" uib-dropdown
                                      is-open="status.isopen" ticket="newTicket" save="save(_status)"
@@ -1098,25 +1101,22 @@
             }, function () {
                 $("#hidden_table_y").css("display", "none")
             })
+            $("#service_list_info_y").focus(function (event) {
+                $("#service_list_div_y").toggle(400);
+            });
+           $("#service_list_info_y").blur(function (event) {
+                $("#service_list_div_y").toggle(400);
+            });
+
+            $("#service_list_div_y table tr").mousemove(function(){
+                $(this).nextAll("tr").css("display", "block")
+
+            })
+             $("#service_list_div_y table tr td").click(function () {
+                    {#console.log($(this).text())#}
+                    $("#service_list_info_y").val($(this).text())
+                })
         })
-
-        {#$('#service_list_product_y').hover(function () {#}
-        {#    console log("heheda")#}
-        {#    $.ajax({#}
-        {#        url:request.build_absolute_uri,#}
-        {#        type:"GET",#}
-        {#        success:function (data) {#}
-        {#            $('#service_list_y').innerHTML(#}
-        {#                <option value="产品" id="service_list_product_y"></option>#}
-        {#                <option value="产品体验" style="display: none" class="sl_py1"></option>#}
-        {#                <option value="产品BUG" style="display: none" class="sl_py1"></option>#}
-        {#                <option value="产品需求" style="display: none" class="sl_py1"></option>#}
-        {#            )#}
-        {#        }#}
-        {##}
-        {#    })#}
-        {#})#}
-
     </script>
 
 {% endblock content %}

@@ -6,7 +6,7 @@ from django.shortcuts import render
 from orders.controle import *
 from tasking.do_pagination import do_pagination
 from orders.NewTicketForm import NewTicketForm
-from orders.models import OrderInfo
+from orders.models import OrderInfo, ServiceList
 
 from usermanage.models import User, ClientTable
 
@@ -25,8 +25,6 @@ def detail(request,id):
     return render(request, 'niezi/orderdetail.html',locals())
 
 
-
-
 def new_ticket(request):
     '''
     新建工单
@@ -36,6 +34,8 @@ def new_ticket(request):
     id = request.GET.get('id')
     now_user = User.objects.filter(id=id).first()
     customer_list = ClientTable.objects.all()
+    big_service = ServiceList.objects.filter(pid=0)
+    small_service = ServiceList.objects.exclude(pid=0)
 
     if request.method == 'POST':
         form = NewTicketForm(request.POST)
@@ -79,5 +79,5 @@ def new_ticket(request):
                                              create_time=create_time, modify_time=modify_time, **form.cleaned_data)
                     return HttpResponse("成了2")
         return HttpResponse("<h1>菜</h1>")
-    return render(request, 'eimago/new_ticket.html', context={'now_user':now_user, 'customer_list':customer_list})
+    return render(request, 'eimago/new_ticket.html', context={'now_user':now_user, 'customer_list':customer_list, 'big_service':big_service, 'small_service':small_service})
 

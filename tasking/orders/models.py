@@ -15,16 +15,14 @@ class ServiceList(models.Model):
     服务目录表
     pid ： 一级目录
     mid ： 二级目录
-    sid ： 三级目录
     service_name ： 服务项
     """
 
     id = models.AutoField(primary_key=True)
-    pid = models.IntegerField(null=False)
-    mid = models.IntegerField(null=False)
-    sid = models.IntegerField(null=False)
-    service_name = models.CharField(max_length=30,null=False)
-    create_time = models.DateTimeField(default=datetime.now)
+    pid = models.IntegerField(null=True)
+    mid = models.IntegerField(null=True)
+    service_name = models.CharField(max_length=30,null=True)
+    create_time = models.DateTimeField(null=True)
     modify_time = models.DateTimeField(null=True)
 
     class Meta:
