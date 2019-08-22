@@ -7,7 +7,7 @@ from django.db import models
 #**   工单所涉及的表单
 #**   三个表暂时没建外键，数据量小，建议使用者使用外键。
 
-from usermanage.models import User
+from users.models import User
 
 
 class ServiceList(models.Model):
@@ -90,10 +90,10 @@ class OrderInfo(models.Model):
         ('P3','低')
     )
     priority = models.CharField(max_length=10,choices=priority_enum, null=True)
-    create_time = models.DateTimeField(default=datetime.now())
-    modify_time = models.DateTimeField(default=datetime.now())
-    finish_time = models.DateTimeField(default=datetime.now())
+    create_time = models.DateTimeField(default=datetime.now)
+    modify_time = models.DateTimeField(default=datetime.now)
     isdelete = models.IntegerField(default=0)
+    finish_time = models.DateTimeField()
 
     class Meta:
         db_table = 'order_info'
@@ -114,6 +114,7 @@ class OrderOperate(models.Model):
 
     id = models.AutoField(primary_key=True)
     order_id = models.IntegerField(null=False)
+    opreate_name = models.CharField(max_length=30,null=False)
     from_opreate_id = models.IntegerField(default=1,null=False)
     to_opreate_id = models.IntegerField(default=1,null=False)
     from_priority = models.CharField(max_length=30,null=False)
@@ -122,7 +123,7 @@ class OrderOperate(models.Model):
     to_status = models.IntegerField(null=False)
     from_copyfor = models.CharField(max_length=30,null=False)
     to_copyfor = models.CharField(max_length=30,null=False)
-    replay = models.CharField(max_length=256)
+    replay = models.CharField(max_length=256,null=True)
     create_time = models.DateTimeField(default=datetime.now)
 
     class Meta:

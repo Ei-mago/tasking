@@ -887,11 +887,14 @@
                                                datepicker-append-to-body="true" is-open="isOpen" ng-model="selectedDate"
                                                ng-click="open($event)"
                                                class="form-control ng-pristine ng-untouched ng-isolate-scope ng-not-empty ng-invalid ng-invalid-datetime"
-                                               ng-disabled="disabled" when-closed="updateValue();" value="{{ order.complete_time }}" width="150px">
+                                               ng-disabled="disabled" when-closed="updateValue();" value="{{ order.finish_time }}" width="150px">
                                         </div>
                                 </fieldset>
                             </div>
 {#                            <div class="form-group"><label class="ng-binding">标签#}
+
+
+
 {#                                <!-- ngIf: tagsField.required --></label>#}
 {#                                <ewei-tags-input#}
 {#                                        edit-able="tagsField.edit_able &amp;&amp; !(ticket.status=='closed'||ticket.deleted||ticket.status=='deleted'||ticket.status=='suspended'||!editableTicket)"#}
@@ -984,7 +987,7 @@
                                         ng-if="ticket.status!='closed'&amp;&amp;!ticket.deleted&amp;&amp;ticket.status!='deleted'&amp;&amp;ticket.status!='suspended'"
                                         class="ng-scope"></span>
                                 <!-- end ngIf: ticket.status!='closed'&&!ticket.deleted&&ticket.status!='deleted'&&ticket.status!='suspended' -->
-                            z</div>
+                            </div>
                         </div>
                     </div><!-- ngIf: ticket.status=='pending' && !ticket.deleted && latestTicketSla -->
                     <!-- ngIf: ticket.status=='solved' && !ticket.deleted -->
@@ -1094,6 +1097,8 @@
 
 {#                       工单操作纪录#}
 
+
+                        {% for item in comment_data %}
                         <div id="ticketLog" class="ticket-replay ng-scope"
                              ng-if="ticketLog.filterType === 'all' || ticketLog.filterType === 'comments'">
                             <ul class="list-unstyled margin20px ng-isolate-scope" ticket-image-view="">
@@ -1115,11 +1120,11 @@
                                                     <!-- ngIf: !log.ticketComment.chat.id --><span
                                                         ng-if="!log.ticketComment.chat.id"
                                                         class="padding_right10px ng-binding ng-scope"
-                                                        ng-bind="::log.user.name" style="color:#333c3e;font-size:13px">Robot</span>
+                                                        ng-bind="::log.user.name" style="color:#333c3e;font-size:13px">{{ item.opreate_name }}</span>
                                                     <!-- end ngIf: !log.ticketComment.chat.id -->
                                                     <!-- ngIf: log.ticketComment.chat.id --> <span
                                                         ng-bind="log.createdAt | dateFilter_style1"
-                                                        class="padding_right10px ng-binding">08月08日 19:36</span>
+                                                        class="padding_right10px ng-binding">{{ item.create_time }}</span>
                                                     <!-- ngIf: log.ticketComment.equipment -->
                                                     <!-- ngIf: log.ticketComment.address --></div>
                                                 <div class="ticket-log-content">
@@ -1130,7 +1135,7 @@
                                                             ng-class="{'not-public':!vm.ticketComment.open,'not-engineer':vm.ticketUser.type!=='engineer','single':(vm.ticketComment.attachments.length===1&amp;&amp;!vm.ticketComment.content)||vm.ticketComment.questionId || vm.ticketComment.type==5}"><!-- ngIf: !vm.ticketComment.richTextContent&&!vm.ticketComment.questionId && vm.ticketComment.type!=8 && vm.ticketComment.type!=5 && vm.ticketComment.type!=7 --><p
                                                             ng-if="!vm.ticketComment.richTextContent&amp;&amp;!vm.ticketComment.questionId &amp;&amp; vm.ticketComment.type!=8 &amp;&amp; vm.ticketComment.type!=5 &amp;&amp; vm.ticketComment.type!=7"
                                                             ng-bind-html="::vm.ticketComment.content|linkSetMark|wechatEmoji|sanitize|trusted"
-                                                            class="ng-binding ng-scope">嗯，你已知道怎样回复客户了。 <br><br>在工单处理过程中，经常需要等待客户的确认才能进行下一步处理。由于客户的反馈时间不可控，因此你可以暂停工单，等客户回应后再继续处理。<br><br>请先输入回复消息，然后点击回复按钮旁边的向上箭头，选取‘回复为暂停’。这样，工单将处于暂停状态，直至客户的下一个回复自动触发工单状态为处理中。<br><br>暂停的时间不管有多久，都不算作你的处理时间，是不是很聪明呢？请不要作弊哦。</p>
+                                                            class="ng-binding ng-scope">{{ item.replay }}</p>
                                                         <!-- end ngIf: !vm.ticketComment.richTextContent&&!vm.ticketComment.questionId && vm.ticketComment.type!=8 && vm.ticketComment.type!=5 && vm.ticketComment.type!=7 -->
                                                         <!-- ngIf: vm.ticketComment.richTextContent.richText -->
                                                         <!-- ngIf: ::vm.ticketComment.questionId -->
@@ -1164,6 +1169,7 @@
                             <!-- ngIf: ticketLog.showNextPageButton&&!ticketLog.isLoadingTicketContext -->
                             <!-- ngIf: ticketLog.isLoadingTicketContext -->
                         </div>
+                        {% endfor %}
 
 
 

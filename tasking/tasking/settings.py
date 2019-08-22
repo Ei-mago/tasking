@@ -87,17 +87,27 @@ WSGI_APPLICATION = 'tasking.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'wy_tasking_proj',  # 数据库名
+#         'HOST': '47.100.252.185',  # 数据库服务器地址
+#         'USER': 'eimago',
+#         'PASSWORD': '123456',
+#         'PORT': 3306,
+#     }
+# }
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'wy_tasking_proj',  # 数据库名
-        'HOST': '47.100.252.185',  # 数据库服务器地址
-        'USER': 'eimago',
+        'NAME': 'orders',  # 数据库名
+        'HOST': '10.0.108.96',  # 数据库服务器地址
+        'USER': 'root',
         'PASSWORD': '123456',
         'PORT': 3306,
     }
 }
-
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
 
@@ -150,4 +160,34 @@ PAGERANGE = 10        # 页码范围：10页
 BISECT = PAGERANGE/2     # 页码范围对分数
 
 
-AUTH_USER_MODEL = "usermanage.User"
+AUTH_USER_MODEL = "users.User"
+
+
+
+# cache 设置
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://:123456@10.0.108.96:6379/1",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        }
+    }
+}
+
+
+
+#邮箱配置
+EMAIL_HOST = 'smtp.163.com'
+EMAIL_PORT = 25
+EMAIL_HOST_USER = 'tweezers92@163.com'
+EMAIL_HOST_PASSWORD = 'tweezers92'
+EMAIL_FROM = 'python<tweezers92@163.com>'
+
+
+# 阿里云短信验证码配置
+SMSCONFIG = {
+    'ACCESS_KEY_ID':"LTAIt8d8ADS9YKMS",
+    'ACCESS_KEY_SECRET':"PSeLb8BmtzPXrgcBtVn8MmpDyGiEzq",
+    'SignName':"tasking",
+    'TemplateCode':"SMS_172351039"}
