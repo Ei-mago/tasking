@@ -114,6 +114,7 @@ class OrderOperate(models.Model):
 
     id = models.AutoField(primary_key=True)
     order_id = models.IntegerField(null=False)
+    opreate_name = models.CharField(max_length=30,null=False)
     from_opreate_id = models.IntegerField(default=1,null=False)
     to_opreate_id = models.IntegerField(default=1,null=False)
     from_priority = models.CharField(max_length=30,null=False)
@@ -122,7 +123,7 @@ class OrderOperate(models.Model):
     to_status = models.IntegerField(null=False)
     from_copyfor = models.CharField(max_length=30,null=False)
     to_copyfor = models.CharField(max_length=30,null=False)
-    replay = models.CharField(max_length=256)
+    replay = models.CharField(max_length=256,null=True)
     create_time = models.DateTimeField(default=datetime.now)
 
     class Meta:

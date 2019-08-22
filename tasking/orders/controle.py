@@ -1,7 +1,8 @@
-
+from django.core.mail import send_mail
 
 from orders.models import OrderInfo, OrderOperate
-from users.models import User, TypesTable
+from tasking import settings
+from users.models import User, TypesTable, ClientTable
 
 
 def order_info(username):
@@ -24,15 +25,24 @@ def get_order(id):
     order_data.append(opreates)
     return  order_data
 
-
-
 def order_status(id,status):
     #查询工单当前数据
     order = OrderInfo.objects.get(pk=id)
     order_status = order.order_status
     opreate_id = order.opreate_id
     priority = order.priority
-
+    customer = order.customer
+    user = User.objects.get(pk=opreate_id)
+    ocustomer = ClientTable.objects.filter(cname=customer).first()
+    # 发给客户的邮件
+    customer_email = ocustomer.ccontactemail
+    status_name = order.get_order_status_display()
+    title = order.title
+    order_time = order.create_time
+    # 发给上司的邮件
+    boss = User.objects.get(pk=user.pid)
+    boss_email = boss.email
+    order_id = order.id
     # 更新order_info
     order.order_status=status
     order.save()
@@ -46,6 +56,13 @@ def order_status(id,status):
     order.from_priority = priority
     order.to_priority = priority
     order.save()
+    order1 = OrderOperate.objects.filter(order_id=id).first()
+    if status == 9:
+        send_mail('hello,{}'.format(boss.username),'下属{} 提交的工单(工单ID：{}) 已经处理完成'.format(user.username,order_id),settings.EMAIL_FROM,[boss_email])
+        send_mail('hello,{}'.format(customer),'您在 {} 咨询的问题 {} 已经处理完毕，请及时查看哦'.format(order_time,title),settings.EMAIL_FROM,[customer_email])
+    else:
+        send_mail('hello,{}'.format(boss.username), '下属{} 提交的工单: (工单ID：{})  状态更新为：{}'.format(user.username,order_id,status_name), settings.EMAIL_FROM, [boss_email])
+        send_mail('hello,{}'.format(customer), '您在 {} 咨询的问题: {} 状态更新为：{}'.format(order_time, title, status_name),settings.EMAIL_FROM, [customer_email])
 
     return  order
 
@@ -53,6 +70,8 @@ def order_status(id,status):
 def questions_type():
     questions =TypesTable.objects.all()
     return  questions
+
+
 
 
 
