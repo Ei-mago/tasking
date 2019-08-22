@@ -2,6 +2,7 @@
 from datetime import datetime
 
 from django.db.models import Q
+from django.db.models import Q
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.urls import reverse
@@ -158,6 +159,8 @@ def change_info(request,id):
      boss = User.objects.get(pk=user.id)
      boss_email = boss.email
      boss_name = boss.username
+     print(boss.email)
+
     # 写操作纪录表
 
 
@@ -170,8 +173,17 @@ def change_info(request,id):
      order_log.from_priority = orign_order.priority
      order_log.to_priority = select_priority
      order_log.from_copyfor = orign_order.copyfor
+     print('---1---')
      order_log.save()
      if  order_log.from_opreate_id != order_log.to_opreate_id:
          send_mail('hello,{}'.format(boss_name), '工单(工单ID：{}) 已由 {} 转移给了 {}'.format( id,boss_name,opreate_name),settings.EMAIL_FROM, [boss_email])
 
      return redirect(reverse('orders:detail',kwargs={'id':id}))
+     order_log1 = OrderOperate.objects.filter(order_id=id).first()
+     print('---2---')
+     if  order_log1.from_opreate_id != order_log.to_opreate_id:
+         print('---3---')
+         send_mail('hello,{}'.format(boss.username), '工单(工单ID：{}) 已由 {} 转移给了 {}'.format(boss_name, id,opreate_name),settings.EMAIL_FROM, [boss_email])
+
+     return redirect(reverse('orders:detail',kwargs={'id':id}))
+
