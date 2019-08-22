@@ -53,7 +53,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    # 'django.contrib.auth.middleware.AuthenticationMiddleware',    暂先注释crsf验证
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
@@ -145,4 +145,34 @@ STATICFILES_DIRS = [
 
 PERPAGE = 5        # 每页固定展示5条数据
 PAGERANGE = 10        # 页码范围：10页
-BISECT = PAGERANGE/2     # 页码范围对分数
+BISECT = 5     # 页码范围对分数
+
+
+
+# cache 设置
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://:123456@10.0.108.96:6379/1",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        }
+    }
+}
+
+
+
+#邮箱配置
+EMAIL_HOST = 'smtp.163.com'
+EMAIL_PORT = 25
+EMAIL_HOST_USER = 'tweezers92@163.com'
+EMAIL_HOST_PASSWORD = 'tweezers92'
+EMAIL_FROM = 'python<tweezers92@163.com>'
+
+
+# 阿里云短信验证码配置
+SMSCONFIG = {
+    'ACCESS_KEY_ID':"LTAIt8d8ADS9YKMS",
+    'ACCESS_KEY_SECRET':"PSeLb8BmtzPXrgcBtVn8MmpDyGiEzq",
+    'SignName':"tasking",
+    'TemplateCode':"SMS_172351039"}

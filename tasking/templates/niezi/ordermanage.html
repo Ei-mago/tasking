@@ -1248,39 +1248,94 @@
                            group-info="$groups" row-height="42"
                            class="table table-custom-width table-hover table-striped ng-scope ng-table"
                            template-pagination="source/scripts/directives/table/pager_search.html">
-                    <thead><tr><!-- ngRepeat: column in vm.columns track by $index --><!-- ngIf: column.visible --><th ng-repeat="column in vm.columns track by $index" ng-if="column.visible" class="text-left w15" ewei-custom-column-width="column" column-type="'ticket'" custom-field-column-width-info="vm.customFieldsLength" field-column-width-info="vm.fieldsLength" ng-class="{
+                    <thead>
+                    <tr><!-- ngRepeat: column in vm.columns track by $index --><!-- ngIf: column.visible -->
+                        <th ng-repeat="column in vm.columns track by $index" ng-if="column.visible"
+                            class="text-left w15" ewei-custom-column-width="column" column-type="'ticket'"
+                            custom-field-column-width-info="vm.customFieldsLength"
+                            field-column-width-info="vm.fieldsLength" ng-class="{
                   'sort-asc': vm.tableParams.isSortBy(column.field, 'asc'),
                   'sort-desc': vm.tableParams.isSortBy(column.field, 'desc'),
                   'sortable': column.sortable
-                }" ng-click="vm.sorting(column)" style="width: 30px; min-width: 30px; max-width: 30px;"><span class="ng-binding"><span class="sort-indicator"></span></span></th><!-- end ngIf: column.visible --><!-- end ngRepeat: column in vm.columns track by $index --><!-- ngIf: column.visible --><th ng-repeat="column in vm.columns track by $index" ng-if="column.visible" class="text-left w100 sortable" ewei-custom-column-width="column" column-type="'ticket'" custom-field-column-width-info="vm.customFieldsLength" field-column-width-info="vm.fieldsLength" ng-class="{
+                }" ng-click="vm.sorting(column)" style="width: 30px; min-width: 30px; max-width: 30px;"><span
+                                class="ng-binding"><span class="sort-indicator"></span></span></th>
+                        <!-- end ngIf: column.visible --><!-- end ngRepeat: column in vm.columns track by $index -->
+                        <!-- ngIf: column.visible -->
+                        <th ng-repeat="column in vm.columns track by $index" ng-if="column.visible"
+                            class="text-left w100 sortable" ewei-custom-column-width="column" column-type="'ticket'"
+                            custom-field-column-width-info="vm.customFieldsLength"
+                            field-column-width-info="vm.fieldsLength" ng-class="{
                   'sort-asc': vm.tableParams.isSortBy(column.field, 'asc'),
                   'sort-desc': vm.tableParams.isSortBy(column.field, 'desc'),
                   'sortable': column.sortable
-                }" ng-click="vm.sorting(column)" style="width: 130px; min-width: 130px; max-width: 130px;"><span class="ng-binding">编号<span class="sort-indicator"></span></span></th><!-- end ngIf: column.visible --><!-- end ngRepeat: column in vm.columns track by $index --><!-- ngIf: column.visible --><th ng-repeat="column in vm.columns track by $index" ng-if="column.visible" class="text-left w100 sort-desc sortable" ewei-custom-column-width="column" column-type="'ticket'" custom-field-column-width-info="vm.customFieldsLength" field-column-width-info="vm.fieldsLength" ng-class="{
+                }" ng-click="vm.sorting(column)" style="width: 130px; min-width: 130px; max-width: 130px;"><span
+                                class="ng-binding">编号<span class="sort-indicator"></span></span></th>
+                        <!-- end ngIf: column.visible --><!-- end ngRepeat: column in vm.columns track by $index -->
+                        <!-- ngIf: column.visible -->
+                        <th ng-repeat="column in vm.columns track by $index" ng-if="column.visible"
+                            class="text-left w100 sort-desc sortable" ewei-custom-column-width="column"
+                            column-type="'ticket'" custom-field-column-width-info="vm.customFieldsLength"
+                            field-column-width-info="vm.fieldsLength" ng-class="{
                   'sort-asc': vm.tableParams.isSortBy(column.field, 'asc'),
                   'sort-desc': vm.tableParams.isSortBy(column.field, 'desc'),
                   'sortable': column.sortable
-                }" ng-click="vm.sorting(column)" style="width: 180px; min-width: 180px; max-width: 180px;"><span class="ng-binding">更新于<span class="sort-indicator"></span></span></th><!-- end ngIf: column.visible --><!-- end ngRepeat: column in vm.columns track by $index --><!-- ngIf: column.visible --><th ng-repeat="column in vm.columns track by $index" ng-if="column.visible" class="text-left w320 sortable" ewei-custom-column-width="column" column-type="'ticket'" custom-field-column-width-info="vm.customFieldsLength" field-column-width-info="vm.fieldsLength" ng-class="{
+                }" ng-click="vm.sorting(column)" style="width: 180px; min-width: 180px; max-width: 180px;"><span
+                                class="ng-binding">更新于<span class="sort-indicator"></span></span></th>
+                        <!-- end ngIf: column.visible --><!-- end ngRepeat: column in vm.columns track by $index -->
+                        <!-- ngIf: column.visible -->
+                        <th ng-repeat="column in vm.columns track by $index" ng-if="column.visible"
+                            class="text-left w320 sortable" ewei-custom-column-width="column" column-type="'ticket'"
+                            custom-field-column-width-info="vm.customFieldsLength"
+                            field-column-width-info="vm.fieldsLength" ng-class="{
                   'sort-asc': vm.tableParams.isSortBy(column.field, 'asc'),
                   'sort-desc': vm.tableParams.isSortBy(column.field, 'desc'),
                   'sortable': column.sortable
-                }" ng-click="vm.sorting(column)" style="width: 400px; min-width: 400px; max-width: 400px;"><span class="ng-binding">主题<span class="sort-indicator"></span></span></th><!-- end ngIf: column.visible --><!-- end ngRepeat: column in vm.columns track by $index --><!-- ngIf: column.visible --><th ng-repeat="column in vm.columns track by $index" ng-if="column.visible" class="text-left w100 sortable" ewei-custom-column-width="column" column-type="'ticket'" custom-field-column-width-info="vm.customFieldsLength" field-column-width-info="vm.fieldsLength" ng-class="{
+                }" ng-click="vm.sorting(column)" style="width: 400px; min-width: 400px; max-width: 400px;"><span
+                                class="ng-binding">主题<span class="sort-indicator"></span></span></th>
+                        <!-- end ngIf: column.visible --><!-- end ngRepeat: column in vm.columns track by $index -->
+                        <!-- ngIf: column.visible -->
+                        <th ng-repeat="column in vm.columns track by $index" ng-if="column.visible"
+                            class="text-left w100 sortable" ewei-custom-column-width="column" column-type="'ticket'"
+                            custom-field-column-width-info="vm.customFieldsLength"
+                            field-column-width-info="vm.fieldsLength" ng-class="{
                   'sort-asc': vm.tableParams.isSortBy(column.field, 'asc'),
                   'sort-desc': vm.tableParams.isSortBy(column.field, 'desc'),
                   'sortable': column.sortable
-                }" ng-click="vm.sorting(column)" style="width: 130px; min-width: 130px; max-width: 130px;"><span class="ng-binding">优先级<span class="sort-indicator"></span></span></th><!-- end ngIf: column.visible --><!-- end ngRepeat: column in vm.columns track by $index --><!-- ngIf: column.visible --><th ng-repeat="column in vm.columns track by $index" ng-if="column.visible" class="text-left w100 sortable" ewei-custom-column-width="column" column-type="'ticket'" custom-field-column-width-info="vm.customFieldsLength" field-column-width-info="vm.fieldsLength" ng-class="{
+                }" ng-click="vm.sorting(column)" style="width: 130px; min-width: 130px; max-width: 130px;"><span
+                                class="ng-binding">优先级<span class="sort-indicator"></span></span></th>
+                        <!-- end ngIf: column.visible --><!-- end ngRepeat: column in vm.columns track by $index -->
+                        <!-- ngIf: column.visible -->
+                        <th ng-repeat="column in vm.columns track by $index" ng-if="column.visible"
+                            class="text-left w100 sortable" ewei-custom-column-width="column" column-type="'ticket'"
+                            custom-field-column-width-info="vm.customFieldsLength"
+                            field-column-width-info="vm.fieldsLength" ng-class="{
                   'sort-asc': vm.tableParams.isSortBy(column.field, 'asc'),
                   'sort-desc': vm.tableParams.isSortBy(column.field, 'desc'),
                   'sortable': column.sortable
-                }" ng-click="vm.sorting(column)" style="width: 180px; min-width: 180px; max-width: 180px;"><span class="ng-binding">客户<span class="sort-indicator"></span></span></th><!-- end ngIf: column.visible --><!-- end ngRepeat: column in vm.columns track by $index --><!-- ngIf: column.visible --><th ng-repeat="column in vm.columns track by $index" ng-if="column.visible" class="text-left w100 sortable" ewei-custom-column-width="column" column-type="'ticket'" custom-field-column-width-info="vm.customFieldsLength" field-column-width-info="vm.fieldsLength" ng-class="{
+                }" ng-click="vm.sorting(column)" style="width: 180px; min-width: 180px; max-width: 180px;"><span
+                                class="ng-binding">客户<span class="sort-indicator"></span></span></th>
+                        <!-- end ngIf: column.visible --><!-- end ngRepeat: column in vm.columns track by $index -->
+                        <!-- ngIf: column.visible -->
+{#                        <th ng-repeat="column in vm.columns track by $index" ng-if="column.visible"#}
+{#                            class="text-left w100 sortable" ewei-custom-column-width="column" column-type="'ticket'"#}
+{#                            custom-field-column-width-info="vm.customFieldsLength"#}
+{#                            field-column-width-info="vm.fieldsLength" ng-class="{#}
+{#                  'sort-asc': vm.tableParams.isSortBy(column.field, 'asc'),#}
+{#                  'sort-desc': vm.tableParams.isSortBy(column.field, 'desc'),#}
+{#                  'sortable': column.sortable#}
+{#                }" ng-click="vm.sorting(column)" style="width: 200px; min-width: 200px; max-width: 200px;"><span#}
+{#                                class="ng-binding">客户组<span class="sort-indicator"></span></span></th>#}
+                        <!-- end ngIf: column.visible --><!-- end ngRepeat: column in vm.columns track by $index -->
+                        <!-- ngIf: column.visible -->
+                        <th ng-repeat="column in vm.columns track by $index" ng-if="column.visible"
+                            class="text-left w100" ewei-custom-column-width="column" column-type="'ticket'"
+                            custom-field-column-width-info="vm.customFieldsLength"
+                            field-column-width-info="vm.fieldsLength" ng-class="{
                   'sort-asc': vm.tableParams.isSortBy(column.field, 'asc'),
                   'sort-desc': vm.tableParams.isSortBy(column.field, 'desc'),
                   'sortable': column.sortable
-                }" ng-click="vm.sorting(column)" style="width: 200px; min-width: 200px; max-width: 200px;"><span class="ng-binding">客户组<span class="sort-indicator"></span></span></th><!-- end ngIf: column.visible --><!-- end ngRepeat: column in vm.columns track by $index --><!-- ngIf: column.visible --><th ng-repeat="column in vm.columns track by $index" ng-if="column.visible" class="text-left w100" ewei-custom-column-width="column" column-type="'ticket'" custom-field-column-width-info="vm.customFieldsLength" field-column-width-info="vm.fieldsLength" ng-class="{
-                  'sort-asc': vm.tableParams.isSortBy(column.field, 'asc'),
-                  'sort-desc': vm.tableParams.isSortBy(column.field, 'desc'),
-                  'sortable': column.sortable
-                }" ng-click="vm.sorting(column)" style="width: 180px; min-width: 180px; max-width: 180px;"><span class="ng-binding">标签<span class="sort-indicator"></span></span></th><!-- end ngIf: column.visible --><!-- end ngRepeat: column in vm.columns track by $index --></tr></thead>
+                }" ng-click="vm.sorting(column)" style="width: 180px; min-width: 180px; max-width: 180px;"><span
+                                class="ng-binding">订单操作<span class="sort-indicator"></span></span></th><!-- end ngIf: column.visible --><!-- end ngRepeat: column in vm.columns track by $index --></tr></thead>
                         <tbody ng-repeat="group in $groups track by $index" class="ng-scope">
                         <!-- ngIf: group.value!=null --><!-- ngRepeat: item in group.data track by item.id -->
 
@@ -1353,29 +1408,27 @@
                                 style="width: 180px; min-width: 180px; max-width: 180px;"><!-- ngSwitchWhen: subject -->
                                 <!-- ngSwitchWhen: subscription --><!-- ngSwitchDefault: --><span ng-switch-default=""
                                                                                                   class="ng-scope"><ewei-ticket-field-show
-                                        field="column.field" ticket="item" class="ng-isolate-scope"><span title="niezi">niezi</span></ewei-ticket-field-show></span>
+                                        field="column.field" ticket="item" class="ng-isolate-scope"><span title="niezi">{{ item.customer }}</span></ewei-ticket-field-show></span>
                                 <!-- end ngSwitchWhen: --></td><!-- end ngIf: column.visible -->
                             <!-- end ngRepeat: column in vm.columns track by $index --><!-- ngIf: column.visible -->
-                            <td ng-repeat="column in vm.columns track by $index" ng-if="column.visible"
-                                ng-switch="column.field" ewei-custom-column-width="column" column-type="'ticket'"
-                                custom-field-column-width-info="vm.customFieldsLength"
-                                field-column-width-info="vm.fieldsLength" class="ng-scope ng-isolate-scope"
-                                style="width: 200px; min-width: 200px; max-width: 200px;"><!-- ngSwitchWhen: subject -->
-                                <!-- ngSwitchWhen: subscription --><!-- ngSwitchDefault: --><span ng-switch-default=""
-                                                                                                  class="ng-scope"><ewei-ticket-field-show
-                                        field="column.field" ticket="item"
-                                        class="ng-isolate-scope"></ewei-ticket-field-show>客户组</span>
-                                <!-- end ngSwitchWhen: --></td><!-- end ngIf: column.visible -->
+{#                            <td ng-repeat="column in vm.columns track by $index" ng-if="column.visible"#}
+{#                                ng-switch="column.field" ewei-custom-column-width="column" column-type="'ticket'"#}
+{#                                custom-field-column-width-info="vm.customFieldsLength"#}
+{#                                field-column-width-info="vm.fieldsLength" class="ng-scope ng-isolate-scope"#}
+{#                                style="width: 200px; min-width: 200px; max-width: 200px;"><!-- ngSwitchWhen: subject -->#}
+{#                                <!-- ngSwitchWhen: subscription --><!-- ngSwitchDefault: --><span ng-switch-default=""#}
+{#                                                                                                  class="ng-scope"><ewei-ticket-field-show#}
+{#                                        field="column.field" ticket="item"#}
+{#                                        class="ng-isolate-scope"></ewei-ticket-field-show>客户组</span>#}
+{#                                <!-- end ngSwitchWhen: --></td>#}
+                            <!-- end ngIf: column.visible -->
                             <!-- end ngRepeat: column in vm.columns track by $index --><!-- ngIf: column.visible -->
                             <td ng-repeat="column in vm.columns track by $index" ng-if="column.visible"
                                 ng-switch="column.field" ewei-custom-column-width="column" column-type="'ticket'"
                                 custom-field-column-width-info="vm.customFieldsLength"
                                 field-column-width-info="vm.fieldsLength" class="ng-scope ng-isolate-scope"
                                 style="width: 180px; min-width: 180px; max-width: 180px;"><!-- ngSwitchWhen: subject -->
-                                <!-- ngSwitchWhen: subscription --><!-- ngSwitchDefault: --><span ng-switch-default=""
-                                                                                                  class="ng-scope">{{ item.sign }}<ewei-ticket-field-show
-                                        field="column.field" ticket="item"
-                                        class="ng-isolate-scope"></ewei-ticket-field-show></span>
+                                <!-- ngSwitchWhen: subscription --><!-- ngSwitchDefault: --><a  style="color: blue" href="{{ url('orders:detail',args=(item.id,)) }}">查看详情</a>
                                 <!-- end ngSwitchWhen: --></td><!-- end ngIf: column.visible -->
                             <!-- end ngRepeat: column in vm.columns track by $index --></tr>
                         {% endfor %}

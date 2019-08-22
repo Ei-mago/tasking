@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<!-- saved from url=(0061)http://www.dmaku.com/demo/moban/2018050898509948/getpass.html -->
+<html lang="zh-CN" data-blockbyte-bs-uid="12809">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title>找回密码</title>
+
+    <meta name="Keywords" content="网站关键词">
+    <meta name="Description" content="网站介绍">
+    <link rel="stylesheet" href="/static/css/base.css">
+    <link rel="stylesheet" href="/static/css/iconfont.css">
+    <link rel="stylesheet" href="/static/css/reg.css">
+</head>
+
+<body>
+<div id="ajax-hook"></div>
+<div class="wrap">
+    <div class="wpn">
+        <div class="form-data find_password">
+            <form action="#" method="post">
+                <div style="display: none">
+                    <input type="hidden" name="csrfmiddlewartoken" value="{{ csrf_token }}">
+                </div>
+                {% if next %}
+                    <input type="hidden" name="next" value="{{ next }}">
+                {% endif %}
+                <h4>找回密码</h4>
+                <p class="right_now">已有账号，<a href="/login/">马上登录</a></p>
+                <p class="p-input pos">
+                    <label for="pc_tel">用户名</label>
+                    <input type="text" id="pc_tel" name="username" required>
+{#                    {% for error in form.username.errors %}#}
+{#                        <span class="tel-warn num-err hide">{{ error }}</span>#}
+{#                        {% endfor %}#}
+{#                    <span class="tel-warn pc_tel-err hide"><em>最多五个字</em><i class="icon-warn"></i></span>#}
+                </p>
+                <p class="p-input pos">
+                    <label for="pc_tel">手机号</label>
+                    <input type="text" id="pc_tel" name="phone" required>
+{#                    {% for error in form.phone.errors %}#}
+{#                            <span >{{ error }}</span>#}
+{#                        {% endfor %}#}
+{#                    <span class="tel-warn pc_tel-err hide"><em>最多五个字</em><i class="icon-warn"></i></span>#}
+                </p>
+                <p class="p-input pos ">
+                    <label for="veri-code">输入验证码</label>
+                    <input type="number" id="veri-code">
+                    <a href="javascript:" class="send" name="ucode">发送验证码</a>
+                    <span class="time hide"><em>120</em>s</span>
+                    <span class="tel-warn error hide"><em>验证码错误，请重新输入</em><i class="icon-warn"></i></span>
+                </p>
+{#                <p class="p-input pos code pc-code">#}
+{#                    <label for="veri">请输入验证码</label>#}
+{#                    <input type="text" id="veri">#}
+{#                    <img src="http://www.dmaku.com/demo/moban/2018050898509948/getpass.html">#}
+{#                    <span class="tel-warn img-err hide"><em>最多五个字</em><i class="icon-warn"></i></span>#}
+{#                    <!-- <a href="javascript:;">换一换</a> -->#}
+{#                </p>#}
+                <p>
+                    <span >{{ context }}</span>
+                </p>
+                <button class="lang-btn next">下一步</button>
+                <p class="right">python1905</p>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="/static/js/jquery.js.下载"></script>
+<script src="/static/js/agree.js.下载"></script>
+<script src="/static/js/jquery-3.4.0.min.js"></script>
+{#<script src="/static/js/reset.js.下载"></script>#}
+
+
+</body>
+</html>
+<script>
+    $(".send").on("click", function () {
+        console.log("sdafasdfsf")
+        data = {}
+        data.csrfmiddlewaretoken = $("input[name='csrfmiddlewaretoken']").val()
+        data.phone = $("input[name='phone']").val()
+        $.post("/retreve/", data, function (e) {
+        })
+    })
+</script>

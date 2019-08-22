@@ -1,0 +1,112 @@
+
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+	<title>python1905</title>
+	<!-- Meta tag Keywords -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="utf-8">
+	<script type="application/x-javascript">
+		addEventListener("load", function () {
+			setTimeout(hideURLbar, 0);
+		}, false);
+
+		function hideURLbar() {
+			window.scrollTo(0, 1);
+		}
+	</script>
+	<!-- Meta tag Keywords -->
+	<!-- css files -->
+	<link rel="stylesheet" href="/static/css/style.css" type="text/css" media="all" />
+	<!-- Style-CSS -->
+	<link rel="stylesheet" href="/static/css/font-awesome.css">
+	<!-- Font-Awesome-Icons-CSS -->
+	<!-- //css files -->
+	<!-- online-fonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:400,400i,700,700i" rel="stylesheet">
+	<!-- //online-fonts -->
+</head>
+
+<body>
+	<!--header-->
+	<div class="header-w3l">
+		<h1>注册</h1>
+	</div>
+	<!--//header-->
+	<div class="main-content-agile">
+		<div class="sub-main-w3">
+{#			<h2>Login Here</h2>#}
+			<form action="" method="post">
+				<div class="pom-agile">
+					<span class="fa" aria-hidden="true"></span>
+{#                    <p>#}
+{#                        用户名： {{ form.username }}{{  form.username.errors }}#}
+{#                    </p>#}
+
+                    <p>
+                        用户名： <input type="text" name="username" maxlength="150" required id="username" /><br>
+                        {% for error in form.username.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </p>
+                     <p>
+                        密 码： <input type="text" name="password" maxlength="150" required id="password"  value="a123456" readonly="readonly"/>
+                    </p>
+
+                    <p>
+                        手 机： <input type="text" name="phone" maxlength="128" required id="phone" /><br>
+                        {% for error in form.phone.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </p>
+                    <p>
+                        邮 箱： <input type="text" name="email" maxlength="254" id="email" /><br>
+                        {% for error in form.email.errors %}
+                             <span>{{ error }}</span>
+                        {% endfor %}
+                    </p>
+
+
+{#					<input placeholder="请输入用户名" name="Name" class="user" type="email" required="">#}
+				</div>
+{#				<div class="pom-agile">#}
+{#					<span class="fa fa-key" aria-hidden="true"></span>#}
+{#					<input placeholder="请输入密码" name="Password" class="pass" type="password" required="">#}
+{#				</div>#}
+{#                <div class="pom-agile">#}
+{#					<span class="fa fa-key" aria-hidden="true"></span>#}
+{#					<input placeholder="请再次输入密码" name="Password" class="pass" type="password" required="">#}
+{#				</div>#}
+{#                <div class="pom-agile">#}
+{#					<span class="fa fa-user" aria-hidden="true"></span>#}
+{#					<input placeholder="请输入手机号" name="Name" class="user" type="email" required="">#}
+{#				</div>#}
+{#                <div class="pom-agile">#}
+{#					<span class="fa fa-key" aria-hidden="true"></span>#}
+{#					<input placeholder="请输入邮箱" name="Password" class="pass" type="password" required="">#}
+{#				</div>#}
+{#				<div class="sub-w3l">#}
+{#					<div class="sub-agile">#}
+{#						<input type="checkbox" id="brand1" value="">#}
+{#						<label for="brand1">#}
+{#							<span></span>记住账号</label>#}
+
+				<div class="right-w3l">
+					<input type="submit" value=立即注册">
+				</div>
+			</form>
+		</div>
+	</div>
+	<!--//main-->
+	<!--footer-->
+	<div class="footer">
+		<p>祝您工作愉快
+{#			<a href="http://w3layouts.com">W3layouts</a>#}
+		</p>
+	</div>
+	<!--//footer-->
+</body>
+
+</html>
