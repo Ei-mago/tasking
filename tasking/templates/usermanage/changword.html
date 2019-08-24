@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<!-- saved from url=(0057)http://www.dmaku.com/demo/moban/2018050898509948/reg.html -->
+<html lang="zh-CN" data-blockbyte-bs-uid="21508"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title>用户注册</title>
+
+    <meta name="Keywords" content="网站关键词">
+    <meta name="Description" content="网站介绍">
+    <link rel="stylesheet" href="/static/css/base.css">
+    <link rel="stylesheet" href="/static/css/iconfont.css">
+    <link rel="stylesheet" href="/static/css/reg.css">
+</head>
+
+<body>
+    <div id="ajax-hook"></div>
+    <div class="wrap">
+        <div class="wpn">
+            <div class="form-data pos" style="">
+                <a href="" class="head-logo"></a>
+                <!--<p class="tel-warn hide"><i class="icon-warn"></i></p>-->
+                <form action="" method="post">
+                                    <input type="hidden" name="csrfmiddlewartoken" value="{{ csrf_token }}">
+
+
+                    <div class="change-login">
+                    <p class="account_number on">修改密码</p>
+                </div>
+                    <a href=""><img src="/static/images/logo.png" class="head-logo"></a>
+
+{#                    <p class="p-input pos" id="sendcode">#}
+{#                        <label for="veri-code">密码</label>#}
+{#                        <input type="password" name="password" required id="password" ><br>#}
+{##}
+{#                    </p>#}
+                    <p class="p-input pos">
+                        <label for="num">密码</label>
+                        <input type="password" id="password" name="password" required>
+                        {% for error in form.password.errors %}
+                           <span style= "text-align:center">{{  error }}</span>
+                        {% endfor %}
+                    </p>
+                <p class="p-input pos">
+                        <label for="num">确认密码</label>
+                        <input type="password" id="repassword" name="repassword" required>
+                        {% for error in form.repassword.errors %}
+                           <span style= "text-align:center">{{  error }}</span>
+                        {% endfor %}
+                    </p>
+{#                    <p class="p-input pos" id="sendcode">#}
+{#                        <label for="veri-code">确认密码</label>#}
+{#                        <input type="password" name="repassword" required id="repassword"><br>#}
+{##}
+{#                    </p>#}
+                    <div class="change-login" >
+                    {% if error_total %}
+                        <p class="account_number on" style="color:red">{{ error_total }}</p>
+                    {% endif %}
+                </div>
+
+                    <button class="lang-btn">立即修改<input type="submit"></button>
+                                <div class="bottom-info">{% if toast %} {{ toast }}, <a href="/login/">马上登录</a>{% endif%}</div>
+
+                </form>
+
+                <p class="right">python1905</p>
+            </div>
+        </div>
+    </div>
+{#    <script src="/static/js/jquery.js.下载"></script>#}
+{#    <script src="/static/js/agree.js.下载"></script>#}
+{#    <script src="/static/js/reg.js.下载"></script>#}
+
+</body></html>

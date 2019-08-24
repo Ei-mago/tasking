@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <!-- saved from url=(0049)http://www.dmaku.com/demo/moban/2018050898509948/ -->
-<html lang="zh-CN" data-blockbyte-bs-uid="65735"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
+<html lang="zh-CN" data-blockbyte-bs-uid="65735">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
     <title>登录</title>
-    
+
     <meta name="Keywords" content="网站关键词">
     <meta name="Description" content="网站介绍">
     <link rel="stylesheet" href="/static/css/base.css">
@@ -17,6 +19,7 @@
     <div class="wpn">
         <div class="form-data pos">
             <form action="#" method="post">
+                            <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
                 <div style="display: none">
                     <input type="hidden" name="csrfmiddlewartoken" value="{{ csrf_token }}">
                 </div>
@@ -27,56 +30,52 @@
                 <a href=""><img src="/static/images/logo.png" class="head-logo"></a>
                 <div class="change-login">
                     <p class="account_number on">账号登录</p>
-{#                    <p class="message">短信登录</p>#}
+                    {#                    <p class="message">短信登录</p>#}
                 </div>
                 <div class="form1">
                     <p class="p-input pos">
                         <label for="num">用户名</label>
                         <input type="text" id="num" name="username" required>
-                        {% for error in form.username.errors %}
-                        <span class="tel-warn num-err hide">{{ error }}</span>
-                        {% endfor %}
+                        {#                        {% for error in username.errors %}#}
+                        {#                        <span>{{ error }}</span>#}
+                        {#                        {% endfor %}#}
                     </p>
                     <p class="p-input pos">
                         <label for="pass">请输入密码</label>
-{#                        <input type="password" style="display:none">#}
+                        {#                        <input type="password" style="display:none">#}
                         <input type="password" id="pass" autocomplete="new-password" name="password" required>
-                        {% for error in form.password.errors %}
-                        <span class="tel-warn pass-err hide"><em>{{ error }}</em><i class="icon-warn"></i></span>
-                        {% endfor %}
+{#                                                {% for error in form.password.errors %}#}
+{#                                                {% for error in form.clean() %}#}
+{#                        {% if error_total %}#}
+{#                            <span >{{ error_total }}</span>#}
+{#                        {% endif %}#}
+{#                                                {% endfor %}#}
                     </p>
-{#                    <p class="p-input pos code hide">#}
-{#                        <label for="veri">请输入验证码</label>#}
-{#                        <input type="text" id="veri">#}
-{#                        <img src="http://www.dmaku.com/demo/moban/2018050898509948/">#}
-{#                        <span class="tel-warn img-err hide"><em>账号或密码错误，请重新输入</em><i class="icon-warn"></i></span>#}
-{#                        <!-- <a href="javascript:;">换一换</a> -->#}
-{#                    </p>#}
+
                 </div>
-{#                <div class="form2 hide">#}
-{#                    <p class="p-input pos">#}
-{#                        <label for="num2">手机号</label>#}
-{#                        <input type="number" id="num2">#}
-{#                        <span class="tel-warn num2-err hide"><em>账号或密码错误</em><i class="icon-warn"></i></span>#}
-{#                    </p>#}
-{#                    <p class="p-input pos">#}
-{#                        <label for="veri-code">输入验证码</label>#}
-{#                        <input type="number" id="veri-code">#}
-{#                        <a href="javascript:;" class="send">发送验证码</a>#}
-{#                        <span class="time hide"><em>120</em>s</span>#}
-{#                        <span class="tel-warn error hide">验证码错误</span>#}
-{#                    </p>#}
-{#                </div>#}
+
                 <div class="r-forget cl">
-                    <a href="/register/" class="z">账号注册</a>
+                    <span></span>记住账号</label>
                     <a href="/retreve/" class="y">忘记密码</a>
                 </div>
-                <button class="lang-btn off log-btn">登录<input type="submit"></button>
-    {#            <div class="third-party">#}
-    {#                <a href="http://www.dmaku.com/demo/moban/2018050898509948/#" class="log-qq icon-qq-round"></a>#}
-    {#                <a href="http://www.dmaku.com/demo/moban/2018050898509948/#" class="log-qq icon-weixin"></a>#}
-    {#                <a href="http://www.dmaku.com/demo/moban/2018050898509948/#" class="log-qq icon-sina1"></a>#}
-    {#            </div>#}
+                <div class="change-login" >
+                    {% if error_total %}
+                        <p class="account_number on" style="color:red">{{ error_total }}</p>
+                    {% endif %}
+                </div>
+
+{#                    <p class="account_number on">#}
+{#                        {% if error_total %}#}
+{#                            <p>{{ error_total }}</p>#}
+{#                        {% endif %}#}
+{#                    </p>#}
+
+                <button class="lang-btn off log-btn">登录<input type="submit"><br>
+{#                    {% for error in username.errors %}#}
+{#                        <span>{{ error }}</span>#}
+{#                    {% endfor %}#}
+                </button>
+
                 <p class="right">python1905</p>
             </form>
         </div>
@@ -87,4 +86,5 @@
 <script src="/static/js/login.js.下载"></script>
 
 
-</body></html>
+</body>
+</html>

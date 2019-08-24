@@ -23,3 +23,4 @@ urlpatterns = [
     url(r'^', include('manager.urls', namespace='manager'))
 
 ]
+

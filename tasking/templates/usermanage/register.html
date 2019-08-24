@@ -14,25 +14,34 @@
 <body>
     <div id="ajax-hook"></div>
     <div class="wrap">
-        <div class="wpn">w
+        <div class="wpn">
             <div class="form-data pos" style="">
                 <a href="" class="head-logo"></a>
                 <!--<p class="tel-warn hide"><i class="icon-warn"></i></p>-->
+                <a href=""><img src="/static/images/logo.png" class="head-logo"></a>
                 <form action="" method="post">
-                    <p class="p-input pos" id="sendcode">
-                        <label for="veri-code">用户名</label>
-                        <input type="text" name="username" required id="username"><br>
+                <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+{#                    <p class="p-input pos" id="sendcode">#}
+{#                        <label for="veri-code">用户名</label>#}
+{#                        <input type="text" name="username" required id="username"><br>#}
+{#                        {% for error in form.username.errors %}#}
+{#                           <span style= "text-align:center">{{  error }}</span>#}
+{#                        {% endfor %}#}
+{##}
+{#                    </p>#}
+                    <p class="p-input pos">
+                        <label for="num">用户名</label>
+                        <input type="text" id="username" name="username" required>
                         {% for error in form.username.errors %}
                            <span style= "text-align:center">{{  error }}</span>
-
                         {% endfor %}
-{#                        <a href="javascript:;" class="send">发送验证码</a>#}
-                        <span class="time hide"><em>120</em>s</span>
-                        <span class="error hide"><em>defrvgtbhy</em><i class="icon-warn" style="margin-left: 5px"></i></span>
                     </p>
-                    <p class="p-input pos" id="sendcode">
-                        <label for="veri-code">手机号</label>
-                        <input type="text"  name="phone" required id="phone"><br>
+{#                    <p class="p-input pos" id="sendcode">#}
+{#                        <label for="veri-code">手机号</label>#}
+{#                        <input type="text"  name="phone" required id="phone"><br>#}
+                    <p class="p-input pos">
+                        <label for="num">手机号</label>
+                        <input type="text" id="phone" name="phone" required>
                         {% for error in form.phone.errors %}
                             <span >{{ error }}</span>
                         {% endfor %}
@@ -40,9 +49,12 @@
                         <span class="time hide"><em>120</em>s</span>
                         <span class="error hide"><em></em><i class="icon-warn" style="margin-left: 5px"></i></span>
                     </p>
-                    <p class="p-input pos" id="sendcode">
-                        <label for="veri-code">邮箱</label>
-                        <input type="text"  name="email" required id="email"><br>
+{#                    <p class="p-input pos" id="sendcode">#}
+{#                        <label for="veri-code">邮箱</label>#}
+{#                        <input type="text"  name="email" required id="email"><br>#}
+                    <p class="p-input pos">
+                        <label for="num">邮箱</label>
+                        <input type="text" id="email" name="email" required>
                         {% for error in form.email.errors %}
                             <span>{{ error }}</span>
                         {% endfor %}

@@ -22,15 +22,6 @@ def send_sms(phone, templateParam):
     return str(response, encoding='utf-8')
 
 
-def ucode():
-    import random
-    str = ""
-    for i in range(6):
-        ch = chr(random.randrange(ord('0'), ord('9') + 1))
-        str += ch
-    return str
-
-
 
 
 if __name__ == "__main__":

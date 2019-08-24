@@ -1,495 +1,54 @@
-<!--
-    ewei-web-console/console.html
---><!DOCTYPE html>
-<html lang="zh-cmn">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="cache-control" content="max-age=0">
-    <meta http-equiv="cache-control" content="no-cache">
-    <meta http-equiv="expires" content="0">
-    <meta http-equiv="pragma" content="no-cache">
-    <meta name="renderer" content="webkit">
-    <title></title>
-    <link rel="shortcut icon" ng-href="">
-    <link rel="stylesheet" href="//cdn.ewei.com/7.3.0/console/css/vendor-572e5acf76.css">
-    <link rel="stylesheet" href="//cdn.ewei.com/7.3.0/console/css/layout-809af0fe81.css">
-    <style ng-if="provider.headBackgroundColor">#tabs .tab {
+{% extends 'base.html' %}
+{% block content %}
 
-    background-color: {
 
-    {
-        provider . dropDownColor
-    }
-    }
-    ;
-    color: {
-
-    {
-        provider . titleTypefaceColor
-    }
-    }
-    ;
-    border-top-color: {
-
-    {
-        getRGB (
-        provider.dropDownColor,
-        1.2
-        )
-    }
-    }
-    }
-    #tabs .tab:not (.active):hover {
-
-    background-color: {
-
-    {
-        getRGB (
-        provider.dropDownColor,
-        1.2
-        )
-    }
-    }
-    }
-    #tabs .tab .close {
-
-    color: {
-
-    {
-        getRGB (
-        provider.dropDownColor,
-        1.3
-        )
-    }
-    }
-    }
-    #tabs .dropdown-menu {
-        margin: 0;
-        border-radius: 0 0 4px 4px;
-        top: 34px
-    }
-
-    #tabs .dropdown-menu-second {
-        float: left;
-        list-style: none;
-        padding: 5px 0;
-        font-size: 14px;
-        background-color: #fff;
-        margin: 0;
-        border-radius: 0 0 4px 4px;
-        -webkit-background-clip: padding-box;
-        background-clip: padding-box;
-        border: 1px solid #ccc;
-        border: 1px solid rgba(0, 0, 0, .15);
-        -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
-        box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
-        border-left: none;
-        position: absolute;
-        left: 100%;
-        top: -1px
-    }
-
-    #tabs .dropdown-menu-second li a {
-        display: block;
-        padding: 3px 20px;
-        clear: both;
-        font-weight: 400;
-        color: #333;
-        line-height: 25px;
-        white-space: nowrap
-    }
-
-    #tabs .dropdown-menu-second li a:hover {
-        color: #262626;
-        text-decoration: none;
-        background-color: #f5f5f5
-    }
-
-    .dropdown-toggle .dropdown-num {
-        position: absolute;
-        right: 160px
-    }
-
-    .dropdown-num .active {
-        background-color: #ccc
-    }
-
-    .dropdown-num .fa {
-        width: 20px
-    }
-
-    .ng-cloak {
-        display: none
-    }
-
-    #customerNoticeImgVisible {
-        float: left;
-        margin-left: -30px;
-        margin-top: 20px;
-        opacity: 1;
-        visibility: hidden
-    }
-
-    #ticketNoticeImgVisible {
-        margin-left: -30px;
-        float: left;
-        margin-top: 20px;
-        opacity: 1;
-        visibility: hidden
-    }</style>
-    <style type="text/css">.pre-loading {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        display: block;
-        z-index: 1040;
-        text-align: center;
-        padding-top: 12%;
-        background: #fefefe
-    }
-
-    .sk-cube-grid {
-        width: 80px;
-        height: 80px;
-        margin: 100px auto
-    }
-
-    .sk-cube-grid .sk-cube {
-        width: 33%;
-        height: 33%;
-        background-color: #74b4f0;
-        float: left;
-        -webkit-animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;
-        animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out
-    }
-
-    .sk-cube-grid .sk-cube1 {
-        -webkit-animation-delay: .2s;
-        animation-delay: .2s
-    }
-
-    .sk-cube-grid .sk-cube2 {
-        -webkit-animation-delay: .3s;
-        animation-delay: .3s
-    }
-
-    .sk-cube-grid .sk-cube3 {
-        -webkit-animation-delay: .4s;
-        animation-delay: .4s
-    }
-
-    .sk-cube-grid .sk-cube4 {
-        -webkit-animation-delay: .1s;
-        animation-delay: .1s
-    }
-
-    .sk-cube-grid .sk-cube5 {
-        -webkit-animation-delay: .2s;
-        animation-delay: .2s
-    }
-
-    .sk-cube-grid .sk-cube6 {
-        -webkit-animation-delay: .3s;
-        animation-delay: .3s
-    }
-
-    .sk-cube-grid .sk-cube7 {
-        -webkit-animation-delay: 0s;
-        animation-delay: 0s
-    }
-
-    .sk-cube-grid .sk-cube8 {
-        -webkit-animation-delay: .1s;
-        animation-delay: .1s
-    }
-
-    .sk-cube-grid .sk-cube9 {
-        -webkit-animation-delay: .2s;
-        animation-delay: .2s
-    }
-
-    .header-icon-tools .notice {
-        position: absolute;
-        top: -1px;
-        right: 340px;
-        z-index: 99999;
-        cursor: pointer
-    }
-
-    @-webkit-keyframes sk-cubeGridScaleDelay {
-        0%, 100%, 70% {
-            -webkit-transform: scale3D(1, 1, 1);
-            transform: scale3D(1, 1, 1)
-        }
-        35% {
-            -webkit-transform: scale3D(0, 0, 1);
-            transform: scale3D(0, 0, 1)
-        }
-    }
-
-    @keyframes sk-cubeGridScaleDelay {
-        0%, 100%, 70% {
-            -webkit-transform: scale3D(1, 1, 1);
-            transform: scale3D(1, 1, 1)
-        }
-        35% {
-            -webkit-transform: scale3D(0, 0, 1);
-            transform: scale3D(0, 0, 1)
-        }
-    }</style><!-- ************************新版首页样式暂时放在这里******************** -->
-    <style>.header-icon-tools {
-        text-align: right;
-        padding-right: 30px;
-        -ms-user-select: none;
-        -moz-user-select: none;
-        -webkit-user-select: none
-    }
-
-    .header-icon-tools a {
-        color: #fff;
-        display: inline-block;
-        width: 40px;
-        height: 40px;
-        text-align: center;
-        line-height: 40px;
-        vertical-align: bottom
-    }
-
-    .header-icon-tools .header-tool-bar {
-        margin-top: 10px;
-        border-radius: 50%;
-        background-color: -#f9c;
-        text-decoration: none;
-        color: #fff
-    }
-
-    .header-icon-tools .header-tool-bar:hover {
-        background-color: rgba(0, 0, 0, .15);
-        text-decoration: none
-    }
-
-    .header-icon-tools i {
-        font-size: 23px
-    }</style>
-    <style custom-style></style>
-</head>
-<body>
-<style>.outer-container {
-    width: 56px;
-    position: relative;
-    overflow: hidden;
-    flex: 1;
-    display: flex
-}
-
-.inner-container {
-    overflow-y: scroll;
-    margin-right: -17px;
-    flex: 1
-}
-
-.inner-container .menu-wrapper {
-    width: 55px
-}</style>
-
-<nav style="z-index:1031;display:flex;flex-direction:column" id="main_navigation" ng-controller="mainNavigation">
-    <div class="outer-container">
-        <div class="inner-container">
-            <div class="menu-wrapper"><a
-                    ng-class="{'active':(locationPath=='/dashboard'|| locationPath.indexOf('/quickentry')!=-1)&&leftIcon}"
-                    ui-sref="quickentry" ui-sref-opts="{reload: true}" ng-click="select('console')" bs-tooltip
-                    data-container="body" data-title="客服界面首页" placement="right"><i class="iconfont">&#xe64f;</i>
-                <!-- <span class="label label-danger absolute" ng-if="noticeCount>0" ng-bind="noticeCount"></span> -->
-            </a><a ng-class="{'active':locationPath.indexOf('/ticket/views/')==0&&leftIcon}" ui-sref="ticket_views"
-                   ui-sref-opts="{reload: true}" ng-click="select('ticket')" bs-tooltip data-container="body"
-                   data-title="工单管理" placement="right"><i class="iconfont">&#xe64e;</i> </a><a class="nav-icon-chat"
-                                                                                               ng-class="{'active':locationPath.indexOf('/webchats')==0&&leftIcon}"
-                                                                                               ui-sref-opts="{reload: true}"
-                                                                                               ng-click="select('chat')"
-                                                                                               bs-tooltip
-                                                                                               data-container="body"
-                                                                                               data-title="当前会话"
-                                                                                               placement="right"
-                                                                                               style="text-decoration:none;position:relative"><i
-                    class="iconfont"
-                    ng-class="{'animated flash infinite': chatRedPoint && $location.path().indexOf('/webchats') === -1}">&#xe638;</i>
-                <span ng-class="{'animated flash infinite': chatRedPoint && $location.path().indexOf('/webchats') === -1}"
-                      ng-show="chatRedPoint && $location.path().indexOf('/webchats') === -1"
-                      style="background:red;width:10px;height:10px;border-radius:50%;position:absolute;top:12px;right:18px"></span>
-            </a>
-                <!--<a class="nav-icon-chat-history" ng-class="{'active':locationPath.indexOf('/webchat_history')==0&&leftIcon}" ui-sref="webchat-history" ui-sref-opts="{reload: true}" ng-click="select('webchat-history')" bs-tooltip data-container="body" data-title="历史会话" placement="right" style="text-decoration:none;position:relative;">-->
-                <!--<i class="iconfont">&#xe616;</i>--><!--</a>--> <a
-                        ng-class="{'active':locationPath.indexOf('/customer_views/')==0&&leftIcon}"
-                        ui-sref="customer_views" ui-sref-opts="{reload: true}" ng-click="select('user')" bs-tooltip
-                        data-container="body" data-title="用户管理" placement="right"><i class="iconfont">&#xe650;</i> </a><!-- <a has-module="helpcenter" ng-class="{'active':locationPath.indexOf('/community/')==0&&leftIcon}" ui-sref="community" ui-sref-opts="{reload: true}" ng-click="select('community')" bs-tooltip data-title="社区管理" placement="right">
-              <i class="iconfont">&#xe651;</i>
-          </a> --> <a has-module="super_board"
-                      ng-class="{'active':(locationPath.indexOf('/universal_list/')==0||locationPath.indexOf('/project_detail')==0)&&leftIcon}"
-                      ui-sref="universal_list.favorites_list" ui-sref-opts="{reload: true}"
-                      ng-click="select('favorites_list')" bs-tooltip data-container="body" data-title="超级看板"
-                      placement="right" add-to-favorite-target style="position:relative"><i
-                        class="iconfont">&#xe677;</i> <span class="badge" ng-if="newFavoriteCount>0"
-                                                            ng-bind="newFavoriteCount"></span> <span
-                        class="plusone">+1</span> </a>
-                <a ng-repeat="providerApp in providerWebSiteApps track by $index"
-                   ng-class="{'active':isShowPage[providerApp.app.id]&&!leftIcon}"
-                   ng-click="openWebSiteApp({appId:providerApp.app.id});select('assets');"
-                   bs-tooltip data-container="body"
-                   data-title="" placement="right"
-                   has-module=""><i
-                        ng-if="providerApp.app.name=='易维IT资产管理'" class="iconfont">&#xe657;</i>
-                    <image-show ng-if="providerApp.app.name!='易维IT资产管理'" imageurl=""
-                                imagestyle="head.40.40" imageclass="w25 h25" editable="false"></image-show>
-                </a><a ng-repeat="providerApp in providerFunModuleApps track by $index"
-                       ng-class="{'active':locationPath.indexOf('/'+providerApp.app.redirectUrl+'/')===0}"
-                       ng-click="openFunModuleApp(providerApp.app);select('fmapps');" bs-tooltip data-container="body"
-                       data-title="" placement="right"><i ng-if="!providerApp.app.appImg"
-                                                          class="iconfont">&#xe75b;</i>
-                    <image-show ng-if="providerApp.app.appImg" imageurl=""
-                                imagestyle="head.40.40" imageclass="w25 h25" editable="false"></image-show>
-                </a></div>
-        </div>
-    </div>
-    <div class="icons"><a has-module="statistics"
-                          ng-class="{'active':(locationPath.indexOf('/statistics/')==0&&leftIcon) || (locationPath.indexOf('/chart/')==0&&leftIcon)}"
-                          ui-sref="statistics" ui-sref-opts="{reload: true}" ng-click="select('statistics')" bs-tooltip
-                          data-title="" placement="right" ng-show="showStatisticsBtn"><i
-            class="iconfont">&#xe652;</i> </a>
-        <!--<a has-module="statistics" ng-class="{'active':locationPath.indexOf('/chart/')==0&&leftIcon}" ui-sref="chart" ui-sref-opts="{reload: true}" ng-click="select('charts')" bs-tooltip data-title="" placement="right" ng-show="showStatisticsBtn">-->
-        <!--<i class="iconfont">&#xe652;</i>--><!--</a> --> <a style="position:relative"
-                                                               ng-class="{'active':locationPath.indexOf('/system_setting/')==0&&leftIcon}"
-                                                               ng-click="select('system_set');goSettings()" bs-tooltip
-                                                               data-title=""
-                                                               placement="right"><i class="iconfont">&#xe645;</i> <span
-                ng-if="!guideSetting"
-                style="position:absolute;top:12px;right:12px;background-color:#e82020;width:8px;height:8px;border-radius:50%"></span></a>
-    </div>
-</nav>
-<div ui-view class="main-view am-fade"></div>
 
 <div ui-view="" class="main-view am-fade ng-scope" style="">
     <div class="ticket-detail-panel ng-scope">
         <header class="title"><!-- ngIf: webchat==null -->
-            <nav class="btn-group btn-groupB ng-scope ng-isolate-scope" ng-if="webchat==null"
-                 group="ticket.requester.userGroup" user="ticket.requester" ticket="ticket" webchat="webchat"
-                 active="ticket">
-                <span
-                    ng-if="(ticket!=null||active=='ticket')&amp;&amp;webchat==null"
-                    class="btn btn-default ticket ng-scope active"
-                    ng-class="{'custom-main-font-color': active!='ticket', 'active':active=='ticket'}"
-                    ng-click="ticket_click();"><!-- ngIf: ticket==null||ticket.id==null -->
-                <!-- ngIf: ticket!=null&&ticket.id!=null --><span
-                        style="-webkit-user-select:text;-moz-user-select:text;-ms-user-select:text;user-select:text"
-                        ng-if="ticket!=null&amp;&amp;ticket.id!=null"
-                        ng-class="{'custom-main-font-color': active!='ticket', 'active':active=='ticket'}"
-                        class="ng-binding ng-scope active"><i class="iconfont tab-icon"></i> 工单号:{{ order.id }}
-                    {%  if order.order_status==9 %}
-    <sapn class="status ticket-sla open">Closed</sapn>
-                    {% elif order.order_status==5 %}
-                                            <sapn class="status ticket-sla open">TimeOut</sapn>
+            <nav class="btn-group btn-groupB ng-scope ng-isolate-scope" ng-if="webchat==null" group="ticket.requester.userGroup" user="ticket.requester" ticket="ticket" webchat="webchat" active="ticket">
+                <span ng-if="(ticket!=null||active=='ticket')&amp;&amp;webchat==null" class="btn btn-default ticket ng-scope active" ng-class="{'custom-main-font-color': active!='ticket', 'active':active=='ticket'}" ng-click="ticket_click();"><!-- ngIf: ticket==null||ticket.id==null -->
+                <!-- ngIf: ticket!=null&&ticket.id!=null --><span style="-webkit-user-select:text;-moz-user-select:text;-ms-user-select:text;user-select:text" ng-if="ticket!=null&amp;&amp;ticket.id!=null" ng-class="{'custom-main-font-color': active!='ticket', 'active':active=='ticket'}" class="ng-binding ng-scope active"><i class="iconfont tab-icon"></i> 工单号:2
 
-                    {% elif order.order_status==4 %}
-                        <sapn class="status ticket-sla open">Delay</sapn>
-                   {% else %}
                         <sapn class="status ticket-sla open">Open</sapn>
-                    {% endif %}
+
 
                 </span><!-- end ngIf: ticket!=null&&ticket.id!=null --></span>
                 <!-- end ngIf: (ticket!=null||active=='ticket')&&webchat==null --><!-- ngIf: webchat!=null -->
-                <!-- ngIf: webchat!=null --></nav><!-- end ngIf: webchat==null --><!-- ngIf: webchat!=null --><span
-                    class="pull-right app-button-wrapper"><div class="btn-group ng-isolate-scope" ticket="ticket"
-                                                               webchat="webchat" on-merge="merger()"
-                                                               on-delete="delete()" on-destroy="destroy()"
-                                                               on-convert-to-article="helpCenter()"
-                                                               on-convert-to-ticket-template="ticketTemplate()"
-                                                               on-print="print()"
-                                                               on-export-to-word="printWord(ticket.id)"
-                                                               on-export-to-pdf="printPDF(ticket.id)"
-                                                               on-recover-isolation="isolation()"
-                                                               on-cancel-delete="cancelDelete(ticket)"><button
-                    type="button" class="btn btn-default ng-binding"
-                    ng-click="doAction(mainButton.action)">工单操作</button> <!-- ngIf: validButtons.length > 0 --><button
-                    ng-disabled="webchat!=null" ng-if="validButtons.length > 0" type="button"
-                    class="btn btn-default dropdown-toggle ng-scope" style="height:30px;border-radius:0 4px 4px 0"
-                    data-toggle="dropdown"><span class="caret"></span> <span class="sr-only">切换下拉</span></button>
-                <!-- end ngIf: validButtons.length > 0 --><!-- ngIf: validButtons.length > 0 --><ul
-                        class="dropdown-menu dropdown-menu-right ng-scope" role="menu" ng-if="validButtons.length > 0"><!-- ngRepeat: button in validButtons -->
-                    {% if order.order_status==9 %}
-                        <li ng-repeat="button in validButtons"
-                                                                     class="ng-scope"><a
-                            ng-click="doAction(button.action)" class="ng-binding">导出工单</a></li>
-                     <li ng-repeat="button in validButtons" class="ng-scope"><a
-                            ng-click="doAction(button.action)" class="ng-binding" href="{{ url('orders:delete',args=(id,))}}" >删除工单</a>
-                    </li>
-                        {% elif order.order_status==5 or order.order_status==4 %}
-                         <li
-                        ng-repeat="button in validButtons" class="ng-scope" style="">
-                    <a ng-click="doAction(button.action)" class="ng-binding" href="{{ url('orders:opreate',args=(id,9,))}}">处理完毕</a></li>
-                         <li ng-repeat="button in validButtons"
-                                                                     class="ng-scope"><a
-                            ng-click="doAction(button.action)" class="ng-binding">导出工单</a></li>
-                     <li ng-repeat="button in validButtons" class="ng-scope"><a
-                            ng-click="doAction(button.action)" class="ng-binding" href="{{ url('orders:delete',args=(id,))}}" >删除工单</a>
-                    </li>
-                    {% else %}
-                    <li
-                        ng-repeat="button in validButtons" class="ng-scope" style="">
-                    <a ng-click="doAction(button.action)" class="ng-binding" href="{{ url('orders:opreate',args=(id,9,))}}">处理完毕</a></li>
-                    <!-- end ngRepeat: button in validButtons --><li ng-repeat="button in validButtons"
-                                                                     class="ng-scope"><a
-                            ng-click="doAction(button.action)" class="ng-binding" href="{{ url('orders:opreate',args=(id,4,))}}">延时</a></li>
-                    <!-- end ngRepeat: button in validButtons --><li ng-repeat="button in validButtons"
-                                                                     class="ng-scope"><a
-                            ng-click="doAction(button.action)" class="ng-binding" href="{{ url('orders:opreate',args=(id,5,))}}">超时</a></li>
+                <!-- ngIf: webchat!=null --></nav><!-- end ngIf: webchat==null --><!-- ngIf: webchat!=null --><span class="pull-right app-button-wrapper"><div class="btn-group ng-isolate-scope" ticket="ticket" webchat="webchat" on-merge="merger()" on-delete="delete()" on-destroy="destroy()" on-convert-to-article="helpCenter()" on-convert-to-ticket-template="ticketTemplate()" on-print="print()" on-export-to-word="printWord(ticket.id)" on-export-to-pdf="printPDF(ticket.id)" on-recover-isolation="isolation()" on-cancel-delete="cancelDelete(ticket)"><button type="button" class="btn btn-default ng-binding" ng-click="doAction(mainButton.action)">工单操作</button> <!-- ngIf: validButtons.length > 0 --><button ng-disabled="webchat!=null" ng-if="validButtons.length > 0" type="button" class="btn btn-default dropdown-toggle ng-scope" style="height:30px;border-radius:0 4px 4px 0" data-toggle="dropdown"><span class="caret"></span> <span class="sr-only">切换下拉</span></button>
+                <!-- end ngIf: validButtons.length > 0 --><!-- ngIf: validButtons.length > 0 --><ul class="dropdown-menu dropdown-menu-right ng-scope" role="menu" ng-if="validButtons.length > 0"><!-- ngRepeat: button in validButtons -->
+
+                    <li ng-repeat="button in validButtons" class="ng-scope" style="">
+                    <a ng-click="doAction(button.action)" class="ng-binding" href="/opreate/2/9">处理完毕</a></li>
+                    <!-- end ngRepeat: button in validButtons --><li ng-repeat="button in validButtons" class="ng-scope"><a ng-click="doAction(button.action)" class="ng-binding" href="/opreate/2/4">延时</a></li>
+                    <!-- end ngRepeat: button in validButtons --><li ng-repeat="button in validButtons" class="ng-scope"><a ng-click="doAction(button.action)" class="ng-binding" href="/opreate/2/5">超时</a></li>
                     <!-- end ngRepeat: button in validButtons -->
-                    <li ng-repeat="button in validButtons" class="ng-scope"><a
-                            ng-click="doAction(button.action)" class="ng-binding">合并到另一张工单</a>
+
+                    <!-- end ngRepeat: button in validButtons -->
+                     <li ng-repeat="button in validButtons" class="ng-scope"><a ng-click="doAction(button.action)" class="ng-binding">删除工单</a>
                     </li>
-                    <!-- end ngRepeat: button in validButtons --><li ng-repeat="button in validButtons"
-                                                                     class="ng-scope"><a
-                            ng-click="doAction(button.action)" class="ng-binding">导出工单</a></li>
-                     <li ng-repeat="button in validButtons" class="ng-scope"><a
-                            ng-click="doAction(button.action)" class="ng-binding">删除工单</a>
-                    </li>
-                         {% endif %}
+
                     <!-- end ngRepeat: button in validButtons --></ul>
 
                 <!-- end ngIf: validButtons.length > 0 --></div></span>
             <!-- ngIf: ticket.status != 'suspended' && ticket.status != 'deleted' && !ticket.deleted -->
-            <div class="ticket-countdown-wrapper ng-scope"
-                 ng-if="ticket.status != 'suspended' &amp;&amp; ticket.status != 'deleted' &amp;&amp; !ticket.deleted">
-                <div class="ticket-countdown ng-isolate-scope" ticket="ticket">
-                    <!-- ngIf: currentTimeLeft!=0 && ticket.status != 'closed' && ticket.status !='solved' && ticket.status != 'pending' --><span
-                        ng-class="slaColor"
-                        ng-if="currentTimeLeft!=0 &amp;&amp; ticket.status != 'closed' &amp;&amp; ticket.status !='solved' &amp;&amp; ticket.status != 'pending'"
-                        class="ng-binding ng-scope sla-red" style=""><i class="fa fa-clock-o"></i> 超时 <span
-                        ng-bind-html="currentTimeLeft | ticketCountdown | trusted" class="ng-binding"><i
-                        class="num">49</i>小时 <i class="num">28</i>分钟 </span> </span>
-                    <!-- end ngIf: currentTimeLeft!=0 && ticket.status != 'closed' && ticket.status !='solved' && ticket.status != 'pending' -->
-                    <!-- ngIf: (ticket.status == 'closed' || ticket.status =='solved') && responseTime && solveTime -->
-                    <!-- ngIf: ticket.status == 'pending' && ticket.ticketMetric.planSolvedAt -->
-                    <!-- ngIf: hasSla && slaInfo --><span class="sla-standard ng-scope"
-                                                          ng-if="hasSla &amp;&amp; slaInfo" style=""><span
-                        class="title">SLA指标</span> <span class="value ng-binding">响应耗时：8小时  ，处理耗时：120小时 </span></span>
-                    <!-- end ngIf: hasSla && slaInfo --></div>
-            </div><!-- end ngIf: ticket.status != 'suspended' && ticket.status != 'deleted' && !ticket.deleted -->
+            <!-- end ngIf: ticket.status != 'suspended' && ticket.status != 'deleted' && !ticket.deleted -->
             <!-- ngIf: showNextTicketBtn --> <!-- ngIf: showpreTicketBtn -->
         </header>
-        <section class="body" ng-class="{'with-custom-form': showCustomForm}">
+
+                        <section class="body" ng-class="{'with-custom-form': showCustomForm}">
             <div class="panel-form">
-                <div class="ticket-form ng-isolate-scope" ticket="ticket" custom-form-fields="customFormFields"
-                     all-received-msg="allReceivedMsg" ticket-logs="ticketLogs">
-                    <fieldset
-                            ng-disabled="ticket.status=='closed'||ticket.deleted||ticket.status=='deleted'||ticket.status=='suspended'||!editableTicket">
+                <div class="ticket-form ng-isolate-scope" ticket="ticket" custom-form-fields="customFormFields" all-received-msg="allReceivedMsg" ticket-logs="ticketLogs">
+                <form action="/change_info/2" method="post">
+                <div style="display: none">
+                    <input type="hidden" name="csrfmiddlewaretoken" value="SZI2YQWzR1A7EMO2FXv6cx1Yjt1d2X7CR4MnBnamQL3TkZCoenhpv07ySg0rZHf8">
+                </div>
+                    <fieldset ng-disabled="ticket.status=='closed'||ticket.deleted||ticket.status=='deleted'||ticket.status=='suspended'||!editableTicket">
                         <div ng-class="ticket_bottom" class="ticket_bottom_0"><!-- ngIf: !hideRequester -->
-                            <div class="form-group ng-scope" ng-if="!hideRequester"><label>客户 <span
-                                    class="required">*</span></label>
+                            <div class="form-group ng-scope" ng-if="!hideRequester"><label>客户 <span class="required">*</span></label>
                                 <!-- ngIf: currentUser.id != ticket.requester.id && requesterToMeShow &&!ticket.id -->
                                 <fieldset>
-                                    <user-select selecteduser="ticket.requester" ticketid="ticket.id" usertype="'all'"
-                                                 by-access-scope="false" class="ng-isolate-scope">
+                                    <user-select selecteduser="ticket.requester" ticketid="ticket.id" usertype="'all'" by-access-scope="false" class="ng-isolate-scope">
                                         <style>#user-select ul {
                                             min-width: 230px;
                                             max-height: 466px;
@@ -530,364 +89,379 @@
                                             cursor: pointer;
                                             background-color: #999
                                         }</style>
-                                        <span id="user-select" ng-class="{'with-create': withCreate}"
-                                              class="with-create"><span
-                                                ng-class="{'input-group': canClear &amp;&amp; selecteduser}"><div
-                                                style="position: relative;"><input type="text"
-                                                                                   ng-disabled="chatisclose || chatbtngroupstatus == 'chat_transfer'"
-                                                                                   ng-focus="onFocus();"
-                                                                                   ng-blur="onBlur();"
-                                                                                   class="form-control ng-pristine ng-untouched ng-valid"
-                                                                                   ng-model="username" placeholder=""
-                                                                                   uib-typeahead="user.name for user in loadUsers($viewValue)"
-                                                                                   typeahead-scroll-load="loadMore()"
-                                                                                   typeahead-on-select="onSelect($item, $model, $label, $event)"
-                                                                                   typeahead-editable="true"
-                                                                                   typeahead-focus-on-select="false"
-                                                                                   scroll-load-distance="20"
-                                                                                   typeahead-min-length="0"
-                                                                                   typeahead-wait-ms="500"
-                                                                                   typeahead-template-url="/source/scripts/directives/user-select/match-template.html"
-                                                                                   typeahead-show-hint="true"
-                                                                                   aria-autocomplete="list"
-                                                                                   aria-expanded="false"
-                                                                                   aria-owns="typeahead-10647-2740"
-                                                                                   tabindex="-1"
-                                                                                   style="position: absolute; top: 0px; left: 0px; border-color: transparent; box-shadow: none; opacity: 1; background: none 0% 0% / auto repeat scroll padding-box border-box rgb(255, 255, 255); color: rgb(153, 153, 153);">
-                                            <input
-                                                    type="text"
-
-                                                class="form-control ng-pristine ng-untouched ng-valid ng-not-empty"
-                                                typeahead-editable="false" typeahead-focus-on-select="false"
-                                                typeahead-wait-ms="500"
-                                                typeahead-template-url="/source/scripts/directives/user-select/match-template.html"
-                                                typeahead-show-hint="false" aria-autocomplete="list"
-                                                aria-expanded="false" aria-owns="typeahead-10647-2740"
-                                                style="position: relative; vertical-align: top; background-color: transparent; background:gainsboro" value="{{ order.customer}}"  readonly>
-                                            <ul
-                                                class="dropdown-menu ng-isolate-scope ng-hide"
-                                                ng-show="isOpen() &amp;&amp; !moveInProgress"
-                                                ng-style="{top: position().top+'px', left: position().left+'px'}"
-                                                role="listbox" aria-hidden="true" uib-typeahead-popup=""
-                                                id="typeahead-10647-2740" matches="matches" active="activeIdx"
-                                                select="select(activeIdx, evt)" move-in-progress="moveInProgress"
-                                                query="query" position="position" assign-is-open="assignIsOpen(isOpen)"
-                                                debounce="debounceUpdate"
-                                                template-url="/source/scripts/directives/user-select/match-template.html"
-                                                style="">
+                                        <span id="user-select" ng-class="{'with-create': withCreate}" class="with-create"><span ng-class="{'input-group': canClear &amp;&amp; selecteduser}"><div style="position: relative;"><input type="text" ng-disabled="chatisclose || chatbtngroupstatus == 'chat_transfer'" ng-focus="onFocus();" ng-blur="onBlur();" class="form-control ng-pristine ng-untouched ng-valid" ng-model="username" placeholder="" uib-typeahead="user.name for user in loadUsers($viewValue)" typeahead-scroll-load="loadMore()" typeahead-on-select="onSelect($item, $model, $label, $event)" typeahead-editable="true" typeahead-focus-on-select="false" scroll-load-distance="20" typeahead-min-length="0" typeahead-wait-ms="500" typeahead-template-url="/source/scripts/directives/user-select/match-template.html" typeahead-show-hint="true" aria-autocomplete="list" aria-expanded="false" aria-owns="typeahead-10647-2740" tabindex="-1" style="position: absolute; top: 0px; left: 0px; border-color: transparent; box-shadow: none; opacity: 1; background: none 0% 0% / auto repeat scroll padding-box border-box rgb(255, 255, 255); color: rgb(153, 153, 153);">
+                                            <input type="text" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" typeahead-editable="false" typeahead-focus-on-select="false" typeahead-wait-ms="500" typeahead-template-url="/source/scripts/directives/user-select/match-template.html" typeahead-show-hint="false" aria-autocomplete="list" aria-expanded="false" aria-owns="typeahead-10647-2740" style="position: relative; vertical-align: top; background-color: transparent; background:gainsboro" value="hlwelre" readonly="">
+                                            <ul class="dropdown-menu ng-isolate-scope ng-hide" ng-show="isOpen() &amp;&amp; !moveInProgress" ng-style="{top: position().top+'px', left: position().left+'px'}" role="listbox" aria-hidden="true" uib-typeahead-popup="" id="typeahead-10647-2740" matches="matches" active="activeIdx" select="select(activeIdx, evt)" move-in-progress="moveInProgress" query="query" position="position" assign-is-open="assignIsOpen(isOpen)" debounce="debounceUpdate" template-url="/source/scripts/directives/user-select/match-template.html" style="">
     <!-- ngRepeat: match in matches track by $index -->
 </ul></div> <!-- ngIf: canClear && selecteduser --></span></span></user-select>
                                 </fieldset>
                             </div><!-- end ngIf: !hideRequester --><!-- ngIf: !hideHandle -->
 
+ <div class="form-group"><label class="ng-binding">处理人
+                                <!-- ngIf: priorityFiled.required --></label>
+                                <fieldset>
+                                    <select class="form-control ng-pristine ng-untouched ng-valid ng-isolate-scope ng-not-empty"
+                                            ng-disabled="disabled==0" ng-model="selectedpriority"
+                                            ng-options="priority.value as priority.name for priority in priorities"
+                                            ng-change="change();" name="replay_user">
 
-                            <div class="ticket-handler engineer-or-workflow-select ng-isolate-scope"
-                                 showinticketdetail="true" selectedservicedesk="ticket.serviceDesk"
-                                 selectedengineer="ticket.engineer" selectedworkflow="ticket.workflowTemplate"
-                                 ticketid="ticket.id" assignable="true"
-                                 activiti-workflow-node-uid="ticket.activitiWorkflowNodeUid" show-more-info-bar="true">
-                                <!-- ngIf: showinticketdetail -->
-                                <label ng-if="showinticketdetail" class="ng-scope">处理人
-                                <span class="required">*</span></label><!-- end ngIf: showinticketdetail -->
-                                <!-- ngIf: selectedworkflow!=null -->
-                                <div class="btn-group relative dropdown" uib-dropdown="" is-open="isopen"
-                                     style="width:100%">
-                                    <button type="button" class="dropdown-toggle form-control relative text-left"
-                                            uib-dropdown-toggle="" ng-disabled="disabled"
-                                            style="height:auto;min-height:32px" ng-click="click()" aria-haspopup="true"
-                                            aria-expanded="false">
-                                        <!-- ngIf: selectedservicedesk==null&&selectedengineer==null&&selectedworkflow==null -->
-                                        <!-- ngIf: selectedworkflow!=null -->
-                                        <!-- ngIf: selectedworkflow==null&&selectedservicedesk!=null --><span
-                                            ng-if="selectedworkflow==null&amp;&amp;selectedservicedesk!=null"
-                                            style="width:95%;display:inline-block;white-space:normal"
-                                            class="ng-binding ng-scope"><!-- ngIf: selectedengineer==null -->
-                                        <!-- ngIf: selectedengineer!=null --><span class="person ng-scope"
-                                                                                   ng-if="selectedengineer!=null"></span>
-                                        <!-- end ngIf: selectedengineer!=null -->
-                                        <!-- ngIf: selectedengineer!=null --><span ng-if="selectedengineer!=null"
-                                                                                   style="white-space:normal"
-                                                                                   class="ng-binding ng-scope">田甜/</span>
-                                        <!-- end ngIf: selectedengineer!=null --> 默认服务台 </span>
-                                        <!-- end ngIf: selectedworkflow==null&&selectedservicedesk!=null --><span
-                                            class="caret" style="position:absolute;right:8px;top:14px"></span></button>
-                                    <!-- ngIf: isopen --></div><!-- ngIf: workflows.length>0&&showWorkflowList --></div>
+
+                                    <option label="Mr.wang(2573526803@qq.com)" value="Mr.wang(2573526803@qq.com)">Mr.wang2573526803@qq.com</option>
+
+                                    <option label="niezi(347614075@qq.com)" value="niezi(347614075@qq.com)">niezi347614075@qq.com</option>
+
+                                    <option label="naihe(1320697784@qq.com)" value="naihe(1320697784@qq.com)" selected="selected">naihe1320697784@qq.com</option>
+
+                                    <option label="ceshi(5308@qq.com)" value="ceshi(5308@qq.com)">ceshi5308@qq.com</option>
+
+
+                                </select></fieldset>
+                            </div>
+
+
+
+
+
+
+
+
+
 
                             <!-- end ngIf: !hideHandle -->
-                            <div class="form-group ticket-detail-form"><label>抄送给</label>
-                                <ticket-cc-input class="copy-to ng-isolate-scope" iscopytome="isCopyToMe"
-                                                 isticketdetail="true" ccs="ticket.ccs"
-                                                 usergroup="ticket.requester.userGroup" user="ticket.requester"
-                                                 who="ticket" whoid="5968984" assignable="true">
-                                    <!-- ngIf: assignable=='true'&&(hidetomy==null||!hidetomy) --><a
-                                        class="custom-link-color pull-right ng-scope"
-                                        ng-if="assignable=='true'&amp;&amp;(hidetomy==null||!hidetomy)"
-                                        ng-click="ccMe(isContainMe)"><span ng-show="!isContainMe"
-                                                                           class="ng-hide">抄送给我</span><span
-                                        ng-show="isContainMe" class="">移除我</span></a>
-                                    <!-- end ngIf: assignable=='true'&&(hidetomy==null||!hidetomy) -->
-                                    <tags-input ng-disabled="assignable!=='true'"
-                                                ng-class="{'w300':width == 'w300','w230':width == 'w230','height34':isHidden}"
-                                                ng-focus="focus()" ng-blur="blur()" ng-keyup="keyup()" text="inputText"
-                                                ng-model="ccs" display-property="name"
-                                                on-tag-adding="validateTag($tag);" on-tag-added="tagAdded($tag)"
-                                                on-tag-removed="tagRemoved($tag)" replace-spaces-with-dashes="false"
-                                                min-length="1" max-length="128" max-tags="20" placeholder="输入Email或名字"
-                                                key-property="id" id="tagsInput"
-                                                class="ng-pristine ng-untouched ng-valid ng-isolate-scope ng-valid-max-tags ng-valid-min-tags ng-valid-leftover-text ng-not-empty">
-                                        <div class="host" tabindex="-1" ng-click="eventHandlers.host.click()"
-                                             ti-transclude-append="">
-                                            <div class="tags" ng-class="{focused: hasFocus}">
-                                                <ul class="tag-list">
-                                                    <!-- ngRepeat: tag in tagList.items track by track(tag) -->
-                                                    <li class="tag-item ng-scope"
-                                                        ng-repeat="tag in tagList.items track by track(tag)"
-                                                        ng-class="getTagClass(tag, $index)"
-                                                        ng-click="eventHandlers.tag.click(tag)">
-                                                        <ti-tag-item scope="templateScope" data="::tag"
-                                                                     class="ng-isolate-scope"><!-- ngInclude: -->
-                                                            <ng-include src="$$template" class="ng-scope"><span
-                                                                    ng-bind="$getDisplayText()"
-                                                                    class="ng-binding ng-scope">田甜(530829659@qq.com)</span>
-                                                                <a class="remove-button ng-binding ng-scope"
-                                                                   ng-click="$removeTag()"
-                                                                   ng-bind="::$$removeTagSymbol">×</a></ng-include>
-                                                        </ti-tag-item>
-                                                    </li><!-- end ngRepeat: tag in tagList.items track by track(tag) -->
-                                                </ul>
-                                                <input class="input ng-pristine ng-untouched ng-valid ng-empty"
-                                                       autocomplete="off" ng-model="newTag.text"
-                                                       ng-model-options="{getterSetter: true}"
-                                                       ng-keydown="eventHandlers.input.keydown($event)"
-                                                       ng-focus="eventHandlers.input.focus($event)"
-                                                       ng-blur="eventHandlers.input.blur($event)"
-                                                       ng-paste="eventHandlers.input.paste($event)" ng-trim="false"
-                                                       ng-class="{'invalid-tag': newTag.invalid}" ng-disabled="disabled"
-                                                       ti-bind-attrs="{type: options.type, placeholder: options.placeholder, tabindex: options.tabindex, spellcheck: options.spellcheck}"
-                                                       ti-autosize="" type="text" placeholder="输入Email或名字"
-                                                       spellcheck="true" style="width: 112px;"><span class="input"
-                                                                                                     style="visibility: hidden; width: auto; white-space: pre; display: none;">输入Email或名字</span>
-                                            </div>
-                                            <auto-complete source="loadUsers($query)" min-length="1"
-                                                           debounce-delay="300" ng-focus="focus()"
-                                                           class="ng-scope ng-isolate-scope">
-                                                <!-- ngIf: suggestionList.visible --></auto-complete>
-                                            <div class="dropdown ng-scope ng-hide" ng-show="dropdown.isShowDropdown">
-                                                <ul class="list-group dropdown-menu padding0 of_y1"
-                                                    style="display:block;max-height:300px;width:100%">
-                                                    <li class="list-group-item ng-hide" ng-show="dropdown.isShowBack">
-                                                        <button class="btn btn-default btn-xs"
-                                                                ng-click="changeCurrentDropdown('back')"><span
-                                                                class="glyphicon glyphicon-chevron-left"></span> 返回
-                                                        </button>
-                                                    </li>
-                                                    <li class="list-group-item ng-hide"
-                                                        ng-show="dropdown.type == 'foreign'"><input type="text"
-                                                                                                    class="form-control foreign-input ng-pristine ng-untouched ng-valid ng-empty"
-                                                                                                    id="tagsInput2"
-                                                                                                    placeholder="输入外援的邮箱"
-                                                                                                    ng-keyup="inputForeign()"
-                                                                                                    ng-model="dropdown.foreignEmail">
-                                                        <input type="button"
-                                                               class="btn btn-default foreign-btn custom-main-bgcolor"
-                                                               value="确定" ng-click="addForeign()"></li>
-                                                    <!-- ngRepeat: item in dropdownList track by $index -->
-                                                    <li class="list-group-item cursorhand ng-scope"
-                                                        ng-show="dropdown.type != 'foreign' &amp;&amp; (item.show || dropdown.currentDropdown != 1)"
-                                                        ng-repeat="item in dropdownList track by $index"
-                                                        ng-click="selectItem(item,$event)"><span class="persons ng-hide"
-                                                                                                 ng-show="dropdown.isShowGroupIcon"></span>
-                                                        <!-- ngIf: dropdown.type != 'engineer' || dropdown.currentDropdown != 3 || item.type === 'serviceDesk' --><span
-                                                                ng-if="dropdown.type != 'engineer' || dropdown.currentDropdown != 3 || item.type === 'serviceDesk'"
-                                                                class="ng-scope"><span
-                                                                ng-bind="item.name? item.name : item.nickname | translate"
-                                                                class="ng-binding">客户</span> <span ng-show="item.email"
-                                                                                                   class="ng-hide">(<span
-                                                                ng-bind="item.email" class="ng-binding"></span>) </span></span>
-                                                        <!-- end ngIf: dropdown.type != 'engineer' || dropdown.currentDropdown != 3 || item.type === 'serviceDesk' -->
-                                                        <!-- ngIf: dropdown.type == 'engineer' && dropdown.currentDropdown == 3 && item.type !== 'serviceDesk' --><span
-                                                                ng-show="dropdown.isShowNextIcon"
-                                                                class="pull-right glyphicon glyphicon-chevron-right ng-scope"></span>
-                                                    </li><!-- end ngRepeat: item in dropdownList track by $index -->
-                                                    <li class="list-group-item cursorhand ng-scope"
-                                                        ng-show="dropdown.type != 'foreign' &amp;&amp; (item.show || dropdown.currentDropdown != 1)"
-                                                        ng-repeat="item in dropdownList track by $index"
-                                                        ng-click="selectItem(item,$event)"><span class="persons ng-hide"
-                                                                                                 ng-show="dropdown.isShowGroupIcon"></span>
-                                                        <!-- ngIf: dropdown.type != 'engineer' || dropdown.currentDropdown != 3 || item.type === 'serviceDesk' --><span
-                                                                ng-if="dropdown.type != 'engineer' || dropdown.currentDropdown != 3 || item.type === 'serviceDesk'"
-                                                                class="ng-scope"><span
-                                                                ng-bind="item.name? item.name : item.nickname | translate"
-                                                                class="ng-binding">客服</span> <span ng-show="item.email"
-                                                                                                   class="ng-hide">(<span
-                                                                ng-bind="item.email" class="ng-binding"></span>) </span></span>
-                                                        <!-- end ngIf: dropdown.type != 'engineer' || dropdown.currentDropdown != 3 || item.type === 'serviceDesk' -->
-                                                        <!-- ngIf: dropdown.type == 'engineer' && dropdown.currentDropdown == 3 && item.type !== 'serviceDesk' --><span
-                                                                ng-show="dropdown.isShowNextIcon"
-                                                                class="pull-right glyphicon glyphicon-chevron-right ng-scope"></span>
-                                                    </li><!-- end ngRepeat: item in dropdownList track by $index -->
-                                                    <li class="list-group-item cursorhand ng-scope"
-                                                        ng-show="dropdown.type != 'foreign' &amp;&amp; (item.show || dropdown.currentDropdown != 1)"
-                                                        ng-repeat="item in dropdownList track by $index"
-                                                        ng-click="selectItem(item,$event)"><span class="persons ng-hide"
-                                                                                                 ng-show="dropdown.isShowGroupIcon"></span>
-                                                        <!-- ngIf: dropdown.type != 'engineer' || dropdown.currentDropdown != 3 || item.type === 'serviceDesk' --><span
-                                                                ng-if="dropdown.type != 'engineer' || dropdown.currentDropdown != 3 || item.type === 'serviceDesk'"
-                                                                class="ng-scope"><span
-                                                                ng-bind="item.name? item.name : item.nickname | translate"
-                                                                class="ng-binding">关联客户</span> <span
-                                                                ng-show="item.email" class="ng-hide">(<span
-                                                                ng-bind="item.email" class="ng-binding"></span>) </span></span>
-                                                        <!-- end ngIf: dropdown.type != 'engineer' || dropdown.currentDropdown != 3 || item.type === 'serviceDesk' -->
-                                                        <!-- ngIf: dropdown.type == 'engineer' && dropdown.currentDropdown == 3 && item.type !== 'serviceDesk' --><span
-                                                                ng-show="dropdown.isShowNextIcon"
-                                                                class="pull-right glyphicon glyphicon-chevron-right ng-scope"></span>
-                                                    </li><!-- end ngRepeat: item in dropdownList track by $index -->
-                                                    <li class="list-group-item cursorhand ng-scope"
-                                                        ng-show="dropdown.type != 'foreign' &amp;&amp; (item.show || dropdown.currentDropdown != 1)"
-                                                        ng-repeat="item in dropdownList track by $index"
-                                                        ng-click="selectItem(item,$event)"><span class="persons ng-hide"
-                                                                                                 ng-show="dropdown.isShowGroupIcon"></span>
-                                                        <!-- ngIf: dropdown.type != 'engineer' || dropdown.currentDropdown != 3 || item.type === 'serviceDesk' --><span
-                                                                ng-if="dropdown.type != 'engineer' || dropdown.currentDropdown != 3 || item.type === 'serviceDesk'"
-                                                                class="ng-scope"><span
-                                                                ng-bind="item.name? item.name : item.nickname | translate"
-                                                                class="ng-binding">外援</span> <span ng-show="item.email"
-                                                                                                   class="ng-hide">(<span
-                                                                ng-bind="item.email" class="ng-binding"></span>) </span></span>
-                                                        <!-- end ngIf: dropdown.type != 'engineer' || dropdown.currentDropdown != 3 || item.type === 'serviceDesk' -->
-                                                        <!-- ngIf: dropdown.type == 'engineer' && dropdown.currentDropdown == 3 && item.type !== 'serviceDesk' --><span
-                                                                ng-show="dropdown.isShowNextIcon"
-                                                                class="pull-right glyphicon glyphicon-chevron-right ng-scope"></span>
-                                                    </li><!-- end ngRepeat: item in dropdownList track by $index -->
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </tags-input>
-                                </ticket-cc-input>
-                            </div>
-                            <div class="form-group"><label class="ng-binding">类型
-                                <!-- ngIf: typeFiled.required --></label><select
-                                    class="form-control ng-pristine ng-untouched ng-valid ng-isolate-scope ng-empty"
-                                    ng-disabled="disabled==0" ng-model="tickettype"
-                                    ng-options="ticketType.name for ticketType in ticketTypes"
-                                    ng-change="change(tickettype);" selectedtickettype="ticket.ticketType"
-                                    ticketprojecttype="ticketprojecttype">
-                                <option value="" class="" selected="selected">-</option>
-                                <option label="问询" value="object:670">问询</option>
-                                <option label="任务" value="object:671">任务</option>
-                                <option label="问题" value="object:672">问题</option>
-                                <option label="事件" value="object:673">事件</option>
-                            </select></div>
-                            <div class="form-group"><label class="ng-binding">服务目录 <!-- ngIf: catalogFiled.required -->
-                                <span style="max-width:200px;display:inline-block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:400;position:relative;top:4px;color:#999"
-                                      class="ng-binding">(工单服务目录)</span></label>
-                                <fieldset>
-                                    <div class="btn-group relative ng-isolate-scope dropdown" uib-dropdown=""
-                                         is-open="isopen" style="width:100%" disabled="disabled"
-                                         selectedservicecatalog="ticket.serviceCatalog">
-                                        <button type="button" class="dropdown-toggle form-control relative"
-                                                uib-dropdown-toggle="" ng-disabled="disabled==0"
-                                                style="text-align:left;height:auto;min-height:32px;word-break:break-all"
-                                                ng-click="click()" aria-haspopup="true" aria-expanded="false"><span
-                                                style="float:left;word-break:break-all"
-                                                ng-class="{'one-line-select-span':singleLine}" ng-title="产品/产品1/使用问题"
-                                                ng-bind="selectedServiceCatalogNameChain"
-                                                class="ng-binding">产品/产品1/使用问题</span> <!-- ngIf: !catSelected -->
-                                        </button> <!-- ngIf: catSelected -->
-                                        <button type="button" class="close ng-scope" ng-if="catSelected"
-                                                ng-click="clear()" ng-disabled="disabled==0"
-                                                style="position:absolute;right:8px;top:5px"><span
-                                                aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-                                        <!-- end ngIf: catSelected --><!-- ngIf: isopen --></div>
-                                </fieldset>
-                            </div>
-                            <div class="form-group"><label class="ng-binding">优先级
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                               <div class="form-group"><label class="ng-binding">问题类型
                                 <!-- ngIf: priorityFiled.required --></label>
-                                <fieldset><select
+                                <fieldset>
+                                    <select
                                         class="form-control ng-pristine ng-untouched ng-valid ng-isolate-scope ng-not-empty"
                                         ng-disabled="disabled==0" ng-model="selectedpriority"
                                         ng-options="priority.value as priority.name for priority in priorities"
-                                        ng-change="change();" selectedpriority="ticket.priority">
-                                    <option value="" class="">-</option>
-                                    <option label="P1" value="string:P1">P1</option>
-                                    <option label="P2" value="string:P2" selected="selected">P2</option>
-                                    <option label="P3" value="string:P3">P3</option>
-                                    <option label="P4" value="string:P4">P4</option>
-                                    <option label="P5" value="string:P5">P5</option>
+                                        ng-change="change();"  name="question">
+
+                                    {% for item in questions %}
+                                    <option  value="{{ item.name }}" {% if item.name ==order.question %} selected ="selected"{% endif %}>{{ item.name }}</option>
+                                    {% endfor %}
+                                </select></fieldset>
+                            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            <div class="form-group"><label class="ng-binding">优先级
+                                <!-- ngIf: priorityFiled.required --></label>
+                                <fieldset>
+                                    <select class="form-control ng-pristine ng-untouched ng-valid ng-isolate-scope ng-not-empty" ng-disabled="disabled==0" ng-model="selectedpriority" ng-options="priority.value as priority.name for priority in priorities" ng-change="change();" selectedpriority="ticket.priority" name="select_priority">
+
+                                            <option value="P1">P1</option>
+
+
+                                            <option value="P2">P2</option>
+
+
+                                            <option value="P3">P3</option>
+
+
+                                            <option value="P4">P4</option>
+
+
+
                                 </select></fieldset>
                             </div>
                             <div class="form-group"><label class="ng-binding">要求完成时间
                                 <!-- ngIf: planSolvedAtField.required --></label>
-                                <fieldset ng-disabled="ticket.status=='solved' || !!ticket.ticketMetric.sla"
-                                          disabled="disabled">
-                                    <div class="input-group input-size-middle date-input ng-isolate-scope"
-                                         disabled="disabled" selected-plan-solved-at="ticket.ticketMetric.planSolvedAt">
-                                        <input type="text" datetime-picker="yyyy/MM/dd HH:mm:ss"
-                                               button-bar="datetimepickerConfig.buttonBar"
-                                               datepicker-options="datetimepickerConfig.datepickerOptions"
-                                               timepicker-options="datetimepickerConfig.timepickerOptions"
-                                               datepicker-append-to-body="true" is-open="isOpen" ng-model="selectedDate"
-                                               ng-click="open($event)"
-                                               class="form-control ng-pristine ng-untouched ng-isolate-scope ng-not-empty ng-invalid ng-invalid-datetime"
-                                               ng-disabled="disabled" when-closed="updateValue();"><label
-                                            class="input-group-btn">
-                                        <button class="btn btn-default dateBtn" ng-click="open($event)" type="button"
-                                                ng-disabled="disabled"><i class="glyphicon glyphicon-calendar"></i>
-                                        </button>
-                                    </label></div>
+                                <fieldset ng-disabled="ticket.status=='solved' || !!ticket.ticketMetric.sla" disabled="disabled">
+                                    <div class="input-group input-size-middle date-input ng-isolate-scope" disabled="disabled" selected-plan-solved-at="ticket.ticketMetric.planSolvedAt">
+                                        <input type="text" datetime-picker="yyyy/MM/dd HH:mm:ss" button-bar="datetimepickerConfig.buttonBar" datepicker-options="datetimepickerConfig.datepickerOptions" timepicker-options="datetimepickerConfig.timepickerOptions" datepicker-append-to-body="true" is-open="isOpen" ng-model="selectedDate" ng-click="open($event)" class="form-control ng-pristine ng-untouched ng-isolate-scope ng-not-empty ng-invalid ng-invalid-datetime" ng-disabled="disabled" when-closed="updateValue();" value="2019-08-24 01:00:00" width="150px">
+                                        </div>
                                 </fieldset>
                             </div>
-                            <div class="form-group"><label class="ng-binding">标签
-                                <!-- ngIf: tagsField.required --></label>
-                                <ewei-tags-input
-                                        edit-able="tagsField.edit_able &amp;&amp; !(ticket.status=='closed'||ticket.deleted||ticket.status=='deleted'||ticket.status=='suspended'||!editableTicket)"
-                                        tags="ticket.tags" who="ticket" whoid="5968984" notes="输入关键字搜索标签，按空格创建新标签"
-                                        class="ng-isolate-scope">
-                                    <style>.input-group tags-input {
-                                        display: block
-                                    }</style>
-                                    <tags-input ng-model="tags" display-property="name" on-tag-added="tagAdded($tag)"
-                                                on-tag-removed="tagRemoved($tag)" add-on-space="true"
-                                                replace-spaces-with-dashes="false" min-length="1" add-on-blur="false"
-                                                max-length="16" ng-disabled="editAble == 0"
-                                                placeholder="输入关键字搜索标签，按空格创建新标签"
-                                                class="ng-pristine ng-untouched ng-valid ng-isolate-scope ng-empty ng-valid-max-tags ng-valid-min-tags ng-valid-leftover-text">
-                                        <div class="host" tabindex="-1" ng-click="eventHandlers.host.click()"
-                                             ti-transclude-append="">
-                                            <div class="tags" ng-class="{focused: hasFocus}">
-                                                <ul class="tag-list">
-                                                    <!-- ngRepeat: tag in tagList.items track by track(tag) --></ul>
-                                                <input class="input ng-pristine ng-untouched ng-valid ng-empty"
-                                                       autocomplete="off" ng-model="newTag.text"
-                                                       ng-model-options="{getterSetter: true}"
-                                                       ng-keydown="eventHandlers.input.keydown($event)"
-                                                       ng-focus="eventHandlers.input.focus($event)"
-                                                       ng-blur="eventHandlers.input.blur($event)"
-                                                       ng-paste="eventHandlers.input.paste($event)" ng-trim="false"
-                                                       ng-class="{'invalid-tag': newTag.invalid}" ng-disabled="disabled"
-                                                       ti-bind-attrs="{type: options.type, placeholder: options.placeholder, tabindex: options.tabindex, spellcheck: options.spellcheck}"
-                                                       ti-autosize="" type="text" placeholder="输入关键字搜索标签，按空格创建新标签"
-                                                       spellcheck="true" style="width: 260px;"><span class="input"
-                                                                                                     style="visibility: hidden; width: auto; white-space: pre; display: none;">输入关键字搜索标签，按空格创建新标签</span>
-                                            </div>
-                                            <auto-complete source="loadTags($query)" min-length="1" debounce-delay="300"
-                                                           load-on-focus="true" load-on-empty="true"
-                                                           class="ng-scope ng-isolate-scope">
-                                                <!-- ngIf: suggestionList.visible --></auto-complete>
-                                            <span class="help-block ng-scope" ng-hide="hideHelp==='true'">输入文字匹配已有标签，或按空格或回车生成新标签。如输入边框变红，表示已超过可添加标签的最大数，请尝试删除标签，直到红色边框消失，否则不能保存。</span>
-                                        </div>
-                                    </tags-input>
-                                </ewei-tags-input>
-                            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                             <div>
-                                <ticket-custome-field ticket="ticket" new-ticket-form="newTicketForm"
-                                                      external-url-authorize="externalUrlAuthorize"
-                                                      custom-form-fields="customFormFields" class="ng-isolate-scope">
+                                <ticket-custome-field ticket="ticket" new-ticket-form="newTicketForm" external-url-authorize="externalUrlAuthorize" custom-form-fields="customFormFields" class="ng-isolate-scope">
                                     <!-- ngRepeat: ticketCustomField in ticket.ticketCustomFields track by $index --></ticket-custome-field>
                             </div>
                         </div>
                     </fieldset>
+                    <button type="submit">提交</button>
+
+                </form>
+
                 </div>
             </div><!-- ngIf: !!showCustomForm && customFormFields && customFormFields.length > 0 -->
             <!-- ngIf: customFormFields && customFormFields.length > 0 -->
@@ -897,46 +471,19 @@
                         <div class="chat-plug-promet-group" style="position:absolute;top:0;left:0;width:100%">
                             <!-- ngIf: plugPrometStatus == 'download' -->
                             <!-- ngIf: plugPrometStatus == 'download-done' --></div>
-                        <div style="margin-left:10px;line-height:59px"><i class="fa fa-star-o"
-                                                                          style="font-size:1.3em;cursor:pointer"
-                                                                          ng-class="{'fa-star-o':!ticket.isTarget,'fa-star color_yellow':ticket.isTarget}"
-                                                                          ng-click="star_target(ticket)">
-                            <ewei-start-show ticketsubscriptions="ticketsubscriptions" item="ticket"
-                                             class="ng-isolate-scope"></ewei-start-show>
+                        <div style="margin-left:10px;line-height:59px"><i class="fa fa-star-o" style="font-size:1.3em;cursor:pointer" ng-class="{'fa-star-o':!ticket.isTarget,'fa-star color_yellow':ticket.isTarget}" ng-click="star_target(ticket)">
+                            <ewei-start-show ticketsubscriptions="ticketsubscriptions" item="ticket" class="ng-isolate-scope"></ewei-start-show>
                         </i></div>
                         <div class="box_flex_1">
-                            <div class="padding10px" bindonce="ticket"><strong><input type="text"
-                                                                                      ng-model="ticket.subject"
-                                                                                      required="" maxlength="128"
-                                                                                      class="form-control ng-pristine ng-untouched ng-valid ng-not-empty ng-valid-required ng-valid-maxlength hide_input"
-                                                                                      ng-class="{true: 'show_input',false: 'hide_input'}[displaySubjectView]"
-                                                                                      style="color: rgb(79, 92, 105); font-size: 13px;"
-                                                                                      ng-mouseover="mouseoverName()"
-                                                                                      ng-mouseout="mouseoutName()"
-                                                                                      ng-blur="updateSubject();">
-                            </strong><span class="text_overflow_hide"
-                                           style="white-space:initial;max-height:20px;color:#9ea7b7"><span
-                                    ng-bind="ticket.createdAt" class="ng-binding">{{ order.create_time }}</span> | <span
-                                    ng-bind="ticket.requester.name" class="ng-binding">Robot</span> <span
-                                    ng-hide="!ticket.requester.mobilePhone &amp;&amp; !ticket.requester.contactMobilePhone &amp;&amp; !ticket.requester.email &amp;&amp; !ticket.requester.contactEmail"
-                                    class="">&lt; </span>
+                            <div class="padding10px" bindonce="ticket"><strong>
+                                <span style="color: black ">这是由naihe创建的工单</span>
+                            </strong><span class="text_overflow_hide" style="white-space:initial;max-height:20px;color:#9ea7b7"><span ng-bind="ticket.createdAt" class="ng-binding">2019-08-24 08:28:11.707019</span> | <span ng-bind="ticket.requester.name" class="ng-binding">naihe</span> <span ng-hide="!ticket.requester.mobilePhone &amp;&amp; !ticket.requester.contactMobilePhone &amp;&amp; !ticket.requester.email &amp;&amp; !ticket.requester.contactEmail" class="">&lt; </span>
                                 <!-- ngIf: ticket.requester.mobilePhone || ticket.requester.contactMobilePhone -->
-                                <!-- ngIf: ticket.requester.email || ticket.requester.contactEmail --><span
-                                        ng-if="ticket.requester.email || ticket.requester.contactEmail"
-                                        ng-class="{'custom-main-font-color': ticket.requester.email}"
-                                        class="ng-scope custom-main-font-color"><i class="iconfont"></i>&nbsp;<span
-                                        ng-bind="ticket.requester.email?ticket.requester.email:ticket.requester.contactEmail"
-                                        class="ng-binding">robot@ewei.com</span> </span>
-                                <!-- end ngIf: ticket.requester.email || ticket.requester.contactEmail --><span
-                                        ng-hide="!ticket.requester.mobilePhone &amp;&amp; !ticket.requester.contactMobilePhone &amp;&amp; !ticket.requester.email &amp;&amp; !ticket.requester.contactEmail"
-                                        class="">&gt; </span>
-                                <!-- ngIf: ticket.status!='closed'&&!ticket.deleted&&ticket.status!='deleted'&&ticket.status!='suspended' --><span
-                                        ng-if="ticket.status!='closed'&amp;&amp;!ticket.deleted&amp;&amp;ticket.status!='deleted'&amp;&amp;ticket.status!='suspended'"
-                                        class="ng-scope"></span>
-                                <!-- end ngIf: ticket.status!='closed'&&!ticket.deleted&&ticket.status!='deleted'&&ticket.status!='suspended' --> | &lt;<span
-                                        ng-bind="ticket.via.channelName" class="ng-binding">客服界面</span> &gt; &lt;<a
-                                        class="custom-main-font-color ng-binding" ng-href="" target="_blank">田甜</a>&gt;</span>
-                            </div>
+                                <!-- ngIf: ticket.requester.email || ticket.requester.contactEmail --><span ng-if="ticket.requester.email || ticket.requester.contactEmail" ng-class="{'custom-main-font-color': ticket.requester.email}" class="ng-scope custom-main-font-color"><i class="iconfont"></i>&nbsp;<span ng-bind="ticket.requester.email?ticket.requester.email:ticket.requester.contactEmail" class="ng-binding">1320697784@qq.com</span> </span>
+                                <!-- end ngIf: ticket.requester.email || ticket.requester.contactEmail --><span ng-hide="!ticket.requester.mobilePhone &amp;&amp; !ticket.requester.contactMobilePhone &amp;&amp; !ticket.requester.email &amp;&amp; !ticket.requester.contactEmail" class="">&gt; </span>
+                                <!-- ngIf: ticket.status!='closed'&&!ticket.deleted&&ticket.status!='deleted'&&ticket.status!='suspended' --><span ng-if="ticket.status!='closed'&amp;&amp;!ticket.deleted&amp;&amp;ticket.status!='deleted'&amp;&amp;ticket.status!='suspended'" class="ng-scope"></span>
+                                <!-- end ngIf: ticket.status!='closed'&&!ticket.deleted&&ticket.status!='deleted'&&ticket.status!='suspended' -->
+                            </span></div>
                         </div>
                     </div><!-- ngIf: ticket.status=='pending' && !ticket.deleted && latestTicketSla -->
                     <!-- ngIf: ticket.status=='solved' && !ticket.deleted -->
@@ -944,58 +491,41 @@
                     <!-- ngIf: ticket.status=='closed' && !ticket.deleted -->
                     <!-- ngIf: ticket.status=='deleted' || ticket.deleted -->
                     <!-- ngIf: ticket.status=='suspended' && !ticket.deleted -->
-                    <div class="padding10px margin_right5px" ng-class="{'hide':!showReply}" style="padding-top:0"
-                         ng-show="ticket.status!='closed'&amp;&amp;!ticket.deleted &amp;&amp; ticket.status!='deleted' &amp;&amp; ticket.status!='solved' &amp;&amp; ticket.status!='suspended'">
+                    <div class="padding10px margin_right5px" ng-class="{'hide':!showReply}" style="padding-top:0" ng-show="ticket.status!='closed'&amp;&amp;!ticket.deleted &amp;&amp; ticket.status!='deleted' &amp;&amp; ticket.status!='solved' &amp;&amp; ticket.status!='suspended'">
                         <ticket-reply-box-template>
-                            <form name="replyTicketForm" action="{{ url('orders:replay',args=(id,) ) }}" method="post"
-                                  class="css-form ng-valid ng-dirty ng-valid-parse ng-valid-maxlength" novalidate="">
+                            <form name="replyTicketForm" action="/replay/2" method="post" class="css-form ng-valid ng-dirty ng-valid-parse ng-valid-maxlength" novalidate="">
                                 <div style="display: none;">
-                                    <input type="hidden" name="csfrmiddlewaretoken" value="{{ csrf_token }}">
+                                    <input type="hidden" name="csfrmiddlewaretoken" value="6yywxp7jngRm3rIrif2PwGOp096oUEeT5DCRaWl6m0k8JEwNRFO8P9UZzW5CRomp">
 
                                 </div>
                                 <input type="text" name="replay" style="width: 200px;height: 100px">
                                 <div class="clearfix" style="margin-top:10px">
                                     <div class="pull-left">
                                         <!-- ngIf: ticket.status === 'new' || ticket.status === 'assigned' || ticket.status === 'pending' || ticket.status === 'open' -->
-                                        <div class="ticket-reply-button btn-group dropup ng-scope ng-isolate-scope dropdown"
-                                             uib-dropdown="" is-open="status.isopen" title=""
-                                             ng-mouseenter="setTitle(disabled)"
-                                             ng-if="ticket.status === 'new' || ticket.status === 'assigned' || ticket.status === 'pending' || ticket.status === 'open'"
-                                             ticket="ticket" comment="newComment" open="open"
-                                             reply="reply(_status,null,null,onlyComment)" disabled="disabled"
-                                             uploading="uploading" attachments="newComment.attachments"
-                                             is-saving="isSavingComment"><!-- ngIf: isLoding -->
+                                        <div class="ticket-reply-button btn-group dropup ng-scope ng-isolate-scope dropdown" uib-dropdown="" is-open="status.isopen" title="" ng-mouseenter="setTitle(disabled)" ng-if="ticket.status === 'new' || ticket.status === 'assigned' || ticket.status === 'pending' || ticket.status === 'open'" ticket="ticket" comment="newComment" open="open" reply="reply(_status,null,null,onlyComment)" disabled="disabled" uploading="uploading" attachments="newComment.attachments" is-saving="isSavingComment"><!-- ngIf: isLoding -->
                                             <!-- ngIf: buttonStatus.showReply && !isLoding -->
-                                            <button ng-if="buttonStatus.showReply &amp;&amp; !isLoding" type="button"
-                                                    class="btn btn-confirm gray-btn ng-scope"
-                                                    ng-disabled="checkShouldDisabled()" ng-click="submit('',true)"
-                                                    style="min-width:125px;border-bottom-right-radius:0;border-top-right-radius:0">
-                                                <!-- ngIf: isSaving --> <!-- ngIf: !isSaving --><span ng-if="!isSaving"
-                                                                                                      class="ng-scope">回复</span>
+                                            <button type="submit" ng-if="buttonStatus.showReply &amp;&amp; !isLoding" class="btn btn-confirm gray-btn ng-scope" ng-disabled="checkShouldDisabled()" ng-click="submit('',true)" style="min-width:125px;border-bottom-right-radius:0;border-top-right-radius:0">
+                                                <!-- ngIf: isSaving --> <!-- ngIf: !isSaving --><span ng-if="!isSaving" class="ng-scope">回复</span>
                                                 <!-- end ngIf: !isSaving --></button>
                                             <!-- end ngIf: buttonStatus.showReply && !isLoding -->
                                             <!-- ngIf: buttonStatus.showRobTicket && !isLoding -->
                                             <!-- ngIf: buttonStatus.showGetTicket && !isLoding -->
                                             <!-- ngIf: buttonStatus.showCancelPendingTicket && !isLoding -->
-{#                                            <button type="button" class="btn btn-confirm gray-btn dropdown-toggle"#}
-{#                                                    style="min-width:34px;border-left:1px solid rgba(0,0,0,.15);border-bottom-left-radius:0;border-top-left-radius:0;margin-left:0"#}
-{#                                                    uib-dropdown-toggle="" ng-disabled="checkShouldDisabled()"#}
-{#                                                    aria-haspopup="true" aria-expanded="false"><span class="caret"#}
-{#                                                                                                     style="left:12px"></span>#}
-{#                                                <span class="sr-only">Split button!</span></button>#}
-                                            <ul class="dropdown-menu targetul" role="menu" uib-dropdown-menu=""
-                                                ng-show="buttonStatus.showGetSlovedTicket || buttonStatus.showBackPrevious || buttonStatus.showNextPoint || buttonStatus.showSlovedTicket || buttonStatus.showPendingTicket || buttonStatus.showGetPendingTicket || buttonStatus.showRobSlovedTicket || buttonStatus.showRobPendingTicket || buttonStatus.showOnlyReply">
+
+
+
+
+
+
+                                            <ul class="dropdown-menu targetul" role="menu" uib-dropdown-menu="" ng-show="buttonStatus.showGetSlovedTicket || buttonStatus.showBackPrevious || buttonStatus.showNextPoint || buttonStatus.showSlovedTicket || buttonStatus.showPendingTicket || buttonStatus.showGetPendingTicket || buttonStatus.showRobSlovedTicket || buttonStatus.showRobPendingTicket || buttonStatus.showOnlyReply">
                                                 <!-- ngIf: buttonStatus.showReplyAsSolution -->
-                                                <li class="li ng-scope" ng-if="buttonStatus.showReplyAsSolution"><a
-                                                        ng-click="submit('asSolution')">处理完毕</a></li>
+                                                <li class="li ng-scope" ng-if="buttonStatus.showReplyAsSolution"><a ng-click="submit('asSolution')">处理完毕</a></li>
                                                 <!-- end ngIf: buttonStatus.showReplyAsSolution -->
                                                 <!-- ngIf: buttonStatus.showSlovedTicket -->
-                                                <li class="li ng-scope" ng-if="buttonStatus.showSlovedTicket"><a
-                                                        ng-click="submit('solved')">超时</a></li>
+                                                <li class="li ng-scope" ng-if="buttonStatus.showSlovedTicket"><a ng-click="submit('solved')">超时</a></li>
                                                 <!-- end ngIf: buttonStatus.showSlovedTicket -->
                                                 <!-- ngIf: buttonStatus.showPendingTicket -->
-                                                <li class="li ng-scope" ng-if="buttonStatus.showPendingTicket"><a
-                                                        ng-click="submit('pending')">延期</a></li>
+                                                <li class="li ng-scope" ng-if="buttonStatus.showPendingTicket"><a ng-click="submit('pending')">延期</a></li>
                                                 <!-- end ngIf: buttonStatus.showPendingTicket -->
                                                 <!-- ngIf: buttonStatus.showBackPrevious -->
                                                 <!-- ngIf: buttonStatus.showNextPoint -->
@@ -1016,22 +546,20 @@
                         </ticket-reply-box-template>
                     </div>
                 </section>
-                <ticket-log ticketid="5968984" ticketno="1908002" ticket-logs="ticketLogs"
-                            all-received-msg="allReceivedMsg" class="js-ticket-content ng-isolate-scope">
-                    <div infinite-scroll="ticketLog.loadMoreTicketContext();"
-                         class="ticket-log-wrapper ng-isolate-scope">
+                <ticket-log ticketid="5968984" ticketno="1908002" ticket-logs="ticketLogs" all-received-msg="allReceivedMsg" class="js-ticket-content ng-isolate-scope">
+                    <div infinite-scroll="ticketLog.loadMoreTicketContext();" class="ticket-log-wrapper ng-isolate-scope">
                         <div class="text-center absolute nav-ticket-log" style="z-index:1;left:45%;margin-top:-3px">
-                            <div class="btn-group btn-group-xs"><a class="btn btn-default"
-                                                                   ng-class="{'active':ticketLog.filterType==='all'}"
-                                                                   ng-click="ticketLog.loadTicketContext('all');">全部</a>
-                                <a class="btn btn-default active"
-                                   ng-class="{'active':ticketLog.filterType==='comments'}"
-                                   ng-click="ticketLog.loadTicketContext('comments');">仅回复</a> <a
-                                        class="btn btn-default"
-                                        ng-class="{'active':ticketLog.filterType==='attachments'}"
-                                        ng-click="ticketLog.loadTicketTimeline('attachments');">附件</a> <a
-                                        class="btn btn-default" ng-class="{'active':ticketLog.filterType==='timeline'}"
-                                        ng-click="ticketLog.loadTicketTimeline('timeline');">时间轴</a></div>
+                            <div class="btn-group btn-group-xs">
+                                <a class="btn btn-default" ng-class="{'active':ticketLog.filterType==='all'}" ng-click="ticketLog.loadTicketContext('all');">全部回复</a>
+
+
+
+
+
+
+
+
+                            </div>
                         </div>
 
 
@@ -1042,45 +570,28 @@
 
 
 
-{#                       工单操作纪录#}
 
-                        <div id="ticketLog" class="ticket-replay ng-scope"
-                             ng-if="ticketLog.filterType === 'all' || ticketLog.filterType === 'comments'">
+
+
+
+                        <div id="ticketLog" class="ticket-replay ng-scope" ng-if="ticketLog.filterType === 'all' || ticketLog.filterType === 'comments'">
                             <ul class="list-unstyled margin20px ng-isolate-scope" ticket-image-view="">
                                 <!-- ngRepeat: log in ticketLog.ticketLogs -->
                                 <li ng-repeat="log in ticketLog.ticketLogs" class="chat-item ng-scope" style="">
                                     <!-- ngIf: log.operations -->
                                     <!-- ngIf: !log.operations && !log.ticketComment.chat.id && ((log.ticketComment.content&&log.ticketComment.content!='')||log.ticketComment.attachments.length>0||(log.ticketComment.extra&&log.ticketComment.extra!='')) -->
-                                    <div ng-if="!log.operations &amp;&amp; !log.ticketComment.chat.id &amp;&amp; ((log.ticketComment.content&amp;&amp;log.ticketComment.content!='')||log.ticketComment.attachments.length>0||(log.ticketComment.extra&amp;&amp;log.ticketComment.extra!=''))"
-                                         class="ng-scope">
+                                    <div ng-if="!log.operations &amp;&amp; !log.ticketComment.chat.id &amp;&amp; ((log.ticketComment.content&amp;&amp;log.ticketComment.content!='')||log.ticketComment.attachments.length>0||(log.ticketComment.extra&amp;&amp;log.ticketComment.extra!=''))" class="ng-scope">
                                         <div class="media" style="overflow:visible">
-                                            <div class="media-left media-top" style="padding-right:4px"><img
-                                                    class="w40 h40 img-circle" ng-click="editable=='true'?toEdit():''"
-                                                    ng-src="source/images/face/header_40.png" title="" imageurl=""
-                                                    defaultimageurl="source/images/face/header_40.png"
-                                                    imagestyle="head.40.40" imageclass="w40 h40 img-circle"
-                                                    editable="false" src="source/images/face/header_40.png"></div>
+                                            <div class="media-left media-top" style="padding-right:4px"><img class="w40 h40 img-circle" ng-click="editable=='true'?toEdit():''" ng-src="source/images/face/header_40.png" title="" imageurl="" defaultimageurl="source/images/face/header_40.png" imagestyle="head.40.40" imageclass="w40 h40 img-circle" editable="false" src="source/images/face/header_40.png"></div>
                                             <div class="media-body media-top" style="overflow:visible">
                                                 <div class="media-user-info" style="color:#9ea7b7">
-                                                    <!-- ngIf: !log.ticketComment.chat.id --><span
-                                                        ng-if="!log.ticketComment.chat.id"
-                                                        class="padding_right10px ng-binding ng-scope"
-                                                        ng-bind="::log.user.name" style="color:#333c3e;font-size:13px">Robot</span>
+                                                    <!-- ngIf: !log.ticketComment.chat.id --><span ng-if="!log.ticketComment.chat.id" class="padding_right10px ng-binding ng-scope" ng-bind="::log.user.name" style="color:#333c3e;font-size:13px">NaiHe</span>
                                                     <!-- end ngIf: !log.ticketComment.chat.id -->
-                                                    <!-- ngIf: log.ticketComment.chat.id --> <span
-                                                        ng-bind="log.createdAt | dateFilter_style1"
-                                                        class="padding_right10px ng-binding">08月08日 19:36</span>
+                                                    <!-- ngIf: log.ticketComment.chat.id --> <span ng-bind="log.createdAt | dateFilter_style1" class="padding_right10px ng-binding">2019-08-24 08:31:39.685476</span>
                                                     <!-- ngIf: log.ticketComment.equipment -->
                                                     <!-- ngIf: log.ticketComment.address --></div>
                                                 <div class="ticket-log-content">
-                                                    <ticket-comment-detail user="::log.user" comment="log.ticketComment"
-                                                                           ng-class="::log.user.type"
-                                                                           class="ng-isolate-scope customer"><span
-                                                            class="text not-engineer"
-                                                            ng-class="{'not-public':!vm.ticketComment.open,'not-engineer':vm.ticketUser.type!=='engineer','single':(vm.ticketComment.attachments.length===1&amp;&amp;!vm.ticketComment.content)||vm.ticketComment.questionId || vm.ticketComment.type==5}"><!-- ngIf: !vm.ticketComment.richTextContent&&!vm.ticketComment.questionId && vm.ticketComment.type!=8 && vm.ticketComment.type!=5 && vm.ticketComment.type!=7 --><p
-                                                            ng-if="!vm.ticketComment.richTextContent&amp;&amp;!vm.ticketComment.questionId &amp;&amp; vm.ticketComment.type!=8 &amp;&amp; vm.ticketComment.type!=5 &amp;&amp; vm.ticketComment.type!=7"
-                                                            ng-bind-html="::vm.ticketComment.content|linkSetMark|wechatEmoji|sanitize|trusted"
-                                                            class="ng-binding ng-scope">嗯，你已知道怎样回复客户了。 <br><br>在工单处理过程中，经常需要等待客户的确认才能进行下一步处理。由于客户的反馈时间不可控，因此你可以暂停工单，等客户回应后再继续处理。<br><br>请先输入回复消息，然后点击回复按钮旁边的向上箭头，选取‘回复为暂停’。这样，工单将处于暂停状态，直至客户的下一个回复自动触发工单状态为处理中。<br><br>暂停的时间不管有多久，都不算作你的处理时间，是不是很聪明呢？请不要作弊哦。</p>
+                                                    <ticket-comment-detail user="::log.user" comment="log.ticketComment" ng-class="::log.user.type" class="ng-isolate-scope customer"><span class="text not-engineer" ng-class="{'not-public':!vm.ticketComment.open,'not-engineer':vm.ticketUser.type!=='engineer','single':(vm.ticketComment.attachments.length===1&amp;&amp;!vm.ticketComment.content)||vm.ticketComment.questionId || vm.ticketComment.type==5}"><!-- ngIf: !vm.ticketComment.richTextContent&&!vm.ticketComment.questionId && vm.ticketComment.type!=8 && vm.ticketComment.type!=5 && vm.ticketComment.type!=7 --><p ng-if="!vm.ticketComment.richTextContent&amp;&amp;!vm.ticketComment.questionId &amp;&amp; vm.ticketComment.type!=8 &amp;&amp; vm.ticketComment.type!=5 &amp;&amp; vm.ticketComment.type!=7" ng-bind-html="::vm.ticketComment.content|linkSetMark|wechatEmoji|sanitize|trusted" class="ng-binding ng-scope">None</p>
                                                         <!-- end ngIf: !vm.ticketComment.richTextContent&&!vm.ticketComment.questionId && vm.ticketComment.type!=8 && vm.ticketComment.type!=5 && vm.ticketComment.type!=7 -->
                                                         <!-- ngIf: vm.ticketComment.richTextContent.richText -->
                                                         <!-- ngIf: ::vm.ticketComment.questionId -->
@@ -1090,13 +601,237 @@
                                                         <!-- ngIf: vm.ticketComment.type==7 -->
                                                         <!-- ngIf: vm.ticketComment.isSolution --> </span>
                                                         <!-- ngIf: vm.ticketUser.type === 'engineer'&&vm.ticketComment.id -->
-                                                        <!-- ngIf: vm.ticketComment.id --><span has-module="super_board"
-                                                                                                class="open-toggle ng-scope ng-isolate-scope"
-                                                                                                ng-if="vm.ticketComment.id"
-                                                                                                title="添加到收藏夹"
-                                                                                                style="vertical-align:baseline"
-                                                                                                add-to-favorite="vm.ticketComment"><i
-                                                                class="iconfont" style="font-size:21px"></i> </span>
+                                                        <!-- ngIf: vm.ticketComment.id --><span has-module="super_board" class="open-toggle ng-scope ng-isolate-scope" ng-if="vm.ticketComment.id" title="添加到收藏夹" style="vertical-align:baseline" add-to-favorite="vm.ticketComment"><i class="iconfont" style="font-size:21px"></i> </span>
+                                                        <!-- end ngIf: vm.ticketComment.id -->
+                                                        <!-- ngIf: vm.ticketComment.sendStatus=='send' -->
+                                                        <!-- ngIf: vm.ticketComment.sendStatus=='error' -->
+                                                    </ticket-comment-detail>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- end ngIf: !log.operations && !log.ticketComment.chat.id && ((log.ticketComment.content&&log.ticketComment.content!='')||log.ticketComment.attachments.length>0||(log.ticketComment.extra&&log.ticketComment.extra!='')) -->
+                                    <!-- ngIf: ::log.ticketComment!=null&&log.ticketComment.chat.id --></li>
+                                <!-- end ngRepeat: log in ticketLog.ticketLogs -->
+                                <!-- end ngRepeat: log in ticketLog.ticketLogs -->
+                                <!-- end ngRepeat: log in ticketLog.ticketLogs -->
+                            </ul>
+                            <!-- ngIf: ticketLog.showNextPageButton&&!ticketLog.isLoadingTicketContext -->
+                            <!-- ngIf: ticketLog.isLoadingTicketContext -->
+                        </div>
+
+                        <div id="ticketLog" class="ticket-replay ng-scope" ng-if="ticketLog.filterType === 'all' || ticketLog.filterType === 'comments'">
+                            <ul class="list-unstyled margin20px ng-isolate-scope" ticket-image-view="">
+                                <!-- ngRepeat: log in ticketLog.ticketLogs -->
+                                <li ng-repeat="log in ticketLog.ticketLogs" class="chat-item ng-scope" style="">
+                                    <!-- ngIf: log.operations -->
+                                    <!-- ngIf: !log.operations && !log.ticketComment.chat.id && ((log.ticketComment.content&&log.ticketComment.content!='')||log.ticketComment.attachments.length>0||(log.ticketComment.extra&&log.ticketComment.extra!='')) -->
+                                    <div ng-if="!log.operations &amp;&amp; !log.ticketComment.chat.id &amp;&amp; ((log.ticketComment.content&amp;&amp;log.ticketComment.content!='')||log.ticketComment.attachments.length>0||(log.ticketComment.extra&amp;&amp;log.ticketComment.extra!=''))" class="ng-scope">
+                                        <div class="media" style="overflow:visible">
+                                            <div class="media-left media-top" style="padding-right:4px"><img class="w40 h40 img-circle" ng-click="editable=='true'?toEdit():''" ng-src="source/images/face/header_40.png" title="" imageurl="" defaultimageurl="source/images/face/header_40.png" imagestyle="head.40.40" imageclass="w40 h40 img-circle" editable="false" src="source/images/face/header_40.png"></div>
+                                            <div class="media-body media-top" style="overflow:visible">
+                                                <div class="media-user-info" style="color:#9ea7b7">
+                                                    <!-- ngIf: !log.ticketComment.chat.id --><span ng-if="!log.ticketComment.chat.id" class="padding_right10px ng-binding ng-scope" ng-bind="::log.user.name" style="color:#333c3e;font-size:13px">NaiHe</span>
+                                                    <!-- end ngIf: !log.ticketComment.chat.id -->
+                                                    <!-- ngIf: log.ticketComment.chat.id --> <span ng-bind="log.createdAt | dateFilter_style1" class="padding_right10px ng-binding">2019-08-24 08:28:11.896542</span>
+                                                    <!-- ngIf: log.ticketComment.equipment -->
+                                                    <!-- ngIf: log.ticketComment.address --></div>
+                                                <div class="ticket-log-content">
+                                                    <ticket-comment-detail user="::log.user" comment="log.ticketComment" ng-class="::log.user.type" class="ng-isolate-scope customer"><span class="text not-engineer" ng-class="{'not-public':!vm.ticketComment.open,'not-engineer':vm.ticketUser.type!=='engineer','single':(vm.ticketComment.attachments.length===1&amp;&amp;!vm.ticketComment.content)||vm.ticketComment.questionId || vm.ticketComment.type==5}"><!-- ngIf: !vm.ticketComment.richTextContent&&!vm.ticketComment.questionId && vm.ticketComment.type!=8 && vm.ticketComment.type!=5 && vm.ticketComment.type!=7 --><p ng-if="!vm.ticketComment.richTextContent&amp;&amp;!vm.ticketComment.questionId &amp;&amp; vm.ticketComment.type!=8 &amp;&amp; vm.ticketComment.type!=5 &amp;&amp; vm.ticketComment.type!=7" ng-bind-html="::vm.ticketComment.content|linkSetMark|wechatEmoji|sanitize|trusted" class="ng-binding ng-scope">None</p>
+                                                        <!-- end ngIf: !vm.ticketComment.richTextContent&&!vm.ticketComment.questionId && vm.ticketComment.type!=8 && vm.ticketComment.type!=5 && vm.ticketComment.type!=7 -->
+                                                        <!-- ngIf: vm.ticketComment.richTextContent.richText -->
+                                                        <!-- ngIf: ::vm.ticketComment.questionId -->
+                                                        <!-- ngRepeat: attachment in ::vm.ticketComment.attachments | orderBy:'+id' -->
+                                                        <!-- ngRepeat: attachment in ::vm.ticketComment.attachments | orderBy:'-id' -->
+                                                        <!-- ngIf: vm.ticketComment.type==8 -->
+                                                        <!-- ngIf: vm.ticketComment.type==7 -->
+                                                        <!-- ngIf: vm.ticketComment.isSolution --> </span>
+                                                        <!-- ngIf: vm.ticketUser.type === 'engineer'&&vm.ticketComment.id -->
+                                                        <!-- ngIf: vm.ticketComment.id --><span has-module="super_board" class="open-toggle ng-scope ng-isolate-scope" ng-if="vm.ticketComment.id" title="添加到收藏夹" style="vertical-align:baseline" add-to-favorite="vm.ticketComment"><i class="iconfont" style="font-size:21px"></i> </span>
+                                                        <!-- end ngIf: vm.ticketComment.id -->
+                                                        <!-- ngIf: vm.ticketComment.sendStatus=='send' -->
+                                                        <!-- ngIf: vm.ticketComment.sendStatus=='error' -->
+                                                    </ticket-comment-detail>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- end ngIf: !log.operations && !log.ticketComment.chat.id && ((log.ticketComment.content&&log.ticketComment.content!='')||log.ticketComment.attachments.length>0||(log.ticketComment.extra&&log.ticketComment.extra!='')) -->
+                                    <!-- ngIf: ::log.ticketComment!=null&&log.ticketComment.chat.id --></li>
+                                <!-- end ngRepeat: log in ticketLog.ticketLogs -->
+                                <!-- end ngRepeat: log in ticketLog.ticketLogs -->
+                                <!-- end ngRepeat: log in ticketLog.ticketLogs -->
+                            </ul>
+                            <!-- ngIf: ticketLog.showNextPageButton&&!ticketLog.isLoadingTicketContext -->
+                            <!-- ngIf: ticketLog.isLoadingTicketContext -->
+                        </div>
+
+                        <div id="ticketLog" class="ticket-replay ng-scope" ng-if="ticketLog.filterType === 'all' || ticketLog.filterType === 'comments'">
+                            <ul class="list-unstyled margin20px ng-isolate-scope" ticket-image-view="">
+                                <!-- ngRepeat: log in ticketLog.ticketLogs -->
+                                <li ng-repeat="log in ticketLog.ticketLogs" class="chat-item ng-scope" style="">
+                                    <!-- ngIf: log.operations -->
+                                    <!-- ngIf: !log.operations && !log.ticketComment.chat.id && ((log.ticketComment.content&&log.ticketComment.content!='')||log.ticketComment.attachments.length>0||(log.ticketComment.extra&&log.ticketComment.extra!='')) -->
+                                    <div ng-if="!log.operations &amp;&amp; !log.ticketComment.chat.id &amp;&amp; ((log.ticketComment.content&amp;&amp;log.ticketComment.content!='')||log.ticketComment.attachments.length>0||(log.ticketComment.extra&amp;&amp;log.ticketComment.extra!=''))" class="ng-scope">
+                                        <div class="media" style="overflow:visible">
+                                            <div class="media-left media-top" style="padding-right:4px"><img class="w40 h40 img-circle" ng-click="editable=='true'?toEdit():''" ng-src="source/images/face/header_40.png" title="" imageurl="" defaultimageurl="source/images/face/header_40.png" imagestyle="head.40.40" imageclass="w40 h40 img-circle" editable="false" src="source/images/face/header_40.png"></div>
+                                            <div class="media-body media-top" style="overflow:visible">
+                                                <div class="media-user-info" style="color:#9ea7b7">
+                                                    <!-- ngIf: !log.ticketComment.chat.id --><span ng-if="!log.ticketComment.chat.id" class="padding_right10px ng-binding ng-scope" ng-bind="::log.user.name" style="color:#333c3e;font-size:13px"></span>
+                                                    <!-- end ngIf: !log.ticketComment.chat.id -->
+                                                    <!-- ngIf: log.ticketComment.chat.id --> <span ng-bind="log.createdAt | dateFilter_style1" class="padding_right10px ng-binding">2019-08-24 00:06:13.159189</span>
+                                                    <!-- ngIf: log.ticketComment.equipment -->
+                                                    <!-- ngIf: log.ticketComment.address --></div>
+                                                <div class="ticket-log-content">
+                                                    <ticket-comment-detail user="::log.user" comment="log.ticketComment" ng-class="::log.user.type" class="ng-isolate-scope customer"><span class="text not-engineer" ng-class="{'not-public':!vm.ticketComment.open,'not-engineer':vm.ticketUser.type!=='engineer','single':(vm.ticketComment.attachments.length===1&amp;&amp;!vm.ticketComment.content)||vm.ticketComment.questionId || vm.ticketComment.type==5}"><!-- ngIf: !vm.ticketComment.richTextContent&&!vm.ticketComment.questionId && vm.ticketComment.type!=8 && vm.ticketComment.type!=5 && vm.ticketComment.type!=7 --><p ng-if="!vm.ticketComment.richTextContent&amp;&amp;!vm.ticketComment.questionId &amp;&amp; vm.ticketComment.type!=8 &amp;&amp; vm.ticketComment.type!=5 &amp;&amp; vm.ticketComment.type!=7" ng-bind-html="::vm.ticketComment.content|linkSetMark|wechatEmoji|sanitize|trusted" class="ng-binding ng-scope">None</p>
+                                                        <!-- end ngIf: !vm.ticketComment.richTextContent&&!vm.ticketComment.questionId && vm.ticketComment.type!=8 && vm.ticketComment.type!=5 && vm.ticketComment.type!=7 -->
+                                                        <!-- ngIf: vm.ticketComment.richTextContent.richText -->
+                                                        <!-- ngIf: ::vm.ticketComment.questionId -->
+                                                        <!-- ngRepeat: attachment in ::vm.ticketComment.attachments | orderBy:'+id' -->
+                                                        <!-- ngRepeat: attachment in ::vm.ticketComment.attachments | orderBy:'-id' -->
+                                                        <!-- ngIf: vm.ticketComment.type==8 -->
+                                                        <!-- ngIf: vm.ticketComment.type==7 -->
+                                                        <!-- ngIf: vm.ticketComment.isSolution --> </span>
+                                                        <!-- ngIf: vm.ticketUser.type === 'engineer'&&vm.ticketComment.id -->
+                                                        <!-- ngIf: vm.ticketComment.id --><span has-module="super_board" class="open-toggle ng-scope ng-isolate-scope" ng-if="vm.ticketComment.id" title="添加到收藏夹" style="vertical-align:baseline" add-to-favorite="vm.ticketComment"><i class="iconfont" style="font-size:21px"></i> </span>
+                                                        <!-- end ngIf: vm.ticketComment.id -->
+                                                        <!-- ngIf: vm.ticketComment.sendStatus=='send' -->
+                                                        <!-- ngIf: vm.ticketComment.sendStatus=='error' -->
+                                                    </ticket-comment-detail>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- end ngIf: !log.operations && !log.ticketComment.chat.id && ((log.ticketComment.content&&log.ticketComment.content!='')||log.ticketComment.attachments.length>0||(log.ticketComment.extra&&log.ticketComment.extra!='')) -->
+                                    <!-- ngIf: ::log.ticketComment!=null&&log.ticketComment.chat.id --></li>
+                                <!-- end ngRepeat: log in ticketLog.ticketLogs -->
+                                <!-- end ngRepeat: log in ticketLog.ticketLogs -->
+                                <!-- end ngRepeat: log in ticketLog.ticketLogs -->
+                            </ul>
+                            <!-- ngIf: ticketLog.showNextPageButton&&!ticketLog.isLoadingTicketContext -->
+                            <!-- ngIf: ticketLog.isLoadingTicketContext -->
+                        </div>
+
+                        <div id="ticketLog" class="ticket-replay ng-scope" ng-if="ticketLog.filterType === 'all' || ticketLog.filterType === 'comments'">
+                            <ul class="list-unstyled margin20px ng-isolate-scope" ticket-image-view="">
+                                <!-- ngRepeat: log in ticketLog.ticketLogs -->
+                                <li ng-repeat="log in ticketLog.ticketLogs" class="chat-item ng-scope" style="">
+                                    <!-- ngIf: log.operations -->
+                                    <!-- ngIf: !log.operations && !log.ticketComment.chat.id && ((log.ticketComment.content&&log.ticketComment.content!='')||log.ticketComment.attachments.length>0||(log.ticketComment.extra&&log.ticketComment.extra!='')) -->
+                                    <div ng-if="!log.operations &amp;&amp; !log.ticketComment.chat.id &amp;&amp; ((log.ticketComment.content&amp;&amp;log.ticketComment.content!='')||log.ticketComment.attachments.length>0||(log.ticketComment.extra&amp;&amp;log.ticketComment.extra!=''))" class="ng-scope">
+                                        <div class="media" style="overflow:visible">
+                                            <div class="media-left media-top" style="padding-right:4px"><img class="w40 h40 img-circle" ng-click="editable=='true'?toEdit():''" ng-src="source/images/face/header_40.png" title="" imageurl="" defaultimageurl="source/images/face/header_40.png" imagestyle="head.40.40" imageclass="w40 h40 img-circle" editable="false" src="source/images/face/header_40.png"></div>
+                                            <div class="media-body media-top" style="overflow:visible">
+                                                <div class="media-user-info" style="color:#9ea7b7">
+                                                    <!-- ngIf: !log.ticketComment.chat.id --><span ng-if="!log.ticketComment.chat.id" class="padding_right10px ng-binding ng-scope" ng-bind="::log.user.name" style="color:#333c3e;font-size:13px"></span>
+                                                    <!-- end ngIf: !log.ticketComment.chat.id -->
+                                                    <!-- ngIf: log.ticketComment.chat.id --> <span ng-bind="log.createdAt | dateFilter_style1" class="padding_right10px ng-binding">2019-08-24 00:04:33.128052</span>
+                                                    <!-- ngIf: log.ticketComment.equipment -->
+                                                    <!-- ngIf: log.ticketComment.address --></div>
+                                                <div class="ticket-log-content">
+                                                    <ticket-comment-detail user="::log.user" comment="log.ticketComment" ng-class="::log.user.type" class="ng-isolate-scope customer"><span class="text not-engineer" ng-class="{'not-public':!vm.ticketComment.open,'not-engineer':vm.ticketUser.type!=='engineer','single':(vm.ticketComment.attachments.length===1&amp;&amp;!vm.ticketComment.content)||vm.ticketComment.questionId || vm.ticketComment.type==5}"><!-- ngIf: !vm.ticketComment.richTextContent&&!vm.ticketComment.questionId && vm.ticketComment.type!=8 && vm.ticketComment.type!=5 && vm.ticketComment.type!=7 --><p ng-if="!vm.ticketComment.richTextContent&amp;&amp;!vm.ticketComment.questionId &amp;&amp; vm.ticketComment.type!=8 &amp;&amp; vm.ticketComment.type!=5 &amp;&amp; vm.ticketComment.type!=7" ng-bind-html="::vm.ticketComment.content|linkSetMark|wechatEmoji|sanitize|trusted" class="ng-binding ng-scope">None</p>
+                                                        <!-- end ngIf: !vm.ticketComment.richTextContent&&!vm.ticketComment.questionId && vm.ticketComment.type!=8 && vm.ticketComment.type!=5 && vm.ticketComment.type!=7 -->
+                                                        <!-- ngIf: vm.ticketComment.richTextContent.richText -->
+                                                        <!-- ngIf: ::vm.ticketComment.questionId -->
+                                                        <!-- ngRepeat: attachment in ::vm.ticketComment.attachments | orderBy:'+id' -->
+                                                        <!-- ngRepeat: attachment in ::vm.ticketComment.attachments | orderBy:'-id' -->
+                                                        <!-- ngIf: vm.ticketComment.type==8 -->
+                                                        <!-- ngIf: vm.ticketComment.type==7 -->
+                                                        <!-- ngIf: vm.ticketComment.isSolution --> </span>
+                                                        <!-- ngIf: vm.ticketUser.type === 'engineer'&&vm.ticketComment.id -->
+                                                        <!-- ngIf: vm.ticketComment.id --><span has-module="super_board" class="open-toggle ng-scope ng-isolate-scope" ng-if="vm.ticketComment.id" title="添加到收藏夹" style="vertical-align:baseline" add-to-favorite="vm.ticketComment"><i class="iconfont" style="font-size:21px"></i> </span>
+                                                        <!-- end ngIf: vm.ticketComment.id -->
+                                                        <!-- ngIf: vm.ticketComment.sendStatus=='send' -->
+                                                        <!-- ngIf: vm.ticketComment.sendStatus=='error' -->
+                                                    </ticket-comment-detail>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- end ngIf: !log.operations && !log.ticketComment.chat.id && ((log.ticketComment.content&&log.ticketComment.content!='')||log.ticketComment.attachments.length>0||(log.ticketComment.extra&&log.ticketComment.extra!='')) -->
+                                    <!-- ngIf: ::log.ticketComment!=null&&log.ticketComment.chat.id --></li>
+                                <!-- end ngRepeat: log in ticketLog.ticketLogs -->
+                                <!-- end ngRepeat: log in ticketLog.ticketLogs -->
+                                <!-- end ngRepeat: log in ticketLog.ticketLogs -->
+                            </ul>
+                            <!-- ngIf: ticketLog.showNextPageButton&&!ticketLog.isLoadingTicketContext -->
+                            <!-- ngIf: ticketLog.isLoadingTicketContext -->
+                        </div>
+
+                        <div id="ticketLog" class="ticket-replay ng-scope" ng-if="ticketLog.filterType === 'all' || ticketLog.filterType === 'comments'">
+                            <ul class="list-unstyled margin20px ng-isolate-scope" ticket-image-view="">
+                                <!-- ngRepeat: log in ticketLog.ticketLogs -->
+                                <li ng-repeat="log in ticketLog.ticketLogs" class="chat-item ng-scope" style="">
+                                    <!-- ngIf: log.operations -->
+                                    <!-- ngIf: !log.operations && !log.ticketComment.chat.id && ((log.ticketComment.content&&log.ticketComment.content!='')||log.ticketComment.attachments.length>0||(log.ticketComment.extra&&log.ticketComment.extra!='')) -->
+                                    <div ng-if="!log.operations &amp;&amp; !log.ticketComment.chat.id &amp;&amp; ((log.ticketComment.content&amp;&amp;log.ticketComment.content!='')||log.ticketComment.attachments.length>0||(log.ticketComment.extra&amp;&amp;log.ticketComment.extra!=''))" class="ng-scope">
+                                        <div class="media" style="overflow:visible">
+                                            <div class="media-left media-top" style="padding-right:4px"><img class="w40 h40 img-circle" ng-click="editable=='true'?toEdit():''" ng-src="source/images/face/header_40.png" title="" imageurl="" defaultimageurl="source/images/face/header_40.png" imagestyle="head.40.40" imageclass="w40 h40 img-circle" editable="false" src="source/images/face/header_40.png"></div>
+                                            <div class="media-body media-top" style="overflow:visible">
+                                                <div class="media-user-info" style="color:#9ea7b7">
+                                                    <!-- ngIf: !log.ticketComment.chat.id --><span ng-if="!log.ticketComment.chat.id" class="padding_right10px ng-binding ng-scope" ng-bind="::log.user.name" style="color:#333c3e;font-size:13px">NaiHe</span>
+                                                    <!-- end ngIf: !log.ticketComment.chat.id -->
+                                                    <!-- ngIf: log.ticketComment.chat.id --> <span ng-bind="log.createdAt | dateFilter_style1" class="padding_right10px ng-binding">2019-08-24 00:01:34.012875</span>
+                                                    <!-- ngIf: log.ticketComment.equipment -->
+                                                    <!-- ngIf: log.ticketComment.address --></div>
+                                                <div class="ticket-log-content">
+                                                    <ticket-comment-detail user="::log.user" comment="log.ticketComment" ng-class="::log.user.type" class="ng-isolate-scope customer"><span class="text not-engineer" ng-class="{'not-public':!vm.ticketComment.open,'not-engineer':vm.ticketUser.type!=='engineer','single':(vm.ticketComment.attachments.length===1&amp;&amp;!vm.ticketComment.content)||vm.ticketComment.questionId || vm.ticketComment.type==5}"><!-- ngIf: !vm.ticketComment.richTextContent&&!vm.ticketComment.questionId && vm.ticketComment.type!=8 && vm.ticketComment.type!=5 && vm.ticketComment.type!=7 --><p ng-if="!vm.ticketComment.richTextContent&amp;&amp;!vm.ticketComment.questionId &amp;&amp; vm.ticketComment.type!=8 &amp;&amp; vm.ticketComment.type!=5 &amp;&amp; vm.ticketComment.type!=7" ng-bind-html="::vm.ticketComment.content|linkSetMark|wechatEmoji|sanitize|trusted" class="ng-binding ng-scope">测试</p>
+                                                        <!-- end ngIf: !vm.ticketComment.richTextContent&&!vm.ticketComment.questionId && vm.ticketComment.type!=8 && vm.ticketComment.type!=5 && vm.ticketComment.type!=7 -->
+                                                        <!-- ngIf: vm.ticketComment.richTextContent.richText -->
+                                                        <!-- ngIf: ::vm.ticketComment.questionId -->
+                                                        <!-- ngRepeat: attachment in ::vm.ticketComment.attachments | orderBy:'+id' -->
+                                                        <!-- ngRepeat: attachment in ::vm.ticketComment.attachments | orderBy:'-id' -->
+                                                        <!-- ngIf: vm.ticketComment.type==8 -->
+                                                        <!-- ngIf: vm.ticketComment.type==7 -->
+                                                        <!-- ngIf: vm.ticketComment.isSolution --> </span>
+                                                        <!-- ngIf: vm.ticketUser.type === 'engineer'&&vm.ticketComment.id -->
+                                                        <!-- ngIf: vm.ticketComment.id --><span has-module="super_board" class="open-toggle ng-scope ng-isolate-scope" ng-if="vm.ticketComment.id" title="添加到收藏夹" style="vertical-align:baseline" add-to-favorite="vm.ticketComment"><i class="iconfont" style="font-size:21px"></i> </span>
+                                                        <!-- end ngIf: vm.ticketComment.id -->
+                                                        <!-- ngIf: vm.ticketComment.sendStatus=='send' -->
+                                                        <!-- ngIf: vm.ticketComment.sendStatus=='error' -->
+                                                    </ticket-comment-detail>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- end ngIf: !log.operations && !log.ticketComment.chat.id && ((log.ticketComment.content&&log.ticketComment.content!='')||log.ticketComment.attachments.length>0||(log.ticketComment.extra&&log.ticketComment.extra!='')) -->
+                                    <!-- ngIf: ::log.ticketComment!=null&&log.ticketComment.chat.id --></li>
+                                <!-- end ngRepeat: log in ticketLog.ticketLogs -->
+                                <!-- end ngRepeat: log in ticketLog.ticketLogs -->
+                                <!-- end ngRepeat: log in ticketLog.ticketLogs -->
+                            </ul>
+                            <!-- ngIf: ticketLog.showNextPageButton&&!ticketLog.isLoadingTicketContext -->
+                            <!-- ngIf: ticketLog.isLoadingTicketContext -->
+                        </div>
+
+                        <div id="ticketLog" class="ticket-replay ng-scope" ng-if="ticketLog.filterType === 'all' || ticketLog.filterType === 'comments'">
+                            <ul class="list-unstyled margin20px ng-isolate-scope" ticket-image-view="">
+                                <!-- ngRepeat: log in ticketLog.ticketLogs -->
+                                <li ng-repeat="log in ticketLog.ticketLogs" class="chat-item ng-scope" style="">
+                                    <!-- ngIf: log.operations -->
+                                    <!-- ngIf: !log.operations && !log.ticketComment.chat.id && ((log.ticketComment.content&&log.ticketComment.content!='')||log.ticketComment.attachments.length>0||(log.ticketComment.extra&&log.ticketComment.extra!='')) -->
+                                    <div ng-if="!log.operations &amp;&amp; !log.ticketComment.chat.id &amp;&amp; ((log.ticketComment.content&amp;&amp;log.ticketComment.content!='')||log.ticketComment.attachments.length>0||(log.ticketComment.extra&amp;&amp;log.ticketComment.extra!=''))" class="ng-scope">
+                                        <div class="media" style="overflow:visible">
+                                            <div class="media-left media-top" style="padding-right:4px"><img class="w40 h40 img-circle" ng-click="editable=='true'?toEdit():''" ng-src="source/images/face/header_40.png" title="" imageurl="" defaultimageurl="source/images/face/header_40.png" imagestyle="head.40.40" imageclass="w40 h40 img-circle" editable="false" src="source/images/face/header_40.png"></div>
+                                            <div class="media-body media-top" style="overflow:visible">
+                                                <div class="media-user-info" style="color:#9ea7b7">
+                                                    <!-- ngIf: !log.ticketComment.chat.id --><span ng-if="!log.ticketComment.chat.id" class="padding_right10px ng-binding ng-scope" ng-bind="::log.user.name" style="color:#333c3e;font-size:13px">NaiHe</span>
+                                                    <!-- end ngIf: !log.ticketComment.chat.id -->
+                                                    <!-- ngIf: log.ticketComment.chat.id --> <span ng-bind="log.createdAt | dateFilter_style1" class="padding_right10px ng-binding">2019-08-23 23:58:43.811115</span>
+                                                    <!-- ngIf: log.ticketComment.equipment -->
+                                                    <!-- ngIf: log.ticketComment.address --></div>
+                                                <div class="ticket-log-content">
+                                                    <ticket-comment-detail user="::log.user" comment="log.ticketComment" ng-class="::log.user.type" class="ng-isolate-scope customer"><span class="text not-engineer" ng-class="{'not-public':!vm.ticketComment.open,'not-engineer':vm.ticketUser.type!=='engineer','single':(vm.ticketComment.attachments.length===1&amp;&amp;!vm.ticketComment.content)||vm.ticketComment.questionId || vm.ticketComment.type==5}"><!-- ngIf: !vm.ticketComment.richTextContent&&!vm.ticketComment.questionId && vm.ticketComment.type!=8 && vm.ticketComment.type!=5 && vm.ticketComment.type!=7 --><p ng-if="!vm.ticketComment.richTextContent&amp;&amp;!vm.ticketComment.questionId &amp;&amp; vm.ticketComment.type!=8 &amp;&amp; vm.ticketComment.type!=5 &amp;&amp; vm.ticketComment.type!=7" ng-bind-html="::vm.ticketComment.content|linkSetMark|wechatEmoji|sanitize|trusted" class="ng-binding ng-scope">None</p>
+                                                        <!-- end ngIf: !vm.ticketComment.richTextContent&&!vm.ticketComment.questionId && vm.ticketComment.type!=8 && vm.ticketComment.type!=5 && vm.ticketComment.type!=7 -->
+                                                        <!-- ngIf: vm.ticketComment.richTextContent.richText -->
+                                                        <!-- ngIf: ::vm.ticketComment.questionId -->
+                                                        <!-- ngRepeat: attachment in ::vm.ticketComment.attachments | orderBy:'+id' -->
+                                                        <!-- ngRepeat: attachment in ::vm.ticketComment.attachments | orderBy:'-id' -->
+                                                        <!-- ngIf: vm.ticketComment.type==8 -->
+                                                        <!-- ngIf: vm.ticketComment.type==7 -->
+                                                        <!-- ngIf: vm.ticketComment.isSolution --> </span>
+                                                        <!-- ngIf: vm.ticketUser.type === 'engineer'&&vm.ticketComment.id -->
+                                                        <!-- ngIf: vm.ticketComment.id --><span has-module="super_board" class="open-toggle ng-scope ng-isolate-scope" ng-if="vm.ticketComment.id" title="添加到收藏夹" style="vertical-align:baseline" add-to-favorite="vm.ticketComment"><i class="iconfont" style="font-size:21px"></i> </span>
                                                         <!-- end ngIf: vm.ticketComment.id -->
                                                         <!-- ngIf: vm.ticketComment.sendStatus=='send' -->
                                                         <!-- ngIf: vm.ticketComment.sendStatus=='error' -->
@@ -1121,40 +856,25 @@
 
 
 
+
                         <!-- end ngIf: ticketLog.filterType === 'all' || ticketLog.filterType === 'comments' -->
                         <!-- ngIf: ticketLog.filterType === 'attachments' -->
                         <!-- ngIf: ticketLog.filterType === 'timeline' -->
                     </div>
                 </ticket-log>
-                <div class="js-ticket-back-top"
-                     style="position:fixed;right:20px;bottom:20px;width:40px;height:40px;opacity:.3;background:#000;color:#fff;text-align:center;cursor:pointer;display:none">
+                <div class="js-ticket-back-top" style="position:fixed;right:20px;bottom:20px;width:40px;height:40px;opacity:.3;background:#000;color:#fff;text-align:center;cursor:pointer;display:none">
                     <i class="fa fa-angle-double-up fa-4x"></i></div>
             </div>
             <div class="app-view" ng-click="showSearchList($event)" ng-class="{expanded:appVisiable}">
                 <!-- ngIf: !$scope.ticket.deleted && $scope.ticket.status!='deleted' && $scope.ticket.status!='closed' && $scope.ticket.status!='deleted' && $scope.ticket.status!='suspended' && $scope.ticket.status!='solved' -->
-                <button ng-if="!$scope.ticket.deleted &amp;&amp; $scope.ticket.status!='deleted' &amp;&amp; $scope.ticket.status!='closed' &amp;&amp; $scope.ticket.status!='deleted' &amp;&amp; $scope.ticket.status!='suspended' &amp;&amp; $scope.ticket.status!='solved'"
-                        has-module="remote_help" ng-disabled="webchat!=null" type="button"
-                        class="btn btn-default btn-apps ng-scope" ng-class="{expanded:appVisiable}"
-                        ng-click="sidebar($event);"><i class="icon iconfont"></i> <i class="name iconfont"></i> <i
-                        class="state iconfont ng-binding"></i></button>
+                <button ng-if="!$scope.ticket.deleted &amp;&amp; $scope.ticket.status!='deleted' &amp;&amp; $scope.ticket.status!='closed' &amp;&amp; $scope.ticket.status!='deleted' &amp;&amp; $scope.ticket.status!='suspended' &amp;&amp; $scope.ticket.status!='solved'" has-module="remote_help" ng-disabled="webchat!=null" type="button" class="btn btn-default btn-apps ng-scope" ng-class="{expanded:appVisiable}" ng-click="sidebar($event);"><i class="icon iconfont"></i> <i class="name iconfont"></i> <i class="state iconfont ng-binding"></i></button>
                 <!-- end ngIf: !$scope.ticket.deleted && $scope.ticket.status!='deleted' && $scope.ticket.status!='closed' && $scope.ticket.status!='deleted' && $scope.ticket.status!='suspended' && $scope.ticket.status!='solved' -->
                 <!-- uiView: -->
                 <div ui-view="" ng-show="appVisiable" class="ng-scope ng-hide"></div>
             </div>
         </section>
+e
+
     </div>
 </div>
-
-
-<batch-indicator></batch-indicator>
-<script src="/static/js/vendor-e38f538b51.js" defer="defer"></script>
-<script src="/static/js/part1-a62d40a53c.js" defer="defer"></script>
-<script src="/static/js/part2-a0f598a85b.js" defer="defer"></script>
-<script src="/static/js/part3-7137ac87d7.js" defer="defer"></script>
-<script src="/static/js/part4-670620dc42.js" defer="defer"></script>
-<script src="/static/js/part5-7cd0ce974d.js" defer="defer"></script><!-- partials:js -->
-<script src="/static/js/template-cache-html-8eda194ce5.js" defer="defer"></script>
-
-
-</body>
-</html><!-- builded by makepackage Linux2.6.32-754.el6.x86_64 at 2019-8-8 17:52:03 -->
+{% endblock %}

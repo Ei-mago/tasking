@@ -1,0 +1,563 @@
+{% extends 'base.html' %}
+{% block content %}
+    <script src="{{ static('js/jquery-3.4.0.min.js') }}" type="text/javascript"></script>
+
+
+<div ui-view="" class="main-view am-fade ng-scope" style=""><!-- uiView: -->
+    <div ui-view="" class="ng-scope" >
+        <div class="page-create-ticket ng-scope">
+            <div class="nav-bar"><!-- ngIf: selectedTicketIds && selectedTicketIds.length == 0 -->
+                <div id="on_btn_y" class="left ng-scope" ng-if="selectedTicketIds &amp;&amp; selectedTicketIds.length == 0" style="position: absolute">
+                    <a  class="btn btn-confirm" ng-click="addRow()">提 交</a>
+                </div>
+
+                 <div id="add_table_btn_y" class="left ng-scope" ng-if="selectedTicketIds &amp;&amp; selectedTicketIds.length == 0" style="position: relative; left: 87px">
+                    <a class="btn btn-confirm" ng-click="addRow()">增加行</a>
+                </div>
+                <div class="left ng-scope" ng-if="selectedTicketIds &amp;&amp; selectedTicketIds.length == 0" style="position: relative; left: -1055px">
+
+                    <a  class="btn btn-confirm" ng-click="addRow()">删除行</a>
+                    <a ui-sref="batchticket.import-excel({id:batch.id})" class="custom-main-font-color"
+                        href="https://18500320205.ewei.com/console/#/batchticket/9996/import-excel">导入Excel表格</a>
+                </div>
+                <!-- end ngIf: selectedTicketIds && selectedTicketIds.length == 0 -->
+                <!-- ngIf: selectedTicketIds && selectedTicketIds.length != 0 -->
+                <!-- ngIf: selectedTicketIds && selectedTicketIds.length == 0 -->
+
+
+
+            <div class="content-table">
+                <div class="batch-table ng-isolate-scope" columns="columns" checkboxes="checkboxes"
+                     selected-ticket-ids="selectedTicketIds" batch-list="data" style="overflow-x: scroll">
+                    <table id="add_table_y" class="table table-bordered table-striped">
+                        <thead>
+                        <tr><!-- ngIf: showCheckboxes -->
+                            <th class="column-checkbox ng-scope" ng-if="showCheckboxes" style="min-width:30px">
+                                <input
+                                    type="checkbox" ng-model="checkboxes.checked" id="select_all" name="filter-checkbox"
+                                    value="" class="ng-pristine ng-untouched ng-valid ng-empty"></th>
+                            <!-- end ngIf: showCheckboxes --><!-- ngRepeat: column in columns track by $index -->
+                            <th ng-repeat="column in columns track by $index" class="text-center "
+                                ng-style="{&#39;min-width&#39;: (column.active ? column.fieldLength: (column.length || 180)) + &#39;px&#39;,&#39;max-width&#39;: (column.active ? column.fieldLength: (column.length || 180)) + &#39;px&#39;}"
+                                style="min-width: 105px; max-width: 105px;"><span
+                                    ng-style="{&#39;max-width&#39;: (column.active ? (column.fieldLength - 20): ((column.length || 180) - 20)) + &#39;px&#39;}"
+                                    title="处理人" class="ng-binding" style="max-width: 80px;">处理人 </span>
+                                <!-- ngIf: column.required --><i ng-if="column.required" class="required ng-scope">*</i>
+                                <!-- end ngIf: column.required --></th>
+                            <!-- end ngRepeat: column in columns track by $index -->
+                            <th ng-repeat="column in columns track by $index" class="text-center "
+                                ng-style="{&#39;min-width&#39;: (column.active ? column.fieldLength: (column.length || 180)) + &#39;px&#39;,&#39;max-width&#39;: (column.active ? column.fieldLength: (column.length || 180)) + &#39;px&#39;}"
+                                style="min-width: 135px; max-width: 135px;"><span
+                                    ng-style="{&#39;max-width&#39;: (column.active ? (column.fieldLength - 20): ((column.length || 180) - 20)) + &#39;px&#39;}"
+                                    title="客户" class="ng-binding" style="max-width: 80px;">客户 </span>
+                                <!-- ngIf: column.required --><i ng-if="column.required" class="required ng-scope">*</i>
+                                <!-- end ngIf: column.required --></th>
+                            <!-- end ngRepeat: column in columns track by $index -->
+                            <th ng-repeat="column in columns track by $index" class="text-center "
+                                ng-style="{&#39;min-width&#39;: (column.active ? column.fieldLength: (column.length || 180)) + &#39;px&#39;,&#39;max-width&#39;: (column.active ? column.fieldLength: (column.length || 180)) + &#39;px&#39;}"
+                                style="min-width: 140px; max-width: 140px;"><span
+                                    ng-style="{&#39;max-width&#39;: (column.active ? (column.fieldLength - 20): ((column.length || 180) - 20)) + &#39;px&#39;}"
+                                    title="抄送人" class="ng-binding" style="max-width: 80px;">抄送人 </span>
+                                <!-- ngIf: column.required --></th>
+                            <!-- end ngRepeat: column in columns track by $index -->
+                            <th ng-repeat="column in columns track by $index" class="text-center "
+                                ng-style="{&#39;min-width&#39;: (column.active ? column.fieldLength: (column.length || 180)) + &#39;px&#39;,&#39;max-width&#39;: (column.active ? column.fieldLength: (column.length || 180)) + &#39;px&#39;}"
+                                style="min-width: 100px; max-width: 100px;"><span
+                                    ng-style="{&#39;max-width&#39;: (column.active ? (column.fieldLength - 20): ((column.length || 180) - 20)) + &#39;px&#39;}"
+                                    title="要求完成时间" class="ng-binding" style="max-width: 80px;">要求完成时间</span>
+                                <!-- ngIf: column.required --></th>
+                            <!-- end ngRepeat: column in columns track by $index -->
+                            <th ng-repeat="column in columns track by $index" class="text-center "
+                                ng-style="{&#39;min-width&#39;: (column.active ? column.fieldLength: (column.length || 180)) + &#39;px&#39;,&#39;max-width&#39;: (column.active ? column.fieldLength: (column.length || 180)) + &#39;px&#39;}"
+                                style="min-width: 180px; max-width: 180px;"><span
+                                    ng-style="{&#39;max-width&#39;: (column.active ? (column.fieldLength - 20): ((column.length || 180) - 20)) + &#39;px&#39;}"
+                                    title="主题" class="ng-binding" style="max-width: 260px;">主题</span>
+                                <!-- ngIf: column.required --><i ng-if="column.required" class="required ng-scope">*</i>
+                                <!-- end ngIf: column.required --></th>
+                            <!-- end ngRepeat: column in columns track by $index -->
+                            <th ng-repeat="column in columns track by $index" class="text-center "
+                                ng-style="{&#39;min-width&#39;: (column.active ? column.fieldLength: (column.length || 180)) + &#39;px&#39;,&#39;max-width&#39;: (column.active ? column.fieldLength: (column.length || 180)) + &#39;px&#39;}"
+                                style="min-width: 220px; max-width: 220px;"><span
+                                    ng-style="{&#39;max-width&#39;: (column.active ? (column.fieldLength - 20): ((column.length || 180) - 20)) + &#39;px&#39;}"
+                                    title="描述" class="ng-binding" style="max-width: 260px;">描述</span>
+                                <!-- ngIf: column.required --></th>
+                            <!-- end ngRepeat: column in columns track by $index -->
+                            <th ng-repeat="column in columns track by $index" class="text-center "
+                                ng-style="{&#39;min-width&#39;: (column.active ? column.fieldLength: (column.length || 180)) + &#39;px&#39;,&#39;max-width&#39;: (column.active ? column.fieldLength: (column.length || 180)) + &#39;px&#39;}"
+                                style="min-width: 120px; max-width: 120px;"><span
+                                    ng-style="{&#39;max-width&#39;: (column.active ? (column.fieldLength - 20): ((column.length || 180) - 20)) + &#39;px&#39;}"
+                                    title="类型" class="ng-binding" style="max-width: 80px;">类型 </span>
+                                <!-- ngIf: column.required --></th>
+                            <!-- end ngRepeat: column in columns track by $index -->
+                            <th ng-repeat="column in columns track by $index" class="text-center "
+                                ng-style="{&#39;min-width&#39;: (column.active ? column.fieldLength: (column.length || 180)) + &#39;px&#39;,&#39;max-width&#39;: (column.active ? column.fieldLength: (column.length || 180)) + &#39;px&#39;}"
+                                style="min-width: 70px; max-width: 70px;"><span
+                                    ng-style="{&#39;max-width&#39;: (column.active ? (column.fieldLength - 20): ((column.length || 180) - 20)) + &#39;px&#39;}"
+                                    title="优先级" class="ng-binding" style="max-width: 80px;">优先级</span>
+                                <!-- ngIf: column.required --></th>
+                            <!-- end ngRepeat: column in columns track by $index -->
+                            <th ng-repeat="column in columns track by $index" class="text-center "
+                                ng-style="{&#39;min-width&#39;: (column.active ? column.fieldLength: (column.length || 180)) + &#39;px&#39;,&#39;max-width&#39;: (column.active ? column.fieldLength: (column.length || 180)) + &#39;px&#39;}"
+                                style="min-width: 120px; max-width: 120px;"><span
+                                    ng-style="{&#39;max-width&#39;: (column.active ? (column.fieldLength - 20): ((column.length || 180) - 20)) + &#39;px&#39;}"
+                                    title="服务目录" class="ng-binding" style="max-width: 80px;">服务目录 </span>
+                                <!-- ngIf: column.required --></th>
+                            <!-- end ngRepeat: column in columns track by $index -->
+                            <th ng-repeat="column in columns track by $index" class="text-center "
+                                ng-style="{&#39;min-width&#39;: (column.active ? column.fieldLength: (column.length || 180)) + &#39;px&#39;,&#39;max-width&#39;: (column.active ? column.fieldLength: (column.length || 180)) + &#39;px&#39;}"
+                                style="min-width: 100px; max-width: 100px;"><span
+                                    ng-style="{&#39;max-width&#39;: (column.active ? (column.fieldLength - 20): ((column.length || 180) - 20)) + &#39;px&#39;}"
+                                    title="标签" class="ng-binding" style="max-width: 80px;">标签 </span>
+                                <!-- ngIf: column.required --></th>
+                            <!-- end ngRepeat: column in columns track by $index --></tr>
+                        </thead>
+                        <tbody><!-- ngRepeat: item in batchList track by $index -->
+                        <tr ng-repeat="item in batchList track by $index" ng-class="{&#39;checked&#39;: item.active}"
+                            class="ng-scope" style=""><!-- ngIf: showCheckboxes -->
+                            <td ng-if="showCheckboxes" class="column-checkbox ng-scope" style="min-width:30px">
+                                <input
+                                    type="checkbox" ng-model="checkboxes.items[item.id]"
+                                    class="ng-pristine ng-untouched ng-valid ng-empty"></td>
+                            <!-- end ngIf: showCheckboxes --><!-- ngRepeat: column in columns track by $index -->
+                            <td ng-repeat="column in columns track by $index"
+                                ng-click="checkedTableCell(item, column, $event)" class="text-center"
+                                ng-class="{&#39;has-field-error&#39;: item[&#39;$errorData&#39;][column.field] &amp;&amp; !item.active}"
+                                ng-switch="column.field"
+                                ng-style="{&#39;min-width&#39;: (column.active ? column.fieldLength: (column.length || 180)) + &#39;px&#39;,&#39;max-width&#39;: (column.active ? column.fieldLength: (column.length || 180)) + &#39;px&#39;}"
+                                style="width: 135px;white-space: nowrap"><!-- ngSwitchWhen: handle -->
+
+                                <input type="text"
+                                                   ng-disabled="chatisclose || chatbtngroupstatus == &#39;chat_transfer&#39;"
+                                                   ng-focus="onFocus();" ng-blur="onBlur();"
+                                                   class="form-control ng-pristine ng-untouched ng-valid ng-empty"
+                                                   name="opreate"
+                                                   value="{{ request.session['username'] }}"
+                                                   list="opreate_list_y"
+                                                   ng-model="username" placeholder="默认服务台"
+                                                   uib-typeahead="user.name for user in loadUsers($viewValue)"
+                                                   typeahead-scroll-load="loadMore()"
+                                                   typeahead-on-select="onSelect($item, $model, $label, $event)"
+                                                   typeahead-editable="true" typeahead-focus-on-select="false"
+                                                   scroll-load-distance="20" typeahead-min-length="0"
+                                                   typeahead-wait-ms="500"
+                                                   typeahead-template-url="/source/scripts/directives/user-select/match-template.html"
+                                                   typeahead-show-hint="true" aria-autocomplete="list"
+                                                   aria-expanded="false" aria-owns="typeahead-11152-7375"
+                                                   style="position: relative; vertical-align: top; background-color: transparent;font-size: 12px">
+                                            <datalist id="opreate_list_y">
+                                                <option value="{{ request.session['username'] }}"></option>
+                                                consl
+                                                <option value="后台系统"></option>
+                                            </datalist>
+
+                </div>
+
+{#                                <div ng-switch-when="handle" class="ng-scope">#}
+{#                                    <!-- ngIf: (column.active && item.active == column.field) -->#}
+{#                                    <!-- ngIf: !(column.active && item.active == column.field) -->#}
+{#                                    <div ng-if="!(column.active &amp;&amp; item.active == column.field)"#}
+{#                                         class="is-not-checked ng-scope"><!-- ngIf: item['$errorData'][column.field] -->#}
+{#                                        <!-- ngIf: !item['$errorData'][column.field] -->#}
+{#                                        <div ng-if="!item[&#39;$errorData&#39;][column.field]"#}
+{#                                             class="overflow-hidden ng-scope">#}
+{#                                            <!-- ngIf: item.serviceDesk==null&&item.engineer==null&&item.workflowTemplate==null --><span#}
+{#                                                ng-if="item.serviceDesk==null&amp;&amp;item.engineer==null&amp;&amp;item.workflowTemplate==null"#}
+{#                                                class="ng-scope">-</span>#}
+                                            <!-- end ngIf: item.serviceDesk==null&&item.engineer==null&&item.workflowTemplate==null -->
+                                            <!-- ngIf: item.workflowTemplate!=null -->
+                                            <!-- ngIf: item.workflowTemplate==null&&item.serviceDesk!=null --></div>
+                                        <!-- end ngIf: !item['$errorData'][column.field] --></div>
+                                    <!-- end ngIf: !(column.active && item.active == column.field) --></div>
+                                <!-- end ngSwitchWhen: --><!-- ngSwitchWhen: customer --><!-- ngSwitchWhen: subject -->
+                                <!-- ngSwitchWhen: ticket_description --><!-- ngSwitchWhen: priority -->
+                                <!-- ngSwitchWhen: service_catalog --><!-- ngSwitchWhen: ticket_type -->
+                                <!-- ngSwitchWhen: ccs --><!-- ngSwitchWhen: tags --><!-- ngSwitchWhen: sla_time -->
+                                <!-- ngSwitchDefault: --></td><!-- end ngRepeat: column in columns track by $index -->
+                            <td ng-repeat="column in columns track by $index"
+                                ng-click="checkedTableCell(item, column, $event)" class="text-center"
+                                ng-class="{&#39;has-field-error&#39;: item[&#39;$errorData&#39;][column.field] &amp;&amp; !item.active}"
+                                ng-switch="column.field"
+                                ng-style="{&#39;min-width&#39;: (column.active ? column.fieldLength: (column.length || 180)) + &#39;px&#39;,&#39;max-width&#39;: (column.active ? column.fieldLength: (column.length || 180)) + &#39;px&#39;}"
+                                style="width: 180px;white-space: nowrap"><!-- ngSwitchWhen: handle -->
+                                <!-- ngSwitchWhen: customer -->
+                                <input type="text"
+                                                   ng-disabled="chatisclose || chatbtngroupstatus == &#39;chat_transfer&#39;"
+                                                   ng-focus="onFocus();" ng-blur="onBlur();"
+                                                   class="form-control ng-pristine ng-untouched ng-valid ng-empty"
+                                                   name="customer"
+                                                   value=""
+                                                   list="customer_list_y"
+                                                   ng-model="username" placeholder="输入关键字搜索客户"
+                                                   uib-typeahead="user.name for user in loadUsers($viewValue)"
+                                                   typeahead-scroll-load="loadMore()"
+                                                   typeahead-on-select="onSelect($item, $model, $label, $event)"
+                                                   typeahead-editable="true" typeahead-focus-on-select="false"
+                                                   scroll-load-distance="20" typeahead-min-length="0"
+                                                   typeahead-wait-ms="500"
+                                                   typeahead-template-url="/source/scripts/directives/user-select/match-template.html"
+                                                   typeahead-show-hint="true" aria-autocomplete="list"
+                                                   aria-expanded="false" aria-owns="typeahead-11152-7375"
+                                                   style="position: relative; vertical-align: top; background-color: transparent;font-size: 12px">
+{#                                                 {% for error in form.customer.errors %}#}
+{#                                                     <p style= "text-align:center">{{ error }}</p>#}
+{#                                                 {% endfor %}#}
+                                                <datalist id="customer_list_y">
+                                                   {% for customer in customer_list %}
+                                                    <option value="{{ customer.cname }}"></option>
+                                                   {% endfor %}
+                                                </datalist>
+                            </td><!-- end ngRepeat: column in columns track by $index -->
+                            <td ng-repeat="column in columns track by $index"
+                                ng-click="checkedTableCell(item, column, $event)" class="text-center"
+                                ng-class="{&#39;has-field-error&#39;: item[&#39;$errorData&#39;][column.field] &amp;&amp; !item.active}"
+                                ng-switch="column.field"
+                                ng-style="{&#39;min-width&#39;: (column.active ? column.fieldLength: (column.length || 180)) + &#39;px&#39;,&#39;max-width&#39;: (column.active ? column.fieldLength: (column.length || 180)) + &#39;px&#39;}"
+                                style="width: 200px;white-space: nowrap"><!-- ngSwitchWhen: handle -->
+                                <!-- ngSwitchWhen: customer --><!-- ngSwitchWhen: subject -->
+                                <!-- ngSwitchWhen: ticket_description --><!-- ngSwitchWhen: priority -->
+                                <!-- ngSwitchWhen: service_catalog --><!-- ngSwitchWhen: ticket_type -->
+                                <!-- ngSwitchWhen: ccs -->
+
+                                <input type="text"
+                                                       ng-disabled="chatisclose || chatbtngroupstatus == &#39;chat_transfer&#39;"
+                                                       ng-focus="onFocus();" ng-blur="onBlur();"
+                                                       class="form-control ng-pristine ng-untouched ng-valid ng-empty"
+                                                       name="copyfor"
+                                                       value=""
+                                                       ng-model="username" placeholder="输入Email或名字"
+                                                       uib-typeahead="user.name for user in loadUsers($viewValue)"
+                                                       typeahead-scroll-load="loadMore()"
+                                                       typeahead-on-select="onSelect($item, $model, $label, $event)"
+                                                       typeahead-editable="true" typeahead-focus-on-select="false"
+                                                       scroll-load-distance="20" typeahead-min-length="0"
+                                                       typeahead-wait-ms="500"
+                                                       typeahead-template-url="/source/scripts/directives/user-select/match-template.html"
+                                                       typeahead-show-hint="true" aria-autocomplete="list"
+                                                       aria-expanded="false" aria-owns="typeahead-11152-7375"
+                                                       style="position: relative; vertical-align: top; background-color: transparent;font-size: 12px">
+
+{#                                <div ng-switch-when="ccs" class="ng-scope">#}
+{#                                    <!-- ngIf: (column.active && item.active == column.field) -->#}
+{#                                    <!-- ngIf: !(column.active && item.active == column.field) -->#}
+{#                                    <div ng-if="!(column.active &amp;&amp; item.active == column.field)"#}
+{#                                         class="is-not-checked ng-scope"><!-- ngIf: item['$errorData'][column.field] -->#}
+{#                                        <!-- ngIf: !item['$errorData'][column.field] -->#}
+{#                                        <div ng-if="!item[&#39;$errorData&#39;][column.field]"#}
+{#                                             class="overflow-hidden ng-scope"><span title="-"#}
+{#                                                                                    class="ng-binding">-</span></div>#}
+{#                                        <!-- end ngIf: !item['$errorData'][column.field] --></div>#}
+{#                                    <!-- end ngIf: !(column.active && item.active == column.field) --></div>#}
+{#                                <!-- end ngSwitchWhen: --><!-- ngSwitchWhen: tags --><!-- ngSwitchWhen: sla_time -->#}
+{#                                <!-- ngSwitchDefault: -->#}
+                            </td><!-- end ngRepeat: column in columns track by $index -->
+                            <td ng-repeat="column in columns track by $index"
+                                ng-click="checkedTableCell(item, column, $event)" class="text-center"
+                                ng-class="{&#39;has-field-error&#39;: item[&#39;$errorData&#39;][column.field] &amp;&amp; !item.active}"
+                                ng-switch="column.field"
+                                ng-style="{&#39;min-width&#39;: (column.active ? column.fieldLength: (column.length || 180)) + &#39;px&#39;,&#39;max-width&#39;: (column.active ? column.fieldLength: (column.length || 180)) + &#39;px&#39;}"
+                                style="width: 100px; white-space: nowrap"><!-- ngSwitchWhen: handle -->
+                                <!-- ngSwitchWhen: customer --><!-- ngSwitchWhen: subject -->
+                                <!-- ngSwitchWhen: ticket_description --><!-- ngSwitchWhen: priority -->
+                                <!-- ngSwitchWhen: service_catalog --><!-- ngSwitchWhen: ticket_type -->
+                                <!-- ngSwitchWhen: ccs --><!-- ngSwitchWhen: tags --><!-- ngSwitchWhen: sla_time -->
+
+                                <input type="datetime-local"
+                                                   ng-disabled="chatisclose || chatbtngroupstatus == &#39;chat_transfer&#39;"
+                                                   ng-focus="onFocus();" ng-blur="onBlur();"
+                                                   class="form-control ng-pristine ng-untouched ng-valid ng-empty"
+                                                   name="finish_time"
+                                                   value=""
+                                                   ng-model="username"
+                                                   uib-typeahead="user.name for user in loadUsers($viewValue)"
+                                                   typeahead-scroll-load="loadMore()"
+                                                   typeahead-on-select="onSelect($item, $model, $label, $event)"
+                                                   typeahead-editable="true" typeahead-focus-on-select="false"
+                                                   scroll-load-distance="20" typeahead-min-length="0"
+                                                   typeahead-wait-ms="500"
+                                                   typeahead-template-url="/source/scripts/directives/user-select/match-template.html"
+                                                   typeahead-show-hint="true" aria-autocomplete="list"
+                                                   aria-expanded="false" aria-owns="typeahead-11152-7375"
+                                                   style="position: relative; vertical-align: top; background-color: transparent; font-size: 12px">
+
+                                <!-- end ngSwitchWhen: --><!-- ngSwitchDefault: --></td>
+                            <!-- end ngRepeat: column in columns track by $index -->
+                            <td ng-repeat="column in columns track by $index"
+                                ng-click="checkedTableCell(item, column, $event)" class="text-center"
+                                ng-class="{&#39;has-field-error&#39;: item[&#39;$errorData&#39;][column.field] &amp;&amp; !item.active}"
+                                ng-switch="column.field"
+                                ng-style="{&#39;min-width&#39;: (column.active ? column.fieldLength: (column.length || 180)) + &#39;px&#39;,&#39;max-width&#39;: (column.active ? column.fieldLength: (column.length || 180)) + &#39;px&#39;}"
+                                style="width: 160px;"><!-- ngSwitchWhen: handle -->
+                                <!-- ngSwitchWhen: customer --><!-- ngSwitchWhen: subject -->
+                                <input type="text"
+                                                   ng-disabled="chatisclose || chatbtngroupstatus == &#39;chat_transfer&#39;"
+                                                   ng-focus="onFocus();" ng-blur="onBlur();"
+                                                   class="form-control ng-pristine ng-untouched ng-valid ng-empty"
+                                                   name="title"
+                                                   value=""
+                                                   ng-model="username" placeholder="工单主题"
+                                                   uib-typeahead="user.name for user in loadUsers($viewValue)"
+                                                   typeahead-scroll-load="loadMore()"
+                                                   typeahead-on-select="onSelect($item, $model, $label, $event)"
+                                                   typeahead-editable="true" typeahead-focus-on-select="false"
+                                                   scroll-load-distance="20" typeahead-min-length="0"
+                                                   typeahead-wait-ms="500"
+                                                   typeahead-template-url="/source/scripts/directives/user-select/match-template.html"
+                                                   typeahead-show-hint="true" aria-autocomplete="list"
+                                                   aria-expanded="false" aria-owns="typeahead-11152-7375"
+                                                   style="position: relative; vertical-align: top; background-color: transparent;font-size: 12px">
+                                <!-- end ngSwitchWhen: --><!-- ngSwitchWhen: ticket_description -->
+                                <!-- ngSwitchWhen: priority --><!-- ngSwitchWhen: service_catalog -->
+                                <!-- ngSwitchWhen: ticket_type --><!-- ngSwitchWhen: ccs --><!-- ngSwitchWhen: tags -->
+                                <!-- ngSwitchWhen: sla_time --><!-- ngSwitchDefault: --></td>
+                            <!-- end ngRepeat: column in columns track by $index -->
+                            <td ng-repeat="column in columns track by $index"
+                                ng-click="checkedTableCell(item, column, $event)" class="text-center"
+                                ng-class="{&#39;has-field-error&#39;: item[&#39;$errorData&#39;][column.field] &amp;&amp; !item.active}"
+                                ng-switch="column.field"
+                                ng-style="{&#39;min-width&#39;: (column.active ? column.fieldLength: (column.length || 180)) + &#39;px&#39;,&#39;max-width&#39;: (column.active ? column.fieldLength: (column.length || 180)) + &#39;px&#39;}"
+                                style="min-width: 280px; max-width: 280px;"><!-- ngSwitchWhen: handle -->
+                                <!-- ngSwitchWhen: customer --><!-- ngSwitchWhen: subject -->
+                                <!-- ngSwitchWhen: ticket_description -->
+
+                                <input type="text"
+                                                   ng-disabled="chatisclose || chatbtngroupstatus == &#39;chat_transfer&#39;"
+                                                   ng-focus="onFocus();" ng-blur="onBlur();"
+                                                   class="form-control ng-pristine ng-untouched ng-valid ng-empty"
+                                                   name="content"
+                                                   value=""
+                                                   ng-model="username" placeholder="工单描述"
+                                                   uib-typeahead="user.name for user in loadUsers($viewValue)"
+                                                   typeahead-scroll-load="loadMore()"
+                                                   typeahead-on-select="onSelect($item, $model, $label, $event)"
+                                                   typeahead-editable="true" typeahead-focus-on-select="false"
+                                                   scroll-load-distance="20" typeahead-min-length="0"
+                                                   typeahead-wait-ms="500"
+                                                   typeahead-template-url="/source/scripts/directives/user-select/match-template.html"
+                                                   typeahead-show-hint="true" aria-autocomplete="list"
+                                                   aria-expanded="false" aria-owns="typeahead-11152-7375"
+                                                   style="position: relative; vertical-align: top; background-color: transparent;font-size: 12px">
+
+                                    <!-- ngIf: (column.active && item.active == column.field) -->
+                                    <!-- ngIf: !(column.active && item.active == column.field) -->
+
+                                <!-- end ngSwitchWhen: --><!-- ngSwitchWhen: priority -->
+                                <!-- ngSwitchWhen: service_catalog --><!-- ngSwitchWhen: ticket_type -->
+                                <!-- ngSwitchWhen: ccs --><!-- ngSwitchWhen: tags --><!-- ngSwitchWhen: sla_time -->
+                                <!-- ngSwitchDefault: --></td><!-- end ngRepeat: column in columns track by $index -->
+                            <td ng-repeat="column in columns track by $index"
+                                ng-click="checkedTableCell(item, column, $event)" class="text-center"
+                                ng-class="{&#39;has-field-error&#39;: item[&#39;$errorData&#39;][column.field] &amp;&amp; !item.active}"
+                                ng-switch="column.field"
+                                ng-style="{&#39;min-width&#39;: (column.active ? column.fieldLength: (column.length || 180)) + &#39;px&#39;,&#39;max-width&#39;: (column.active ? column.fieldLength: (column.length || 180)) + &#39;px&#39;}"
+                                style="min-width: 100px; max-width: 100px;"><!-- ngSwitchWhen: handle -->
+                                <!-- ngSwitchWhen: customer --><!-- ngSwitchWhen: subject -->
+                                <!-- ngSwitchWhen: ticket_description --><!-- ngSwitchWhen: priority -->
+                                <!-- ngSwitchWhen: service_catalog --><!-- ngSwitchWhen: ticket_type -->
+                                <input type="text"
+                                                   ng-disabled="chatisclose || chatbtngroupstatus == &#39;chat_transfer&#39;"
+                                                   ng-focus="onFocus();" ng-blur="onBlur();"
+                                                   class="form-control ng-pristine ng-untouched ng-valid ng-empty"
+                                                   name="question"
+                                                   value=""
+                                                   list="question_list_y"
+                                                   ng-model="username" placeholder="请选择类型"
+                                                   uib-typeahead="user.name for user in loadUsers($viewValue)"
+                                                   typeahead-scroll-load="loadMore()"
+                                                   typeahead-on-select="onSelect($item, $model, $label, $event)"
+                                                   typeahead-editable="true" typeahead-focus-on-select="false"
+                                                   scroll-load-distance="20" typeahead-min-length="0"
+                                                   typeahead-wait-ms="500"
+                                                   typeahead-template-url="/source/scripts/directives/user-select/match-template.html"
+                                                   typeahead-show-hint="true" aria-autocomplete="list"
+                                                   aria-expanded="false" aria-owns="typeahead-11152-7375"
+                                                   style="position: relative; vertical-align: top; background-color: transparent;">
+                                            <datalist id="question_list_y">
+                                                {% for tyle in tyle_list %}
+                                                    <option value="{{ tyle.name }}"></option>
+                                                {% endfor %}
+                                            </datalist>
+                                <!-- end ngSwitchWhen: --><!-- ngSwitchWhen: ccs --><!-- ngSwitchWhen: tags -->
+                                <!-- ngSwitchWhen: sla_time --><!-- ngSwitchDefault: --></td>
+                            <!-- end ngRepeat: column in columns track by $index -->
+                            <td ng-repeat="column in columns track by $index"
+                                ng-click="checkedTableCell(item, column, $event)" class="text-center"
+                                ng-class="{&#39;has-field-error&#39;: item[&#39;$errorData&#39;][column.field] &amp;&amp; !item.active}"
+                                ng-switch="column.field"
+                                ng-style="{&#39;min-width&#39;: (column.active ? column.fieldLength: (column.length || 180)) + &#39;px&#39;,&#39;max-width&#39;: (column.active ? column.fieldLength: (column.length || 180)) + &#39;px&#39;}"
+                                style="min-width: 100px; max-width: 100px;"><!-- ngSwitchWhen: handle -->
+                                <!-- ngSwitchWhen: customer --><!-- ngSwitchWhen: subject -->
+                                <!-- ngSwitchWhen: ticket_description --><!-- ngSwitchWhen: priority -->
+                                <input type="text"
+                                                   ng-disabled="chatisclose || chatbtngroupstatus == &#39;chat_transfer&#39;"
+                                                   ng-focus="onFocus();" ng-blur="onBlur();"
+                                                   class="form-control ng-pristine ng-untouched ng-valid ng-empty"
+                                                   name="priority"
+                                                   value=""
+                                                   list="priority_list_y"
+                                                   ng-model="username" placeholder="请选择服务目录"
+                                                   uib-typeahead="user.name for user in loadUsers($viewValue)"
+                                                   typeahead-scroll-load="loadMore()"
+                                                   typeahead-on-select="onSelect($item, $model, $label, $event)"
+                                                   typeahead-editable="true" typeahead-focus-on-select="false"
+                                                   scroll-load-distance="20" typeahead-min-length="0"
+                                                   typeahead-wait-ms="500"
+                                                   typeahead-template-url="/source/scripts/directives/user-select/match-template.html"
+                                                   typeahead-show-hint="true" aria-autocomplete="list"
+                                                   aria-expanded="false" aria-owns="typeahead-11152-7375"
+                                                   style="position: relative; vertical-align: top; background-color: transparent;">
+                                            <datalist id="priority_list_y">
+                                                <option value="P0">紧急</option>
+                                                <option value="P1">高</option>
+                                                <option value="P2">中</option>
+                                                <option value="P3">低</option>
+                                            </datalist>
+
+                                <!-- end ngSwitchWhen: --><!-- ngSwitchWhen: service_catalog -->
+                                <!-- ngSwitchWhen: ticket_type --><!-- ngSwitchWhen: ccs --><!-- ngSwitchWhen: tags -->
+                                <!-- ngSwitchWhen: sla_time --><!-- ngSwitchDefault: --></td>
+                            <!-- end ngRepeat: column in columns track by $index -->
+                            <td ng-repeat="column in columns track by $index"
+                                ng-click="checkedTableCell(item, column, $event)" class="text-center"
+                                ng-class="{&#39;has-field-error&#39;: item[&#39;$errorData&#39;][column.field] &amp;&amp; !item.active}"
+                                ng-switch="column.field"
+                                ng-style="{&#39;min-width&#39;: (column.active ? column.fieldLength: (column.length || 180)) + &#39;px&#39;,&#39;max-width&#39;: (column.active ? column.fieldLength: (column.length || 180)) + &#39;px&#39;}"
+                                style="min-width: 100px; max-width: 100px;"><!-- ngSwitchWhen: handle -->
+                                <!-- ngSwitchWhen: customer --><!-- ngSwitchWhen: subject -->
+                                <!-- ngSwitchWhen: ticket_description --><!-- ngSwitchWhen: priority -->
+                                <!-- ngSwitchWhen: service_catalog -->
+
+                                <input type="text" id="service_list_info_y"
+                                                   ng-disabled="chatisclose || chatbtngroupstatus == &#39;chat_transfer&#39;"
+                                                   ng-focus="onFocus();" ng-blur="onBlur();"
+                                                   class="form-control ng-pristine ng-untouched ng-valid ng-empty"
+                                                   name="service_list"
+                                                   value=""
+                                                   list="service_list_y"
+                                                   ng-model="username" placeholder="请选择服务目录"
+                                                   uib-typeahead="user.name for user in loadUsers($viewValue)"
+                                                   typeahead-scroll-load="loadMore()"
+                                                   typeahead-on-select="onSelect($item, $model, $label, $event)"
+                                                   typeahead-editable="true" typeahead-focus-on-select="false"
+                                                   scroll-load-distance="20" typeahead-min-length="0"
+                                                   typeahead-wait-ms="500"
+                                                   typeahead-template-url="/source/scripts/directives/user-select/match-template.html"
+                                                   typeahead-show-hint="true" aria-autocomplete="list"
+                                                   aria-expanded="false" aria-owns="typeahead-11152-7375"
+                                                   style="position: relative; vertical-align: top; background-color: transparent;">
+                                                <div id="service_list_div_y" style="padding:8px; width: 250px; border-style: solid; border-width: 1px;border-radius:10px; border-color: rgba(200,200,200,0.55); display: none">
+                                                        {% for big in big_service %}
+                                                            <table  style="width: 220px; height: 25px; font-size: 15px; color: black;">
+                                                                <tr style=" border-bottom: dashed 1px;">
+                                                                    <td >{{ big.service_name }}</td>
+                                                                </tr>
+                                                                {% for small in small_service %}
+                                                                    {% if big.id == small.pid %}
+                                                                        <tr  style="border-bottom: dashed 1px; background-color: rgba(200,200,200,0.30);display: none">
+                                                                        <td >{{ small.service_name }}</td>
+                                                                        </tr>
+                                                                    {% endif %}
+                                                                {% endfor %}
+                                                            </table>
+                                                        {% endfor %}
+                                                </div>
+
+                                <!-- end ngSwitchWhen: --><!-- ngSwitchWhen: ticket_type --><!-- ngSwitchWhen: ccs -->
+                                <!-- ngSwitchWhen: tags --><!-- ngSwitchWhen: sla_time --><!-- ngSwitchDefault: --></td>
+                            <!-- end ngRepeat: column in columns track by $index -->
+                            <td ng-repeat="column in columns track by $index"
+                                ng-click="checkedTableCell(item, column, $event)" class="text-center"
+                                ng-class="{&#39;has-field-error&#39;: item[&#39;$errorData&#39;][column.field] &amp;&amp; !item.active}"
+                                ng-switch="column.field"
+                                ng-style="{&#39;min-width&#39;: (column.active ? column.fieldLength: (column.length || 180)) + &#39;px&#39;,&#39;max-width&#39;: (column.active ? column.fieldLength: (column.length || 180)) + &#39;px&#39;}"
+                                style="min-width: 100px; max-width: 100px;"><!-- ngSwitchWhen: handle -->
+                                <!-- ngSwitchWhen: customer --><!-- ngSwitchWhen: subject -->
+                                <!-- ngSwitchWhen: ticket_description --><!-- ngSwitchWhen: priority -->
+                                <!-- ngSwitchWhen: service_catalog --><!-- ngSwitchWhen: ticket_type -->
+                                <!-- ngSwitchWhen: ccs --><!-- ngSwitchWhen: tags -->
+                                <input type="text"
+                                                   ng-disabled="chatisclose || chatbtngroupstatus == &#39;chat_transfer&#39;"
+                                                   ng-focus="onFocus();" ng-blur="onBlur();"
+                                                   class="form-control ng-pristine ng-untouched ng-valid ng-empty"
+                                                   name="sign"
+                                                   value=""
+                                                   list="sign_list_y"
+                                                   ng-model="username" placeholder="输入关键字搜索标签，或创建新标签"
+                                                   uib-typeahead="user.name for user in loadUsers($viewValue)"
+                                                   typeahead-scroll-load="loadMore()"
+                                                   typeahead-on-select="onSelect($item, $model, $label, $event)"
+                                                   typeahead-editable="true" typeahead-focus-on-select="false"
+                                                   scroll-load-distance="20" typeahead-min-length="0"
+                                                   typeahead-wait-ms="500"
+                                                   typeahead-template-url="/source/scripts/directives/user-select/match-template.html"
+                                                   typeahead-show-hint="true" aria-autocomplete="list"
+                                                   aria-expanded="false" aria-owns="typeahead-11152-7375"
+                                                   style="position: relative; vertical-align: top; background-color: transparent; font-size: small">
+                                            <ul
+                                                    class="dropdown-menu ng-isolate-scope ng-hide"
+                                                    ng-show="isOpen() &amp;&amp; !moveInProgress"
+                                                    ng-style="{top: position().top+&#39;px&#39;, left: position().left+&#39;px&#39;}"
+                                                    role="listbox" aria-hidden="true" uib-typeahead-popup=""
+                                                    id="typeahead-11152-7375" matches="matches" active="activeIdx"
+                                                    select="select(activeIdx, evt)" move-in-progress="moveInProgress"
+                                                    query="query" position="position"
+                                                    assign-is-open="assignIsOpen(isOpen)" debounce="debounceUpdate"
+                                                    template-url="/source/scripts/directives/user-select/match-template.html">
+                                                <datalist id="sign_list_y">
+                                                    <option value="搜索标题"></option>
+
+                                                </datalist>
+
+
+                                <!-- end ngSwitchWhen: --><!-- ngSwitchWhen: sla_time --><!-- ngSwitchDefault: --></td>
+                            <!-- end ngRepeat: column in columns track by $index -->
+                            </tr>
+                        <!-- end ngRepeat: item in batchList track by $index -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div><!-- uiView: phone -->
+<div ui-view="phone" class="ng-scope"></div>
+<div ng-controller="alertCtrl" class="ng-scope">
+    <div style="position:absolute;top:50%;left:50%;width:400px;margin-top:-35px;margin-left:-200px;z-index:9999;color:#3e4954">
+        <!-- ngRepeat: alert in alertsA --></div>
+</div>
+
+
+    <script>
+        $(document).ready(function () {
+            $("#service_list_info_y").focus(function (event) {
+                $("#service_list_div_y").toggle(400);
+            });
+           $("#service_list_info_y").blur(function (event) {
+                $("#service_list_div_y").toggle(400);
+            });
+
+            $("#service_list_div_y table tr").mousemove(function(){
+                $(this).nextAll("tr").css("display", "block")
+
+            })
+             $("#service_list_div_y table tr td").click(function () {
+                    {#console.log($(this).text())#}
+                    $("#service_list_info_y").val($(this).text())
+                })
+            $("#on_btn_y").hover(function () {
+                $("#hidden_table_y").css("display", "block")
+            }, function () {
+                $("#hidden_table_y").css("display", "none")
+            })
+            $(".wy_table").hover(function () {
+                $("#hidden_table_y").css("display", "block")
+            }, function () {
+                $("#hidden_table_y").css("display", "none")
+            })
+            
+            $("#add_table_btn_y").click(function () {
+                var newtabletr = $('#add_table_y tbody tr')
+            })
+        })
+    </script>
+
+{% endblock content %}

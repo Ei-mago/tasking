@@ -22,11 +22,11 @@ class ClientTable(models.Model):
     cnickname = models.CharField(max_length=32, blank=True, null=True)
     ccontactemail = models.CharField(db_column='ccontactEmail', max_length=128, blank=True, null=True)  # Field name made lowercase.
     cvalid = models.IntegerField(blank=True, null=True)
-    cmobilephone = models.IntegerField(db_column='cmobilePhone', blank=True, null=True)  # Field name made lowercase.
+    cmobilephone = models.CharField(db_column='cmobilePhone', blank=True, null=True,max_length=30)  # Field name made lowercase.
     cnotes = models.CharField(max_length=255, blank=True, null=True)
     ccreatedat = models.DateTimeField(db_column='ccreatedAt', blank=True, null=True)  # Field name made lowercase.
     cupdatedat = models.DateTimeField(db_column='cupdatedAt', blank=True, null=True)  # Field name made lowercase.
-    cgid = models.IntegerField(blank=True, null=True)
+    cgid = models.CharField(max_length=30,blank=True, null=True)
     uid = models.IntegerField(blank=True, null=True)
     customercustomfields = models.CharField(db_column='customerCustomFields', max_length=255, blank=True, null=True)  # Field name made lowercase.
 
@@ -76,7 +76,7 @@ class UserGroupTable(models.Model):
 
 class User(AbstractUser):
     phone = models.CharField(max_length=11, blank=True, null=True) #手机号
-    urole = models.IntegerField(blank=True, null=True)  # 角色
+    urole = models.IntegerField(blank=True, default=2)  # 角色
     pid = models.IntegerField(blank=True, null=True)    # pid
     ugid = models.CharField(max_length=11, blank=True, null=True)   # ugid
     email = models.EmailField(blank=True, unique=True)

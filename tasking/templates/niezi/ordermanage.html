@@ -959,15 +959,15 @@
         <div style="width:250px;height:60px" class="flex-none header-icon-tools"><a href="#/polymerize_search"
                                                                                     class="header-tool-bar"
                                                                                     title="聚合搜索"><i
-                class="iconfont"></i></a><a class="notify message-icon ng-isolate-scope" title="通知消息"
+                class="iconfont"></i></a><a class="notify message-icon ng-isolate-scope" title="通知消息"
                                              ng-click="vm.togglePanel()"><span class="bell"><i class="iconfont"></i>
             <!-- ngIf: vm.messageCount>0 --></span></a><a class="notify message-icon ng-isolate-scope" title="远程协助"
                                                           ng-click="vm.togglePanel()" has-module="remote_help"><span
                 class="bell"><i id="remote-control-icon" class="iconfont"></i></span></a><a href="javascript:void(0);"
                                                                                              class="header-tool-bar dial-icon ng-isolate-scope"
                                                                                              title="拨号盘"
-                                                                                             ng-click="vm.popTelDial()"><span
-                class="dial"><i class="iconfont"></i></span>
+                                                                                             ng-click="vm.popTelDial()"><a
+                class="dial" href="{{ url('users:login') }}">登录<i class="iconfont"></i></a>
             <div class="point ng-hide" ng-show="vm.hasMissCall"></div>
             <style>.header-tool-bar {
                 position: relative
@@ -1175,23 +1175,16 @@
                 </div>
             </div><!-- end ngRepeat: item in vm.datas track by $index -->
             <div class="nav-item ng-scope" ng-repeat="item in vm.datas track by $index">
-                <div ng-class="{'board-box': vm.selectedId!=item.id,'board-box-active': vm.selectedId==item.id}"
-                     ng-click="vm.click(item)" class="board-box">
+
                     <div><!-- ngIf: item.view && item.view.title == 'CONSOLE_SHORTCUTS_MANAGE' -->
-                        <!-- ngIf: !(item.view && item.view.title=='CONSOLE_SHORTCUTS_MANAGE') --><span
-                                ng-if="!(item.view &amp;&amp; item.view.title=='CONSOLE_SHORTCUTS_MANAGE')"
-                                class="ng-scope"><!-- ngIf: item.typeKey!='dashboard' && !item.isLoading --><h5
-                                ng-if="item.typeKey!='dashboard' &amp;&amp; !item.isLoading"
-                                class="number ng-binding ng-scope">0</h5>
-                            <!-- end ngIf: item.typeKey!='dashboard' && !item.isLoading --><!-- ngIf: item.isLoading --></span>
-                        <!-- end ngIf: !(item.view && item.view.title=='CONSOLE_SHORTCUTS_MANAGE') --><span><!-- ngIf: item.view && item.view.title && item.view.title!='VIEW_TITLE_USER' -->
-                            <!-- ngIf: !item.view || !item.view.title || (item.view&&item.view.title=='VIEW_TITLE_USER') --><h5
-                                    ng-if="!item.view || !item.view.title || (item.view&amp;&amp;item.view.title=='VIEW_TITLE_USER')"
-                                    class="text ellipsis ng-binding ng-scope"
-                                    ng-class="{'no-number':item.typeKey=='dashboard'}">社区动态</h5>
-                            <!-- end ngIf: !item.view || !item.view.title || (item.view&&item.view.title=='VIEW_TITLE_USER') --></span>
+                        <!-- ngIf: !(item.view && item.view.title=='CONSOLE_SHORTCUTS_MANAGE') -->
+                        <!-- end ngIf: !(item.view && item.view.title=='CONSOLE_SHORTCUTS_MANAGE') --><!-- ngIf: item.view && item.view.title && item.view.title!='VIEW_TITLE_USER' -->
+                            <!-- ngIf: !item.view || !item.view.title || (item.view&&item.view.title=='VIEW_TITLE_USER') -->
+                        <span></span>
+                            <a style="color: blue" href="{{ url('orders:export_orders') }}">导出工单</a>
+                        <span></span>
+                            <!-- end ngIf: !item.view || !item.view.title || (item.view&&item.view.title=='VIEW_TITLE_USER') -->
                     </div>
-                </div>
             </div><!-- end ngRepeat: item in vm.datas track by $index -->
             <div class="nav-item ng-scope" ng-repeat="item in vm.datas track by $index">
                 <div ng-class="{'board-box': vm.selectedId!=item.id,'board-box-active': vm.selectedId==item.id}"

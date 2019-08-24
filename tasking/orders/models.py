@@ -58,6 +58,7 @@ class OrderInfo(models.Model):
     id = models.AutoField(primary_key=True)
     customer = models.CharField(max_length=50,null=False)
     opreate_id = models.IntegerField(null=False)
+    opreate_name = models.CharField(max_length=30,null=False)
     copyfor =  models.CharField(max_length=50, null=True)
     question_type = (
         ('1','问询'),

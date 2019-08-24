@@ -115,7 +115,6 @@
                                                                                                tabindex="-1"
                                                                                                style="position: absolute; top: 0px; left: 0px; border-color: transparent; box-shadow: none; opacity: 1; background: none 0% 0% / auto repeat scroll padding-box border-box rgb(255, 255, 255); color: rgb(153, 153, 153);">
 
-
                                                 <input type="text"
                                                        ng-disabled="chatisclose || chatbtngroupstatus == &#39;chat_transfer&#39;"
                                                        ng-focus="onFocus();" ng-blur="onBlur();"
@@ -147,11 +146,15 @@
                                                                 debounce="debounceUpdate"
                                                                 template-url="/source/scripts/directives/user-select/match-template.html"
                                                                 style="">
+                                                 {% for error in form.customer.errors %}
+                                                     <p style= "text-align:center">{{ error }}</p>
+                                                 {% endfor %}
                                                 <datalist id="customer_list_y">
                                                    {% for customer in customer_list %}
                                                     <option value="{{ customer.cname }}"></option>
                                                    {% endfor %}
                                                 </datalist>
+
                                                             <!-- ngRepeat: match in matches track by $index -->
 </ul></div> <!-- ngIf: canClear && selecteduser --></span></span></user-select>
                                             </fieldset>
@@ -169,13 +172,13 @@
                                                     class="required">*</span></label>
                                             </div>   <!-- end ngIf: showinticketdetail -->
                                             <!-- ngIf: selectedworkflow!=null -->
-                                            <input type="hidden", name="opreate_id", value="{{ request.GET.id }}">
+{#                                            <input type="hidden", name="opreate_id", value="{{ request.GET.id }}">#}
                                             <input type="text"
                                                    ng-disabled="chatisclose || chatbtngroupstatus == &#39;chat_transfer&#39;"
                                                    ng-focus="onFocus();" ng-blur="onBlur();"
                                                    class="form-control ng-pristine ng-untouched ng-valid ng-empty"
                                                    name="opreate"
-                                                   value="{{ now_user.username }}"
+                                                   value="{{ request.session['username'] }}"
                                                    list="opreate_list_y"
                                                    ng-model="username" placeholder="默认服务台"
                                                    uib-typeahead="user.name for user in loadUsers($viewValue)"
@@ -189,7 +192,8 @@
                                                    aria-expanded="false" aria-owns="typeahead-11152-7375"
                                                    style="position: relative; vertical-align: top; background-color: transparent;">
                                             <datalist id="opreate_list_y">
-                                                <option value="{{ now_user.username }} "></option>
+                                                <option value="{{ request.session['username'] }}"></option>
+                                                consl
                                                 <option value="后台系统"></option>
                                             </datalist>
                                         </div><!-- end ngIf: !hideHandle -->
@@ -378,11 +382,9 @@
                                                    aria-expanded="false" aria-owns="typeahead-11152-7375"
                                                    style="position: relative; vertical-align: top; background-color: transparent;">
                                             <datalist id="question_list_y">
-                                                <option value="问询"></option>
-                                                <option value="任务"></option>
-                                                <option value="问题"></option>
-                                                <option value="事件"></option>
-                                                <option value="其他"></option>
+                                                {% for tyle in tyle_list %}
+                                                    <option value="{{ tyle.name }}"></option>
+                                                {% endfor %}
                                             </datalist>
 
                                         </div>
@@ -390,7 +392,7 @@
                                             <!-- ngIf: catalogFiled.required --> <span
                                                     style="max-width:200px;display:inline-block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:400;position:relative;top:4px;color:#999"
                                                     class="ng-binding">(工单服务目录)</span></label>
-                                            <input type="text"
+                                            <input type="text" id="service_list_info_y"
                                                    ng-disabled="chatisclose || chatbtngroupstatus == &#39;chat_transfer&#39;"
                                                    ng-focus="onFocus();" ng-blur="onBlur();"
                                                    class="form-control ng-pristine ng-untouched ng-valid ng-empty"
@@ -408,18 +410,22 @@
                                                    typeahead-show-hint="true" aria-autocomplete="list"
                                                    aria-expanded="false" aria-owns="typeahead-11152-7375"
                                                    style="position: relative; vertical-align: top; background-color: transparent;">
-                                            <datalist id="service_list_y">
-                                                <option value="产品" id="service_list_product_y"></option>
-{#                                                <option value="产品体验" style="display: none" class="sl_py1"></option>#}
-{#                                                <option value="产品BUG" style="display: none" class="sl_py1"></option>#}
-{#                                                <option value="产品需求" style="display: none" class="sl_py1"></option>#}
-                                                <option value="运营" id="service_list_operator_y"></option>
-{#                                                <option value="用户拉新活动" style="display: none" class="sl_oy1"></option>#}
-{#                                                <option value="回馈老用户" style="display: none" class="sl_oy1"></option>#}
-                                                <option value="IT" id="service_list_hw_y"></option>
-{#                                                <option value="硬件产品1" style="display: none" class="sl_hwy1"></option>#}
-{#                                                <option value="硬件产品2" style="display: none" class="sl_hwy1"></option>#}
-                                            </datalist>
+                                                <div id="service_list_div_y" style="padding:8px; width: 250px; border-style: solid; border-width: 1px;border-radius:10px; border-color: rgba(200,200,200,0.55); display: none">
+                                                        {% for big in big_service %}
+                                                            <table  style="width: 220px; height: 25px; font-size: 15px; color: black;">
+                                                                <tr style=" border-bottom: dashed 1px;">
+                                                                    <td >{{ big.ugname }}</td>
+                                                                </tr>
+                                                                {% for small in small_service %}
+                                                                    {% if big.ugid == small.pid %}
+                                                                        <tr  style="border-bottom: dashed 1px; background-color: rgba(200,200,200,0.30);display: none">
+                                                                        <td >{{ small.ugname }}</td>
+                                                                        </tr>
+                                                                    {% endif %}
+                                                                {% endfor %}
+                                                            </table>
+                                                        {% endfor %}
+                                                </div>
                                         </div>
                                         <div class="form-group"><label class="ng-binding">优先级
                                             <!-- ngIf: priorityFiled.required --></label>
@@ -430,7 +436,7 @@
                                                    name="priority"
                                                    value=""
                                                    list="priority_list_y"
-                                                   ng-model="username" placeholder="请选择服务目录"
+                                                   ng-model="username" placeholder="请选择优先级"
                                                    uib-typeahead="user.name for user in loadUsers($viewValue)"
                                                    typeahead-scroll-load="loadMore()"
                                                    typeahead-on-select="onSelect($item, $model, $label, $event)"
@@ -456,7 +462,7 @@
                                                    class="form-control ng-pristine ng-untouched ng-valid ng-empty"
                                                    name="finish_time"
                                                    value=""
-                                                   ng-model="username" placeholder="请选择服务目录"
+                                                   ng-model="username"
                                                    uib-typeahead="user.name for user in loadUsers($viewValue)"
                                                    typeahead-scroll-load="loadMore()"
                                                    typeahead-on-select="onSelect($item, $model, $label, $event)"
@@ -618,7 +624,7 @@
                                         <div class="ticket_reply_box_textarea"
                                              ng-class="{&#39;private_reply&#39;:!private_reply isopenreply}">
                                             <textarea name="content" value="" rows="5" cols="20" placeholder="工单描述"
-                                                      style="width: 1133px; border: 0px; font-size: 14px"></textarea>
+                                                      style="width: 1133px; padding:12px; border: 0px; font-size: 14px"></textarea>
                                         </div>
                                     </div>
                                     <div class="pull-right"><!-- ngIf: cacheFiles.length > 0 --></div>
@@ -634,9 +640,6 @@
                                             <!-- ngRepeat: item in vm.matchItems track by $index --></ul>
                                     </section><!-- end ngSwitchWhen: --><!-- ngSwitchWhen: knowledge --></div>
                             </quick-knowledge-tip>
-                            {#                                <input type="hidden" name="create_time" value="">#}
-                            {#                                <input type="hidden" name="modify_time" value="">#}
-                            {#                                <input type="hidden" name="order_status" value="1">#}
                             <div style="margin-top:14px">
                                 <div class="btn-group dropup ng-isolate-scope dropdown" uib-dropdown
                                      is-open="status.isopen" ticket="newTicket" save="save(_status)"
@@ -649,6 +652,7 @@
                                             <span>提 交</span></span>
                                         <span class="ladda-spinner"></span>
                                     </div>
+
                                     <div id="hidden_submit_y" style="height: 200px; width: 200px;">
                                         <table id="hidden_table_y" style="display: none">
                                             <tr>
@@ -665,6 +669,7 @@
                                             </tr>
                                         </table>
                                     </div>
+
                                 </div>
                             </div>
                         </div>
@@ -1098,25 +1103,23 @@
             }, function () {
                 $("#hidden_table_y").css("display", "none")
             })
+
+            $("#service_list_info_y").focus(function (event) {
+                $("#service_list_div_y").toggle(400);
+            });
+           $("#service_list_info_y").blur(function (event) {
+                $("#service_list_div_y").toggle(400);
+            });
+
+            $("#service_list_div_y table tr").mousemove(function(){
+                $(this).nextAll("tr").css("display", "block")
+
+            })
+             $("#service_list_div_y table tr td").click(function () {
+                    {#console.log($(this).text())#}
+                    $("#service_list_info_y").val($(this).text())
+                })
         })
-
-        {#$('#service_list_product_y').hover(function () {#}
-        {#    console log("heheda")#}
-        {#    $.ajax({#}
-        {#        url:request.build_absolute_uri,#}
-        {#        type:"GET",#}
-        {#        success:function (data) {#}
-        {#            $('#service_list_y').innerHTML(#}
-        {#                <option value="产品" id="service_list_product_y"></option>#}
-        {#                <option value="产品体验" style="display: none" class="sl_py1"></option>#}
-        {#                <option value="产品BUG" style="display: none" class="sl_py1"></option>#}
-        {#                <option value="产品需求" style="display: none" class="sl_py1"></option>#}
-        {#            )#}
-        {#        }#}
-        {##}
-        {#    })#}
-        {#})#}
-
     </script>
 
 {% endblock content %}

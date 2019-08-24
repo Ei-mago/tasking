@@ -1,375 +1,9 @@
-<!--
-    ewei-web-console/console.html
---><!DOCTYPE html>
-<html lang="zh-cmn">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="cache-control" content="max-age=0">
-    <meta http-equiv="cache-control" content="no-cache">
-    <meta http-equiv="expires" content="0">
-    <meta http-equiv="pragma" content="no-cache">
-    <meta name="renderer" content="webkit">
-    <title></title>
-    <link rel="shortcut icon" ng-href="">
-    <link rel="stylesheet" href="//cdn.ewei.com/7.3.0/console/css/vendor-572e5acf76.css">
-    <link rel="stylesheet" href="//cdn.ewei.com/7.3.0/console/css/layout-809af0fe81.css">
-    <style ng-if="provider.headBackgroundColor">#tabs .tab {
+{% extends 'base.html' %}
+{% block content %}
 
-    background-color: {
 
-    {
-        provider . dropDownColor
-    }
-    }
-    ;
-    color: {
-
-    {
-        provider . titleTypefaceColor
-    }
-    }
-    ;
-    border-top-color: {
-
-    {
-        getRGB (
-        provider.dropDownColor,
-        1.2
-        )
-    }
-    }
-    }
-    #tabs .tab:not (.active):hover {
-
-    background-color: {
-
-    {
-        getRGB (
-        provider.dropDownColor,
-        1.2
-        )
-    }
-    }
-    }
-    #tabs .tab .close {
-
-    color: {
-
-    {
-        getRGB (
-        provider.dropDownColor,
-        1.3
-        )
-    }
-    }
-    }
-    #tabs .dropdown-menu {
-        margin: 0;
-        border-radius: 0 0 4px 4px;
-        top: 34px
-    }
-
-    #tabs .dropdown-menu-second {
-        float: left;
-        list-style: none;
-        padding: 5px 0;
-        font-size: 14px;
-        background-color: #fff;
-        margin: 0;
-        border-radius: 0 0 4px 4px;
-        -webkit-background-clip: padding-box;
-        background-clip: padding-box;
-        border: 1px solid #ccc;
-        border: 1px solid rgba(0, 0, 0, .15);
-        -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
-        box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
-        border-left: none;
-        position: absolute;
-        left: 100%;
-        top: -1px
-    }
-
-    #tabs .dropdown-menu-second li a {
-        display: block;
-        padding: 3px 20px;
-        clear: both;
-        font-weight: 400;
-        color: #333;
-        line-height: 25px;
-        white-space: nowrap
-    }
-
-    #tabs .dropdown-menu-second li a:hover {
-        color: #262626;
-        text-decoration: none;
-        background-color: #f5f5f5
-    }
-
-    .dropdown-toggle .dropdown-num {
-        position: absolute;
-        right: 160px
-    }
-
-    .dropdown-num .active {
-        background-color: #ccc
-    }
-
-    .dropdown-num .fa {
-        width: 20px
-    }
-
-    .ng-cloak {
-        display: none
-    }
-
-    #customerNoticeImgVisible {
-        float: left;
-        margin-left: -30px;
-        margin-top: 20px;
-        opacity: 1;
-        visibility: hidden
-    }
-
-    #ticketNoticeImgVisible {
-        margin-left: -30px;
-        float: left;
-        margin-top: 20px;
-        opacity: 1;
-        visibility: hidden
-    }</style>
-    <style type="text/css">.pre-loading {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        display: block;
-        z-index: 1040;
-        text-align: center;
-        padding-top: 12%;
-        background: #fefefe
-    }
-
-    .sk-cube-grid {
-        width: 80px;
-        height: 80px;
-        margin: 100px auto
-    }
-
-    .sk-cube-grid .sk-cube {
-        width: 33%;
-        height: 33%;
-        background-color: #74b4f0;
-        float: left;
-        -webkit-animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;
-        animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out
-    }
-
-    .sk-cube-grid .sk-cube1 {
-        -webkit-animation-delay: .2s;
-        animation-delay: .2s
-    }
-
-    .sk-cube-grid .sk-cube2 {
-        -webkit-animation-delay: .3s;
-        animation-delay: .3s
-    }
-
-    .sk-cube-grid .sk-cube3 {
-        -webkit-animation-delay: .4s;
-        animation-delay: .4s
-    }
-
-    .sk-cube-grid .sk-cube4 {
-        -webkit-animation-delay: .1s;
-        animation-delay: .1s
-    }
-
-    .sk-cube-grid .sk-cube5 {
-        -webkit-animation-delay: .2s;
-        animation-delay: .2s
-    }
-
-    .sk-cube-grid .sk-cube6 {
-        -webkit-animation-delay: .3s;
-        animation-delay: .3s
-    }
-
-    .sk-cube-grid .sk-cube7 {
-        -webkit-animation-delay: 0s;
-        animation-delay: 0s
-    }
-
-    .sk-cube-grid .sk-cube8 {
-        -webkit-animation-delay: .1s;
-        animation-delay: .1s
-    }
-
-    .sk-cube-grid .sk-cube9 {
-        -webkit-animation-delay: .2s;
-        animation-delay: .2s
-    }
-
-    .header-icon-tools .notice {
-        position: absolute;
-        top: -1px;
-        right: 340px;
-        z-index: 99999;
-        cursor: pointer
-    }
-
-    @-webkit-keyframes sk-cubeGridScaleDelay {
-        0%, 100%, 70% {
-            -webkit-transform: scale3D(1, 1, 1);
-            transform: scale3D(1, 1, 1)
-        }
-        35% {
-            -webkit-transform: scale3D(0, 0, 1);
-            transform: scale3D(0, 0, 1)
-        }
-    }
-
-    @keyframes sk-cubeGridScaleDelay {
-        0%, 100%, 70% {
-            -webkit-transform: scale3D(1, 1, 1);
-            transform: scale3D(1, 1, 1)
-        }
-        35% {
-            -webkit-transform: scale3D(0, 0, 1);
-            transform: scale3D(0, 0, 1)
-        }
-    }</style><!-- ************************新版首页样式暂时放在这里******************** -->
-    <style>.header-icon-tools {
-        text-align: right;
-        padding-right: 30px;
-        -ms-user-select: none;
-        -moz-user-select: none;
-        -webkit-user-select: none
-    }
-
-    .header-icon-tools a {
-        color: #fff;
-        display: inline-block;
-        width: 40px;
-        height: 40px;
-        text-align: center;
-        line-height: 40px;
-        vertical-align: bottom
-    }
-
-    .header-icon-tools .header-tool-bar {
-        margin-top: 10px;
-        border-radius: 50%;
-        background-color: -#f9c;
-        text-decoration: none;
-        color: #fff
-    }
-
-    .header-icon-tools .header-tool-bar:hover {
-        background-color: rgba(0, 0, 0, .15);
-        text-decoration: none
-    }
-
-    .header-icon-tools i {
-        font-size: 23px
-    }</style>
-    <style custom-style></style>
-</head>
-<body>
-<style>.outer-container {
-    width: 56px;
-    position: relative;
-    overflow: hidden;
-    flex: 1;
-    display: flex
-}
-
-.inner-container {
-    overflow-y: scroll;
-    margin-right: -17px;
-    flex: 1
-}
-
-.inner-container .menu-wrapper {
-    width: 55px
-}</style>
-
-<nav style="z-index:1031;display:flex;flex-direction:column" id="main_navigation" ng-controller="mainNavigation">
-    <div class="outer-container">
-        <div class="inner-container">
-            <div class="menu-wrapper"><a
-                    ng-class="{'active':(locationPath=='/dashboard'|| locationPath.indexOf('/quickentry')!=-1)&&leftIcon}"
-                    ui-sref="quickentry" ui-sref-opts="{reload: true}" ng-click="select('console')" bs-tooltip
-                    data-container="body" data-title="客服界面首页" placement="right"><i class="iconfont">&#xe64f;</i>
-                <!-- <span class="label label-danger absolute" ng-if="noticeCount>0" ng-bind="noticeCount"></span> -->
-            </a><a ng-class="{'active':locationPath.indexOf('/ticket/views/')==0&&leftIcon}" ui-sref="ticket_views"
-                   ui-sref-opts="{reload: true}" ng-click="select('ticket')" bs-tooltip data-container="body"
-                   data-title="工单管理" placement="right"><i class="iconfont">&#xe64e;</i> </a><a class="nav-icon-chat"
-                                                                                               ng-class="{'active':locationPath.indexOf('/webchats')==0&&leftIcon}"
-                                                                                               ui-sref-opts="{reload: true}"
-                                                                                               ng-click="select('chat')"
-                                                                                               bs-tooltip
-                                                                                               data-container="body"
-                                                                                               data-title="当前会话"
-                                                                                               placement="right"
-                                                                                               style="text-decoration:none;position:relative"><i
-                    class="iconfont"
-                    ng-class="{'animated flash infinite': chatRedPoint && $location.path().indexOf('/webchats') === -1}">&#xe638;</i>
-                <span ng-class="{'animated flash infinite': chatRedPoint && $location.path().indexOf('/webchats') === -1}"
-                      ng-show="chatRedPoint && $location.path().indexOf('/webchats') === -1"
-                      style="background:red;width:10px;height:10px;border-radius:50%;position:absolute;top:12px;right:18px"></span>
-            </a>
-                <!--<a class="nav-icon-chat-history" ng-class="{'active':locationPath.indexOf('/webchat_history')==0&&leftIcon}" ui-sref="webchat-history" ui-sref-opts="{reload: true}" ng-click="select('webchat-history')" bs-tooltip data-container="body" data-title="历史会话" placement="right" style="text-decoration:none;position:relative;">-->
-                <!--<i class="iconfont">&#xe616;</i>--><!--</a>--> <a
-                        ng-class="{'active':locationPath.indexOf('/customer_views/')==0&&leftIcon}"
-                        ui-sref="customer_views" ui-sref-opts="{reload: true}" ng-click="select('user')" bs-tooltip
-                        data-container="body" data-title="用户管理" placement="right"><i class="iconfont">&#xe650;</i> </a><!-- <a has-module="helpcenter" ng-class="{'active':locationPath.indexOf('/community/')==0&&leftIcon}" ui-sref="community" ui-sref-opts="{reload: true}" ng-click="select('community')" bs-tooltip data-title="社区管理" placement="right">
-              <i class="iconfont">&#xe651;</i>
-          </a> --> <a has-module="super_board"
-                      ng-class="{'active':(locationPath.indexOf('/universal_list/')==0||locationPath.indexOf('/project_detail')==0)&&leftIcon}"
-                      ui-sref="universal_list.favorites_list" ui-sref-opts="{reload: true}"
-                      ng-click="select('favorites_list')" bs-tooltip data-container="body" data-title="超级看板"
-                      placement="right" add-to-favorite-target style="position:relative"><i
-                        class="iconfont">&#xe677;</i> <span class="badge" ng-if="newFavoriteCount>0"
-                                                            ng-bind="newFavoriteCount"></span> <span
-                        class="plusone">+1</span> </a>
-                <a ng-repeat="providerApp in providerWebSiteApps track by $index"
-                   ng-class="{'active':isShowPage[providerApp.app.id]&&!leftIcon}"
-                   ng-click="openWebSiteApp({appId:providerApp.app.id});select('assets');"
-                   bs-tooltip data-container="body"
-                   data-title="" placement="right"
-                   has-module=""><i
-                        ng-if="providerApp.app.name=='易维IT资产管理'" class="iconfont">&#xe657;</i>
-                    <image-show ng-if="providerApp.app.name!='易维IT资产管理'" imageurl=""
-                                imagestyle="head.40.40" imageclass="w25 h25" editable="false"></image-show>
-                </a><a ng-repeat="providerApp in providerFunModuleApps track by $index"
-                       ng-class="{'active':locationPath.indexOf('/'+providerApp.app.redirectUrl+'/')===0}"
-                       ng-click="openFunModuleApp(providerApp.app);select('fmapps');" bs-tooltip data-container="body"
-                       data-title="" placement="right"><i ng-if="!providerApp.app.appImg"
-                                                          class="iconfont">&#xe75b;</i>
-                    <image-show ng-if="providerApp.app.appImg" imageurl=""
-                                imagestyle="head.40.40" imageclass="w25 h25" editable="false"></image-show>
-                </a></div>
-        </div>
-    </div>
-    <div class="icons"><a has-module="statistics"
-                          ng-class="{'active':(locationPath.indexOf('/statistics/')==0&&leftIcon) || (locationPath.indexOf('/chart/')==0&&leftIcon)}"
-                          ui-sref="statistics" ui-sref-opts="{reload: true}" ng-click="select('statistics')" bs-tooltip
-                          data-title="" placement="right" ng-show="showStatisticsBtn"><i
-            class="iconfont">&#xe652;</i> </a>
-        <!--<a has-module="statistics" ng-class="{'active':locationPath.indexOf('/chart/')==0&&leftIcon}" ui-sref="chart" ui-sref-opts="{reload: true}" ng-click="select('charts')" bs-tooltip data-title="" placement="right" ng-show="showStatisticsBtn">-->
-        <!--<i class="iconfont">&#xe652;</i>--><!--</a> --> <a style="position:relative"
-                                                               ng-class="{'active':locationPath.indexOf('/system_setting/')==0&&leftIcon}"
-                                                               ng-click="select('system_set');goSettings()" bs-tooltip
-                                                               data-title=""
-                                                               placement="right"><i class="iconfont">&#xe645;</i> <span
-                ng-if="!guideSetting"
-                style="position:absolute;top:12px;right:12px;background-color:#e82020;width:8px;height:8px;border-radius:50%"></span></a>
-    </div>
-</nav>
-<div ui-view class="main-view am-fade"></div>
-
-<div ui-view="" class="main-view am-fade ng-scope" style="">
+    <div ui-view class="main-view am-fade"></div>
+    <div ui-view="" class="main-view am-fade ng-scope" style="">
     <div class="ticket-detail-panel ng-scope">
         <header class="title"><!-- ngIf: webchat==null -->
             <nav class="btn-group btn-groupB ng-scope ng-isolate-scope" ng-if="webchat==null"
@@ -452,20 +86,7 @@
             <!-- ngIf: ticket.status != 'suspended' && ticket.status != 'deleted' && !ticket.deleted -->
             <div class="ticket-countdown-wrapper ng-scope"
                  ng-if="ticket.status != 'suspended' &amp;&amp; ticket.status != 'deleted' &amp;&amp; !ticket.deleted">
-                <div class="ticket-countdown ng-isolate-scope" ticket="ticket">
-                    <!-- ngIf: currentTimeLeft!=0 && ticket.status != 'closed' && ticket.status !='solved' && ticket.status != 'pending' --><span
-                        ng-class="slaColor"
-                        ng-if="currentTimeLeft!=0 &amp;&amp; ticket.status != 'closed' &amp;&amp; ticket.status !='solved' &amp;&amp; ticket.status != 'pending'"
-                        class="ng-binding ng-scope sla-red" style=""><i class="fa fa-clock-o"></i> 超时 <span
-                        ng-bind-html="currentTimeLeft | ticketCountdown | trusted" class="ng-binding"><i
-                        class="num">49</i>小时 <i class="num">28</i>分钟 </span> </span>
-                    <!-- end ngIf: currentTimeLeft!=0 && ticket.status != 'closed' && ticket.status !='solved' && ticket.status != 'pending' -->
-                    <!-- ngIf: (ticket.status == 'closed' || ticket.status =='solved') && responseTime && solveTime -->
-                    <!-- ngIf: ticket.status == 'pending' && ticket.ticketMetric.planSolvedAt -->
-                    <!-- ngIf: hasSla && slaInfo --><span class="sla-standard ng-scope"
-                                                          ng-if="hasSla &amp;&amp; slaInfo" style=""><span
-                        class="title">SLA指标</span> <span class="value ng-binding">响应耗时：8小时  ，处理耗时：120小时 </span></span>
-                    <!-- end ngIf: hasSla && slaInfo --></div>
+
             </div><!-- end ngIf: ticket.status != 'suspended' && ticket.status != 'deleted' && !ticket.deleted -->
             <!-- ngIf: showNextTicketBtn --> <!-- ngIf: showpreTicketBtn -->
         </header>
@@ -1095,7 +716,7 @@
                                                     ng-src="source/images/face/header_40.png" title="" imageurl=""
                                                     defaultimageurl="source/images/face/header_40.png"
                                                     imagestyle="head.40.40" imageclass="w40 h40 img-circle"
-                                                    editable="false" src="source/images/face/header_40.png"></div>
+                                                    editable="false" src="/static/images/header_40.png"></div>
                                             <div class="media-body media-top" style="overflow:visible">
                                                 <div class="media-user-info" style="color:#9ea7b7">
                                                     <!-- ngIf: !log.ticketComment.chat.id --><span
@@ -1819,7 +1440,7 @@
                                                     ng-src="source/images/face/header_40.png" title="" imageurl=""
                                                     defaultimageurl="source/images/face/header_40.png"
                                                     imagestyle="head.40.40" imageclass="w40 h40 img-circle"
-                                                    editable="false" src="source/images/face/header_40.png"></div>
+                                                    editable="false" src="/static/images/header_40.png"></div>
                                             <div class="media-body media-top" style="overflow:visible">
                                                 <div class="media-user-info" style="color:#9ea7b7">
                                                     <!-- ngIf: !log.ticketComment.chat.id --><span
@@ -1909,7 +1530,16 @@ e
 </div>
 
 
-<batch-indicator></batch-indicator>
+
+
+
+
+
+
+
+
+
+    <batch-indicator></batch-indicator>
 <script src="/static/js/vendor-e38f538b51.js" defer="defer"></script>
 <script src="/static/js/part1-a62d40a53c.js" defer="defer"></script>
 <script src="/static/js/part2-a0f598a85b.js" defer="defer"></script>
@@ -1918,6 +1548,4 @@ e
 <script src="/static/js/part5-7cd0ce974d.js" defer="defer"></script><!-- partials:js -->
 <script src="/static/js/template-cache-html-8eda194ce5.js" defer="defer"></script>
 
-
-</body>
-</html><!-- builded by makepackage Linux2.6.32-754.el6.x86_64 at 2019-8-8 17:52:03 -->
+{% endblock content %}

@@ -1,0 +1,538 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <script src="{{ static('js/jquery-3.4.0.min.js') }}" type="text/javascript"></script>
+    <div ui-view="" class="main-view am-fade ng-scope" style=""><!-- uiView: -->
+        <div ui-view="" class="ng-scope">
+            <div class="ticket-detail-panel ticket-new ng-scope">
+
+
+
+
+<div class="wrap">
+    <div class="wpn">
+        <div class="form-data pos">
+            <form action="{{ url('users:customer') }}" method="post">
+                            <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+                <div style="display: none">
+                    <input type="hidden" name="csrfmiddlewartoken" value="{{ csrf_token }}">
+                </div>
+
+
+                <div class="change-login">
+                    <p class="account_number on">添加客户</p>
+                    {#                    <p class="message">短信登录</p>#}
+                </div>
+                <div class="form1">
+                    <p class="p-input pos">
+                        <label for="num">客户名</label>
+                        <input type="text" id="num" name="cname" required>
+                        {#                        {% for error in username.errors %}#}
+                        {#                        <span>{{ error }}</span>#}
+                        {#                        {% endfor %}#}
+                    </p>
+                    <p class="p-input pos">
+                        <label for="pass">邮箱</label>
+                        {#                        <input type="password" style="display:none">#}
+                        <input type="text" id="pass" autocomplete="new-password" name="ccontactemail" required>
+{#                                                {% for error in form.password.errors %}#}
+{#                                                {% for error in form.clean() %}#}
+{#                        {% if error_total %}#}
+{#                            <span >{{ error_total }}</span>#}
+{#                        {% endif %}#}
+{#                                                {% endfor %}#}
+                    </p>
+                    <p class="p-input pos">
+                        <label for="pass">手机号</label>
+                        {#                        <input type="password" style="display:none">#}
+                        <input type="text" id="pass" autocomplete="new-password" name="cmobilephone" required>
+{#                                                {% for error in form.password.errors %}#}
+{#                                                {% for error in form.clean() %}#}
+{#                        {% if error_total %}#}
+{#                            <span >{{ error_total }}</span>#}
+{#                        {% endif %}#}
+{#                                                {% endfor %}#}
+                    </p>
+                     <p class="p-input pos">
+                        <label for="pass">客户等级</label>
+                        {#                        <input type="password" style="display:none">#}
+                        <input type="text" id="pass" autocomplete="new-password" name="cgid" required>
+
+{#                                                {% for error in form.password.errors %}#}
+{#                                                {% for error in form.clean() %}#}
+{#                        {% if error_total %}#}
+{#                            <span >{{ error_total }}</span>#}
+{#                        {% endif %}#}
+{#                                                {% endfor %}#}
+                    </p>
+
+                </div>
+
+
+
+                <button  style="color: white"   class="lang-btn">立即添加<input  type="submit"><br>
+{#                    {% for error in username.errors %}#}
+{#                        <span>{{ error }}</span>#}
+{#                    {% endfor %}#}
+                </button>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </div><!-- uiView: phone -->
+    <div ui-view="phone" class="ng-scope"></div>
+    <div ng-controller="alertCtrl" class="ng-scope">
+        <div style="position:absolute;top:50%;left:50%;width:400px;margin-top:-35px;margin-left:-200px;z-index:9999;color:#3e4954">
+            <!-- ngRepeat: alert in alertsA --></div>
+    </div>
+    <div ng-show="false" ng-controller="installEweiHubServerController" class="ng-scope ng-hide"></div>
+    <div ng-show="false" ng-controller="isFirstLoginController" class="ng-scope ng-hide"></div>
+    <div ng-controller="providerInfoCompletionController" class="ng-scope"><!-- ngIf: showTrialTip --></div>
+    <div class="am-fade main-view ng-scope ng-hide" ng-controller="appIframeController" ng-show="showDiv">
+        <!-- ngRepeat: providerApp in providerApps track by $index -->
+        <section ng-show="showPage[providerApp.app.id]" ng-repeat="providerApp in providerApps track by $index"
+                 class="ng-scope ng-hide" style="">
+            <iframe name="iframe_app" id="app_43"
+                    style="width:100%;height:100%;position:absolute;top:0;left:0;border:none;z-index:0"
+                    src="./add_order_files/saved_resource.html"></iframe>
+        </section><!-- end ngRepeat: providerApp in providerApps track by $index --></div><!-- ngIf: !pageIsLoaded -->
+    <!--<cti-play-screen></cti-play-screen>--><!--<record-ticket></record-ticket>-->
+    <ewei-cometd class="ng-scope"></ewei-cometd>
+    <ewei-notify class="ng-scope"></ewei-notify>
+    <ewei-hub-socket></ewei-hub-socket><!--电话渠道指令-->
+    <div ng-show="vm.showPhonePanel" class="ng-isolate-scope ng-hide"><!-- ngIf: vm.showMainDialPanel -->
+        <div class="main-panel ng-scope" ng-if="vm.showMainDialPanel">
+            <div class="ewei-dail-panel ng-isolate-scope" is-mutil="vm.isMutil" is-keep-phone="vm.isKeepPhone"
+                 is-sip-call="vm.isSipCall" mutil-success="vm.mutilSuccess"><!-- ngIf: !vm.heldSuccess -->
+                <div ng-show="vm.dialHeaderMenuShow" class=""><!-- ngIf: !vm.contactTitle -->
+                    <div class="dail-header-menu ng-scope ng-isolate-scope" ng-if="!vm.contactTitle">
+                        <!-- ngIf: vm.warntip -->
+                        <div class="menu-button">
+                            <div ng-class="{&#39;menu-actived&#39;:vm.dialSetPanel}" ng-click="vm.switchPanel(true)"
+                                 class="menu-click menu-actived">拨号
+                            </div>
+                        </div>
+                        <div class="menu-button">
+                            <div ng-class="{&#39;menu-actived&#39;:!vm.dialSetPanel}" ng-click="vm.switchPanel(false)"
+                                 class="menu-click">设置
+                            </div>
+                        </div>
+                        <div class="menu-button"><!-- ngIf: vm.phoneStatus=='online' -->
+                            <!-- ngIf: vm.phoneStatus=='dontDisturb' --><!-- ngIf: vm.phoneStatus=='transfer' -->
+                            <!-- ngIf: vm.phoneStatus=='offline'&&vm.SipPhoneOK -->
+                            <!-- ngIf: vm.phoneStatus=='offline'&&!vm.SipPhoneOK -->
+                            <div ng-if="vm.phoneStatus==&#39;offline&#39;&amp;&amp;!vm.SipPhoneOK"
+                                 class="menu-select ng-scope" style=""><span class="status offline"></span>离线
+                            </div><!-- end ngIf: vm.phoneStatus=='offline'&&!vm.SipPhoneOK --></div>
+                        <!-- ngIf: vm.statusList -->
+                        <div style="clear:both"></div>
+                    </div><!-- end ngIf: !vm.contactTitle --><!-- ngIf: vm.contactTitle --></div>
+                <div ng-hide="vm.dialHeaderMenuShow" class="ng-hide">
+                    <div class="dail-mutil-header clearfix ng-isolate-scope" is-keep-phone="vm.isKeepPhone"
+                         is-sip-call="vm.isSipCall"><!-- ngIf: vm.isKeepPhone -->
+                        <div class="info"
+                             ng-style="vm.isKeepPhone?{&#39;height&#39;:&#39;22px&#39;,&#39;line-height&#39;:&#39;22px&#39;}:{}">
+                            <span class="txt">拨号 - 邀请第三方</span> <a class="bk" href="javascript:void(0)"
+                                                                   ng-click="vm.back()">返回</a></div>
+                    </div>
+                </div>
+                <div ng-show="vm.whichPanelShow" class=""><!-- ngIf: vm.phoneEnable --><!-- ngIf: !vm.phoneEnable -->
+                    <div ng-if="!vm.phoneEnable" class="phoneEnable ng-scope"><p
+                            ng-class="{&#39;infiniteLoop&#39;:vm.isLoop,&#39;iconfont&#39;:true,&#39;icon-p&#39;:true}"
+                            class="iconfont icon-p"></p>
+                        <p class="tip-p ng-binding">话机不可用，请检查线路和设置</p></div><!-- end ngIf: !vm.phoneEnable --></div>
+                <div ng-hide="vm.whichPanelShow" class="ng-hide">
+                    <div class="ng-isolate-scope">
+                        <div class="setting-head-common-phone ng-isolate-scope"><!-- ngIf: vm.warntip -->
+                            <ul class="nav-list-phone clearfix">
+                                <li ng-class="{&#39;active&#39;:vm.choseMenu[&#39;line&#39;],&#39;disabled&#39;:!vm.disabled[&#39;line&#39;]}"
+                                    ng-click="vm.choseMenuFn(&#39;line&#39;);" class="active">线路
+                                </li>
+                                <li ng-class="{&#39;active&#39;:vm.choseMenu[&#39;phone&#39;],&#39;disabled&#39;:!vm.disabled[&#39;phone&#39;]}"
+                                    ng-click="vm.choseMenuFn(&#39;phone&#39;);" class="disabled">话机
+                                </li>
+                                <li ng-class="{&#39;active&#39;:vm.choseMenu[&#39;voice&#39;],&#39;disabled&#39;:!vm.disabled[&#39;voice&#39;]}"
+                                    ng-click="vm.choseMenuFn(&#39;voice&#39;);" class="disabled">语音
+                                </li>
+                                <li ng-class="{&#39;active&#39;:vm.choseMenu[&#39;network&#39;],&#39;disabled&#39;:!vm.disabled[&#39;network&#39;]}"
+                                    ng-click="vm.choseMenuFn(&#39;network&#39;);" class="disabled">网络
+                                </li>
+                                <li ng-class="{&#39;active&#39;:vm.choseMenu[&#39;senior&#39;],&#39;disabled&#39;:!vm.disabled[&#39;senior&#39;]}"
+                                    ng-click="vm.choseMenuFn(&#39;senior&#39;);" class="disabled">高级
+                                </li>
+                            </ul>
+                        </div><!-- ngIf: vm.setPanel['line'] -->
+                        <div ng-if="vm.setPanel[&#39;line&#39;]" class="ng-scope" style="">
+                            <div class="setting-panel ng-isolate-scope"><h5>电话渠道</h5>
+                                <div class="btn-group">
+                                    <button class="btn btn-default btn-sm button-style ng-binding" type="button"
+                                            ng-click="vm.refreshChannel();"><span class="xl iconfont"></span></button>
+                                    <ul class="ul-style ng-hide" ng-show="vm.clicked">
+                                        <!-- ngRepeat: item in vm.channel_list track by $index --></ul>
+                                </div>
+                                <p class="tip">选择一个渠道作为本话机的呼入/呼出线路，点击“连接”接入该线路。</p>
+                                <!-- ngIf: vm.checkedChannel.voiceSystem == 'sip' -->
+                                <!-- ngIf: vm.checkedChannel.voiceSystem == 'phone_box' -->
+                                <button ladda="vm.connectingChannel"
+                                        ng-click="vm.connectChannel(vm.checkedChannel.voiceSystem,vm.checkedChannel.id)"
+                                        ng-disabled="vm.connectingChannel"
+                                        class="btn connect-btn btn-confirm ladda-button"
+                                        data-style="zoom-in"><span class="ladda-label">连接</span><span
+                                        class="ladda-spinner"></span></button>
+                                <!-- ngIf: vm.sipFail&&vm.checkedChannel.voiceSystem == 'sip' -->
+                                <!-- ngIf: vm.warntip&&vm.checkedChannel.voiceSystem == 'phone_box' --></div>
+                        </div><!-- end ngIf: vm.setPanel['line'] --><!-- ngIf: vm.setPanel['phone'] -->
+                        <!-- ngIf: vm.setPanel['voice'] --><!-- ngIf: vm.setPanel['network'] -->
+                        <!-- ngIf: vm.setPanel['senior'] --></div>
+                </div>
+            </div>
+        </div><!-- end ngIf: vm.showMainDialPanel --><!-- ngIf: vm.showPhoneSipcallPanel -->
+        <!-- ngIf: vm.showPhoneUsbCallPanel -->
+        <div class="main-panel ng-hide" ng-show="vm.showTransferPanel" style="background-color:transparent">
+            <ewei-phone-transfer class="ng-isolate-scope">
+                <div class="transfer-panel" ng-hide="vm.hide"><!-- ngIf: vm.state == 'select-engineer' -->
+                    <phone-transfer-call
+                            ng-show="vm.state != &#39;select-engineer&#39; &amp;&amp; vm.state != &#39;nothing&#39;"
+                            target="vm.transferTarget" host-tel-num="vm.hostTelNum" class="ng-isolate-scope ng-hide">
+                        <div class="transfer-call">
+                            <div class="held-tips ng-binding" ng-class="{&#39;host-offline&#39;:vm.hostOffline}"> 通话保持
+                            </div>
+                            <div class="header"><span class="txt">转接电话</span></div>
+                            <p class="call-status ng-binding"
+                               ng-style="{color:vm.state==&#39;transfer-failed&#39; ? &#39;red&#39; : &#39;&#39;}">
+                                正在呼叫</p>
+                            <div class="cti-user-info"><p class="phone-number ng-binding"></p>
+                                <div class="img-box"><img class="img-circle"
+                                                          ng-click="editable==&#39;true&#39;?toEdit():&#39;&#39;"
+                                                          ng-src="source/images/face/header_40.png" title="" imageurl=""
+                                                          defaultimageurl="source/images/face/header_40.png"
+                                                          imagestyle="head.40.40" imageclass="img-circle"
+                                                          editable="false"
+                                                          src="{{ static('images/header_40.png') }}"></div>
+                                <!-- ngIf: target.isEngineer --><!-- ngIf: target.isEngineer --></div>
+                            <div class="operation">
+                                <div class="keyboard">
+                                    <div class="dial-fn-panel"><!-- ngIf: vm.showNumberPanel --></div>
+                                    <!-- ngIf: vm.state == 'transfering' -->
+                                    <div class="transfering-icons ng-scope" ng-if="vm.state == &#39;transfering&#39;">
+                                        <!-- ngIf: vm.enableHangup --><!-- ngIf: vm.enableHangup --></div>
+                                    <!-- end ngIf: vm.state == 'transfering' -->
+                                    <!-- ngIf: vm.state == 'transfer-failed' -->
+                                    <!-- ngIf: vm.hostOnline&&(vm.state == 'transfer-successful' || vm.state == 'transfer-finished') -->
+                                </div>
+                            </div>
+                        </div>
+                    </phone-transfer-call>
+                </div>
+            </ewei-phone-transfer>
+        </div>
+        <div ng-show="vm.showEweiPhoneMutil" class="ng-hide">
+            <div class="mutil-panel ng-isolate-scope">
+                <div class="tip message-tip-common ng-binding ng-hide"
+                     ng-show="atc.message&amp;&amp;atc.message!=&#39;&#39;">
+                    <div class="x" ng-click="atc.cancelMessage();">X</div>
+                </div>
+                <div class="mutil-title"><span class="txt">多方通话</span> <a href="https://13910044100.ewei.com/console/#"
+                                                                          class="add-call ng-hide"
+                                                                          ng-show="!vm.mutilIsEnd &amp;&amp; vm.canInvite"
+                                                                          ng-click="vm.invite()">+添加通话方</a> <span
+                        class="call-end ng-hide" ng-show="vm.mutilIsEnd">通话已结束</span></div>
+                <div class="mutil-list clearfix"><!-- ngRepeat: item in vm.mutilList --></div>
+                <div ng-show="!vm.mutilIsEnd" class="">
+                    <sip-keyboard>
+                        <div class="keyboard">
+                            <div class="dial-fn-panel"><!-- ngIf: showNumberPanel --></div><!-- ngIf: canHangup -->
+                            <!-- ngIf: canHangup --> <i class="iconfont ng-hide"
+                                                        ng-show="calling &amp;&amp; callType==&#39;normal&#39;"
+                                                        ng-click="goRecordTicket()" title="记录工单"></i></div>
+                    </sip-keyboard>
+                </div>
+                <div class="failure-box ng-hide" ng-show="vm.mutilIsEnd">
+                    <div class="save-ticket-panel">
+                        <button class="btn back-class" ng-click="vm.closeSip();">关闭</button>
+                        <button class="btn save-class" ng-click="vm.createTicket();">记录工单</button>
+                    </div>
+                </div>
+            </div>
+        </div><!-- ngIf: vm.showRecordTicketPanel --><!-- ngIf: vm.showPlayScreen --></div>
+    <div class="ng-isolate-scope"><!-- ngIf: vm.viaCtiCount==0 && vm.autoHide -->
+        <!-- ngIf: vm.viaSettingAuthorized==false && vm.autoHide --><!-- ngIf: vm.installApp -->
+        <!-- ngIf: vm.installing -->
+        <!-- ngIf: vm.missCallCount&&vm.missCallCount!=0 --></div><!--结束-->
+    <div class="ng-isolate-scope">
+        <div class="tipLayer ng-isolate-scope ng-hide" ng-show="showInstall" show-install="vm.showInstallApp">
+            未检测到远程协助组件，请<a class="href" ng-click="vm.downloadApp()" style="margin-left:0px;">下载</a>安装<a class="href"
+                                                                                             ng-click="vm.close()"
+                                                                                             style="margin-left:20px;">关闭</a>
+        </div>
+        <div class="remote-box ng-hide" ng-show="vm.panelActived">
+            <div ng-show="vm.showWithTab" class="">
+                <div class="header">远程协助</div>
+                <div class="content">
+                    <div ng-show="vm.showCode" class="ng-isolate-scope">
+                        <div class="code">
+                            <div class="title">输入共享码，远程控制对方的电脑</div>
+                            <div class="input-group"><input type="text"
+                                                            class="form-control ng-pristine ng-untouched ng-valid ng-empty"
+                                                            ng-model="vm.code"> <span class="input-group-btn"><button
+                                    class="btn button connct-btn custom-main-bgcolor ladda-button" ladda="vm.connecting"
+                                    ng-click="vm.connect()" data-style="zoom-in"><span
+                                    class="ladda-label">连接</span><span
+                                    class="ladda-spinner"></span></button></span></div>
+                        </div><!-- ngIf: vm.showInfo -->
+                        <div class="tip-info ng-scope" ng-if="vm.showInfo"><span>共享码由客户在客户端生成并告知<br>如未安装客户端，<a
+                                class="link"
+                                href="https://13910044100.ewei.com/console/#"
+                                ng-click="vm.downloadApp()">点此下载</a></span>
+                        </div><!-- end ngIf: vm.showInfo --><!-- ngIf: vm.showCheck -->
+                        <div class="type">
+                            <div ng-click="vm.startRemoteType(&#39;desk&#39;)"><input type="checkbox" checked="checked"
+                                                                                      ng-click="vm.startRemoteType(&#39;desk&#39;)"
+                                                                                      ng-model="vm.startDesk"
+                                                                                      ng-true-value="1"
+                                                                                      ng-false-value="0"
+                                                                                      ng-disabled="vm.connecting"
+                                                                                      class="ng-pristine ng-untouched ng-valid ng-not-empty"><span>同步开启远程桌面</span>
+                            </div>
+                            <div ng-click="vm.startRemoteType(&#39;video&#39;)"><input type="checkbox"
+                                                                                       ng-click="vm.startRemoteType(&#39;video&#39;)"
+                                                                                       ng-model="vm.startVideo"
+                                                                                       ng-true-value="1"
+                                                                                       ng-false-value="0"
+                                                                                       ng-disabled="vm.connecting"
+                                                                                       class="ng-pristine ng-untouched ng-valid ng-empty"><span>同步开启视频通话</span>
+                            </div>
+                        </div>
+                    </div>
+                    <remote-control-contact ng-show="vm.showContact" class="ng-hide">showContact
+                    </remote-control-contact>
+                    <remote-control-recent-contact ng-show="vm.showRecentContact" class="ng-hide">recent-contact
+                    </remote-control-recent-contact>
+                    <remote-control-invite-before ng-show="vm.showInviteBefore" class="ng-hide">inviteBefore
+                    </remote-control-invite-before>
+                </div>
+            </div>
+            <remote-control-invite ng-show="vm.showInvite" class="ng-hide">invite</remote-control-invite>
+        </div>
+    </div>
+    <div class="message-panel ng-isolate-scope" ng-class="{&#39;message-panel-active&#39;: vm.panelActived}">
+        <section class="panel-messages" ng-show="vm.currentPanel!==&#39;setting&#39;">
+            <header class="panel-header clearfix"><h5 class="panel-title pull-left">通知消息</h5>
+                <div class="options pull-right"><a ng-click="vm.deleteNotifyLogs()"><i class="iconfont"></i></a><a
+                        ng-click="vm.showSettingPanel()"
+                        ui-sref="system_setting.detail({uri:&#39;my_account&#39;,settingType:&#39;system&#39;})"
+                        href="https://13910044100.ewei.com/console/#/system_setting/system/my_account"><i
+                        class="iconfont"></i></a></div>
+            </header>
+            <div class="panel-body">
+                <ol class="messages-list"><!-- ngRepeat: log in vm.notifyLogs track by $index --></ol>
+                <!-- ngIf: vm.notifyLogs.length === 0 -->
+                <div class="tips ng-scope" ng-if="vm.notifyLogs.length === 0">没有新的通知消息</div>
+                <!-- end ngIf: vm.notifyLogs.length === 0 -->
+                <div ng-show="vm.loading" class="more-indicator ng-hide"><a ng-click="vm.getMore();">正在加载...</a></div>
+            </div>
+            <!-- ngIf: $root.providerLicense && $root.providerLicense.type !='oem' && !vm.licenseService.hasModule('oem') -->
+            <footer ng-if="$root.providerLicense &amp;&amp; $root.providerLicense.type !=&#39;oem&#39; &amp;&amp; !vm.licenseService.hasModule(&#39;oem&#39;)"
+                    class="panel-footer ng-scope"><a class="tips" ng-click="vm.hidePanel();vm.component_popup(1)">安装移动客户端，随时随地接收通知</a>
+            </footer>
+            <!-- end ngIf: $root.providerLicense && $root.providerLicense.type !='oem' && !vm.licenseService.hasModule('oem') -->
+        </section>
+    </div>
+    <div class="avatar-panel ng-isolate-scope" ng-class="{&#39;avatar-panel-active&#39;: panelActived}">
+        <ol class="nav-menu">
+            <li ui-sref="system_setting.detail({uri:&#39;my_account&#39;,settingType:&#39;system&#39;})"
+                ui-sref-opts="{reload: true}" ng-click="hidePanel();$parent.currentUserBuried();"
+                href="#/system_setting/system/my_account"><a
+                    class="important custom-main-font-color size16 ng-binding">王飞</a>
+                <ul class="nav-submenu">
+                    <li><span class="ellipsis ng-binding">默认服务台</span></li>
+                    <li><span class="ellipsis ng-binding">创始人</span></li>
+                </ul>
+            </li>
+            <li><a class="important custom-main-font-color" ng-href="https://13910044100.ewei.com/cti/"
+                   ng-click="goCti($event)" target="_blank" href="https://13910044100.ewei.com/cti/">呼叫中心 <span
+                    class="extra ng-binding">13910044100.ewei.com/cti/</span></a></li>
+            <li><a class="important custom-main-font-color" ng-href="https://13910044100.ewei.com/"
+                   ng-click="$parent.helpcenterBuried()" href="https://13910044100.ewei.com/">切换到帮助中心 <span
+                    class="extra ng-binding">13910044100.ewei.com</span></a></li>
+            <li><span class="gray">并发会话上限</span>
+                <ul class="nav-submenu">
+                    <li>
+                        <button type="button" class="btn btn-default btn-dropdown ng-scope ng-binding"
+                                bs-dropdown="chatNumberOptions" aria-haspopup="true" aria-expanded="false">6<i
+                                class="iconfont"></i></button>
+                    </li>
+                </ul>
+            </li>
+            <li class="roomly">
+                <ul class="nav-submenu">
+                    <!-- ngIf: $root.providerLicense && $root.providerLicense.type !='oem' && !licenseService.hasModule('oem') -->
+                    <li ng-if="$root.providerLicense &amp;&amp; $root.providerLicense.type !=&#39;oem&#39; &amp;&amp; !licenseService.hasModule(&#39;oem&#39;)"
+                        class="ng-scope"><a ng-click="hidePanel();component_popup(1)">APP和微信客服端</a></li>
+                    <!-- end ngIf: $root.providerLicense && $root.providerLicense.type !='oem' && !licenseService.hasModule('oem') -->
+                    <!-- ngIf: $root.providerLicense && $root.providerLicense.type !='oem' && !licenseService.hasModule('oem') -->
+                    <li ng-if="$root.providerLicense &amp;&amp; $root.providerLicense.type !=&#39;oem&#39; &amp;&amp; !licenseService.hasModule(&#39;oem&#39;)"
+                        class="ng-scope"><a ng-click="hidePanel();component_popup(2)">远程协助组件</a></li>
+                    <!-- end ngIf: $root.providerLicense && $root.providerLicense.type !='oem' && !licenseService.hasModule('oem') -->
+                    <li><a ng-click="hidePanel();$parent.noviceguideBuried()" ui-sref="noviceguide.experience"
+                           href="https://13910044100.ewei.com/console/#/noviceguide/experience">新手向导</a></li>
+                    <li><a ng-click="hidePanel();$parent.helpTextBuried()" ng-href="https://help.ewei.com/"
+                           target="_blank"
+                           href="https://help.ewei.com/">帮助文档</a></li>
+                    <!-- ngIf: $root.providerLicense && $root.providerLicense.type !='oem' && !licenseService.hasModule('oem') -->
+                    <li ng-if="$root.providerLicense &amp;&amp; $root.providerLicense.type !=&#39;oem&#39; &amp;&amp; !licenseService.hasModule(&#39;oem&#39;)"
+                        class="ng-scope"><a ng-click="hidePanel();developerBuried()" href="http://api.ewei.com/"
+                                            target="_blank">开发者</a></li>
+                    <!-- end ngIf: $root.providerLicense && $root.providerLicense.type !='oem' && !licenseService.hasModule('oem') -->
+                    <li><a ng-click="hidePanel();developerBuried();goNotify();"
+                           ui-sref="system_setting.detail({uri:&#39;my_account&#39;,settingType:&#39;system&#39;})"
+                           ui-sref-opts="{reload: true}"
+                           href="https://13910044100.ewei.com/console/#/system_setting/system/my_account">通知设置</a></li>
+                </ul>
+            </li>
+            <li><a ng-click="logoutBuried()">退出</a></li>
+        </ol>
+    </div>
+    <invite-engineer-dialog class="ng-isolate-scope"></invite-engineer-dialog><!--授权提示的指令-->
+    <div><!-- ngIf: showCond -->
+        <div style="background:#f7bf58;width:260px;position:absolute;right:43px;top:60px;z-index:9;border-radius:5px;padding:2px 5px"
+             ng-show="capacityCond" class="ng-hide"><p style="margin:10px auto;width:100%;text-align:left;color:#FFF">
+            你的容量即将超限，为防止容量超限导致服务暂停，请及时扩容</p>
+            <div style="width:60px;text-align:center;color:#39F;margin-bottom:5px;float:right;cursor:pointer"
+                 ng-click="toPay();">去扩容
+            </div>
+        </div>
+        <div style="background:#f7bf58;width:260px;position:absolute;right:43px;top:60px;z-index:9;border-radius:5px;padding:2px 5px"
+             ng-show="showThreeDaysTipCond" class="ng-hide"><p
+                style="margin:10px auto;width:100%;text-align:left;color:#FFF">你的授权即将到期，为防止到期服务暂停，请及时联系客服续费</p>
+            <div style="width:60px;text-align:center;color:#39F;float:right;cursor:pointer;margin-bottom:5px"
+                 ng-click="linkEngineer();">联系客服
+            </div>
+        </div>
+        <div style="background:#f7bf58;width:230px;position:absolute;right:43px;top:60px;z-index:9;border-radius:5px"
+             ng-show="deductionCond" class="ng-hide"><p
+                style="margin:10px auto;width:100%;text-align:center;color:#FFF">
+            您的账户余额不足，请及时续费。</p>
+            <div style="width:60px;text-align:center;color:#FFF;border:1px solid #FFF;border-radius:5px;margin:10px auto;cursor:pointer"
+                 ng-click="linkEngineer();">联系客服
+            </div>
+        </div>
+    </div><!-- 批量处理指示器 --><!-- ngIf: status !== 'ready' -->
+    <script type="text/javascript" async="" src="{{ static('js/vds.js') }}"></script>
+
+    <script src="{{ static('js/vendor-e38f538b51.js') }}" defer="defer"></script>
+    <script src="{{ static('js/part1-a62d40a53c.js') }}" defer="defer"></script>
+    <script src="{{ static('js/part2-a0f598a85b.js') }}" defer="defer"></script>
+    <script src="{{ static('js/part3-7137ac87d7.js') }}" defer="defer"></script>
+    <script src="{{ static('js/part4-670620dc42.js') }}" defer="defer"></script>
+    <script src="{{ static('js/part5-7cd0ce974d.js') }}" defer="defer"></script><!-- partials:js -->
+    <script src="{{ static('js/template-cache-html-8eda194ce5.js') }}" defer="defer"></script>
+    <!-- endinject --><!-- <script type="text/javascript" src="source/lib/pdfmake/pdfmake.min.js" async="async"></script>
+    <script type="text/javascript" src="source/lib/pdfmake/vfs_fonts.js" async="async"></script> -->
+    <script type="text/javascript">(/msie/i.test(navigator.userAgent) || "ActiveXObject" in window) && -1 === location.search.indexOf("jumpBrowser=true") && (location.href = "/source/browser_not_support.html")</script>
+    <!--growingio数据统计-->
+    <script type="text/javascript">var _vds = _vds || [];
+    window._vds = _vds, function () {
+        _vds.push(["setAccountId", "8595fc4d9e866381"]), function () {
+            var t = document.createElement("script");
+            t.type = "text/javascript", t.async = !0, t.src = ("https:" == document.location.protocol ? "https://" : "http://") + "dn-growing.qbox.me/vds.js";
+            var e = document.getElementsByTagName("script")[0];
+            e.parentNode.insertBefore(t, e)
+        }()
+    }()</script>
+    <script id="ewei-portal-script" src="{{ static('js/ed81414e01f7022a1d7892ad5e3b781f.js') }}"></script>
+    <script src="{{ static('js/portal.js') }}"></script>
+    <div id="ewei-websdk-portal"
+         style="display: inline-block; position: fixed; padding: 20px 10px; background-color: rgb(249, 155, 4); border-radius: 23px; text-align: center; font-size: 16px; color: rgb(255, 255, 255); line-height: 22px; box-sizing: border-box; cursor: pointer; word-break: break-all; white-space: normal; z-index: 1000000; width: 46px; top: 50%; transform: translateY(-50%); right: 10px;">
+        <img src="{{ static('images/chat.svg') }}"
+             style="width: 30px; display: block; max-width: 30px; margin-left: auto; margin-right: auto; position: relative; left: -3px; margin-bottom: 5px;"><span
+            style="position: absolute; top: 0px; right: 0px; width: 14px; height: 14px; background-color: rgb(255, 0, 0); border-radius: 7px; display: none;"></span><span>在线客服</span>
+    </div>
+    <div class="daterangepicker dropdown-menu ltr opensleft">
+        <div class="calendar left">
+            <div class="daterangepicker_input"><input class="input-mini form-control" type="text"
+                                                      name="daterangepicker_start" value=""><i
+                    class="fa fa-calendar glyphicon glyphicon-calendar"></i>
+                <div class="calendar-time" style="display: none;">
+                    <div></div>
+                    <i class="fa fa-clock-o glyphicon glyphicon-time"></i></div>
+            </div>
+            <div class="calendar-table"></div>
+        </div>
+        <div class="calendar right">
+            <div class="daterangepicker_input"><input class="input-mini form-control" type="text"
+                                                      name="daterangepicker_end"
+                                                      value=""><i
+                    class="fa fa-calendar glyphicon glyphicon-calendar"></i>
+                <div class="calendar-time" style="display: none;">
+                    <div></div>
+                    <i class="fa fa-clock-o glyphicon glyphicon-time"></i></div>
+            </div>
+            <div class="calendar-table"></div>
+        </div>
+        <div class="ranges">
+            <ul>
+                <li data-range-key="今天">今天</li>
+                <li data-range-key="昨天">昨天</li>
+                <li data-range-key="最近7天">最近7天</li>
+                <li data-range-key="最近30天">最近30天</li>
+                <li data-range-key="本月">本月</li>
+                <li data-range-key="本季度">本季度</li>
+                <li data-range-key="本年">本年</li>
+                <li data-range-key="自定义">自定义</li>
+            </ul>
+            <div class="range_inputs">
+                <button class="applyBtn btn btn-confirm" disabled="disabled" type="button">确定</button>
+                <button class="cancelBtn btn btn-cancel" type="button">取消</button>
+            </div>
+        </div>
+    </div>
+    <div date-picker-wrap="" ng-model="date" ng-model-options="ngModelOptions" ng-change="dateSelection(date)"
+         class="ng-pristine ng-untouched ng-valid ng-scope ng-empty" style="">
+        <!-- ngIf: isOpen && showPicker == 'date' --></div>
+    <div time-picker-wrap="" ng-model="date" ng-model-options="ngModelOptions" ng-change="dateSelection(date)"
+         class="ng-pristine ng-untouched ng-valid ng-scope ng-empty"><!-- ngIf: isOpen && showPicker == 'time' --></div>
+
+    <script>
+        $(document).ready(function () {
+            $("#on_btn_y").hover(function () {
+                $("#hidden_table_y").css("display", "block")
+            }, function () {
+                $("#hidden_table_y").css("display", "none")
+            })
+            $(".wy_table").hover(function () {
+                $("#hidden_table_y").css("display", "block")
+            }, function () {
+                $("#hidden_table_y").css("display", "none")
+            })
+
+            $("#service_list_info_y").focus(function (event) {
+                $("#service_list_div_y").toggle(400);
+            });
+           $("#service_list_info_y").blur(function (event) {
+                $("#service_list_div_y").toggle(400);
+            });
+
+            $("#service_list_div_y table tr").mousemove(function(){
+                $(this).nextAll("tr").css("display", "block")
+
+            })
+             $("#service_list_div_y table tr td").click(function () {
+                    {#console.log($(this).text())#}
+                    $("#service_list_info_y").val($(this).text())
+                })
+        })
+    </script>
+
+{% endblock content %}
+

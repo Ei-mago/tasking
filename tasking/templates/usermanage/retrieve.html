@@ -18,51 +18,57 @@
 <div class="wrap">
     <div class="wpn">
         <div class="form-data find_password">
-            <form action="#" method="post">
-                <div style="display: none">
-                    <input type="hidden" name="csrfmiddlewartoken" value="{{ csrf_token }}">
-                </div>
-                {% if next %}
-                    <input type="hidden" name="next" value="{{ next }}">
+{#            <div style="display: none">#}
+{#                <input type="hidden" name="csrfmiddlewartoken" value="{{ csrf_token }}">#}
+{#            </div>#}
+            <a href=""><img src="/static/images/logo.png" class="head-logo"></a>
+
+            {% if next %}
+                <input type="hidden" name="next" value="{{ next }}">
+            {% endif %}
+            <h4>找回密码</h4>
+            <p class="right_now">已有账号，<a href="/login/">马上登录</a></p>
+            <p class="p-input pos">
+{#                <a href=""><img src="/static/images/logo.png" class="head-logo"></a>#}
+                <label for="pc_tel">用户名</label>
+                <input type="text" id="pc_tel" name="username" required>
+                {#                    {% for error in form.username.errors %}#}
+                {#                        <span class="tel-warn num-err hide">{{ error }}</span>#}
+                {#                        {% endfor %}#}
+                {#                    <span class="tel-warn pc_tel-err hide"><em>最多五个字</em><i class="icon-warn"></i></span>#}
+            </p>
+            <p class="p-input pos">
+                <label for="pc_tel">手机号</label>
+                <input type="text" id="pc_tel" name="phone" required>
+                {#                    {% for error in form.phone.errors %}#}
+                {#                            <span >{{ error }}</span>#}
+                {#                        {% endfor %}#}
+                {#                    <span class="tel-warn pc_tel-err hide"><em>最多五个字</em><i class="icon-warn"></i></span>#}
+            </p>
+            <p class="p-input pos ">
+                <label for="veri-code">输入验证码</label>
+                <input type="number" id="veri-code" name="scode">
+                <a href="javascript:" class="send" name="ucode">发送验证码</a>
+                <span class="time hide"><em>120</em>s</span>
+                <span class="tel-warn error hide"><em>验证码错误，请重新输入</em><i class="icon-warn"></i></span>
+            </p>
+            {#                <p class="p-input pos code pc-code">#}
+            {#                    <label for="veri">请输入验证码</label>#}
+            {#                    <input type="text" id="veri">#}
+            {#                    <img src="http://www.dmaku.com/demo/moban/2018050898509948/getpass.html">#}
+            {#                    <span class="tel-warn img-err hide"><em>最多五个字</em><i class="icon-warn"></i></span>#}
+            {#                    <!-- <a href="javascript:;">换一换</a> -->#}
+            {#                </p>#}
+            {#                <p>#}
+            {#                    <span >{{ context }}</span>#}
+            {#                </p>#}
+            <div class="change-login">
+                {% if error_total %}
+                    <p class="account_number on" style="color:red">{{ error_total }}</p>
                 {% endif %}
-                <h4>找回密码</h4>
-                <p class="right_now">已有账号，<a href="/login/">马上登录</a></p>
-                <p class="p-input pos">
-                    <label for="pc_tel">用户名</label>
-                    <input type="text" id="pc_tel" name="username" required>
-{#                    {% for error in form.username.errors %}#}
-{#                        <span class="tel-warn num-err hide">{{ error }}</span>#}
-{#                        {% endfor %}#}
-{#                    <span class="tel-warn pc_tel-err hide"><em>最多五个字</em><i class="icon-warn"></i></span>#}
-                </p>
-                <p class="p-input pos">
-                    <label for="pc_tel">手机号</label>
-                    <input type="text" id="pc_tel" name="phone" required>
-{#                    {% for error in form.phone.errors %}#}
-{#                            <span >{{ error }}</span>#}
-{#                        {% endfor %}#}
-{#                    <span class="tel-warn pc_tel-err hide"><em>最多五个字</em><i class="icon-warn"></i></span>#}
-                </p>
-                <p class="p-input pos ">
-                    <label for="veri-code">输入验证码</label>
-                    <input type="number" id="veri-code">
-                    <a href="javascript:" class="send" name="ucode">发送验证码</a>
-                    <span class="time hide"><em>120</em>s</span>
-                    <span class="tel-warn error hide"><em>验证码错误，请重新输入</em><i class="icon-warn"></i></span>
-                </p>
-{#                <p class="p-input pos code pc-code">#}
-{#                    <label for="veri">请输入验证码</label>#}
-{#                    <input type="text" id="veri">#}
-{#                    <img src="http://www.dmaku.com/demo/moban/2018050898509948/getpass.html">#}
-{#                    <span class="tel-warn img-err hide"><em>最多五个字</em><i class="icon-warn"></i></span>#}
-{#                    <!-- <a href="javascript:;">换一换</a> -->#}
-{#                </p>#}
-                <p>
-                    <span >{{ context }}</span>
-                </p>
-                <button class="lang-btn next">下一步</button>
-                <p class="right">python1905</p>
-            </form>
+            </div>
+            <button class="lang-btn next">下一步</button>
+            <p class="right">python1905</p>
         </div>
     </div>
 </div>
@@ -80,7 +86,31 @@
         data = {}
         data.csrfmiddlewaretoken = $("input[name='csrfmiddlewaretoken']").val()
         data.phone = $("input[name='phone']").val()
+        data.username = $("input[name='username']").val()
         $.post("/retreve/", data, function (e) {
+            if (e.msg == "ok") {
+                alert("发送成功")
+
+            }
+            else {
+                alert(e.msg)
+            }
+
+        })
+    })
+
+    $(".lang-btn.next").on("click", function () {
+        data = {}
+        data.csrfmiddlewaretoken = $("input[name='csrfmiddlewaretoken']").val()
+        data.ucode = $("input[name='scode']").val()
+        $.post("/check/", data, function (e) {
+            if (e.msg == "ok") {
+                window.location.href = e.url;
+            }
+            else {
+                alert(e.msg)
+            }
+
         })
     })
 </script>

@@ -3,7 +3,7 @@ from django.core.exceptions import ValidationError
 
 class NewTicketForm(forms.Form):
     customer = forms.CharField(required=True, max_length=50,strip=True, error_messages={'required': '客户名称必须填写'})
-    opreate = forms.CharField(required=True, error_messages={'required': '必须选择客服人员'})
+    opreate = forms.CharField(required=True)
     copyfor = forms.CharField(required=False, max_length=50)
     question = forms.CharField(required=False, max_length=20)
     service_list = forms.CharField(required=False, max_length=50)

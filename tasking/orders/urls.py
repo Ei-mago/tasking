@@ -12,7 +12,8 @@ urlpatterns = [
     url(r'^delete/(?P<id>\d+)$',views.delete,name='delete'),
     url(r'^replay/(?P<id>\d+)$',views.comments,name='replay'),
     url(r'^change_info/(?P<id>\d+)$',views.change_info,name='change_info'),
-    url(r'^test/(?P<id>\d+)$',views.test, name= 'test')
+    url(r'^export_orders/$',views.export_orders,name='export_orders'),
+    url(r'^test/$',views.test, name= 'test')
 
 
 ]
